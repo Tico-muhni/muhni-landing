@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="he" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Muhni Solution - ייעוץ משכנתאות אנושי בעידן ה-AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: "Work Sans", sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #6e00c1 0%, #8a2be2 100%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#4a4456",
+                        "on-surface-variant": "#4c4354",
+                        "background": "#fbf9f8",
+                        "surface-container": "#f0eded",
+                        "on-secondary-fixed": "#2c0050",
+                        "secondary-container": "#c588fe",
+                        "on-tertiary-fixed": "#1e1929",
+                        "on-tertiary-container": "#e7dcf3",
+                        "error": "#ba1a1a",
+                        "secondary": "#7b41b3",
+                        "outline": "#7e7386",
+                        "primary-fixed": "#efdbff",
+                        "surface": "#fbf9f8",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#cdc2d9",
+                        "surface-bright": "#fbf9f8",
+                        "on-secondary-fixed-variant": "#622599",
+                        "inverse-on-surface": "#f3f0f0",
+                        "on-surface": "#1b1c1c",
+                        "surface-variant": "#e4e2e1",
+                        "tertiary-fixed": "#e9def5",
+                        "secondary-fixed": "#f0dbff",
+                        "on-background": "#1b1c1c",
+                        "primary": "#6e00c1",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#54118a",
+                        "surface-dim": "#dcd9d9",
+                        "on-primary-fixed-variant": "#6700b5",
+                        "inverse-surface": "#303030",
+                        "primary-fixed-dim": "#dcb8ff",
+                        "outline-variant": "#cfc2d7",
+                        "on-primary-container": "#eed9ff",
+                        "on-primary-fixed": "#2c0051",
+                        "secondary-fixed-dim": "#ddb7ff",
+                        "tertiary-container": "#686073",
+                        "inverse-primary": "#dcb8ff",
+                        "surface-container-highest": "#e4e2e1",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#8422dc",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container-high": "#eae8e7",
+                        "primary-container": "#8a2be2",
+                        "tertiary": "#4f485b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "80px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "16px",
+                        "lg": "48px",
+                        "gutter": "24px",
+                        "md": "24px",
+                        "xs": "4px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center">
+<img alt="Muhni Solution" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEgiO9yydOIuvL91WD9wQK-iL78KbmhIi17y4RYNC0S2sWsQRAFn-FnkinHFMTZSzdYzj0ziyaavMOGalWdnyUdPWhyXHXlE7TEgxU4V68OTe-pPBXsrobBEmDyO8FdpFVLXKczPoLYK7caC65cD9G-YbJNO5ywXhTTIBu__ez-NQuulWToREhjHb3z6LzZ4xCF_ES0RWo3eKepwf3weIceNGRNoEr_MiU-DM5wfElf2CMIbaiQGhbBH3GtjzP4H3wt-LqLZHaUuOX"/>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-medium hover:text-primary transition-colors" href="#process">איך זה עובד?</a>
+<a class="font-medium hover:text-primary transition-colors" href="#bank-selection">הבנקים</a>
+<a class="font-medium hover:text-primary transition-colors" href="#benefits">יתרונות</a>
+<a class="bg-primary text-white px-6 py-2 rounded-full font-bold hover:opacity-90 transition-opacity" href="#lead-form">בדיקה חינם</a>
+</div>
+<button class="md:hidden text-on-surface-variant p-2 rounded-lg">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main class="pt-16 pb-20">
+<!-- Hero Section - Restored deep purple style -->
+<section class="hero-gradient pt-16 pb-24 px-margin-mobile md:px-margin-desktop text-white">
+<div class="max-w-7xl mx-auto flex flex-col items-center text-center gap-12">
+<h1 class="text-3xl md:text-5xl font-bold leading-tight max-w-4xl text-white">
+                    בעידן של AI ודיגיטל,<br/>אין כמו יועץ אמיתי<br/>כדי לבדוק לכם את המשכנתה
+                </h1>
+<!-- Hero Image: No AI robot flyer integrated cleanly -->
+<div class="w-full max-w-lg mx-auto">
+<img alt="Muhni Solution No AI Flyer" class="w-full h-auto rounded-3xl shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1WRgySRI7_AwJaHoH4elTaknYQOx_VN29_HdMlACyonNTp43NkffiwwT3wJV_DcVlBKhhFKpCoOi9qIKR9eLCJYgqWjDCBdDFmOj7wy-V_eeCayyiB1_2fyKc0NXmAGUAFYGw_w-GB6nbR7d6BE-61aoIut8cRm6_fc0gTUv9fM7MqbpcT2GFUPb39QZsHx9hKbZexd1o7O3hNtOyT3qEhcIHz5ZpGIqDgH6ykPPKZee4CZ08fKRxzwS8hLwVnZ0dFL2M2FR6WLRJ"/>
+</div>
+<div class="mt-8">
+<a class="bg-white text-primary px-12 py-5 rounded-full font-bold text-xl shadow-xl hover:bg-surface-bright hover:-translate-y-1 transition-all active:scale-[0.98] inline-block" href="#lead-form">
+                        אני רוצה לבדוק עכשיו
+                    </a>
+</div>
+</div>
+</section>
+<!-- Process Section -->
+<section class="py-20 px-margin-mobile md:px-margin-desktop bg-white" id="process">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col gap-4 mb-16 text-center">
+<h2 class="text-3xl md:text-4xl font-bold text-primary">איך זה עובד?</h2>
+<p class="text-on-surface-variant text-lg">תהליך פשוט שייקח לך פחות מ-2 דקות וייתן לך שקט נפשי</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="group p-8 bg-surface-container-low rounded-3xl border border-outline-variant hover:border-primary hover:shadow-xl transition-all relative">
+<div class="w-14 h-14 rounded-2xl bg-primary text-white flex items-center justify-center text-2xl font-bold mb-6">1</div>
+<h3 class="text-xl font-bold mb-3">בחר את הבנק</h3>
+<p class="text-on-surface-variant">בחר את הבנק בו מתנהלת המשכנתא שלך כיום מרשימת הבנקים מטה.</p>
+</div>
+<div class="group p-8 bg-surface-container-low rounded-3xl border border-outline-variant hover:border-primary hover:shadow-xl transition-all relative">
+<div class="w-14 h-14 rounded-2xl bg-primary text-white flex items-center justify-center text-2xl font-bold mb-6">2</div>
+<h3 class="text-xl font-bold mb-3">העלה דוח יתרות</h3>
+<p class="text-on-surface-variant">העלה צילום או סריקה של דוח יתרות המשכנתא העדכני שקיבלת מהבנק.</p>
+</div>
+<div class="group p-8 bg-surface-container-low rounded-3xl border border-outline-variant hover:border-primary hover:shadow-xl transition-all relative">
+<div class="w-14 h-14 rounded-2xl bg-primary text-white flex items-center justify-center text-2xl font-bold mb-6">3</div>
+<h3 class="text-xl font-bold mb-3">ניתוח אנושי</h3>
+<p class="text-on-surface-variant">המומחים שלנו מנתחים את התמהיל ומזהים פוטנציאל חיסכון שבינה מלאכותית פשוט מפספסת.</p>
+</div>
+<div class="group p-8 bg-surface-container-low rounded-3xl border border-outline-variant hover:border-primary hover:shadow-xl transition-all relative">
+<div class="w-14 h-14 rounded-2xl bg-primary text-white flex items-center justify-center text-2xl font-bold mb-6">4</div>
+<h3 class="text-xl font-bold mb-3">חיסכון בפועל</h3>
+<p class="text-on-surface-variant">קבל המלצות לביצוע וליווי צמוד עד להשגת התנאים הטובים ביותר עבורך.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Bank Selection Section - Restored proportions with official logos -->
+<section class="py-20 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest" id="bank-selection">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold text-on-surface">בחר את הבנק שלך</h2>
+<p class="text-on-surface-variant mt-4 max-w-2xl mx-auto text-lg">לחצו על הבנק שלכם כדי לעבור לאזור האישי להורדת דוח היתרות, ואז חזרו לכאן להעלות אותו.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Bank Leumi -->
+<div class="bank-btn p-8 bg-white border border-outline-variant rounded-3xl flex flex-col items-center gap-6 hover:border-primary hover:shadow-2xl transition-all cursor-pointer text-center">
+<div class="flex items-center justify-center w-full h-20 p-2"><img alt="בנק לאומי" class="h-10 w-auto object-contain mx-auto transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2z1lDYlDZyaT8ejrsZOeytCsuUBOyxbKy1oRe6x08gJCabevaKG07C28k3C2VqmpPtM-hsn1J9TAy8SpqMwyb47fBb-SnbiDMoN5HGX2OUFkj0PS-io7yy2fJB8Br4P0HBTv4ZOdY0KOV2DZNML5M7KThyOOb70Nmc4AaS796ylyqlv1bs3IJ5d6Zd67RnMqu5P6u1n3CKBnqP-fYXgWsM_8ZF_cSr9lvb4oaPfZIsGSaPaxOIco5aqxmfpv3XA4cJsZrvXYw8ucB"/></div>
+<span class="font-bold text-xl">בנק לאומי</span>
+<a class="w-full py-3 px-4 bg-primary/5 text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all text-sm" href="https://www.leumi.co.il/english/Mortgages/" onclick="event.stopPropagation();" target="_blank">מעבר לאתר הבנק</a>
+</div>
+<!-- Mizrahi Tefahot -->
+<div class="bank-btn p-8 bg-white border border-outline-variant rounded-3xl flex flex-col items-center gap-6 hover:border-primary hover:shadow-2xl transition-all cursor-pointer text-center border-primary ring-2 ring-primary/20">
+<div class="flex items-center justify-center w-full h-20 p-2"><img alt="מזרחי טפחות" class="h-16 w-auto object-contain mx-auto transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZ6VGmjmasHftOFEGhQxRu34tS3nne9pYhfteOO6UimQLGjpkpDSI36Uq6-3A_2sp9UBYFmhEITRsPAcsCk2ChCQYyY-_unKP-Hp0zFan6hUKJiKDGlCXlKpSC8rmQopXLAY4eN-IB3a3J5WOTf3oCK0QQ6FriZc4MYLitxIXpQ7q3pPMPPXPXMC031tQjYSCX3Yucy6_DIPJboOE2IZVhKVPqkIEvC_L6xGbwGMjpE5eciOi6i8RreLtQT19sH5u0rRDqo3wGnVaD"/></div>
+<span class="font-bold text-xl">מזרחי טפחות</span>
+<a class="w-full py-3 px-4 bg-primary/5 text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all text-sm" href="https://www.mizrahi-tefahot.co.il/mortgage/" onclick="event.stopPropagation();" target="_blank">מעבר לאתר הבנק</a>
+</div>
+<!-- Hapoalim -->
+<div class="bank-btn p-8 bg-white border border-outline-variant rounded-3xl flex flex-col items-center gap-6 hover:border-primary hover:shadow-2xl transition-all cursor-pointer text-center">
+<div class="flex items-center justify-center w-full h-20 p-2"><img alt="בנק הפועלים" class="h-10 w-auto object-contain mx-auto transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDRM7yvRV2yH0Va6c69c3CGJi2rVl8JAX4pqYIM30jyE1Zz-hqdFzNtCNyenKdHj4zOqEtklScvszoJvNTqGr2MInkbpE6bYYbuPM5RCk4a3R6Gg3QUKANfYQpvWv_m6mqHhCxNvlcEol0EUCAJIETYqiaQvYJGhruzCzEHuA-QoXyx7vXhwZ_WC0nkT9WNTf0XMZ3Slt7U2obMJlD8tQqxyiVehl5ScMLjWp5dAWU3994c3HULOGc-7WFi2T3WkZ0vf79p29LeDKP"/></div>
+<span class="font-bold text-xl">בנק הפועלים</span>
+<a class="w-full py-3 px-4 bg-primary/5 text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all text-sm" href="https://www.bankhapoalim.co.il/he/mortgages" onclick="event.stopPropagation();" target="_blank">מעבר לאתר הבנק</a>
+</div>
+<!-- Discount -->
+<div class="bank-btn p-8 bg-white border border-outline-variant rounded-3xl flex flex-col items-center gap-6 hover:border-primary hover:shadow-2xl transition-all cursor-pointer text-center">
+<div class="flex items-center justify-center w-full h-20 p-2"><img alt="בנק דיסקונט" class="h-12 w-auto object-contain mx-auto transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyBhBWKNdpUdzEBVAm63ngIU5WmLo5iH8pk8pCPSfSLyjbdG423pCkFq0ZVXQPl-r4XxheMV5K6OJqGonkdQknusHl1DzTfXEf9H-Meykwb_cnFuuP-njzFtQ-jAIGGaJcEs_M3G49GtTRLI5GQ_yX8BPxVCwI6kfwiByBBHWqm0TZ7amOm95o4aLBJkatSQ5RmiQa5j9T0xt5VmzwDvCQgTjAxdvJ5OSPRvdL311hpfXKFE4CUYytoi1uCfcLCHMt9Wp8-497YP41"/></div>
+<span class="font-bold text-xl">בנק דיסקונט</span>
+<a class="w-full py-3 px-4 bg-primary/5 text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all text-sm" href="https://www.discountbank.co.il/private/mortgage/" onclick="event.stopPropagation();" target="_blank">מעבר לאתר הבנק</a>
+</div>
+<!-- Jerusalem -->
+<div class="bank-btn p-8 bg-white border border-outline-variant rounded-3xl flex flex-col items-center gap-6 hover:border-primary hover:shadow-2xl transition-all cursor-pointer text-center">
+<div class="flex items-center justify-center w-full h-20 p-2"><img alt="בנק ירושלים" class="h-16 w-auto object-contain mx-auto transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLDqMwywjPJLz1A88PnE6_qKq97Pm3SfR911F3ioB5RkBL3opVYUGTaoJfYI4uNzIo8D9HmyQlx_XksUHD7R8DbCx86neJqFqjtmaa7gYULa7ZaVYY8pSIRgU73o8UFkW2XJ9QWxkqnOpuAWiD4Hd1t7iXRtUiz-EUNwyyyBrTzC-z07EU9gTfOZ3zNysUDHobTTrbLgeBDqKFTxCviB4Zu9NTgxuYcIwJVoyImbguD-unvaVnJ4cFZxp4ZGwHJ0cuV_-0ql9Ja2N2"/></div>
+<span class="font-bold text-xl">בנק ירושלים</span>
+<a class="w-full py-3 px-4 bg-primary/5 text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all text-sm" href="https://www.bankjerusalem.co.il/mortgages" onclick="event.stopPropagation();" target="_blank">מעבר לאתר הבנק</a>
+</div>
+<!-- Mercantile -->
+<div class="bank-btn p-8 bg-white border border-outline-variant rounded-3xl flex flex-col items-center gap-6 hover:border-primary hover:shadow-2xl transition-all cursor-pointer text-center">
+<div class="flex items-center justify-center w-full h-20 p-2"><img alt="בנק מרכנתיל" class="h-12 w-auto object-contain mx-auto transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC36_Ez4dWLVVrUfPmrUbkKlOa5ps1bUhO7WnI3dJwdtLABK6g9tkBFaG-gH6Wmh_Ap60Or3vfRSzYXlOYNDTQOtOnscrxGOfVeHvdcrixLRv5Gz0-fRnAs41fxeAIgYYic-3TdljtnvkL5vpIXwNFQCd4o8tKeI2sv1H03MDX3nd4K5R0BCJDxIGIO1kBDGZrOW4KkASASEgNgaQpJPK3lSA5zWpxjuK56j2nhmAR6KmyQ49kRuFLZxhdE0UQVmeH_VZeP8lhmB-Sz"/></div>
+<span class="font-bold text-xl">בנק מרכנתיל</span>
+<a class="w-full py-3 px-4 bg-primary/5 text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all text-sm" href="https://www.mercantile.co.il/private/mortgages/" onclick="event.stopPropagation();" target="_blank">מעבר לאתר הבנק</a>
+</div>
+<!-- FIBI -->
+<div class="bank-btn p-8 bg-white border border-outline-variant rounded-3xl flex flex-col items-center gap-6 hover:border-primary hover:shadow-2xl transition-all cursor-pointer text-center">
+<div class="flex items-center justify-center w-full h-20 p-2"><img alt="הבינלאומי" class="h-10 w-auto object-contain mx-auto transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXyiHbhkxoBdCSmuqypgTYIOvoKx6nFK_2bM81RaUxseOO893xWF_mbwtC5A583N549s1EQkab5APhz2mMcd72XFmRIrhNXVkvFXoR4VrFpmerhTdXjhfu4t7h2wR5F_Z2UfNetvsOqt-ksZIh3pFQ8HPG1AOPda3U-1LoTSmNVWt1ZZt_0XAUv-nq9Dj6zVxC_ibFerouoRWNK7rwEm9Xw4tm4DybWyOXLnOokrXECKRcFuTBp6Vuf629bAxrh20MFCtk20NrKtal"/></div>
+<span class="font-bold text-xl">הבינלאומי</span>
+<a class="w-full py-3 px-4 bg-primary/5 text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all text-sm" href="https://www.fibi.co.il/private/mortgages" onclick="event.stopPropagation();" target="_blank">מעבר לאתר הבנק</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Form Section -->
+<section class="py-20 px-margin-mobile md:px-margin-desktop bg-white" id="lead-form">
+<div class="max-w-3xl mx-auto bg-surface-container-lowest p-8 md:p-12 rounded-[2rem] border border-outline-variant shadow-2xl">
+<div class="text-center mb-10">
+<div class="inline-flex p-3 bg-primary/10 text-primary rounded-full mb-4">
+<span class="material-symbols-outlined text-3xl">contact_support</span>
+</div>
+<h2 class="text-2xl md:text-3xl font-bold text-primary">העלאת דוח ופרטי קשר</h2>
+<p class="text-on-surface-variant mt-2 text-lg">המידע שלך מאובטח ומשמש אך ורק לניתוח מקצועי אנושי</p>
+</div>
+<form class="flex flex-col gap-8" onsubmit="return false;">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="font-bold text-on-surface mr-2" for="bank_select">באיזה בנק מתנהלת המשכנתה?</label>
+<select class="w-full border-none bg-surface-container-low rounded-2xl p-5 focus:ring-2 focus:ring-primary outline-none transition-all text-lg appearance-none" id="bank_select">
+<option disabled="" selected="" value="">בחר בנק...</option>
+<option value="leumi">בנק לאומי</option>
+<option value="mizrahi">מזרחי טפחות</option>
+<option value="hapoalim">בנק הפועלים</option>
+<option value="discount">בנק דיסקונט</option>
+<option value="jerusalem">בנק ירושלים</option>
+<option value="mercantile">בנק מרכנתיל</option>
+<option value="fibi">הבנק הבינלאומי</option>
+<option value="other">אחר</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-bold text-on-surface mr-2" for="full_name">שם מלא</label>
+<input class="w-full border-none bg-surface-container-low rounded-2xl p-5 focus:ring-2 focus:ring-primary outline-none transition-all text-lg" id="full_name" placeholder="ישראל ישראלי" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-bold text-on-surface mr-2" for="phone">מספר טלפון</label>
+<input class="w-full border-none bg-surface-container-low rounded-2xl p-5 text-right focus:ring-2 focus:ring-primary outline-none transition-all text-lg" dir="ltr" id="phone" placeholder="050-0000000" type="tel"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-bold text-on-surface mr-2">העלאת דוח יתרות משכנתא</label>
+<div class="border-2 border-dashed border-outline-variant bg-surface-container-lowest rounded-3xl p-12 flex flex-col items-center justify-center gap-5 hover:border-primary hover:bg-primary/5 transition-all cursor-pointer group" id="dropzone">
+<div class="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl">cloud_upload</span>
+</div>
+<div class="text-center">
+<span class="block font-bold text-xl text-on-surface mb-1">לחצו להעלאה או גררו לכאן</span>
+<span class="text-on-surface-variant">קובץ PDF או תמונה עד 10MB</span>
+</div>
+<input class="hidden" id="file-input" type="file"/>
+</div>
+</div>
+<button class="w-full bg-primary text-white font-bold text-xl py-6 rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-1 active:scale-[0.98] transition-all" onclick="this.innerHTML='שולח...'; this.disabled=true; setTimeout(() =&gt; { alert('הבקשה נשלחה בהצלחה! עובר לדף התודה...'); }, 500);" type="submit">שלחו לי ניתוח מומחה</button>
+<div class="flex items-center justify-center gap-3 text-on-surface-variant text-sm font-medium">
+<span class="material-symbols-outlined text-green-600">verified_user</span>
+                        המידע מאובטח ומוצפן בתקנים המחמירים ביותר
+                    </div>
+</form>
+</div>
+</section>
+<!-- Benefits Section -->
+<section class="py-20 px-margin-mobile md:px-margin-desktop bg-surface-container-low" id="benefits">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col gap-4 mb-16 text-center">
+<h2 class="text-3xl md:text-4xl font-bold text-primary">למה לבדוק את המשכנתא שלך איתנו?</h2>
+<div class="w-24 h-1.5 bg-primary mx-auto rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="p-10 bg-white border border-outline-variant rounded-[2rem] flex flex-col gap-6 shadow-sm hover:shadow-md transition-all">
+<div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-4xl">person_check</span>
+</div>
+<h3 class="text-2xl font-bold">מומחיות אנושית מול AI</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                            בניגוד לאלגוריתמים קרים, המומחים שלנו מזהים הזדמנויות במצבים מורכבים. אנחנו מבינים את פסיכולוגיית השוק ואת הצרכים האישיים שלך בצורה שבינה מלאכותית פשוט לא מסוגלת להבין.
+                        </p>
+</div>
+<div class="p-10 bg-white border border-outline-variant rounded-[2rem] flex flex-col gap-6 shadow-sm hover:shadow-md transition-all">
+<div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-4xl">verified_user</span>
+</div>
+<h3 class="text-2xl font-bold">100% אובייקטיביות</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                            אנחנו עובדים בשבילך, לא בשביל הבנק. האינטרס היחיד שלנו הוא למצוא עבורך את החיסכון המקסימלי ואת התמהיל הבטוח ביותר.
+                        </p>
+</div>
+<div class="p-10 bg-white border border-outline-variant rounded-[2rem] flex flex-col gap-6 shadow-sm hover:shadow-md transition-all">
+<div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-4xl">payments</span>
+</div>
+<h3 class="text-2xl font-bold">חיסכון ממוצע של ₪847 בחודש</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                            זהו החיסכון החודשי הממוצע של לקוחותינו. לאורך חיי המשכנתא, מדובר במאות אלפי שקלים שחוזרים לכיס שלך.
+                        </p>
+</div>
+<div class="p-10 bg-white border border-outline-variant rounded-[2rem] flex flex-col gap-6 shadow-sm hover:shadow-md transition-all">
+<div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-4xl">lock</span>
+</div>
+<h3 class="text-2xl font-bold">פרטיות וביטחון</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                            הנתונים הפיננסיים שלך הם הקודש שלנו. אנחנו משתמשים בהצפנה מתקדמת ושומרים על סודיות מוחלטת.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer - Keeping social links as requested -->
+<footer class="w-full border-t border-outline-variant bg-surface-container-lowest pb-24 md:pb-12">
+<div class="flex flex-col items-center gap-10 py-16 px-margin-mobile text-center w-full max-w-7xl mx-auto">
+<div class="flex flex-col items-center gap-4">
+<img alt="Muhni Solution" class="h-14 w-auto" src="https://lh3.googleusercontent.com/aida/AP1WRLuHi1MAPkAihWHu1C9NxmSuP79CaFMnj6ZlGmPi2wsIX3pRx7n-loIF6NA5m1IKynGlgP81MSFtYAB5dzkxPMdh3kZzATgnA1m-c2-3YOQAlxrC1fK6gY0pV20HBxGr6__eGuxFYSZb5rZvKE4trMVUFK2k0sSDus8glP2-AdSyn420sgWz9ZWDKx9kiWWp30aZXyp4KePLSMWsYVx3-w1gTHblEXhvivqvPJ7bmc69OaVbqyL4TOfRlAai"/>
+<p class="text-on-surface-variant font-bold text-lg">עושים את זה פשוט</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8 text-on-surface-variant font-semibold">
+<a class="hover:text-primary transition-colors" href="#">תנאי שימוש</a>
+<a class="hover:text-primary transition-colors" href="#">מדיניות פרטיות</a>
+<a class="hover:text-primary transition-colors" href="#">הצהרת נגישות</a>
+<a class="hover:text-primary transition-colors" href="#">צרו קשר</a>
+</div>
+<div class="flex items-center justify-center gap-8 mb-8"><a aria-label="Facebook" class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary/10 transition-colors overflow-hidden" href="https://www.facebook.com/tico.zveibel" target="_blank"><img alt="Facebook" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE_jeYzNNmSoSWh15S0XMAxmZO3nyAuN_2XoPssNoe20W43hgDiODot4maVB2ho8xYZfrduCvN0YcvrXfU1S5nAUXnhSNse-m5IOzagUSL732kSFAGfNVybiuST6xDXtHlQyv06JuJ8cCOQtvvQgYYAkntgnQCHQ9dHbAaaqXVEhtN4nxY5zcxL9Gs8-uYHGefe8VJJ_sci9ptQ0ra5hQt1RRYGB41-eISO0rMEag4y9K9VltqCUdc9s6BVGofrPWxd0qFK46w6UCL"/></a><a aria-label="Instagram" class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary/10 transition-colors overflow-hidden" href="https://www.instagram.com/ticozveibel/" target="_blank"><img alt="Instagram" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmI0_PDbvuW_cRuu_DR7uqHw_tiAQryrfY-SQnJfNTaaDfD4mmH_Q_LJFH1zoJFOWroGYNESRiWvmxmZW-dI3bkyDzDmIchylvo06AOtpUwHgn8OKYiUFJE7NTTjS7ht9QOGcjQcEQl9NLREgfFv7GczsU-vOiceJ822oqrV30dQHd1FNkb0w6UaV0uRxb05ts-MMUI23og0gP4MVPrXgb5hN4jd90b-HUrERsVaT1EZCATqWyuHNbRjCNWM4uRciO1Vg-iC_RyAaF"/></a><a aria-label="WhatsApp" class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary/10 transition-colors overflow-hidden" href="https://wa.me/972507700322" target="_blank"><img alt="WhatsApp" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlpvmacw8ZbdeWF6p2P1aXL2KaEpV_epxDyL272i5FmFsKe1ZLidMjl3lY9QvLFSgpg0puHyNS5rUIjfOYXIAN-a8Mj1eFcme6hGvoU_1z6oDVkO3Kt_y4N2CgeV4UmsCX-IjxL1-TjwG78FrHB02fRDdNwwNeS9vj-x9_amHZE6CstbhkNCa5at2nkcoiYnfA4oEvUlGXGwfHlmk4qXNyopE6LWFMHPWaPkPJDF8fPjaHeBs8-9D_OaRR_awzVIBnTOzT5X4cW_-L"/></a></div>
+<div class="w-full max-w-lg h-px bg-outline-variant/30"></div>
+<p class="text-on-surface-variant opacity-70 leading-relaxed">
+                © 2024 Muhni Solution. כל הזכויות שמורות.
+                <br/>
+                ייעוץ משכנתאות ופיננסים בליווי אישי ומקצועי על ידי יועצים אנושיים מומחים.
+            </p>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-50 bg-white/95 backdrop-blur-md border-t border-outline-variant shadow-2xl md:hidden">
+<div class="flex justify-around items-center h-20 px-margin-mobile w-full">
+<a class="flex flex-col items-center justify-center text-primary font-bold" href="#">
+<span class="material-symbols-outlined text-2xl" style='font-variation-settings: "FILL" 1;'>home</span>
+<span class="text-[11px] mt-1">בית</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#bank-selection">
+<span class="material-symbols-outlined text-2xl">account_balance</span>
+<span class="text-[11px] mt-1">הבנקים</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#lead-form">
+<span class="material-symbols-outlined text-2xl">description</span>
+<span class="text-[11px] mt-1">העלאה</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">chat</span>
+<span class="text-[11px] mt-1">צ'אט</span>
+</a>
+</div>
+</nav>
+<script>
+        // File upload interaction
+        const dropzone = document.getElementById('dropzone');
+        const fileInput = document.getElementById('file-input');
+
+        dropzone.addEventListener('click', () => fileInput.click());
+        
+        dropzone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropzone.classList.add('bg-primary/5', 'border-primary');
+        });
+
+        dropzone.addEventListener('dragleave', () => {
+            dropzone.classList.remove('bg-primary/5', 'border-primary');
+        });
+
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropzone.classList.remove('bg-primary/5', 'border-primary');
+            if (e.dataTransfer.files.length) {
+                dropzone.querySelector('.font-bold').textContent = 'קובץ מוכן: ' + e.dataTransfer.files[0].name;
+            }
+        });
+
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length) {
+                dropzone.querySelector('.font-bold').textContent = 'קובץ נבחר: ' + fileInput.files[0].name;
+            }
+        });
+
+        // Bank selection interaction
+        document.querySelectorAll('.bank-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.bank-btn').forEach(b => b.classList.remove('border-primary', 'ring-2', 'ring-primary/20'));
+                btn.classList.add('border-primary', 'ring-2', 'ring-primary/20');
+            });
+        });
+    </script>
+</body></html>
