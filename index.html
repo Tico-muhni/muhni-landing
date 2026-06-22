@@ -96,6 +96,13 @@
     </script>
 </head>
 <body class="bg-background text-on-surface">
+<!-- Automation Summary for Developers (Commented)
+    AUTOMATION TARGETS:
+    - Form Submission: Send to YOUR_WEBHOOK_URL_HERE
+    - WhatsApp Notifications: Send to 972507700322
+    - Data Storage (Drive/CRM): ticozveibel@hotmail.com
+    - Fields: full_name, bank_name, phone_number, mortgage_report (file)
+-->
 <!-- TopAppBar -->
 <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant">
 <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 w-full max-w-7xl mx-auto">
@@ -114,20 +121,19 @@
 </div>
 </header>
 <main class="pt-16 pb-20">
-<!-- Hero Section - Restored deep purple style -->
+<!-- Hero Section -->
 <section class="hero-gradient pt-16 pb-24 px-margin-mobile md:px-margin-desktop text-white">
 <div class="max-w-7xl mx-auto flex flex-col items-center text-center gap-12">
 <h1 class="text-3xl md:text-5xl font-bold leading-tight max-w-4xl text-white">
-                    בעידן של AI ודיגיטל,<br/>אין כמו יועץ אמיתי<br/>כדי לבדוק לכם את המשכנתה
-                </h1>
-<!-- Hero Image: No AI robot flyer integrated cleanly -->
+                בעידן של AI ודיגיטל,<br/>אין כמו יועץ אמיתי<br/>כדי לבדוק לכם את המשכנתה
+            </h1>
 <div class="w-full max-w-lg mx-auto">
 <img alt="Muhni Solution No AI Flyer" class="w-full h-auto rounded-3xl shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1WRgySRI7_AwJaHoH4elTaknYQOx_VN29_HdMlACyonNTp43NkffiwwT3wJV_DcVlBKhhFKpCoOi9qIKR9eLCJYgqWjDCBdDFmOj7wy-V_eeCayyiB1_2fyKc0NXmAGUAFYGw_w-GB6nbR7d6BE-61aoIut8cRm6_fc0gTUv9fM7MqbpcT2GFUPb39QZsHx9hKbZexd1o7O3hNtOyT3qEhcIHz5ZpGIqDgH6ykPPKZee4CZ08fKRxzwS8hLwVnZ0dFL2M2FR6WLRJ"/>
 </div>
 <div class="mt-8">
 <a class="bg-white text-primary px-12 py-5 rounded-full font-bold text-xl shadow-xl hover:bg-surface-bright hover:-translate-y-1 transition-all active:scale-[0.98] inline-block" href="#lead-form">
-                        אני רוצה לבדוק עכשיו
-                    </a>
+                    אני רוצה לבדוק עכשיו
+                </a>
 </div>
 </div>
 </section>
@@ -162,7 +168,7 @@
 </div>
 </div>
 </section>
-<!-- Bank Selection Section - Restored proportions with official logos -->
+<!-- Bank Selection Section -->
 <section class="py-20 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest" id="bank-selection">
 <div class="max-w-7xl mx-auto">
 <div class="text-center mb-16">
@@ -171,43 +177,43 @@
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 <!-- Bank Leumi -->
-<div class="bank-btn p-8 bg-white border border-outline-variant rounded-3xl flex flex-col items-center gap-6 hover:border-primary hover:shadow-2xl transition-all cursor-pointer text-center">
+<div class="bank-btn p-8 bg-white border border-outline-variant rounded-3xl flex flex-col items-center gap-6 hover:border-primary hover:shadow-2xl transition-all cursor-pointer text-center" data-bank="leumi">
 <div class="flex items-center justify-center w-full h-20 p-2"><img alt="בנק לאומי" class="h-10 w-auto object-contain mx-auto transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2z1lDYlDZyaT8ejrsZOeytCsuUBOyxbKy1oRe6x08gJCabevaKG07C28k3C2VqmpPtM-hsn1J9TAy8SpqMwyb47fBb-SnbiDMoN5HGX2OUFkj0PS-io7yy2fJB8Br4P0HBTv4ZOdY0KOV2DZNML5M7KThyOOb70Nmc4AaS796ylyqlv1bs3IJ5d6Zd67RnMqu5P6u1n3CKBnqP-fYXgWsM_8ZF_cSr9lvb4oaPfZIsGSaPaxOIco5aqxmfpv3XA4cJsZrvXYw8ucB"/></div>
 <span class="font-bold text-xl">בנק לאומי</span>
 <a class="w-full py-3 px-4 bg-primary/5 text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all text-sm" href="https://www.leumi.co.il/english/Mortgages/" onclick="event.stopPropagation();" target="_blank">מעבר לאתר הבנק</a>
 </div>
 <!-- Mizrahi Tefahot -->
-<div class="bank-btn p-8 bg-white border border-outline-variant rounded-3xl flex flex-col items-center gap-6 hover:border-primary hover:shadow-2xl transition-all cursor-pointer text-center border-primary ring-2 ring-primary/20">
+<div class="bank-btn p-8 bg-white border border-outline-variant rounded-3xl flex flex-col items-center gap-6 hover:border-primary hover:shadow-2xl transition-all cursor-pointer text-center" data-bank="mizrahi">
 <div class="flex items-center justify-center w-full h-20 p-2"><img alt="מזרחי טפחות" class="h-16 w-auto object-contain mx-auto transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZ6VGmjmasHftOFEGhQxRu34tS3nne9pYhfteOO6UimQLGjpkpDSI36Uq6-3A_2sp9UBYFmhEITRsPAcsCk2ChCQYyY-_unKP-Hp0zFan6hUKJiKDGlCXlKpSC8rmQopXLAY4eN-IB3a3J5WOTf3oCK0QQ6FriZc4MYLitxIXpQ7q3pPMPPXPXMC031tQjYSCX3Yucy6_DIPJboOE2IZVhKVPqkIEvC_L6xGbwGMjpE5eciOi6i8RreLtQT19sH5u0rRDqo3wGnVaD"/></div>
 <span class="font-bold text-xl">מזרחי טפחות</span>
 <a class="w-full py-3 px-4 bg-primary/5 text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all text-sm" href="https://www.mizrahi-tefahot.co.il/mortgage/" onclick="event.stopPropagation();" target="_blank">מעבר לאתר הבנק</a>
 </div>
 <!-- Hapoalim -->
-<div class="bank-btn p-8 bg-white border border-outline-variant rounded-3xl flex flex-col items-center gap-6 hover:border-primary hover:shadow-2xl transition-all cursor-pointer text-center">
+<div class="bank-btn p-8 bg-white border border-outline-variant rounded-3xl flex flex-col items-center gap-6 hover:border-primary hover:shadow-2xl transition-all cursor-pointer text-center" data-bank="hapoalim">
 <div class="flex items-center justify-center w-full h-20 p-2"><img alt="בנק הפועלים" class="h-10 w-auto object-contain mx-auto transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDRM7yvRV2yH0Va6c69c3CGJi2rVl8JAX4pqYIM30jyE1Zz-hqdFzNtCNyenKdHj4zOqEtklScvszoJvNTqGr2MInkbpE6bYYbuPM5RCk4a3R6Gg3QUKANfYQpvWv_m6mqHhCxNvlcEol0EUCAJIETYqiaQvYJGhruzCzEHuA-QoXyx7vXhwZ_WC0nkT9WNTf0XMZ3Slt7U2obMJlD8tQqxyiVehl5ScMLjWp5dAWU3994c3HULOGc-7WFi2T3WkZ0vf79p29LeDKP"/></div>
 <span class="font-bold text-xl">בנק הפועלים</span>
 <a class="w-full py-3 px-4 bg-primary/5 text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all text-sm" href="https://www.bankhapoalim.co.il/he/mortgages" onclick="event.stopPropagation();" target="_blank">מעבר לאתר הבנק</a>
 </div>
 <!-- Discount -->
-<div class="bank-btn p-8 bg-white border border-outline-variant rounded-3xl flex flex-col items-center gap-6 hover:border-primary hover:shadow-2xl transition-all cursor-pointer text-center">
+<div class="bank-btn p-8 bg-white border border-outline-variant rounded-3xl flex flex-col items-center gap-6 hover:border-primary hover:shadow-2xl transition-all cursor-pointer text-center" data-bank="discount">
 <div class="flex items-center justify-center w-full h-20 p-2"><img alt="בנק דיסקונט" class="h-12 w-auto object-contain mx-auto transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyBhBWKNdpUdzEBVAm63ngIU5WmLo5iH8pk8pCPSfSLyjbdG423pCkFq0ZVXQPl-r4XxheMV5K6OJqGonkdQknusHl1DzTfXEf9H-Meykwb_cnFuuP-njzFtQ-jAIGGaJcEs_M3G49GtTRLI5GQ_yX8BPxVCwI6kfwiByBBHWqm0TZ7amOm95o4aLBJkatSQ5RmiQa5j9T0xt5VmzwDvCQgTjAxdvJ5OSPRvdL311hpfXKFE4CUYytoi1uCfcLCHMt9Wp8-497YP41"/></div>
 <span class="font-bold text-xl">בנק דיסקונט</span>
 <a class="w-full py-3 px-4 bg-primary/5 text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all text-sm" href="https://www.discountbank.co.il/private/mortgage/" onclick="event.stopPropagation();" target="_blank">מעבר לאתר הבנק</a>
 </div>
 <!-- Jerusalem -->
-<div class="bank-btn p-8 bg-white border border-outline-variant rounded-3xl flex flex-col items-center gap-6 hover:border-primary hover:shadow-2xl transition-all cursor-pointer text-center">
+<div class="bank-btn p-8 bg-white border border-outline-variant rounded-3xl flex flex-col items-center gap-6 hover:border-primary hover:shadow-2xl transition-all cursor-pointer text-center" data-bank="jerusalem">
 <div class="flex items-center justify-center w-full h-20 p-2"><img alt="בנק ירושלים" class="h-16 w-auto object-contain mx-auto transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLDqMwywjPJLz1A88PnE6_qKq97Pm3SfR911F3ioB5RkBL3opVYUGTaoJfYI4uNzIo8D9HmyQlx_XksUHD7R8DbCx86neJqFqjtmaa7gYULa7ZaVYY8pSIRgU73o8UFkW2XJ9QWxkqnOpuAWiD4Hd1t7iXRtUiz-EUNwyyyBrTzC-z07EU9gTfOZ3zNysUDHobTTrbLgeBDqKFTxCviB4Zu9NTgxuYcIwJVoyImbguD-unvaVnJ4cFZxp4ZGwHJ0cuV_-0ql9Ja2N2"/></div>
 <span class="font-bold text-xl">בנק ירושלים</span>
 <a class="w-full py-3 px-4 bg-primary/5 text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all text-sm" href="https://www.bankjerusalem.co.il/mortgages" onclick="event.stopPropagation();" target="_blank">מעבר לאתר הבנק</a>
 </div>
 <!-- Mercantile -->
-<div class="bank-btn p-8 bg-white border border-outline-variant rounded-3xl flex flex-col items-center gap-6 hover:border-primary hover:shadow-2xl transition-all cursor-pointer text-center">
+<div class="bank-btn p-8 bg-white border border-outline-variant rounded-3xl flex flex-col items-center gap-6 hover:border-primary hover:shadow-2xl transition-all cursor-pointer text-center" data-bank="mercantile">
 <div class="flex items-center justify-center w-full h-20 p-2"><img alt="בנק מרכנתיל" class="h-12 w-auto object-contain mx-auto transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC36_Ez4dWLVVrUfPmrUbkKlOa5ps1bUhO7WnI3dJwdtLABK6g9tkBFaG-gH6Wmh_Ap60Or3vfRSzYXlOYNDTQOtOnscrxGOfVeHvdcrixLRv5Gz0-fRnAs41fxeAIgYYic-3TdljtnvkL5vpIXwNFQCd4o8tKeI2sv1H03MDX3nd4K5R0BCJDxIGIO1kBDGZrOW4KkASASEgNgaQpJPK3lSA5zWpxjuK56j2nhmAR6KmyQ49kRuFLZxhdE0UQVmeH_VZeP8lhmB-Sz"/></div>
 <span class="font-bold text-xl">בנק מרכנתיל</span>
 <a class="w-full py-3 px-4 bg-primary/5 text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all text-sm" href="https://www.mercantile.co.il/private/mortgages/" onclick="event.stopPropagation();" target="_blank">מעבר לאתר הבנק</a>
 </div>
 <!-- FIBI -->
-<div class="bank-btn p-8 bg-white border border-outline-variant rounded-3xl flex flex-col items-center gap-6 hover:border-primary hover:shadow-2xl transition-all cursor-pointer text-center">
+<div class="bank-btn p-8 bg-white border border-outline-variant rounded-3xl flex flex-col items-center gap-6 hover:border-primary hover:shadow-2xl transition-all cursor-pointer text-center" data-bank="fibi">
 <div class="flex items-center justify-center w-full h-20 p-2"><img alt="הבינלאומי" class="h-10 w-auto object-contain mx-auto transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXyiHbhkxoBdCSmuqypgTYIOvoKx6nFK_2bM81RaUxseOO893xWF_mbwtC5A583N549s1EQkab5APhz2mMcd72XFmRIrhNXVkvFXoR4VrFpmerhTdXjhfu4t7h2wR5F_Z2UfNetvsOqt-ksZIh3pFQ8HPG1AOPda3U-1LoTSmNVWt1ZZt_0XAUv-nq9Dj6zVxC_ibFerouoRWNK7rwEm9Xw4tm4DybWyOXLnOokrXECKRcFuTBp6Vuf629bAxrh20MFCtk20NrKtal"/></div>
 <span class="font-bold text-xl">הבינלאומי</span>
 <a class="w-full py-3 px-4 bg-primary/5 text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all text-sm" href="https://www.fibi.co.il/private/mortgages" onclick="event.stopPropagation();" target="_blank">מעבר לאתר הבנק</a>
@@ -225,11 +231,13 @@
 <h2 class="text-2xl md:text-3xl font-bold text-primary">העלאת דוח ופרטי קשר</h2>
 <p class="text-on-surface-variant mt-2 text-lg">המידע שלך מאובטח ומשמש אך ורק לניתוח מקצועי אנושי</p>
 </div>
-<form class="flex flex-col gap-8" onsubmit="return false;">
+<!-- Lead Form for Automation -->
+<!-- ACTION: https://hook.eu2.make.com/4vs03u9fz5bix8tcdi7q4kwldmbrvuae -->
+<form action="YOUR_WEBHOOK_URL_HERE" class="flex flex-col gap-8" enctype="multipart/form-data" id="automation-form" method="POST">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div class="flex flex-col gap-2 md:col-span-2">
-<label class="font-bold text-on-surface mr-2" for="bank_select">באיזה בנק מתנהלת המשכנתה?</label>
-<select class="w-full border-none bg-surface-container-low rounded-2xl p-5 focus:ring-2 focus:ring-primary outline-none transition-all text-lg appearance-none" id="bank_select">
+<label class="font-bold text-on-surface mr-2" for="bank_name">באיזה בנק מתנהלת המשכנתה?</label>
+<select class="w-full border-none bg-surface-container-low rounded-2xl p-5 focus:ring-2 focus:ring-primary outline-none transition-all text-lg appearance-none" id="bank_select" name="bank_name" required="">
 <option disabled="" selected="" value="">בחר בנק...</option>
 <option value="leumi">בנק לאומי</option>
 <option value="mizrahi">מזרחי טפחות</option>
@@ -243,11 +251,11 @@
 </div>
 <div class="flex flex-col gap-2">
 <label class="font-bold text-on-surface mr-2" for="full_name">שם מלא</label>
-<input class="w-full border-none bg-surface-container-low rounded-2xl p-5 focus:ring-2 focus:ring-primary outline-none transition-all text-lg" id="full_name" placeholder="ישראל ישראלי" type="text"/>
+<input class="w-full border-none bg-surface-container-low rounded-2xl p-5 focus:ring-2 focus:ring-primary outline-none transition-all text-lg" id="full_name" name="full_name" placeholder="ישראל ישראלי" required="" type="text"/>
 </div>
 <div class="flex flex-col gap-2">
-<label class="font-bold text-on-surface mr-2" for="phone">מספר טלפון</label>
-<input class="w-full border-none bg-surface-container-low rounded-2xl p-5 text-right focus:ring-2 focus:ring-primary outline-none transition-all text-lg" dir="ltr" id="phone" placeholder="050-0000000" type="tel"/>
+<label class="font-bold text-on-surface mr-2" for="phone_number">מספר טלפון</label>
+<input class="w-full border-none bg-surface-container-low rounded-2xl p-5 text-right focus:ring-2 focus:ring-primary outline-none transition-all text-lg" dir="ltr" id="phone" name="phone_number" placeholder="050-0000000" required="" type="tel"/>
 </div>
 </div>
 <div class="flex flex-col gap-2">
@@ -260,14 +268,14 @@
 <span class="block font-bold text-xl text-on-surface mb-1">לחצו להעלאה או גררו לכאן</span>
 <span class="text-on-surface-variant">קובץ PDF או תמונה עד 10MB</span>
 </div>
-<input class="hidden" id="file-input" type="file"/>
+<input accept=".pdf,image/*" class="hidden" id="file-input" name="mortgage_report" type="file"/>
 </div>
 </div>
-<button class="w-full bg-primary text-white font-bold text-xl py-6 rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-1 active:scale-[0.98] transition-all" onclick="this.innerHTML='שולח...'; this.disabled=true; setTimeout(() =&gt; { alert('הבקשה נשלחה בהצלחה! עובר לדף התודה...'); }, 500);" type="submit">שלחו לי ניתוח מומחה</button>
+<button class="w-full bg-primary text-white font-bold text-xl py-6 rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-1 active:scale-[0.98] transition-all" type="submit">שלחו לי ניתוח מומחה</button>
 <div class="flex items-center justify-center gap-3 text-on-surface-variant text-sm font-medium">
 <span class="material-symbols-outlined text-green-600">verified_user</span>
-                        המידע מאובטח ומוצפן בתקנים המחמירים ביותר
-                    </div>
+                    המידע מאובטח ומוצפן בתקנים המחמירים ביותר
+                </div>
 </form>
 </div>
 </section>
@@ -285,8 +293,8 @@
 </div>
 <h3 class="text-2xl font-bold">מומחיות אנושית מול AI</h3>
 <p class="text-on-surface-variant text-lg leading-relaxed">
-                            בניגוד לאלגוריתמים קרים, המומחים שלנו מזהים הזדמנויות במצבים מורכבים. אנחנו מבינים את פסיכולוגיית השוק ואת הצרכים האישיים שלך בצורה שבינה מלאכותית פשוט לא מסוגלת להבין.
-                        </p>
+                        בניגוד לאלגוריתמים קרים, המומחים שלנו מזהים הזדמנויות במצבים מורכבים. אנחנו מבינים את פסיכולוגיית השוק ואת הצרכים האישיים שלך בצורה שבינה מלאכותית פשוט לא מסוגלת להבין.
+                    </p>
 </div>
 <div class="p-10 bg-white border border-outline-variant rounded-[2rem] flex flex-col gap-6 shadow-sm hover:shadow-md transition-all">
 <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
@@ -294,8 +302,8 @@
 </div>
 <h3 class="text-2xl font-bold">100% אובייקטיביות</h3>
 <p class="text-on-surface-variant text-lg leading-relaxed">
-                            אנחנו עובדים בשבילך, לא בשביל הבנק. האינטרס היחיד שלנו הוא למצוא עבורך את החיסכון המקסימלי ואת התמהיל הבטוח ביותר.
-                        </p>
+                        אנחנו עובדים בשבילך, לא בשביל הבנק. האינטרס היחיד שלנו הוא למצוא עבורך את החיסכון המקסימלי ואת התמהיל הבטוח ביותר.
+                    </p>
 </div>
 <div class="p-10 bg-white border border-outline-variant rounded-[2rem] flex flex-col gap-6 shadow-sm hover:shadow-md transition-all">
 <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
@@ -303,8 +311,8 @@
 </div>
 <h3 class="text-2xl font-bold">חיסכון ממוצע של ₪847 בחודש</h3>
 <p class="text-on-surface-variant text-lg leading-relaxed">
-                            זהו החיסכון החודשי הממוצע של לקוחותינו. לאורך חיי המשכנתא, מדובר במאות אלפי שקלים שחוזרים לכיס שלך.
-                        </p>
+                        זהו החיסכון החודשי הממוצע של לקוחותינו. לאורך חיי המשכנתא, מדובר במאות אלפי שקלים שחוזרים לכיס שלך.
+                    </p>
 </div>
 <div class="p-10 bg-white border border-outline-variant rounded-[2rem] flex flex-col gap-6 shadow-sm hover:shadow-md transition-all">
 <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
@@ -312,14 +320,14 @@
 </div>
 <h3 class="text-2xl font-bold">פרטיות וביטחון</h3>
 <p class="text-on-surface-variant text-lg leading-relaxed">
-                            הנתונים הפיננסיים שלך הם הקודש שלנו. אנחנו משתמשים בהצפנה מתקדמת ושומרים על סודיות מוחלטת.
-                        </p>
+                        הנתונים הפיננסיים שלך הם הקודש שלנו. אנחנו משתמשים בהצפנה מתקדמת ושומרים על סודיות מוחלטת.
+                    </p>
 </div>
 </div>
 </div>
 </section>
 </main>
-<!-- Footer - Keeping social links as requested -->
+<!-- Footer -->
 <footer class="w-full border-t border-outline-variant bg-surface-container-lowest pb-24 md:pb-12">
 <div class="flex flex-col items-center gap-10 py-16 px-margin-mobile text-center w-full max-w-7xl mx-auto">
 <div class="flex flex-col items-center gap-4">
@@ -332,13 +340,24 @@
 <a class="hover:text-primary transition-colors" href="#">הצהרת נגישות</a>
 <a class="hover:text-primary transition-colors" href="#">צרו קשר</a>
 </div>
-<div class="flex items-center justify-center gap-8 mb-8"><a aria-label="Facebook" class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary/10 transition-colors overflow-hidden" href="https://www.facebook.com/tico.zveibel" target="_blank"><img alt="Facebook" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE_jeYzNNmSoSWh15S0XMAxmZO3nyAuN_2XoPssNoe20W43hgDiODot4maVB2ho8xYZfrduCvN0YcvrXfU1S5nAUXnhSNse-m5IOzagUSL732kSFAGfNVybiuST6xDXtHlQyv06JuJ8cCOQtvvQgYYAkntgnQCHQ9dHbAaaqXVEhtN4nxY5zcxL9Gs8-uYHGefe8VJJ_sci9ptQ0ra5hQt1RRYGB41-eISO0rMEag4y9K9VltqCUdc9s6BVGofrPWxd0qFK46w6UCL"/></a><a aria-label="Instagram" class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary/10 transition-colors overflow-hidden" href="https://www.instagram.com/ticozveibel/" target="_blank"><img alt="Instagram" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmI0_PDbvuW_cRuu_DR7uqHw_tiAQryrfY-SQnJfNTaaDfD4mmH_Q_LJFH1zoJFOWroGYNESRiWvmxmZW-dI3bkyDzDmIchylvo06AOtpUwHgn8OKYiUFJE7NTTjS7ht9QOGcjQcEQl9NLREgfFv7GczsU-vOiceJ822oqrV30dQHd1FNkb0w6UaV0uRxb05ts-MMUI23og0gP4MVPrXgb5hN4jd90b-HUrERsVaT1EZCATqWyuHNbRjCNWM4uRciO1Vg-iC_RyAaF"/></a><a aria-label="WhatsApp" class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary/10 transition-colors overflow-hidden" href="https://wa.me/972507700322" target="_blank"><img alt="WhatsApp" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlpvmacw8ZbdeWF6p2P1aXL2KaEpV_epxDyL272i5FmFsKe1ZLidMjl3lY9QvLFSgpg0puHyNS5rUIjfOYXIAN-a8Mj1eFcme6hGvoU_1z6oDVkO3Kt_y4N2CgeV4UmsCX-IjxL1-TjwG78FrHB02fRDdNwwNeS9vj-x9_amHZE6CstbhkNCa5at2nkcoiYnfA4oEvUlGXGwfHlmk4qXNyopE6LWFMHPWaPkPJDF8fPjaHeBs8-9D_OaRR_awzVIBnTOzT5X4cW_-L"/></a></div>
+<!-- Social Links with Filled Circle Style -->
+<div class="flex items-center justify-center gap-6">
+<a aria-label="Facebook" class="w-14 h-14 rounded-full bg-[#1877F2] flex items-center justify-center hover:opacity-90 transition-opacity shadow-lg" href="https://www.facebook.com/tico.zveibel" target="_blank">
+<img alt="Facebook" class="w-8 h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE_jeYzNNmSoSWh15S0XMAxmZO3nyAuN_2XoPssNoe20W43hgDiODot4maVB2ho8xYZfrduCvN0YcvrXfU1S5nAUXnhSNse-m5IOzagUSL732kSFAGfNVybiuST6xDXtHlQyv06JuJ8cCOQtvvQgYYAkntgnQCHQ9dHbAaaqXVEhtN4nxY5zcxL9Gs8-uYHGefe8VJJ_sci9ptQ0ra5hQt1RRYGB41-eISO0rMEag4y9K9VltqCUdc9s6BVGofrPWxd0qFK46w6UCL"/>
+</a>
+<a aria-label="Instagram" class="w-14 h-14 rounded-full bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] flex items-center justify-center hover:opacity-90 transition-opacity shadow-lg" href="https://www.instagram.com/ticozveibel/" target="_blank">
+<img alt="Instagram" class="w-8 h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmI0_PDbvuW_cRuu_DR7uqHw_tiAQryrfY-SQnJfNTaaDfD4mmH_Q_LJFH1zoJFOWroGYNESRiWvmxmZW-dI3bkyDzDmIchylvo06AOtpUwHgn8OKYiUFJE7NTTjS7ht9QOGcjQcEQl9NLREgfFv7GczsU-vOiceJ822oqrV30dQHd1FNkb0w6UaV0uRxb05ts-MMUI23og0gP4MVPrXgb5hN4jd90b-HUrERsVaT1EZCATqWyuHNbRjCNWM4uRciO1Vg-iC_RyAaF"/>
+</a>
+<a aria-label="WhatsApp" class="w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center hover:opacity-90 transition-opacity shadow-lg" href="https://wa.me/972507700322" target="_blank">
+<img alt="WhatsApp" class="w-8 h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlpvmacw8ZbdeWF6p2P1aXL2KaEpV_epxDyL272i5FmFsKe1ZLidMjl3lY9QvLFSgpg0puHyNS5rUIjfOYXIAN-a8Mj1eFcme6hGvoU_1z6oDVkO3Kt_y4N2CgeV4UmsCX-IjxL1-TjwG78FrHB02fRDdNwwNeS9vj-x9_amHZE6CstbhkNCa5at2nkcoiYnfA4oEvUlGXGwfHlmk4qXNyopE6LWFMHPWaPkPJDF8fPjaHeBs8-9D_OaRR_awzVIBnTOzT5X4cW_-L"/>
+</a>
+</div>
 <div class="w-full max-w-lg h-px bg-outline-variant/30"></div>
 <p class="text-on-surface-variant opacity-70 leading-relaxed">
-                © 2024 Muhni Solution. כל הזכויות שמורות.
-                <br/>
-                ייעוץ משכנתאות ופיננסים בליווי אישי ומקצועי על ידי יועצים אנושיים מומחים.
-            </p>
+            © 2024 Muhni Solution. כל הזכויות שמורות.
+            <br/>
+            ייעוץ משכנתאות ופיננסים בליווי אישי ומקצועי על ידי יועצים אנושיים מומחים.
+        </p>
 </div>
 </footer>
 <!-- BottomNavBar (Mobile Only) -->
@@ -356,48 +375,78 @@
 <span class="material-symbols-outlined text-2xl">description</span>
 <span class="text-[11px] mt-1">העלאה</span>
 </a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="https://wa.me/972507700322" target="_blank">
 <span class="material-symbols-outlined text-2xl">chat</span>
 <span class="text-[11px] mt-1">צ'אט</span>
 </a>
 </div>
 </nav>
 <script>
-        // File upload interaction
-        const dropzone = document.getElementById('dropzone');
-        const fileInput = document.getElementById('file-input');
+    // File upload interaction
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('file-input');
 
-        dropzone.addEventListener('click', () => fileInput.click());
+    dropzone.addEventListener('click', () => fileInput.click());
+    
+    dropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropzone.classList.add('bg-primary/5', 'border-primary');
+    });
+
+    dropzone.addEventListener('dragleave', () => {
+        dropzone.classList.remove('bg-primary/5', 'border-primary');
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('bg-primary/5', 'border-primary');
+        if (e.dataTransfer.files.length) {
+            fileInput.files = e.dataTransfer.files;
+            updateFileName(e.dataTransfer.files[0].name);
+        }
+    });
+
+    fileInput.addEventListener('change', () => {
+        if (fileInput.files.length) {
+            updateFileName(fileInput.files[0].name);
+        }
+    });
+
+    function updateFileName(name) {
+        dropzone.querySelector('.font-bold').textContent = 'קובץ נבחר: ' + name;
+    }
+
+    // Bank selection interaction
+    document.querySelectorAll('.bank-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const bankId = btn.getAttribute('data-bank');
+            document.querySelectorAll('.bank-btn').forEach(b => b.classList.remove('border-primary', 'ring-2', 'ring-primary/20'));
+            btn.classList.add('border-primary', 'ring-2', 'ring-primary/20');
+            
+            // Sync with form select
+            const bankSelect = document.getElementById('bank_select');
+            if(bankSelect) {
+                bankSelect.value = bankId;
+                // Scroll to form to complete process
+                document.getElementById('lead-form').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+    // Handle Form Submission with visual feedback before actual POST
+    const form = document.getElementById('automation-form');
+    form.addEventListener('submit', (e) => {
+        const btn = form.querySelector('button[type="submit"]');
+        btn.innerHTML = '<span class="flex items-center justify-center gap-2"><svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> מעבד בקשה...</span>';
         
-        dropzone.addEventListener('dragover', (e) => {
+        // If placeholder URL is present, prevent default to show alert, otherwise allow normal POST
+        if(form.action.includes('YOUR_WEBHOOK_URL_HERE')) {
             e.preventDefault();
-            dropzone.classList.add('bg-primary/5', 'border-primary');
-        });
-
-        dropzone.addEventListener('dragleave', () => {
-            dropzone.classList.remove('bg-primary/5', 'border-primary');
-        });
-
-        dropzone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropzone.classList.remove('bg-primary/5', 'border-primary');
-            if (e.dataTransfer.files.length) {
-                dropzone.querySelector('.font-bold').textContent = 'קובץ מוכן: ' + e.dataTransfer.files[0].name;
-            }
-        });
-
-        fileInput.addEventListener('change', () => {
-            if (fileInput.files.length) {
-                dropzone.querySelector('.font-bold').textContent = 'קובץ נבחר: ' + fileInput.files[0].name;
-            }
-        });
-
-        // Bank selection interaction
-        document.querySelectorAll('.bank-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.bank-btn').forEach(b => b.classList.remove('border-primary', 'ring-2', 'ring-primary/20'));
-                btn.classList.add('border-primary', 'ring-2', 'ring-primary/20');
-            });
-        });
-    </script>
+            setTimeout(() => {
+                alert('שימו לב: יש להזין כתובת Webhook אמיתית של Make/Zapier בקוד ה-HTML במקום YOUR_WEBHOOK_URL_HERE כדי שהטופס יעבוד.');
+                btn.innerHTML = 'שלחו לי ניתוח מומחה';
+            }, 500);
+        }
+    });
+</script>
 </body></html>
