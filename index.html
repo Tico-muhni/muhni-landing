@@ -285,6 +285,11 @@
   }
 
   /* ===== SPINNER ===== */
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .4; transform: scale(.8); }
+  }
   @keyframes spin { to { transform: rotate(360deg); } }
   .spinner {
     display: inline-block; width: 20px; height: 20px;
@@ -324,6 +329,7 @@
       <a href="#how">איך זה עובד?</a>
       <a href="#banks">הבנקים</a>
       <a href="#benefits">יתרונות</a>
+      <a href="#calculator">מחשבון חיסכון</a>
       <a href="#form" class="nav-cta">בדיקה חינם</a>
     </nav>
     <button class="hamburger" onclick="document.querySelector('.nav-links').style.display = document.querySelector('.nav-links').style.display === 'flex' ? 'none' : 'flex'">
@@ -395,37 +401,44 @@
 
     <div class="banks-grid">
       <div class="bank-card" data-bank="leumi" onclick="openBankModal('leumi', this)">
-        <div class="bank-logo"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2z1lDYlDZyaT8ejrsZOeytCsuUBOyxbKy1oRe6x08gJCabevaKG07C28k3C2VqmpPtM-hsn1J9TAy8SpqMwyb47fBb-SnbiDMoN5HGX2OUFkj0PS-io7yy2fJB8Br4P0HBTv4ZOdY0KOV2DZNML5M7KThyOOb70Nmc4AaS796ylyqlv1bs3IJ5d6Zd67RnMqu5P6u1n3CKBnqP-fYXgWsM_8ZF_cSr9lvb4oaPfZIsGSaPaxOIco5aqxmfpv3XA4cJsZrvXYw8ucB" alt="בנק לאומי"/></div>
+        <div class="bank-logo"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2z1lDYlDZyaT8ejrsZOeytCsuUBOyxbKy1oRe6x08gJCabevaKG07C28k3C2VqmpPtM-hsn1J9TAy8SpqMwyb47fBb-SnbiDMoN5HGX2OUFkj0PS-io7yy2fJB8Br4P0HBTv4ZOdY0KOV2DZNML5M7KThyOOb70Nmc4AaS796ylyqlv1bs3IJ5d6Zd67RnMqu5P6u1n3CKBnqP-fYXgWsM_8ZF_cSr9lvb4oaPfZIsGSaPaxOIco5aqxmfpv3XA4cJsZrvXYw8ucB" alt="בנק לאומי" onerror="this.style.display='none';this.nextSibling.style.display='flex'"/>
+              <div style="display:none;width:80px;height:40px;background:#003f7f;color:white;border-radius:8px;align-items:center;justify-content:center;font-weight:900;font-size:13px;letter-spacing:1px;">LEUMI</div></div>
         <span>בנק לאומי</span>
         <div class="bank-link">איך מוציאים דוח?</div>
       </div>
       <div class="bank-card" data-bank="mizrahi" onclick="openBankModal('mizrahi', this)">
-        <div class="bank-logo"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZ6VGmjmasHftOFEGhQxRu34tS3nne9pYhfteOO6UimQLGjpkpDSI36Uq6-3A_2sp9UBYFmhEITRsPAcsCk2ChCQYyY-_unKP-Hp0zFan6hUKJiKDGlCXlKpSC8rmQopXLAY4eN-IB3a3J5WOTf3oCK0QQ6FriZc4MYLitxIXpQ7q3pPMPPXPXMC031tQjYSCX3Yucy6_DIPJboOE2IZVhKVPqkIEvC_L6xGbwGMjpE5eciOi6i8RreLtQT19sH5u0rRDqo3wGnVaD" alt="מזרחי טפחות"/></div>
+        <div class="bank-logo"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZ6VGmjmasHftOFEGhQxRu34tS3nne9pYhfteOO6UimQLGjpkpDSI36Uq6-3A_2sp9UBYFmhEITRsPAcsCk2ChCQYyY-_unKP-Hp0zFan6hUKJiKDGlCXlKpSC8rmQopXLAY4eN-IB3a3J5WOTf3oCK0QQ6FriZc4MYLitxIXpQ7q3pPMPPXPXMC031tQjYSCX3Yucy6_DIPJboOE2IZVhKVPqkIEvC_L6xGbwGMjpE5eciOi6i8RreLtQT19sH5u0rRDqo3wGnVaD" alt="מזרחי טפחות" onerror="this.style.display='none';this.nextSibling.style.display='flex'"/>
+              <div style="display:none;width:80px;height:40px;background:#007a3d;color:white;border-radius:8px;align-items:center;justify-content:center;font-weight:900;font-size:11px;">מזרחי</div></div>
         <span>מזרחי טפחות</span>
         <div class="bank-link">איך מוציאים דוח?</div>
       </div>
       <div class="bank-card" data-bank="hapoalim" onclick="openBankModal('hapoalim', this)">
-        <div class="bank-logo"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDRM7yvRV2yH0Va6c69c3CGJi2rVl8JAX4pqYIM30jyE1Zz-hqdFzNtCNyenKdHj4zOqEtklScvszoJvNTqGr2MInkbpE6bYYbuPM5RCk4a3R6Gg3QUKANfYQpvWv_m6mqHhCxNvlcEol0EUCAJIETYqiaQvYJGhruzCzEHuA-QoXyx7vXhwZ_WC0nkT9WNTf0XMZ3Slt7U2obMJlD8tQqxyiVehl5ScMLjWp5dAWU3994c3HULOGc-7WFi2T3WkZ0vf79p29LeDKP" alt="בנק הפועלים"/></div>
+        <div class="bank-logo"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDRM7yvRV2yH0Va6c69c3CGJi2rVl8JAX4pqYIM30jyE1Zz-hqdFzNtCNyenKdHj4zOqEtklScvszoJvNTqGr2MInkbpE6bYYbuPM5RCk4a3R6Gg3QUKANfYQpvWv_m6mqHhCxNvlcEol0EUCAJIETYqiaQvYJGhruzCzEHuA-QoXyx7vXhwZ_WC0nkT9WNTf0XMZ3Slt7U2obMJlD8tQqxyiVehl5ScMLjWp5dAWU3994c3HULOGc-7WFi2T3WkZ0vf79p29LeDKP" alt="בנק הפועלים" onerror="this.style.display='none';this.nextSibling.style.display='flex'"/>
+              <div style="display:none;width:80px;height:40px;background:#e2001a;color:white;border-radius:8px;align-items:center;justify-content:center;font-weight:900;font-size:11px;">הפועלים</div></div>
         <span>בנק הפועלים</span>
         <div class="bank-link">איך מוציאים דוח?</div>
       </div>
       <div class="bank-card" data-bank="discount" onclick="openBankModal('discount', this)">
-        <div class="bank-logo"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyBhBWKNdpUdzEBVAm63ngIU5WmLo5iH8pk8pCPSfSLyjbdG423pCkFq0ZVXQPl-r4XxheMV5K6OJqGonkdQknusHl1DzTfXEf9H-Meykwb_cnFuuP-njzFtQ-jAIGGaJcEs_M3G49GtTRLI5GQ_yX8BPxVCwI6kfwiByBBHWqm0TZ7amOm95o4aLBJkatSQ5RmiQa5j9T0xt5VmzwDvCQgTjAxdvJ5OSPRvdL311hpfXKFE4CUYytoi1uCfcLCHMt9Wp8-497YP41" alt="בנק דיסקונט"/></div>
+        <div class="bank-logo"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyBhBWKNdpUdzEBVAm63ngIU5WmLo5iH8pk8pCPSfSLyjbdG423pCkFq0ZVXQPl-r4XxheMV5K6OJqGonkdQknusHl1DzTfXEf9H-Meykwb_cnFuuP-njzFtQ-jAIGGaJcEs_M3G49GtTRLI5GQ_yX8BPxVCwI6kfwiByBBHWqm0TZ7amOm95o4aLBJkatSQ5RmiQa5j9T0xt5VmzwDvCQgTjAxdvJ5OSPRvdL311hpfXKFE4CUYytoi1uCfcLCHMt9Wp8-497YP41" alt="בנק דיסקונט" onerror="this.style.display='none';this.nextSibling.style.display='flex'"/>
+              <div style="display:none;width:80px;height:40px;background:#00873c;color:white;border-radius:8px;align-items:center;justify-content:center;font-weight:900;font-size:11px;">דיסקונט</div></div>
         <span>בנק דיסקונט</span>
         <div class="bank-link">איך מוציאים דוח?</div>
       </div>
       <div class="bank-card" data-bank="jerusalem" onclick="openBankModal('jerusalem', this)">
-        <div class="bank-logo"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLDqMwywjPJLz1A88PnE6_qKq97Pm3SfR911F3ioB5RkBL3opVYUGTaoJfYI4uNzIo8D9HmyQlx_XksUHD7R8DbCx86neJqFqjtmaa7gYULa7ZaVYY8pSIRgU73o8UFkW2XJ9QWxkqnOpuAWiD4Hd1t7iXRtUiz-EUNwyyyBrTzC-z07EU9gTfOZ3zNysUDHobTTrbLgeBDqKFTxCviB4Zu9NTgxuYcIwJVoyImbguD-unvaVnJ4cFZxp4ZGwHJ0cuV_-0ql9Ja2N2" alt="בנק ירושלים"/></div>
+        <div class="bank-logo"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLDqMwywjPJLz1A88PnE6_qKq97Pm3SfR911F3ioB5RkBL3opVYUGTaoJfYI4uNzIo8D9HmyQlx_XksUHD7R8DbCx86neJqFqjtmaa7gYULa7ZaVYY8pSIRgU73o8UFkW2XJ9QWxkqnOpuAWiD4Hd1t7iXRtUiz-EUNwyyyBrTzC-z07EU9gTfOZ3zNysUDHobTTrbLgeBDqKFTxCviB4Zu9NTgxuYcIwJVoyImbguD-unvaVnJ4cFZxp4ZGwHJ0cuV_-0ql9Ja2N2" alt="בנק ירושלים" onerror="this.style.display='none';this.nextSibling.style.display='flex'"/>
+              <div style="display:none;width:80px;height:40px;background:#8b6914;color:white;border-radius:8px;align-items:center;justify-content:center;font-weight:900;font-size:11px;">ירושלים</div></div>
         <span>בנק ירושלים</span>
         <div class="bank-link">איך מוציאים דוח?</div>
       </div>
       <div class="bank-card" data-bank="mercantile" onclick="openBankModal('mercantile', this)">
-        <div class="bank-logo"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC36_Ez4dWLVVrUfPmrUbkKlOa5ps1bUhO7WnI3dJwdtLABK6g9tkBFaG-gH6Wmh_Ap60Or3vfRSzYXlOYNDTQOtOnscrxGOfVeHvdcrixLRv5Gz0-fRnAs41fxeAIgYYic-3TdljtnvkL5vpIXwNFQCd4o8tKeI2sv1H03MDX3nd4K5R0BCJDxIGIO1kBDGZrOW4KkASASEgNgaQpJPK3lSA5zWpxjuK56j2nhmAR6KmyQ49kRuFLZxhdE0UQVmeH_VZeP8lhmB-Sz" alt="בנק מרכנתיל"/></div>
+        <div class="bank-logo"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC36_Ez4dWLVVrUfPmrUbkKlOa5ps1bUhO7WnI3dJwdtLABK6g9tkBFaG-gH6Wmh_Ap60Or3vfRSzYXlOYNDTQOtOnscrxGOfVeHvdcrixLRv5Gz0-fRnAs41fxeAIgYYic-3TdljtnvkL5vpIXwNFQCd4o8tKeI2sv1H03MDX3nd4K5R0BCJDxIGIO1kBDGZrOW4KkASASEgNgaQpJPK3lSA5zWpxjuK56j2nhmAR6KmyQ49kRuFLZxhdE0UQVmeH_VZeP8lhmB-Sz" alt="בנק מרכנתיל" onerror="this.style.display='none';this.nextSibling.style.display='flex'"/>
+              <div style="display:none;width:80px;height:40px;background:#007a3d;color:white;border-radius:8px;align-items:center;justify-content:center;font-weight:900;font-size:11px;">מרכנתיל</div></div>
         <span>בנק מרכנתיל</span>
         <div class="bank-link">איך מוציאים דוח?</div>
       </div>
       <div class="bank-card" data-bank="fibi" onclick="openBankModal('fibi', this)">
-        <div class="bank-logo"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXyiHbhkxoBdCSmuqypgTYIOvoKx6nFK_2bM81RaUxseOO893xWF_mbwtC5A583N549s1EQkab5APhz2mMcd72XFmRIrhNXVkvFXoR4VrFpmerhTdXjhfu4t7h2wR5F_Z2UfNetvsOqt-ksZIh3pFQ8HPG1AOPda3U-1LoTSmNVWt1ZZt_0XAUv-nq9Dj6zVxC_ibFerouoRWNK7rwEm9Xw4tm4DybWyOXLnOokrXECRcFuTBp6Vuf629bAxrh20NrKtal" alt="הבינלאומי"/></div>
+        <div class="bank-logo"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXyiHbhkxoBdCSmuqypgTYIOvoKx6nFK_2bM81RaUxseOO893xWF_mbwtC5A583N549s1EQkab5APhz2mMcd72XFmRIrhNXVkvFXoR4VrFpmerhTdXjhfu4t7h2wR5F_Z2UfNetvsOqt-ksZIh3pFQ8HPG1AOPda3U-1LoTSmNVWt1ZZt_0XAUv-nq9Dj6zVxC_ibFerouoRWNK7rwEm9Xw4tm4DybWyOXLnOokrXECRcFuTBp6Vuf629bAxrh20NrKtal" alt="הבינלאומי" onerror="this.style.display='none';this.nextSibling.style.display='flex'"/>
+              <div style="display:none;width:80px;height:40px;background:#1a3a6b;color:white;border-radius:8px;align-items:center;justify-content:center;font-weight:900;font-size:11px;">בינלאומי</div></div>
         <span>הבנק הבינלאומי</span>
         <div class="bank-link">איך מוציאים דוח?</div>
       </div>
@@ -434,6 +447,38 @@
         <span>בנק אחר</span>
         <div class="bank-link">איך מוציאים דוח?</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Calculator -->
+<section style="background:white; padding:80px 24px;" id="calculator">
+  <div class="section-inner">
+    <div style="text-align:center; margin-bottom:48px;">
+      <div class="section-label">מחשבון חיסכון</div>
+      <h2 class="section-title">כמה תוכל לחסוך במשכנתה?</h2>
+      <p class="section-sub">הכנס את נתוני המסלולים שלך וקבל הערכת חיסכון פוטנציאלי — בחינם ובשניות</p>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">מבוסס על נתוני עוגנים של SNPV · עודכן 24/06/2026</p>
+    </div>
+
+    <div style="max-width:780px;margin:0 auto;">
+
+      <!-- Tracks container -->
+      <div id="tracks-container"></div>
+
+      <!-- Add track button -->
+      <button onclick="addTrack()" id="add-track-btn" style="width:100%;padding:14px;background:var(--purple-light);color:var(--purple);border:2px dashed var(--purple);border-radius:14px;font-size:15px;font-weight:700;cursor:pointer;margin-bottom:24px;font-family:inherit;transition:background .2s;">
+        + הוסף מסלול נוסף
+      </button>
+
+      <!-- Calculate button -->
+      <button onclick="calculateSavings()" style="width:100%;padding:18px;background:var(--purple);color:white;border:none;border-radius:14px;font-size:18px;font-weight:800;cursor:pointer;font-family:inherit;box-shadow:0 6px 24px rgba(110,0,193,.3);transition:all .2s;">
+        חשב פוטנציאל חיסכון ←
+      </button>
+
+      <!-- Results -->
+      <div id="calc-results" style="display:none;margin-top:32px;"></div>
+
     </div>
   </div>
 </section>
@@ -492,9 +537,48 @@
       </div>
 
       <div class="success-msg" id="success-msg">
-        <div class="check">✅</div>
-        <h3>הפנייה התקבלה בהצלחה!</h3>
-        <p>קיבלתי את הפרטים שלך ואחזור אליך בהקדם עם ניתוח מקצועי.<br/>בדרך כלל תוך 24 שעות.</p>
+        <div style="text-align:center; padding: 8px 0 32px;">
+          <!-- Animated checkmark -->
+          <div style="width:72px;height:72px;background:#e8fff4;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:36px;">✅</div>
+          <h3 style="font-size:22px;font-weight:800;color:var(--text);margin-bottom:8px;">הפרטים התקבלו בהצלחה!</h3>
+          <p style="color:var(--text-muted);font-size:15px;margin-bottom:32px;">תודה שבחרת בנו לבחון את המשכנתה שלך</p>
+
+          <!-- Expert card -->
+          <div style="background:linear-gradient(135deg,#2d006e 0%,#6e00c1 100%);border-radius:24px;padding:32px 24px;color:white;position:relative;overflow:hidden;">
+            <div style="position:absolute;top:-20px;right:-20px;width:120px;height:120px;background:rgba(255,255,255,.06);border-radius:50%;"></div>
+            <div style="position:absolute;bottom:-30px;left:-10px;width:80px;height:80px;background:rgba(255,255,255,.04);border-radius:50%;"></div>
+
+            <!-- Analyzing animation -->
+            <div style="display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(255,255,255,.15);border-radius:50px;padding:8px 20px;margin-bottom:24px;width:fit-content;margin-left:auto;margin-right:auto;">
+              <span style="width:8px;height:8px;background:#a8f0c6;border-radius:50%;animation:pulse 1.2s ease-in-out infinite;"></span>
+              <span style="font-size:13px;font-weight:600;">המומחה האישי שלך כבר בודק את הנתונים</span>
+            </div>
+
+            <!-- Photo -->
+            <div style="width:110px;height:110px;border-radius:50%;overflow:hidden;margin:0 auto 16px;border:3px solid rgba(255,255,255,.4);box-shadow:0 8px 24px rgba(0,0,0,.3);">
+              <img src="data:image/jpeg;base64,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" alt="יועץ Muhni Solution" style="width:100%;height:100%;object-fit:cover;object-position:center top;"/>
+            </div>
+
+            <p style="font-weight:800;font-size:17px;margin-bottom:4px;">המומחה האישי שלך</p>
+            <p style="opacity:.8;font-size:13px;margin-bottom:24px;">Muhni Solution · ייעוץ משכנתאות</p>
+
+            <div style="background:rgba(255,255,255,.12);border-radius:16px;padding:20px;text-align:right;">
+              <p style="font-size:15px;line-height:1.7;opacity:.95;">
+                קיבלנו את הפרטים ואת דוח היתרות שלך.<br/>
+                מומחה מטעמנו ינתח את הנתונים ויחזור<br/>
+                אליך עם סימולציה מפורטת תוך 24 שעות.
+              </p>
+            </div>
+
+            <div style="display:flex;gap:12px;margin-top:20px;justify-content:center;flex-wrap:wrap;">
+              <a href="https://wa.me/972507700322" target="_blank" style="display:flex;align-items:center;gap:8px;background:#25D366;color:white;padding:12px 20px;border-radius:12px;text-decoration:none;font-weight:700;font-size:14px;">
+                💬 צ׳אט מהיר ב-WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <p style="color:var(--text-muted);font-size:12px;margin-top:20px;">📧 אישור נשלח למייל שלך · 🔒 הנתונים שלך מוצפנים ומאובטחים</p>
+        </div>
       </div>
     </div>
   </div>
@@ -755,6 +839,333 @@
     document.getElementById('submit-btn').disabled = false;
     document.getElementById('submit-btn').innerHTML = 'שלחו לי ניתוח מומחה';
   }
+
+  // ============================================================
+  // CALCULATOR - נתוני SNPV עודכן 24/06/2026
+  // ============================================================
+
+  // מסלולים וריביות עוגן לפי בנק (מקור: snpv.co.il/anchors)
+  // מבנה: bankRates[bank][trackType] = ריבית עוגן נוכחית (%)
+  // ריבית קבועה לא צמודה = ק"צ | קבועה צמודה = קל"צ | משתנה לא צמודה = מל"צ | משתנה צמודה = מצ"מ | פריים = פריים
+  const PRIME_RATE = 5.75; // ריבית פריים נוכחית בנק ישראל
+  const CPI_FORECAST = 1.8; // תחזית מדד שנתית SNPV
+
+  const bankRates = {
+    mizrahi: {
+      'קל"צ - קבועה לא צמודה': { anchor: 3.43, type: 'fixed_nominal' },
+      'קצ"מ - קבועה צמודה':    { anchor: 1.82, type: 'fixed_cpi' },
+      'מל"צ - משתנה לא צמודה': { anchor: 3.35, type: 'var_nominal' },
+      'מצ"מ - משתנה צמודה':    { anchor: 1.80, type: 'var_cpi' },
+      'פריים':                  { anchor: PRIME_RATE, type: 'prime' },
+    },
+    leumi: {
+      'קל"צ - קבועה לא צמודה': { anchor: 3.44, type: 'fixed_nominal' },
+      'קצ"מ - קבועה צמודה':    { anchor: 1.72, type: 'fixed_cpi' },
+      'מל"צ - משתנה לא צמודה': { anchor: 3.44, type: 'var_nominal' },
+      'מצ"מ - משתנה צמודה':    { anchor: 1.81, type: 'var_cpi' },
+      'פריים':                  { anchor: PRIME_RATE, type: 'prime' },
+    },
+    hapoalim: {
+      'קל"צ - קבועה לא צמודה': { anchor: 3.71, type: 'fixed_nominal' },
+      'קצ"מ - קבועה צמודה':    { anchor: 1.87, type: 'fixed_cpi' },
+      'מל"צ - משתנה לא צמודה': { anchor: 3.64, type: 'var_nominal' },
+      'מצ"מ - משתנה צמודה':    { anchor: 1.81, type: 'var_cpi' },
+      'פריים':                  { anchor: PRIME_RATE, type: 'prime' },
+    },
+    discount: {
+      'קל"צ - קבועה לא צמודה': { anchor: 3.71, type: 'fixed_nominal' },
+      'קצ"מ - קבועה צמודה':    { anchor: 1.81, type: 'fixed_cpi' },
+      'מל"צ - משתנה לא צמודה': { anchor: 3.64, type: 'var_nominal' },
+      'מצ"מ - משתנה צמודה':    { anchor: 1.82, type: 'var_cpi' },
+      'פריים':                  { anchor: PRIME_RATE, type: 'prime' },
+    },
+    jerusalem: {
+      'קל"צ - קבועה לא צמודה': { anchor: 3.71, type: 'fixed_nominal' },
+      'קצ"מ - קבועה צמודה':    { anchor: 1.81, type: 'fixed_cpi' },
+      'מל"צ - משתנה לא צמודה': { anchor: 3.64, type: 'var_nominal' },
+      'מצ"מ - משתנה צמודה':    { anchor: 1.72, type: 'var_cpi' },
+      'פריים':                  { anchor: PRIME_RATE, type: 'prime' },
+    },
+    mercantile: {
+      'קל"צ - קבועה לא צמודה': { anchor: 3.71, type: 'fixed_nominal' },
+      'קצ"מ - קבועה צמודה':    { anchor: 1.81, type: 'fixed_cpi' },
+      'מל"צ - משתנה לא צמודה': { anchor: 3.64, type: 'var_nominal' },
+      'מצ"מ - משתנה צמודה':    { anchor: 1.82, type: 'var_cpi' },
+      'פריים':                  { anchor: PRIME_RATE, type: 'prime' },
+    },
+    fibi: {
+      'קל"צ - קבועה לא צמודה': { anchor: 3.51, type: 'fixed_nominal' },
+      'קצ"מ - קבועה צמודה':    { anchor: 1.71, type: 'fixed_cpi' },
+      'מל"צ - משתנה לא צמודה': { anchor: 3.47, type: 'var_nominal' },
+      'מצ"מ - משתנה צמודה':    { anchor: 1.71, type: 'var_cpi' },
+      'פריים':                  { anchor: PRIME_RATE, type: 'prime' },
+    },
+    other: {
+      'קל"צ - קבועה לא צמודה': { anchor: 3.60, type: 'fixed_nominal' },
+      'קצ"מ - קבועה צמודה':    { anchor: 1.82, type: 'fixed_cpi' },
+      'מל"צ - משתנה לא צמודה': { anchor: 3.55, type: 'var_nominal' },
+      'מצ"מ - משתנה צמודה':    { anchor: 1.80, type: 'var_cpi' },
+      'פריים':                  { anchor: PRIME_RATE, type: 'prime' },
+    },
+  };
+
+  // ריביות ממוצעות בשוק כיום (להשוואה - מה ניתן לקבל בבנקים)
+  const MARKET_RATES = {
+    'fixed_nominal': 3.40,
+    'fixed_cpi':     1.70,
+    'var_nominal':   3.30,
+    'var_cpi':       1.72,
+    'prime':         PRIME_RATE - 0.5, // מרווח ממוצע -0.5
+  };
+
+  // שם הבנק הנבחר בטופס העיקרי
+  function getSelectedBank() {
+    return document.getElementById('bank_select').value || 'leumi';
+  }
+
+  let trackCount = 0;
+
+  function addTrack() {
+    if (trackCount >= 4) {
+      document.getElementById('add-track-btn').style.display = 'none';
+      return;
+    }
+    trackCount++;
+    const bank = getSelectedBank() || 'leumi';
+    const tracks = Object.keys(bankRates[bank] || bankRates.leumi);
+
+    const today = new Date();
+    const defaultEnd = new Date(today.getFullYear() + 20, today.getMonth(), today.getDate());
+    const defaultEndStr = defaultEnd.toISOString().slice(0,7); // YYYY-MM
+
+    const div = document.createElement('div');
+    div.id = `track-${trackCount}`;
+    div.style.cssText = 'background:var(--bg);border:1.5px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px;position:relative;';
+    div.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <span style="font-weight:800;font-size:15px;color:var(--purple);">מסלול ${trackCount}</span>
+        ${trackCount > 1 ? `<button onclick="removeTrack(${trackCount})" style="background:none;border:none;color:#ccc;font-size:18px;cursor:pointer;padding:4px;">✕</button>` : ''}
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div style="grid-column:1/-1;">
+          <label style="font-size:13px;font-weight:700;display:block;margin-bottom:6px;">סוג מסלול</label>
+          <select id="track-type-${trackCount}" onchange="updateAnchor(${trackCount})"
+            style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:inherit;background:white;appearance:none;">
+            ${tracks.map(t => `<option value="${t}">${t}</option>`).join('')}
+          </select>
+        </div>
+        <div>
+          <label style="font-size:13px;font-weight:700;display:block;margin-bottom:6px;">יתרת המסלול (₪)</label>
+          <input type="number" id="track-balance-${trackCount}" placeholder="500,000"
+            style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:inherit;"/>
+        </div>
+        <div>
+          <label style="font-size:13px;font-weight:700;display:block;margin-bottom:6px;">ריבית נוכחית (%)</label>
+          <input type="number" id="track-rate-${trackCount}" step="0.01" placeholder="3.50"
+            style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:inherit;"/>
+        </div>
+        <div>
+          <label style="font-size:13px;font-weight:700;display:block;margin-bottom:6px;">תאריך סיום הלוואה</label>
+          <input type="month" id="track-end-${trackCount}" value="${defaultEndStr}"
+            style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:inherit;direction:ltr;"/>
+        </div>
+        <div>
+          <label style="font-size:13px;font-weight:700;display:block;margin-bottom:6px;">החזר חודשי נוכחי (₪)</label>
+          <input type="number" id="track-payment-${trackCount}" placeholder="2,800"
+            style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:inherit;"/>
+        </div>
+        <div style="display:flex;align-items:flex-end;padding-bottom:2px;">
+          <div style="background:var(--purple-light);border-radius:10px;padding:10px 14px;width:100%;">
+            <div style="font-size:11px;color:var(--purple);font-weight:700;">ריבית שוק נוכחית</div>
+            <div id="track-market-${trackCount}" style="font-size:16px;font-weight:900;color:var(--purple);">—%</div>
+          </div>
+        </div>
+      </div>
+    `;
+    document.getElementById('tracks-container').appendChild(div);
+    updateAnchor(trackCount);
+
+    if (trackCount >= 4) document.getElementById('add-track-btn').style.display = 'none';
+  }
+
+  function removeTrack(id) {
+    const el = document.getElementById(`track-${id}`);
+    if (el) el.remove();
+    document.getElementById('add-track-btn').style.display = 'block';
+    trackCount = document.querySelectorAll('[id^="track-"]').length;
+  }
+
+  function updateAnchor(id) {
+    const bank = getSelectedBank() || 'leumi';
+    const typeEl = document.getElementById(`track-type-${id}`);
+    if (!typeEl) return;
+    const trackType = typeEl.value;
+    const rates = bankRates[bank] || bankRates.leumi;
+    const rateInfo = rates[trackType];
+    if (!rateInfo) return;
+    const marketRate = MARKET_RATES[rateInfo.type];
+    const el = document.getElementById(`track-market-${id}`);
+    if (el) el.textContent = marketRate.toFixed(2) + '%';
+  }
+
+  // חישוב תשלום חודשי לפי נוסחת שפיצר
+  function calcMonthlyPayment(principal, annualRate, months) {
+    if (annualRate === 0) return principal / months;
+    const r = annualRate / 100 / 12;
+    return principal * r * Math.pow(1 + r, months) / (Math.pow(1 + r, months) - 1);
+  }
+
+  // חישוב עלות כוללת
+  function calcTotalCost(principal, annualRate, months) {
+    return calcMonthlyPayment(principal, annualRate, months) * months;
+  }
+
+  function calculateSavings() {
+    const tracks = document.querySelectorAll('[id^="track-type-"]');
+    if (tracks.length === 0) {
+      alert('אנא הוסף לפחות מסלול אחד');
+      return;
+    }
+
+    const bank = getSelectedBank() || 'leumi';
+    let totalCurrentMonthly = 0;
+    let totalNewMonthly = 0;
+    let totalCurrentCost = 0;
+    let totalNewCost = 0;
+    let valid = true;
+    let trackResults = [];
+
+    tracks.forEach(el => {
+      const id = el.id.replace('track-type-', '');
+      const trackType = el.value;
+      const balance = parseFloat(document.getElementById(`track-balance-${id}`)?.value);
+      const currentRate = parseFloat(document.getElementById(`track-rate-${id}`)?.value);
+      const endDateStr = document.getElementById(`track-end-${id}`)?.value;
+      const currentPayment = parseFloat(document.getElementById(`track-payment-${id}`)?.value);
+
+      if (!balance || !currentRate || !endDateStr) { valid = false; return; }
+
+      // חישוב חודשים שנותרו
+      const endDate = new Date(endDateStr + '-01');
+      const today = new Date();
+      const monthsLeft = Math.max(1, Math.round((endDate - today) / (1000 * 60 * 60 * 24 * 30.44)));
+
+      // ריבית שוק לפי סוג מסלול
+      const rates = bankRates[bank] || bankRates.leumi;
+      const rateInfo = rates[trackType];
+      let marketRate = MARKET_RATES[rateInfo?.type || 'fixed_nominal'];
+
+      // עבור מסלולים צמודי מדד - מוסיפים ציפיות מדד
+      let effectiveCurrentRate = currentRate;
+      let effectiveMarketRate = marketRate;
+      if (rateInfo?.type === 'fixed_cpi' || rateInfo?.type === 'var_cpi') {
+        effectiveCurrentRate += CPI_FORECAST;
+        effectiveMarketRate += CPI_FORECAST;
+      }
+
+      const currentMonthly = currentPayment || calcMonthlyPayment(balance, effectiveCurrentRate, monthsLeft);
+      const newMonthly = calcMonthlyPayment(balance, effectiveMarketRate, monthsLeft);
+      const currentTotal = currentMonthly * monthsLeft;
+      const newTotal = newMonthly * monthsLeft;
+
+      totalCurrentMonthly += currentMonthly;
+      totalNewMonthly += newMonthly;
+      totalCurrentCost += currentTotal;
+      totalNewCost += newTotal;
+
+      trackResults.push({
+        trackType, balance, monthsLeft,
+        currentRate: effectiveCurrentRate, marketRate: effectiveMarketRate,
+        currentMonthly, newMonthly,
+        diff: currentMonthly - newMonthly,
+        totalDiff: currentTotal - newTotal
+      });
+    });
+
+    if (!valid || trackResults.length === 0) {
+      alert('אנא מלא את כל השדות הנדרשים (יתרה, ריבית ותאריך סיום)');
+      return;
+    }
+
+    const monthlyDiff = totalCurrentMonthly - totalNewMonthly;
+    const totalDiff = totalCurrentCost - totalNewCost;
+    const hasSaving = totalDiff > 0;
+
+    // בניית תוצאות
+    const tracksHTML = trackResults.map((t, i) => `
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);">
+        <div>
+          <div style="font-weight:700;font-size:14px;">${t.trackType}</div>
+          <div style="font-size:12px;color:var(--text-muted);">ריבית נוכחית: ${t.currentRate.toFixed(2)}% | שוק: ${t.marketRate.toFixed(2)}%</div>
+        </div>
+        <div style="text-align:left;">
+          <div style="font-size:13px;color:${t.diff > 0 ? 'var(--success)' : '#e74c3c'};font-weight:700;">
+            ${t.diff > 0 ? '−' : '+'}₪${Math.abs(Math.round(t.diff)).toLocaleString()}/חודש
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    const resultsEl = document.getElementById('calc-results');
+    resultsEl.style.display = 'block';
+    resultsEl.innerHTML = `
+      <div style="border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(110,0,193,.12);">
+
+        <!-- Header -->
+        <div style="background:linear-gradient(135deg,#2d006e,#6e00c1);padding:28px 28px 24px;color:white;text-align:center;">
+          <div style="font-size:13px;opacity:.8;margin-bottom:8px;">הערכת פוטנציאל חיסכון</div>
+          ${hasSaving ? `
+            <div style="font-size:42px;font-weight:900;margin-bottom:4px;">₪${Math.round(Math.abs(monthlyDiff)).toLocaleString()}</div>
+            <div style="font-size:16px;opacity:.9;">פחות בחודש</div>
+            <div style="margin-top:16px;background:rgba(255,255,255,.15);border-radius:12px;padding:12px 20px;display:inline-block;">
+              <span style="font-size:13px;">חיסכון כולל לאורך התקופה: </span>
+              <span style="font-weight:800;font-size:16px;">₪${Math.round(Math.abs(totalDiff)).toLocaleString()}</span>
+            </div>
+          ` : `
+            <div style="font-size:22px;font-weight:800;margin-bottom:8px;">ללא שינוי משמעותי בהחזר</div>
+            <div style="font-size:14px;opacity:.85;">ייתכן שיש עדיין פוטנציאל לחיסכון בעמלות ובמבנה התמהיל</div>
+          `}
+        </div>
+
+        <!-- Track breakdown -->
+        <div style="background:white;padding:24px 28px;">
+          <div style="font-weight:800;font-size:14px;margin-bottom:12px;color:var(--text-muted);">פירוט לפי מסלול</div>
+          ${tracksHTML}
+        </div>
+
+        <!-- Disclaimer + CTA -->
+        <div style="background:var(--bg);padding:20px 28px;">
+          <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px;line-height:1.6;">
+            ⚠️ <strong>חשוב:</strong> זוהי הערכה גסה בלבד המבוססת על נתוני עוגנים של SNPV (24/06/2026).
+            החיסכון האמיתי תלוי בעמלות פירעון מוקדם, מבנה התמהיל המלא, ומצבך האישי.
+            לסימולציה מדויקת — מלא את הטופס למטה.
+          </p>
+          <a href="#form" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'}); return false;"
+            style="display:block;background:var(--purple);color:white;text-align:center;padding:16px;border-radius:12px;font-weight:800;font-size:16px;text-decoration:none;">
+            קבל סימולציה מדויקת ממומחה ←
+          </a>
+        </div>
+      </div>
+    `;
+
+    resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // אתחול המחשבון עם מסלול ראשון
+  addTrack();
+
+  // עדכון אפשרויות מסלולים כשמשנים בנק בטופס
+  document.getElementById('bank_select').addEventListener('change', function() {
+    const bank = this.value;
+    document.querySelectorAll('[id^="track-type-"]').forEach(sel => {
+      const id = sel.id.replace('track-type-', '');
+      const current = sel.value;
+      const tracks = Object.keys(bankRates[bank] || bankRates.leumi);
+      sel.innerHTML = tracks.map(t => `<option value="${t}" ${t===current?'selected':''}>${t}</option>`).join('');
+      updateAnchor(id);
+    });
+  });
+
 </script>
 </body>
 </html>
