@@ -160,7 +160,7 @@
     <p class="section-sub">תהליך פשוט שייקח פחות מ-2 דקות וייתן לך שקט נפשי</p>
     <div class="steps">
       <div class="step"><div class="step-num">1</div><h3>בחר את הבנק</h3><p>בחר את הבנק שבו מתנהלת המשכנתא שלך מרשימת הבנקים.</p></div>
-      <div class="step"><div class="step-num">2</div><h3>העלה דוח יתרות</h3><p>העלה קובץ PDF של דוח יתרות המשכנתא העדכני מהבנק.</p></div>
+      <div class="step"><div class="step-num">2</div><h3>העלה דוח יתרות</h3><p>העלה צילום או סריקה של דוח יתרות המשכנתא העדכני מהבנק.</p></div>
       <div class="step"><div class="step-num">3</div><h3>ניתוח אנושי</h3><p>המומחים שלנו מנתחים את התמהיל ומזהים פוטנציאל חיסכון אמיתי.</p></div>
       <div class="step"><div class="step-num">4</div><h3>חיסכון בפועל</h3><p>קבל המלצות מפורטות וליווי צמוד עד להשגת התנאים הטובים ביותר.</p></div>
     </div>
@@ -607,14 +607,79 @@
   }
 
   const bankData = {
-    leumi: { name:'בנק לאומי', url:'https://mortgage.leumi.co.il/he/login', phone:'*6062', hours:'א'–ה' 8:00–16:00', steps:['היכנסו לאזור האישי עם שם משתמש וסיסמא','לחצו על <strong>הלוואות ומשכנתאות</strong> בתפריט הצד הימני','בחרו <strong>הזמנת מסמכי משכנתאות</strong>','בחרו <strong>"אישור יתרות לסילוק"</strong>','הדוח יגיע לתיבת הדואר באזור האישי'] },
-    mizrahi: { name:'מזרחי טפחות', url:'https://www.mizrahi-tefahot.co.il/he/bank/private/loans-and-mortgages/mortgages/pages/mortgage-login.aspx', phone:'*8860', hours:'א'–ה' 8:30–18:30 | ו' 8:00–13:00', steps:['<strong>אם יש לך חשבון עו"ש:</strong> כנס באתר → כניסה לחשבון → הלוואות ומשכנתאות → המשכנתה שלי → טפסים ואישורים','<strong>אם יש לך רק משכנתה:</strong> כנס לקישור "לקוחות טפחות" → הזן ת"ז ומספר חשבון → קוד SMS'] },
-    hapoalim: { name:'בנק הפועלים', url:'https://login.bankhapoalim.co.il/', phone:'*2401', hours:'א'–ה' 8:00–16:00', note:'רק אם יש לך חשבון עו"ש בבנק הפועלים', steps:['היכנסו לאזור האישי עם שם משתמש וסיסמא','בחרו <strong>"דוח פרטי משכנתאות"</strong>','אשרו קבלת דוח','מקבלים מיד את הדוח ב-PDF'] },
-    discount: { name:'בנק דיסקונט', url:'https://www.discountbank.co.il/DB/he/private/mortgage', phone:'*2009', hours:'א'–ה' 8:00–19:00 | ו' 8:00–13:00', note:'רק אם יש לך חשבון עו"ש בבנק', steps:['כנסו לאזור האישי → <strong>כניסה לחשבונות פרטיים</strong>','הזינו קוד משתמש וסיסמא','תפריט ימין → <strong>משכנתאות</strong>','לחצו <strong>"פירוט המשכנתה המלא כולל יתרה לסילוק (תדפיס)"</strong>'] },
-    jerusalem: { name:'בנק ירושלים', url:'#', phone:'076-8095115', hours:'א',ג',ד' 8:30–15:30 | ב',ה' 9:00–14:00, 16:00–18:00 | ו' 9:00–12:00', phoneOnly:true, steps:['הוצאת הדוח מתבצעת <strong>דרך המוקד הטלפוני בלבד</strong>. התקשר ובקש "אישור יתרות לסילוק"'] },
-    mercantile: { name:'בנק מרכנתיל', url:'https://www.mercantile.co.il/private/mortgages/mortgage-data', phone:'*3477', hours:'א',ג',ה' 8:30–13:45 | ב',ד' 8:30–13:00, 16:00–18:15', note:'רק אם יש לך חשבון עו"ש בבנק', steps:['כנסו לאזור האישי → <strong>כניסה לחשבונות פרטיים</strong>','הזינו קוד משתמש וסיסמא','תפריט ימין → <strong>משכנתאות</strong>','לחצו <strong>"פירוט המשכנתה המלא כולל יתרה לסילוק"</strong>'] },
-    fibi: { name:'הבנק הבינלאומי', url:'#', phone:'1-700-700-185 שלוחה 2', hours:'א'–ה' 8:00–18:00', phoneOnly:true, steps:['הוצאת הדוח מתבצעת <strong>דרך המוקד הטלפוני בלבד</strong>. התקשר ובקש "אישור יתרות לסילוק"'] },
-    other: { name:'בנק אחר', url:'#', phone:'', hours:'', steps:['פנה לאזור האישי באתר הבנק','חפש "הלוואות ומשכנתאות" → "המשכנתה שלי"','בקש <strong>"אישור יתרות לסילוק"</strong>','לחילופין, התקשר למוקד שירות הלקוחות'] }
+    leumi: {
+      name:"בנק לאומי", url:"https://mortgage.leumi.co.il/he/login",
+      phone:"*6062", hours:"א'–ה' 8:00–16:00",
+      steps:[
+        "היכנסו לאזור האישי עם שם משתמש וסיסמא",
+        "לחצו על <strong>הלוואות ומשכנתאות</strong> בתפריט הצד הימני",
+        "בחרו <strong>הזמנת מסמכי משכנתאות</strong>",
+        "בחרו <strong>אישור יתרות לסילוק</strong>",
+        "הדוח יגיע לתיבת הדואר באזור האישי"
+      ]
+    },
+    mizrahi: {
+      name:"מזרחי טפחות", url:"https://www.mizrahi-tefahot.co.il/he/bank/private/loans-and-mortgages/mortgages/pages/mortgage-login.aspx",
+      phone:"*8860", hours:"א'–ה' 8:30–18:30 | ו' 8:00–13:00",
+      steps:[
+        "<strong>אם יש לך חשבון עו&quot;ש:</strong> כנס באתר ← כניסה לחשבון ← הלוואות ומשכנתאות ← המשכנתה שלי ← טפסים ואישורים",
+        "<strong>אם יש לך רק משכנתה:</strong> כנס לקישור לקוחות טפחות ← הזן ת&quot;ז ומספר חשבון ← קבל קוד SMS"
+      ]
+    },
+    hapoalim: {
+      name:"בנק הפועלים", url:"https://login.bankhapoalim.co.il/",
+      phone:"*2401", hours:"א'–ה' 8:00–16:00",
+      note:"רק אם יש לך חשבון עו&quot;ש בבנק הפועלים",
+      steps:[
+        "היכנסו לאזור האישי עם שם משתמש וסיסמא",
+        "בחרו <strong>דוח פרטי משכנתאות</strong>",
+        "אשרו קבלת דוח",
+        "מקבלים מיד את הדוח ב-PDF"
+      ]
+    },
+    discount: {
+      name:"בנק דיסקונט", url:"https://www.discountbank.co.il/DB/he/private/mortgage",
+      phone:"*2009", hours:"א'–ה' 8:00–19:00 | ו' 8:00–13:00",
+      note:"רק אם יש לך חשבון עו&quot;ש בבנק",
+      steps:[
+        "כנסו לאזור האישי ← <strong>כניסה לחשבונות פרטיים</strong>",
+        "הזינו קוד משתמש וסיסמא",
+        "תפריט ימין ← בחרו <strong>משכנתאות</strong>",
+        "לחצו <strong>פירוט המשכנתה המלא כולל יתרה לסילוק (תדפיס)</strong>"
+      ]
+    },
+    jerusalem: {
+      name:"בנק ירושלים", url:"#",
+      phone:"076-8095115", hours:"א',ג',ד' 8:30–15:30 | ב',ה' 9:00–14:00 ו-16:00–18:00 | ו' 9:00–12:00",
+      phoneOnly:true,
+      steps:["הוצאת הדוח מתבצעת <strong>דרך המוקד הטלפוני בלבד</strong>. התקשר ובקש אישור יתרות לסילוק"]
+    },
+    mercantile: {
+      name:"בנק מרכנתיל", url:"https://www.mercantile.co.il/private/mortgages/mortgage-data",
+      phone:"*3477", hours:"א',ג',ה' 8:30–13:45 | ב',ד' 8:30–13:00 ו-16:00–18:15",
+      note:"רק אם יש לך חשבון עו&quot;ש בבנק",
+      steps:[
+        "כנסו לאזור האישי ← <strong>כניסה לחשבונות פרטיים</strong>",
+        "הזינו קוד משתמש וסיסמא",
+        "תפריט ימין ← בחרו <strong>משכנתאות</strong>",
+        "לחצו <strong>פירוט המשכנתה המלא כולל יתרה לסילוק</strong>"
+      ]
+    },
+    fibi: {
+      name:"הבנק הבינלאומי", url:"#",
+      phone:"1-700-700-185 שלוחה 2", hours:"א'–ה' 8:00–18:00",
+      phoneOnly:true,
+      steps:["הוצאת הדוח מתבצעת <strong>דרך המוקד הטלפוני בלבד</strong>. התקשר ובקש אישור יתרות לסילוק"]
+    },
+    other: {
+      name:"בנק אחר", url:"#", phone:"", hours:"",
+      steps:[
+        "פנה לאזור האישי באתר הבנק",
+        "חפש הלוואות ומשכנתאות ← המשכנתה שלי",
+        "בקש <strong>אישור יתרות לסילוק</strong>",
+        "לחילופין, התקשר למוקד שירות הלקוחות"
+      ]
+    }
   };
 
   function openBankModal(bankId, card) {
