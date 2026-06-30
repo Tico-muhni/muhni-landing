@@ -1,207 +1,124 @@
 <!DOCTYPE html>
-
-<html dir="rtl" lang="he" style=""><head>
+<html dir="rtl" lang="he">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>תודה - Mortgage Experts</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                "primary": "#6e00c1",
-                "secondary-fixed-dim": "#ddb7ff",
-                "on-secondary": "#ffffff",
-                "tertiary-container": "#686073",
-                "surface-tint": "#8422dc",
-                "on-primary-container": "#eed9ff",
-                "on-tertiary-fixed": "#1e1929",
-                "primary-fixed": "#efdbff",
-                "surface-container": "#f0eded",
-                "secondary": "#7b41b3",
-                "outline-variant": "#cfc2d7",
-                "inverse-surface": "#303030",
-                "on-primary": "#ffffff",
-                "error": "#ba1a1a",
-                "surface-dim": "#dcd9d9",
-                "primary-fixed-dim": "#dcb8ff",
-                "primary-container": "#8a2be2",
-                "inverse-on-surface": "#f3f0f0",
-                "surface-container-highest": "#e4e2e1",
-                "on-surface": "#1b1c1c",
-                "on-secondary-fixed-variant": "#622599",
-                "on-primary-fixed-variant": "#6700b5",
-                "inverse-primary": "#dcb8ff",
-                "secondary-fixed": "#f0dbff",
-                "surface-container-high": "#eae8e7",
-                "on-tertiary-fixed-variant": "#4a4456",
-                "error-container": "#ffdad6",
-                "outline": "#7e7386",
-                "on-secondary-fixed": "#2c0050",
-                "surface-variant": "#e4e2e1",
-                "on-tertiary": "#ffffff",
-                "on-tertiary-container": "#e7dcf3",
-                "tertiary-fixed-dim": "#cdc2d9",
-                "on-background": "#1b1c1c",
-                "surface-container-lowest": "#ffffff",
-                "secondary-container": "#c588fe",
-                "background": "#fbf9f8",
-                "surface": "#fbf9f8",
-                "tertiary-fixed": "#e9def5",
-                "surface-bright": "#fbf9f8",
-                "on-primary-fixed": "#2c0051",
-                "on-error": "#ffffff",
-                "surface-container-low": "#f6f3f2",
-                "tertiary": "#4f485b",
-                "on-surface-variant": "#4c4354",
-                "on-secondary-container": "#54118a",
-                "on-error-container": "#93000a"
-            },
-            "borderRadius": {
-                "DEFAULT": "0.25rem",
-                "lg": "0.5rem",
-                "xl": "0.75rem",
-                "full": "9999px"
-            },
-            "spacing": {
-                "sm": "12px",
-                "margin-desktop": "64px",
-                "xs": "4px",
-                "lg": "48px",
-                "gutter": "24px",
-                "md": "24px",
-                "xl": "80px",
-                "margin-mobile": "16px",
-                "base": "8px"
-            },
-            "fontFamily": {
-                "headline-md": ["Work Sans"],
-                "body-md": ["Work Sans"],
-                "headline-xl": ["Work Sans"],
-                "body-lg": ["Work Sans"],
-                "label-md": ["Work Sans"],
-                "headline-lg-mobile": ["Work Sans"],
-                "headline-lg": ["Work Sans"],
-                "label-sm": ["Work Sans"]
-            },
-            "fontSize": {
-                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
-                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
-                "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
-                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
-                "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
-            }
-          },
-        },
-      }
-    </script>
+<title>תודה! - Muhni Solution</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
-        body {
-            background-color: #fbf9f8;
-            font-family: 'Work Sans', sans-serif;
-            margin: 0;
-            overflow-x: hidden;
-            min-height: 100dvh;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .ambient-glow {
-            box-shadow: 0 10px 40px -10px rgba(110, 0, 193, 0.12);
-        }
-    </style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --purple: #6e00c1; --purple-dark: #4a007f; --purple-light: #f3e8ff;
+    --text: #1a1a2e; --text-muted: #5a5a7a; --border: #e0d5f0;
+    --bg: #faf8ff; --white: #ffffff; --success: #00b894; --radius: 16px;
+  }
+  body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+  header { background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: center; }
+  main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 24px; }
+  .card { max-width: 520px; width: 100%; background: white; border-radius: 28px; overflow: hidden; box-shadow: 0 16px 64px rgba(110,0,193,.12); border: 1.5px solid var(--border); }
+  .card-hero { background: linear-gradient(135deg, #2d006e 0%, #6e00c1 100%); padding: 48px 32px; text-align: center; color: white; }
+  .avatar { width: 120px; height: 120px; border-radius: 50%; overflow: hidden; border: 4px solid rgba(255,255,255,.5); box-shadow: 0 8px 32px rgba(0,0,0,.3); margin: 0 auto 20px; }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; image-orientation: from-image; }
+  .pulse-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.35); border-radius: 50px; padding: 8px 20px; margin-bottom: 20px; font-size: 13px; font-weight: 700; }
+  .pulse-dot { width: 9px; height: 9px; background: #a8f0c6; border-radius: 50%; animation: pulse 1.2s ease-in-out infinite; flex-shrink: 0; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.8)} }
+  .card-body { padding: 40px 36px; }
+  .success-icon { width: 68px; height: 68px; background: #e8fff4; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 34px; }
+  .card-body h1 { font-size: 24px; font-weight: 800; text-align: center; margin-bottom: 10px; }
+  .card-body > p { color: var(--text-muted); font-size: 15px; text-align: center; line-height: 1.7; margin-bottom: 28px; }
+  .steps { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+  .step-row { display: flex; align-items: center; gap: 16px; background: var(--bg); border: 1.5px solid var(--border); border-radius: 14px; padding: 16px; }
+  .step-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--purple-light); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+  .step-row h4 { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+  .step-row p { font-size: 13px; color: var(--text-muted); }
+  .wa-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background: #25D366; color: white; padding: 16px 24px; border-radius: 14px; text-decoration: none; font-weight: 800; font-size: 16px; margin-bottom: 14px; transition: opacity .2s; }
+  .wa-btn:hover { opacity: .9; }
+  .back-btn { display: block; text-align: center; color: var(--purple); font-weight: 700; font-size: 15px; text-decoration: none; padding: 12px; border-radius: 12px; border: 1.5px solid var(--border); transition: background .2s; }
+  .back-btn:hover { background: var(--purple-light); }
+  footer { background: white; border-top: 1px solid var(--border); padding: 28px 24px; text-align: center; }
+  .footer-links { display: flex; justify-content: center; gap: 24px; margin: 12px 0; flex-wrap: wrap; }
+  .footer-links a { text-decoration: none; color: var(--text-muted); font-size: 13px; font-weight: 500; }
+  .footer-links a:hover { color: var(--purple); }
+  .social-row { display: flex; justify-content: center; gap: 12px; margin: 14px 0; }
+  .social-btn { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: opacity .2s; }
+  .social-btn:hover { opacity: .85; }
+  .footer-copy { color: var(--text-muted); font-size: 12px; margin-top: 12px; line-height: 1.7; }
+</style>
 </head>
-<body class="bg-background text-on-surface flex flex-col items-center">
-<!-- Header Matching Landing Page -->
-<header class="fixed top-0 w-full z-50 bg-surface/95 backdrop-blur-sm border-b border-outline-variant h-16 flex justify-between items-center px-margin-mobile md:px-margin-desktop">
-<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-low rounded-full transition-colors" data-icon="menu">menu</button>
-<div class="flex items-center gap-sm">
-<img alt="Muhni Solution Logo" class="h-8 md:h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEgiO9yydOIuvL91WD9wQK-iL78KbmhIi17y4RYNC0S2sWsQRAFn-FnkinHFMTZSzdYzj0ziyaavMOGalWdnyUdPWhyXHXlE7TEgxU4V68OTe-pPBXsrobBEmDyO8FdpFVLXKczPoLYK7caC65cD9G-YbJNO5ywXhTTIBu__ez-NQuulWToREhjHb3z6LzZ4xCF_ES0RWo3eKepwf3weIceNGRNoEr_MiU-DM5wfElf2CMIbaiQGhbBH3GtjzP4H3wt-LqLZHaUuOX"/>
-</div>
+<body>
+
+<header>
+  <img src="לוגו מופע רגיל עם רקע שקוף.png" alt="Muhni Solution" style="height:40px;width:auto;object-fit:contain;"
+       onerror="this.style.display='none';this.nextSibling.style.display='block'"/>
+  <span style="display:none;font-size:22px;font-weight:900;color:#6e00c1;">muhni solution</span>
 </header>
-<main class="flex-grow w-full flex flex-col items-center pt-24 pb-16 px-margin-mobile">
-<!-- Main Success Card -->
-<div class="w-full max-w-lg bg-surface-container-lowest rounded-xl overflow-hidden ambient-glow border border-outline-variant/30">
-<!-- Top Hero Section (Purple Gradient/Solid) -->
-<div class="bg-primary p-lg flex flex-col items-center text-center text-on-primary">
-<div class="relative mb-md">
-<div class="w-32 h-32 rounded-full border-4 border-white/20 overflow-hidden shadow-xl">
-<img alt="Expert Advisor" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUHRveP_GACbvA4Fb2gfNAKKwowY6cP1Q5AOr5qLIpaKtDbs8_N-7I4008oCjDECtuD2WvjeX2qE5LF_CwRD7cLiK5-jtlEhJJnYEHsxUBK3GqzDkzw_fR3Byii1HaujM6OzzqbALcsBwWt_uj-ZMMRm1wvfwGluC6SxC55IgUl1X1BJTVgSPaL8oDeBifuViJDicik90t4xC3_JN21t9gxxdeDaFxTY2Kwx4yMJxStRVSzKsaK4aq-89y3tvsHlCKZOUMSoHpgoN_"/>
-</div>
-<div class="absolute bottom-0 right-0 bg-white text-primary rounded-full p-1 shadow-md">
-<span class="material-symbols-outlined text-[20px] font-bold" data-icon="verified">verified</span>
-</div>
-</div>
-<p class="font-label-md text-label-md opacity-90 mb-xs">המומחה האישי שלך</p>
-<p class="font-headline-md text-headline-md font-bold">כבר בודק את הנתונים</p>
-</div>
-<!-- Content Section -->
-<div class="p-lg md:p-xl flex flex-col items-center">
-<div class="flex items-center gap-sm mb-md text-center">
-<h1 class="font-headline-lg text-headline-lg-mobile text-primary">
-                    תודה שבחרת בנו לבחון את המשכנתה שלך!
-                </h1>
-<span class="material-symbols-outlined text-primary text-3xl" data-icon="check_circle">check_circle</span>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant text-center mb-lg leading-relaxed">
-                קיבלנו את הפרטים ואת דוח היתרות. מומחה מטעמנו ינתח את הנתונים ויחזור אליך עם סימולציה מפורטת תוך 24 שעות.
-            </p>
-<!-- Benefit/Step Boxes -->
-<div class="flex flex-col gap-sm w-full mb-lg">
-<div class="flex items-center gap-md bg-surface-container-low p-md rounded-lg border border-outline-variant/10">
-<div class="w-10 h-10 bg-primary/10 text-primary rounded-full flex items-center justify-center flex-shrink-0">
-<span class="material-symbols-outlined" data-icon="description">description</span>
-</div>
-<div>
-<h4 class="font-label-md text-label-md text-on-surface">דוח התקבל</h4>
-<p class="font-label-sm text-label-sm text-on-surface-variant">הנתונים בבדיקה</p>
-</div>
-</div>
-<div class="flex items-center gap-md bg-surface-container-low p-md rounded-lg border border-outline-variant/10">
-<div class="w-10 h-10 bg-primary/10 text-primary rounded-full flex items-center justify-center flex-shrink-0">
-<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
-</div>
-<div>
-<h4 class="font-label-md text-label-md text-on-surface">ניתוח מקצועי</h4>
-<p class="font-label-sm text-label-sm text-on-surface-variant">תהליך סימולציה</p>
-</div>
-</div>
-<div class="flex items-center gap-md bg-surface-container-low p-md rounded-lg border border-outline-variant/10">
-<div class="w-10 h-10 bg-primary/10 text-primary rounded-full flex items-center justify-center flex-shrink-0">
-<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
-</div>
-<div>
-<h4 class="font-label-md text-label-md text-on-surface">מענה מהיר</h4>
-<p class="font-label-sm text-label-sm text-on-surface-variant">עד 24 שעות</p>
-</div>
-</div>
-</div>
-<!-- Action Button -->
-<a class="w-full flex items-center justify-center gap-sm bg-primary text-white font-bold py-5 rounded-full shadow-xl hover:opacity-90 transition-all active:scale-[0.98]" href="/"><span class="material-symbols-outlined">arrow_forward</span><span class="">חזרה לדף הבית</span></a>
-</div>
-</div>
+
+<main>
+  <div class="card">
+    <div class="card-hero">
+      <div class="pulse-badge">
+        <span class="pulse-dot"></span>
+        <span>המומחה האישי שלך כבר בודק את הנתונים</span>
+      </div>
+      <div class="avatar">
+        <img src="BOOK3938.JPG" alt="יועץ Muhni Solution"/>
+      </div>
+      <p style="font-weight:800;font-size:18px;margin-bottom:4px;">המומחה האישי שלך</p>
+      <p style="font-size:13px;opacity:.8;">Muhni Solution · ייעוץ משכנתאות</p>
+    </div>
+
+    <div class="card-body">
+      <div class="success-icon">✅</div>
+      <h1>הפרטים התקבלו בהצלחה!</h1>
+      <p>תודה שבחרת ב-Muhni Solution לבחון את המשכנתה שלך. מומחה מטעמנו יצור איתך קשר תוך 24 שעות.</p>
+
+      <div class="steps">
+        <div class="step-row">
+          <div class="step-icon">📄</div>
+          <div><h4>דוח התקבל</h4><p>הנתונים הועברו לצוות המומחים שלנו</p></div>
+        </div>
+        <div class="step-row">
+          <div class="step-icon">🧠</div>
+          <div><h4>ניתוח אנושי מקצועי</h4><p>מומחה יבדוק ויבנה סימולציה מדויקת</p></div>
+        </div>
+        <div class="step-row">
+          <div class="step-icon">⏱️</div>
+          <div><h4>מענה תוך 24 שעות</h4><p>נחזור אליך עם המלצות מפורטות</p></div>
+        </div>
+      </div>
+
+      <a class="wa-btn" href="https://wa.me/972507700322" target="_blank">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.139.564 4.147 1.542 5.888L.057 23.25a.75.75 0 0 0 .921.921l5.47-1.485A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.523-5.2-1.433l-.372-.222-3.863 1.048 1.048-3.754-.243-.386A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        💬 שאלות? צ'אט ישיר ב-WhatsApp
+      </a>
+      <a class="back-btn" href="index.html">← חזרה לדף הבית</a>
+    </div>
+  </div>
 </main>
-<!-- Footer Matching Landing Page -->
-<footer class="w-full bg-surface-container-lowest border-t border-outline-variant py-lg px-margin-mobile flex flex-col items-center text-center">
-<div class="mb-4 flex justify-center"><img alt="Muhni Solution Logo" class="w-32 md:w-40 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBi4eSV_mq2BD4AFROPnGeZI5X6wZs7E2RNiPRrvix-tp3ngGKdBbjzAgg0UICCimfHC7oNFIHbzklRPSRUncplupnjAMoXKYYkrCnZf1c40p5YqQTsx8t0n0sqgRKWt9mtrj38zK_T59gknRF82J99NOuweY7O8LVPRgdvgz8Rm2EgFYV2GaJg8KcQEwflpKZmvAYRW_M0mKjjjNmUc3GlDLzAAu6LLcg2R9KzdoSVNlkisGhV_v0U0JAjj_FHgee4QfcdTFibuKDu"/></div>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6">
-        © 2026 מאני סולושן. Authorized Financial Advisors.
-    </p>
-<!-- Social Links -->
-<div class="flex gap-md mb-8 justify-center"><a class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container hover:bg-primary/10 transition-colors overflow-hidden" href="https://www.facebook.com/tico.zveibel" target="_blank"><img alt="Facebook" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE_jeYzNNmSoSWh15S0XMAxmZO3nyAuN_2XoPssNoe20W43hgDiODot4maVB2ho8xYZfrduCvN0YcvrXfU1S5nAUXnhSNse-m5IOzagUSL732kSFAGfNVybiuST6xDXtHlQyv06JuJ8cCOQtvvQgYYAkntgnQCHQ9dHbAaaqXVEhtN4nxY5zcxL9Gs8-uYHGefe8VJJ_sci9ptQ0ra5hQt1RRYGB41-eISO0rMEag4y9K9VltqCUdc9s6BVGofrPWxd0qFK46w6UCL"/></a><a class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container hover:bg-primary/10 transition-colors overflow-hidden" href="https://www.instagram.com/ticozveibel/" target="_blank"><img alt="Instagram" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmI0_PDbvuW_cRuu_DR7uqHw_tiAQryrfY-SQnJfNTaaDfD4mmH_Q_LJFH1zoJFOWroGYNESRiWvmxmZW-dI3bkyDzDmIchylvo06AOtpUwHgn8OKYiUFJE7NTTjS7ht9QOGcjQcEQl9NLREgfFv7GczsU-vOiceJ822oqrV30dQHd1FNkb0w6UaV0uRxb05ts-MMUI23og0gP4MVPrXgb5hN4jd90b-HUrERsVaT1EZCATqWyuHNbRjCNWM4uRciO1Vg-iC_RyAaF"/></a><a class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container hover:bg-primary/10 transition-colors overflow-hidden" href="https://wa.me/972507700322" target="_blank"><img alt="WhatsApp" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlpvmacw8ZbdeWF6p2P1aXL2KaEpV_epxDyL272i5FmFsKe1ZLidMjl3lY9QvLFSgpg0puHyNS5rUIjfOYXIAN-a8Mj1eFcme6hGvoU_1z6oDVkO3Kt_y4N2CgeV4UmsCX-IjxL1-TjwG78FrHB02fRDdNwwNeS9vj-x9_amHZE6CstbhkNCa5at2nkcoiYnfA4oEvUlGXGwfHlmk4qXNyopE6LWFMHPWaPkPJDF8fPjaHeBs8-9D_OaRR_awzVIBnTOzT5X4cW_-L"/></a></div>
-<!-- Navigation Links -->
-<nav class="flex flex-wrap justify-center gap-md mb-6">
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
-</nav>
-<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors mb-4" href="#">License Info</a>
-<p class="font-label-sm text-label-sm text-outline">Authorized and Regulated Advisory</p>
+
+<footer>
+  <img src="לוגו מופע רגיל עם רקע שקוף.png" alt="Muhni Solution" style="height:48px;width:auto;object-fit:contain;display:block;margin:0 auto 12px;"
+       onerror="this.style.display='none';this.nextSibling.style.display='block'"/>
+  <span style="display:none;font-size:22px;font-weight:900;color:#6e00c1;">muhni solution</span>
+  <p style="color:var(--text-muted);font-size:13px;font-weight:600;margin-bottom:12px;">עושים את זה פשוט</p>
+  <div class="footer-links">
+    <a href="#">תנאי שימוש</a>
+    <a href="#">מדיניות פרטיות</a>
+    <a href="#">צרו קשר</a>
+  </div>
+  <div class="social-row">
+    <a class="social-btn" href="https://www.facebook.com/tico.zveibel" target="_blank" style="background:#1877F2;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
+    <a class="social-btn" href="https://www.instagram.com/ticozveibel/" target="_blank" style="background:linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7);">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg>
+    </a>
+    <a class="social-btn" href="https://wa.me/972507700322" target="_blank" style="background:#25D366;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.139.564 4.147 1.542 5.888L.057 23.25a.75.75 0 0 0 .921.921l5.47-1.485A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.523-5.2-1.433l-.372-.222-3.863 1.048 1.048-3.754-.243-.386A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+    </a>
+  </div>
+  <p class="footer-copy">© 2025 Muhni Solution. כל הזכויות שמורות.<br/>ייעוץ משכנתאות ופיננסים בליווי אישי ומקצועי.</p>
 </footer>
-</body></html>
+
+</body>
+</html>
