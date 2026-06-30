@@ -8,9 +8,10 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --purple: #6e00c1; --purple-dark: #4a007f; --purple-light: #f3e8ff;
-    --text: #1a1a2e; --text-muted: #5a5a7a; --border: #e0d5f0;
-    --bg: #faf8ff; --white: #ffffff; --success: #00b894; --radius: 16px;
+    --purple: #0F243E; --purple-dark: #06111f; --purple-light: #e8f4ed;
+    --text: #1a1a2e; --text-muted: #5a5a7a; --border: #c8ddd2;
+    --bg: #f5faf7; --white: #ffffff; --success: #2E8B57; --radius: 16px;
+    --green: #2E8B57; --gold: #D4AF37;
   }
   html { scroll-behavior: smooth; }
   body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
@@ -19,47 +20,47 @@
   .nav-links { display: flex; gap: 28px; align-items: center; }
   .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 14px; transition: color .2s; }
   .nav-links a:hover { color: var(--purple); }
-  .nav-cta { background: var(--purple); color: white !important; padding: 8px 20px; border-radius: 50px; font-weight: 700 !important; }
+  .nav-cta { background: var(--green); color: white !important; padding: 8px 20px; border-radius: 50px; font-weight: 700 !important; }
   .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
   .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 4px 0; border-radius: 2px; }
-  .hero { padding: 120px 24px 80px; background: linear-gradient(145deg, #2d006e 0%, #6e00c1 55%, #9b30ff 100%); text-align: center; color: white; }
+  .hero { padding: 120px 24px 80px; background: linear-gradient(145deg, #1d5e3a 0%, #2E8B57 60%, #3aa869 100%); text-align: center; color: white; }
   .hero-eyebrow { display: inline-block; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); padding: 6px 18px; border-radius: 50px; font-size: 13px; font-weight: 600; margin-bottom: 24px; }
   .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.2; max-width: 700px; margin: 0 auto 20px; }
-  .hero h1 em { font-style: normal; color: #d4a8ff; }
+  .hero h1 em { font-style: normal; color: #D4AF37; }
   .hero-sub { font-size: 17px; opacity: .85; max-width: 480px; margin: 0 auto 36px; }
-  .hero-btn { display: inline-block; background: white; color: var(--purple); font-size: 18px; font-weight: 800; padding: 16px 44px; border-radius: 50px; text-decoration: none; box-shadow: 0 8px 32px rgba(0,0,0,.25); transition: transform .2s, box-shadow .2s; }
+  .hero-btn { display: inline-block; background: white; color: var(--green); font-size: 18px; font-weight: 800; padding: 16px 44px; border-radius: 50px; text-decoration: none; box-shadow: 0 8px 32px rgba(0,0,0,.25); transition: transform .2s, box-shadow .2s; }
   .hero-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,.3); }
   section { padding: 80px 24px; }
   .section-inner { max-width: 1100px; margin: 0 auto; }
-  .section-label { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--purple); margin-bottom: 12px; }
+  .section-label { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
   .section-title { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; margin-bottom: 16px; }
   .section-sub { color: var(--text-muted); font-size: 17px; max-width: 560px; }
   .how { background: white; }
   .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; margin-top: 48px; }
   .step { padding: 32px 24px; border-radius: var(--radius); border: 1.5px solid var(--border); transition: border-color .2s, box-shadow .2s; }
-  .step:hover { border-color: var(--purple); box-shadow: 0 8px 24px rgba(110,0,193,.1); }
-  .step-num { width: 48px; height: 48px; border-radius: 14px; background: var(--purple); color: white; font-size: 20px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+  .step:hover { border-color: var(--purple); box-shadow: 0 8px 24px rgba(46,139,87,.1); }
+  .step-num { width: 48px; height: 48px; border-radius: 14px; background: var(--green); color: white; font-size: 20px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
   .step h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
   .step p { color: var(--text-muted); font-size: 14px; line-height: 1.6; }
   .banks { background: var(--bg); }
   .banks-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 48px; }
   .bank-card { background: white; border: 1.5px solid var(--border); border-radius: var(--radius); padding: 28px 16px; display: flex; flex-direction: column; align-items: center; gap: 16px; cursor: pointer; transition: border-color .2s, box-shadow .2s, transform .15s; text-align: center; }
-  .bank-card:hover, .bank-card.selected { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(110,0,193,.12); transform: translateY(-2px); }
+  .bank-card:hover, .bank-card.selected { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(46,139,87,.12); transform: translateY(-2px); }
   .bank-card.selected { background: var(--purple-light); }
   .bank-logo { height: 52px; display: flex; align-items: center; justify-content: center; }
   .bank-card span { font-weight: 700; font-size: 15px; }
   .bank-link { font-size: 12px; font-weight: 600; color: var(--purple); padding: 6px 14px; border: 1.5px solid var(--purple); border-radius: 50px; transition: background .2s, color .2s; cursor: pointer; }
   .bank-link:hover { background: var(--purple); color: white; }
   .form-section { background: white; }
-  .form-card { max-width: 680px; margin: 0 auto; background: var(--bg); border: 1.5px solid var(--border); border-radius: 28px; padding: 48px; box-shadow: 0 16px 64px rgba(110,0,193,.08); }
+  .form-card { max-width: 680px; margin: 0 auto; background: var(--bg); border: 1.5px solid var(--border); border-radius: 28px; padding: 48px; box-shadow: 0 16px 64px rgba(46,139,87,.08); }
   .form-header { text-align: center; margin-bottom: 40px; }
-  .form-icon { width: 64px; height: 64px; border-radius: 20px; background: var(--purple-light); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; }
-  .form-card h2 { font-size: 26px; font-weight: 800; color: var(--purple); margin-bottom: 8px; }
+  .form-icon { width: 64px; height: 64px; border-radius: 20px; background: var(--purple-light); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; color: var(--green); }
+  .form-card h2 { font-size: 26px; font-weight: 800; color: var(--green); margin-bottom: 8px; }
   .form-card p { color: var(--text-muted); font-size: 15px; }
   .field { margin-bottom: 20px; }
   .field label { display: block; font-weight: 700; font-size: 14px; margin-bottom: 8px; }
   .field input, .field select { width: 100%; padding: 14px 18px; background: white; border: 1.5px solid var(--border); border-radius: 12px; font-size: 16px; font-family: 'Heebo', sans-serif; color: var(--text); transition: border-color .2s, box-shadow .2s; appearance: none; }
-  .field input:focus, .field select:focus { outline: none; border-color: var(--purple); box-shadow: 0 0 0 3px rgba(110,0,193,.12); }
+  .field input:focus, .field select:focus { outline: none; border-color: var(--purple); box-shadow: 0 0 0 3px rgba(46,139,87,.12); }
   .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .dropzone { border: 2px dashed var(--border); border-radius: 16px; padding: 40px 24px; text-align: center; cursor: pointer; transition: border-color .2s, background .2s; background: white; }
   .dropzone:hover, .dropzone.drag-over { border-color: var(--purple); background: var(--purple-light); }
@@ -68,15 +69,15 @@
   .dropzone-sub { color: var(--text-muted); font-size: 13px; }
   .dropzone.has-file { border-color: var(--success); background: #f0fff8; }
   .file-name { margin-top: 12px; font-size: 14px; font-weight: 600; color: var(--success); display: none; }
-  .submit-btn { width: 100%; padding: 18px; background: var(--purple); color: white; font-size: 18px; font-weight: 800; font-family: 'Heebo', sans-serif; border: none; border-radius: 14px; cursor: pointer; margin-top: 8px; transition: background .2s, transform .15s, box-shadow .2s; box-shadow: 0 6px 24px rgba(110,0,193,.3); }
-  .submit-btn:hover { background: var(--purple-dark); transform: translateY(-1px); }
+  .submit-btn { width: 100%; padding: 18px; background: #0F243E; color: white; font-size: 18px; font-weight: 800; font-family: 'Heebo', sans-serif; border: none; border-radius: 14px; cursor: pointer; margin-top: 8px; transition: background .2s, transform .15s, box-shadow .2s; box-shadow: 0 6px 24px rgba(15,36,62,.3); }
+  .submit-btn:hover { background: #06111f; transform: translateY(-1px); }
   .submit-btn:disabled { opacity: .65; cursor: not-allowed; transform: none; }
   .trust-note { display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--text-muted); font-size: 13px; margin-top: 16px; }
   .success-msg { display: none; text-align: center; padding: 40px 0; }
   .benefits { background: var(--bg); }
   .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
   .benefit-card { background: white; border: 1.5px solid var(--border); border-radius: var(--radius); padding: 36px 32px; transition: box-shadow .2s; }
-  .benefit-card:hover { box-shadow: 0 8px 32px rgba(110,0,193,.08); }
+  .benefit-card:hover { box-shadow: 0 8px 32px rgba(46,139,87,.08); }
   .benefit-icon { font-size: 36px; margin-bottom: 16px; }
   .benefit-card h3 { font-size: 19px; font-weight: 800; margin-bottom: 10px; }
   .benefit-card p { color: var(--text-muted); font-size: 15px; line-height: 1.65; }
@@ -93,7 +94,7 @@
   .mobile-nav-inner { display: flex; justify-content: space-around; padding: 10px 0 16px; }
   .mobile-nav a { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: var(--text-muted); font-size: 11px; font-weight: 600; }
   .mobile-nav a span:first-child { font-size: 22px; }
-  .mobile-nav a.active { color: var(--purple); }
+  .mobile-nav a.active { color: var(--green); }
   .error-msg { display: none; background: #fff0f0; border: 1.5px solid #ffcccc; border-radius: 12px; padding: 16px 20px; color: #c0392b; font-size: 14px; font-weight: 600; margin-top: 16px; text-align: center; }
   @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .4; transform: scale(.8); } }
   @keyframes spin { to { transform: rotate(360deg); } }
@@ -179,45 +180,45 @@
         <button onclick="closeModal()" style="position:absolute;top:16px;left:16px;background:none;border:none;font-size:22px;cursor:pointer;color:#999;">✕</button>
         <div id="modal-content"></div>
         <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;">
-          <a id="modal-link" href="#" target="_blank" onclick="closeModal()" style="flex:1;min-width:140px;display:block;background:var(--purple);color:white;text-align:center;padding:14px 20px;border-radius:12px;font-weight:700;text-decoration:none;font-size:15px;">כניסה לאזור האישי ←</a>
-          <button onclick="closeModalAndScroll()" style="flex:1;min-width:140px;background:var(--purple-light);color:var(--purple);border:none;border-radius:12px;padding:14px 20px;font-weight:700;cursor:pointer;font-size:15px;font-family:inherit;">המשך למילוי הטופס ↓</button>
+          <a id="modal-link" href="#" target="_blank" onclick="closeModal()" style="flex:1;min-width:140px;display:block;background:#0F243E;color:white;text-align:center;padding:14px 20px;border-radius:12px;font-weight:700;text-decoration:none;font-size:15px;">כניסה לאזור האישי ←</a>
+          <button onclick="closeModalAndScroll()" style="flex:1;min-width:140px;background:var(--purple-light);color:var(--green);border:none;border-radius:12px;padding:14px 20px;font-weight:700;cursor:pointer;font-size:15px;font-family:inherit;">המשך למילוי הטופס ↓</button>
         </div>
       </div>
     </div>
 
     <div class="banks-grid">
       <div class="bank-card" data-bank="leumi" onclick="openBankModal('leumi', this)">
-        <div class="bank-logo"><img src="https://raw.githubusercontent.com/Tico-muhni/muhni-landing/main/%D7%9C%D7%90%D7%95%D7%9E%D7%99.png" alt="בנק לאומי" style="max-height:44px;max-width:110px;object-fit:contain;" onerror="this.style.display='none';this.nextSibling.style.display='flex'"/><div style="display:none;background:#f3e8ff;border-radius:8px;padding:6px 12px;font-weight:800;font-size:12px;color:#6e00c1;">בנק לאומי</div></div>
+        <div class="bank-logo"><img src="https://raw.githubusercontent.com/Tico-muhni/muhni-landing/main/%D7%9C%D7%90%D7%95%D7%9E%D7%99.png" alt="בנק לאומי" style="max-height:44px;max-width:110px;object-fit:contain;" onerror="this.style.display='none';this.nextSibling.style.display='flex'"/><div style="display:none;background:#e8f4ed;border-radius:8px;padding:6px 12px;font-weight:800;font-size:12px;color:#2E8B57;">בנק לאומי</div></div>
         <span>בנק לאומי</span>
         <div class="bank-link">איך מוציאים דוח?</div>
       </div>
       <div class="bank-card" data-bank="mizrahi" onclick="openBankModal('mizrahi', this)">
-        <div class="bank-logo"><img src="https://raw.githubusercontent.com/Tico-muhni/muhni-landing/main/%D7%9E%D7%96%D7%A8%D7%97%D7%99.png" alt="מזרחי טפחות" style="max-height:44px;max-width:110px;object-fit:contain;" onerror="this.style.display='none';this.nextSibling.style.display='flex'"/><div style="display:none;background:#f3e8ff;border-radius:8px;padding:6px 12px;font-weight:800;font-size:12px;color:#6e00c1;">מזרחי טפחות</div></div>
+        <div class="bank-logo"><img src="https://raw.githubusercontent.com/Tico-muhni/muhni-landing/main/%D7%9E%D7%96%D7%A8%D7%97%D7%99.png" alt="מזרחי טפחות" style="max-height:44px;max-width:110px;object-fit:contain;" onerror="this.style.display='none';this.nextSibling.style.display='flex'"/><div style="display:none;background:#e8f4ed;border-radius:8px;padding:6px 12px;font-weight:800;font-size:12px;color:#2E8B57;">מזרחי טפחות</div></div>
         <span>מזרחי טפחות</span>
         <div class="bank-link">איך מוציאים דוח?</div>
       </div>
       <div class="bank-card" data-bank="hapoalim" onclick="openBankModal('hapoalim', this)">
-        <div class="bank-logo"><img src="https://raw.githubusercontent.com/Tico-muhni/muhni-landing/main/%D7%A4%D7%95%D7%A2%D7%9C%D7%99%D7%9D.png" alt="בנק הפועלים" style="max-height:44px;max-width:110px;object-fit:contain;" onerror="this.style.display='none';this.nextSibling.style.display='flex'"/><div style="display:none;background:#f3e8ff;border-radius:8px;padding:6px 12px;font-weight:800;font-size:12px;color:#6e00c1;">בנק הפועלים</div></div>
+        <div class="bank-logo"><img src="https://raw.githubusercontent.com/Tico-muhni/muhni-landing/main/%D7%A4%D7%95%D7%A2%D7%9C%D7%99%D7%9D.png" alt="בנק הפועלים" style="max-height:44px;max-width:110px;object-fit:contain;" onerror="this.style.display='none';this.nextSibling.style.display='flex'"/><div style="display:none;background:#e8f4ed;border-radius:8px;padding:6px 12px;font-weight:800;font-size:12px;color:#2E8B57;">בנק הפועלים</div></div>
         <span>בנק הפועלים</span>
         <div class="bank-link">איך מוציאים דוח?</div>
       </div>
       <div class="bank-card" data-bank="discount" onclick="openBankModal('discount', this)">
-        <div class="bank-logo"><img src="https://raw.githubusercontent.com/Tico-muhni/muhni-landing/main/%D7%93%D7%99%D7%A1%D7%A7%D7%95%D7%A0%D7%98.png" alt="בנק דיסקונט" style="max-height:44px;max-width:110px;object-fit:contain;" onerror="this.style.display='none';this.nextSibling.style.display='flex'"/><div style="display:none;background:#f3e8ff;border-radius:8px;padding:6px 12px;font-weight:800;font-size:12px;color:#6e00c1;">בנק דיסקונט</div></div>
+        <div class="bank-logo"><img src="https://raw.githubusercontent.com/Tico-muhni/muhni-landing/main/%D7%93%D7%99%D7%A1%D7%A7%D7%95%D7%A0%D7%98.png" alt="בנק דיסקונט" style="max-height:44px;max-width:110px;object-fit:contain;" onerror="this.style.display='none';this.nextSibling.style.display='flex'"/><div style="display:none;background:#e8f4ed;border-radius:8px;padding:6px 12px;font-weight:800;font-size:12px;color:#2E8B57;">בנק דיסקונט</div></div>
         <span>בנק דיסקונט</span>
         <div class="bank-link">איך מוציאים דוח?</div>
       </div>
       <div class="bank-card" data-bank="jerusalem" onclick="openBankModal('jerusalem', this)">
-        <div class="bank-logo"><img src="https://raw.githubusercontent.com/Tico-muhni/muhni-landing/main/%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D.png" alt="בנק ירושלים" style="max-height:44px;max-width:110px;object-fit:contain;" onerror="this.style.display='none';this.nextSibling.style.display='flex'"/><div style="display:none;background:#f3e8ff;border-radius:8px;padding:6px 12px;font-weight:800;font-size:12px;color:#6e00c1;">בנק ירושלים</div></div>
+        <div class="bank-logo"><img src="https://raw.githubusercontent.com/Tico-muhni/muhni-landing/main/%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D.png" alt="בנק ירושלים" style="max-height:44px;max-width:110px;object-fit:contain;" onerror="this.style.display='none';this.nextSibling.style.display='flex'"/><div style="display:none;background:#e8f4ed;border-radius:8px;padding:6px 12px;font-weight:800;font-size:12px;color:#2E8B57;">בנק ירושלים</div></div>
         <span>בנק ירושלים</span>
         <div class="bank-link">איך מוציאים דוח?</div>
       </div>
       <div class="bank-card" data-bank="mercantile" onclick="openBankModal('mercantile', this)">
-        <div class="bank-logo"><img src="https://raw.githubusercontent.com/Tico-muhni/muhni-landing/main/%D7%9E%D7%A8%D7%9B%D7%A0%D7%AA%D7%99%D7%9C.png" alt="בנק מרכנתיל" style="max-height:44px;max-width:110px;object-fit:contain;" onerror="this.style.display='none';this.nextSibling.style.display='flex'"/><div style="display:none;background:#f3e8ff;border-radius:8px;padding:6px 12px;font-weight:800;font-size:12px;color:#6e00c1;">בנק מרכנתיל</div></div>
+        <div class="bank-logo"><img src="https://raw.githubusercontent.com/Tico-muhni/muhni-landing/main/%D7%9E%D7%A8%D7%9B%D7%A0%D7%AA%D7%99%D7%9C.png" alt="בנק מרכנתיל" style="max-height:44px;max-width:110px;object-fit:contain;" onerror="this.style.display='none';this.nextSibling.style.display='flex'"/><div style="display:none;background:#e8f4ed;border-radius:8px;padding:6px 12px;font-weight:800;font-size:12px;color:#2E8B57;">בנק מרכנתיל</div></div>
         <span>בנק מרכנתיל</span>
         <div class="bank-link">איך מוציאים דוח?</div>
       </div>
       <div class="bank-card" data-bank="fibi" onclick="openBankModal('fibi', this)">
-        <div class="bank-logo"><img src="https://raw.githubusercontent.com/Tico-muhni/muhni-landing/main/%D7%91%D7%99%D7%A0%D7%9C%D7%90%D7%95%D7%9E%D7%99.png" alt="הבנק הבינלאומי" style="max-height:44px;max-width:110px;object-fit:contain;" onerror="this.style.display='none';this.nextSibling.style.display='flex'"/><div style="display:none;background:#f3e8ff;border-radius:8px;padding:6px 12px;font-weight:800;font-size:12px;color:#6e00c1;">הבנק הבינלאומי</div></div>
+        <div class="bank-logo"><img src="https://raw.githubusercontent.com/Tico-muhni/muhni-landing/main/%D7%91%D7%99%D7%A0%D7%9C%D7%90%D7%95%D7%9E%D7%99.png" alt="הבנק הבינלאומי" style="max-height:44px;max-width:110px;object-fit:contain;" onerror="this.style.display='none';this.nextSibling.style.display='flex'"/><div style="display:none;background:#e8f4ed;border-radius:8px;padding:6px 12px;font-weight:800;font-size:12px;color:#2E8B57;">הבנק הבינלאומי</div></div>
         <span>הבנק הבינלאומי</span>
         <div class="bank-link">איך מוציאים דוח?</div>
       </div>
@@ -240,10 +241,10 @@
     </div>
     <div style="max-width:780px;margin:0 auto;">
       <div id="tracks-container"></div>
-      <button onclick="addTrack()" id="add-track-btn" style="width:100%;padding:14px;background:var(--purple-light);color:var(--purple);border:2px dashed var(--purple);border-radius:14px;font-size:15px;font-weight:700;cursor:pointer;margin-bottom:24px;font-family:inherit;">
+      <button onclick="addTrack()" id="add-track-btn" style="width:100%;padding:14px;background:var(--purple-light);color:var(--green);border:2px dashed var(--green);border-radius:14px;font-size:15px;font-weight:700;cursor:pointer;margin-bottom:24px;font-family:inherit;">
         + הוסף מסלול נוסף
       </button>
-      <button onclick="calculateSavings()" style="width:100%;padding:18px;background:var(--purple);color:white;border:none;border-radius:14px;font-size:18px;font-weight:800;cursor:pointer;font-family:inherit;box-shadow:0 6px 24px rgba(110,0,193,.3);">
+      <button onclick="calculateSavings()" style="width:100%;padding:18px;background:#0F243E;color:white;border:none;border-radius:14px;font-size:18px;font-weight:800;cursor:pointer;font-family:inherit;box-shadow:0 6px 24px rgba(15,36,62,.3);">
         חשב פוטנציאל חיסכון ←
       </button>
       <div id="calc-results" style="display:none;margin-top:32px;"></div>
@@ -304,7 +305,7 @@
           <div style="width:72px;height:72px;background:#e8fff4;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:36px;">✅</div>
           <h3 style="font-size:22px;font-weight:800;color:var(--text);margin-bottom:8px;">הפרטים התקבלו בהצלחה!</h3>
           <p style="color:var(--text-muted);font-size:15px;margin-bottom:32px;">תודה שבחרת בנו לבחון את המשכנתה שלך</p>
-          <div style="background:linear-gradient(135deg,#2d006e 0%,#6e00c1 100%);border-radius:24px;padding:32px 24px;color:white;position:relative;overflow:hidden;">
+          <div style="background:linear-gradient(135deg,#1d5e3a 0%,#2E8B57 100%);border-radius:24px;padding:32px 24px;color:white;position:relative;overflow:hidden;">
             <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.4);border-radius:50px;padding:9px 22px;margin-bottom:24px;">
               <span style="width:9px;height:9px;background:#a8f0c6;border-radius:50%;animation:pulse 1.2s ease-in-out infinite;flex-shrink:0;"></span>
               <span style="font-size:14px;font-weight:700;color:#ffffff;">המומחה האישי שלך כבר בודק את הנתונים</span>
@@ -318,7 +319,7 @@
               <p style="font-size:16px;line-height:1.85;color:#1a1a2e;font-weight:500;margin:0;">
                 קיבלנו את הפרטים ואת דוח היתרות שלך.<br/>
                 מומחה מטעמנו ינתח את הנתונים ויחזור<br/>
-                אליך עם סימולציה מפורטת <strong style="color:#6e00c1;">תוך 24 שעות.</strong>
+                אליך עם סימולציה מפורטת <strong style="color:#2E8B57;">תוך 24 שעות.</strong>
               </p>
             </div>
             <div style="display:flex;gap:12px;margin-top:20px;justify-content:center;">
@@ -341,11 +342,11 @@
       <h2 class="section-title">מה אומרים עלינו?</h2>
       <p class="section-sub">מעל 100 לקוחות כבר עברו תהליך מוצלח עם TICO FINANCE</p>
       <div style="display:flex;justify-content:center;gap:40px;margin-top:28px;flex-wrap:wrap;">
-        <div style="text-align:center;"><div style="font-size:34px;font-weight:900;color:var(--purple);">100+</div><div style="font-size:13px;color:var(--text-muted);">לקוחות מרוצים</div></div>
+        <div style="text-align:center;"><div style="font-size:34px;font-weight:900;color:var(--green);">100+</div><div style="font-size:13px;color:var(--text-muted);">לקוחות מרוצים</div></div>
         <div style="width:1px;background:var(--border);"></div>
-        <div style="text-align:center;"><div style="font-size:34px;font-weight:900;color:var(--purple);">₪847</div><div style="font-size:13px;color:var(--text-muted);">חיסכון ממוצע/חודש</div></div>
+        <div style="text-align:center;"><div style="font-size:34px;font-weight:900;color:var(--green);">₪847</div><div style="font-size:13px;color:var(--text-muted);">חיסכון ממוצע/חודש</div></div>
         <div style="width:1px;background:var(--border);"></div>
-        <div style="text-align:center;"><div style="font-size:34px;font-weight:900;color:var(--purple);">3+</div><div style="font-size:13px;color:var(--text-muted);">שנות ניסיון</div></div>
+        <div style="text-align:center;"><div style="font-size:34px;font-weight:900;color:var(--green);">3+</div><div style="font-size:13px;color:var(--text-muted);">שנות ניסיון</div></div>
       </div>
     </div>
 
@@ -360,7 +361,7 @@
             <div style="color:#f5a623;font-size:18px;">★★★★★</div>
             <p style="color:var(--text);font-size:15px;line-height:1.8;flex:1;">"חייב להודות לכם על שירות שעלה על הציפיות וחרג מכל שאיפה. <strong>היחס האישי, האדיב, המקצועי והמהיר לא יישכח.</strong> אין לי ספק שאמשיך לעבוד איתכם ולהמליץ עליכם. אתם אלופים אמיתיים."</p>
             <div style="display:flex;align-items:center;gap:12px;">
-              <div style="width:42px;height:42px;border-radius:50%;background:var(--purple);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0;">ש</div>
+              <div style="width:42px;height:42px;border-radius:50%;background:var(--green);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0;">ש</div>
               <div><div style="font-weight:700;font-size:14px;">שחר ד. ושרה ש.</div><div style="font-size:12px;color:var(--text-muted);">ליווי וגיוס מימון לקבוצת יזמים</div></div>
             </div>
           </div>
@@ -370,7 +371,7 @@
             <div style="color:#f5a623;font-size:18px;">★★★★★</div>
             <p style="color:var(--text);font-size:15px;line-height:1.8;flex:1;">"צ'יקו לקח על עצמו את כל הפרויקט והוביל אותו בצורה מלאה ומקצועית. הוא לא רק ביצע את העבודה, <strong>הוא באמת דאג שהכול יילך חלק.</strong> המסלול שבנה לנו היה מדויק ומותאם אישית. התוצאה? משכנתא טובה, בית חדש וליווי מקצועי מאין כמוהו."</p>
             <div style="display:flex;align-items:center;gap:12px;">
-              <div style="width:42px;height:42px;border-radius:50%;background:var(--purple);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0;">א</div>
+              <div style="width:42px;height:42px;border-radius:50%;background:var(--green);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0;">א</div>
               <div><div style="font-weight:700;font-size:14px;">עידן ומכורה עמר</div><div style="font-size:12px;color:var(--text-muted);">דירה ראשונה — יו"ש</div></div>
             </div>
           </div>
@@ -380,7 +381,7 @@
             <div style="color:#f5a623;font-size:18px;">★★★★★</div>
             <p style="color:var(--text);font-size:15px;line-height:1.8;flex:1;">"הגענו לסיומו של תהליך ואנחנו רוצים להודות על <strong>שירות יוצא דופן וסבלני עד לסיום.</strong> היה הרבה לחץ סביב המשכנתא וידעת להרגיע ולהיות מקצועי. מעריכים המון אלוף! 💪💪💪"</p>
             <div style="display:flex;align-items:center;gap:12px;">
-              <div style="width:42px;height:42px;border-radius:50%;background:var(--purple);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0;">ל</div>
+              <div style="width:42px;height:42px;border-radius:50%;background:var(--green);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0;">ל</div>
               <div><div style="font-weight:700;font-size:14px;">לידור וטל שמאי</div><div style="font-size:12px;color:var(--text-muted);">דירה ראשונה — ת"א</div></div>
             </div>
           </div>
@@ -390,7 +391,7 @@
             <div style="color:#f5a623;font-size:18px;">★★★★★</div>
             <p style="color:var(--text);font-size:15px;line-height:1.8;flex:1;">"נשמח להמליץ על צ'יקו גם לחברינו. <strong>בצד המקצועיות הרבה, רמת הזמינות, הסבלנות וההכלה היו מעבר למצופה.</strong> מודים על התהליך המהיר, היעיל והמקצועי במיוחד."</p>
             <div style="display:flex;align-items:center;gap:12px;">
-              <div style="width:42px;height:42px;border-radius:50%;background:var(--purple);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0;">מ</div>
+              <div style="width:42px;height:42px;border-radius:50%;background:var(--green);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0;">מ</div>
               <div><div style="font-weight:700;font-size:14px;">מילי א.</div><div style="font-size:12px;color:var(--text-muted);">דירה להשקעה — ת"א</div></div>
             </div>
           </div>
@@ -400,7 +401,7 @@
             <div style="color:#f5a623;font-size:18px;">★★★★★</div>
             <p style="color:var(--text);font-size:15px;line-height:1.8;flex:1;">"פנינו לבדיקת מיחזור ותכנית פירעון חלקי. קיבלנו <strong>תמיכה מקצועית ומהירה</strong> עם הסבר מפורט לכל האפשרויות. צ'יקו היה זמין, חם ומעל הכל העביר ביטחון גדול בתהליך."</p>
             <div style="display:flex;align-items:center;gap:12px;">
-              <div style="width:42px;height:42px;border-radius:50%;background:var(--purple);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0;">צ</div>
+              <div style="width:42px;height:42px;border-radius:50%;background:var(--green);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0;">צ</div>
               <div><div style="font-weight:700;font-size:14px;">צחי מיכאלי</div><div style="font-size:12px;color:var(--text-muted);">מיחזור משכנתה</div></div>
             </div>
           </div>
@@ -410,7 +411,7 @@
             <div style="color:#f5a623;font-size:18px;">★★★★★</div>
             <p style="color:var(--text);font-size:15px;line-height:1.8;flex:1;">"ליווה אותי בתהליך מורכב שלא ידעתי אם אקבל משכנתה. <strong>ליווי אישי ואמיתי בכל שלב</strong> עד שקיבלתי את האישור הסופי. עדיין בקשר עד היום ואני ממליצה בחום ובאהבה!"</p>
             <div style="display:flex;align-items:center;gap:12px;">
-              <div style="width:42px;height:42px;border-radius:50%;background:var(--purple);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0;">ס</div>
+              <div style="width:42px;height:42px;border-radius:50%;background:var(--green);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0;">ס</div>
               <div><div style="font-weight:700;font-size:14px;">סיגל ב.ל.</div><div style="font-size:12px;color:var(--text-muted);">רכישת דירת עמידר</div></div>
             </div>
           </div>
@@ -420,7 +421,7 @@
             <div style="color:#f5a623;font-size:18px;">★★★★★</div>
             <p style="color:var(--text);font-size:15px;line-height:1.8;flex:1;">"ליווי בתהליך מחיר למשתכן — מאורגן, הסביר הכל כולל ריביות ומסלולים. <strong>היה ברור לי שאני עושה את הבחירה הנכונה</strong> גם בבחירת הדירה וגם בבחירת היועץ. הצליח לסגור תנאים מצוינים!"</p>
             <div style="display:flex;align-items:center;gap:12px;">
-              <div style="width:42px;height:42px;border-radius:50%;background:var(--purple);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0;">ש</div>
+              <div style="width:42px;height:42px;border-radius:50%;background:var(--green);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0;">ש</div>
               <div><div style="font-weight:700;font-size:14px;">שחר ש.</div><div style="font-size:12px;color:var(--text-muted);">מחיר למשתכן</div></div>
             </div>
           </div>
@@ -430,7 +431,7 @@
             <div style="color:#f5a623;font-size:18px;">★★★★★</div>
             <p style="color:var(--text);font-size:15px;line-height:1.8;flex:1;">"עבודה מעולה! צ'יקו כיועץ היה מאוד מסייע ותמיד מוכן לעזור בכל דבר. <strong>בלעדיו לא מאמינים שהיינו קונים דירה בישראל!</strong>"</p>
             <div style="display:flex;align-items:center;gap:12px;">
-              <div style="width:42px;height:42px;border-radius:50%;background:var(--purple);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0;">ח</div>
+              <div style="width:42px;height:42px;border-radius:50%;background:var(--green);color:white;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0;">ח</div>
               <div><div style="font-weight:700;font-size:14px;">חנה ק.</div><div style="font-size:12px;color:var(--text-muted);">רכישת דירה ראשונה להשקעה</div></div>
             </div>
           </div>
@@ -475,7 +476,7 @@
       const total = maxIndex() + 1;
       for (let i = 0; i < total; i++) {
         const dot = document.createElement('div');
-        dot.style.cssText = `width:${i===current?'24px':'8px'};height:8px;border-radius:4px;background:${i===current?'var(--purple)':'var(--border)'};transition:all .3s;cursor:pointer;`;
+        dot.style.cssText = `width:${i===current?'24px':'8px'};height:8px;border-radius:4px;background:${i===current?'#2E8B57':'var(--border)'};transition:all .3s;cursor:pointer;`;
         dot.onclick = () => goTo(i);
         dotsContainer.appendChild(dot);
       }
@@ -506,7 +507,7 @@
     <div style="max-width:900px;margin:0 auto;display:flex;gap:48px;align-items:center;flex-wrap:wrap;">
       <!-- Photo -->
       <div style="flex-shrink:0;">
-        <div style="width:200px;height:200px;border-radius:50%;overflow:hidden;border:4px solid var(--purple);box-shadow:0 12px 40px rgba(110,0,193,.2);">
+        <div style="width:200px;height:200px;border-radius:50%;overflow:hidden;border:4px solid var(--green);box-shadow:0 12px 40px rgba(46,139,87,.2);">
           <img src="fullbody.png" alt="צ'יקו - TICO FINANCE" style="width:100%;height:100%;object-fit:cover;object-position:center top;image-orientation:from-image;"/>
         </div>
       </div>
@@ -514,14 +515,14 @@
       <div style="flex:1;min-width:280px;">
         <div class="section-label">נעים להכיר</div>
         <h2 class="section-title" style="margin-bottom:6px;">צ'יקו — הארכיטקט הפיננסי שלך</h2>
-        <div style="width:48px;height:3px;background:var(--purple);border-radius:2px;margin-bottom:20px;"></div>
+        <div style="width:48px;height:3px;background:var(--green);border-radius:2px;margin-bottom:20px;"></div>
         <p style="color:var(--text-muted);font-size:16px;line-height:1.85;">
           אני מאמין שמשכנתה היא אף פעם לא רק "השוואת ריביות", אלא <strong style="color:var(--text);">ארכיטקטורה פיננסית שלמה</strong>. ב-TICO FINANCE, אנחנו מסתכלים על הפאזל המלא של החיים והעסקים שלך, כדי לבנות עבורך את המסלול המדויק ביותר.
         </p>
         <p style="color:var(--text-muted);font-size:16px;line-height:1.85;margin-top:16px;">
           השירות המרכזי שלי מתמקד בליווי <strong style="color:var(--text);">משפרי דיור ומשקיעים בנדל"ן</strong>. בין אם המטרה היא למנף נכס קיים, לבצע איחוד הלוואות חכם כדי לשפר תזרים, או למצוא פתרונות מימון יצירתיים — המטרה שלי תמיד זהה: להפוך עסקאות מורכבות לתהליך ברור, חד, בטוח, ותמיד עם חיוך 😊
         </p>
-        <a href="#form" style="display:inline-flex;align-items:center;gap:8px;background:var(--purple);color:white;padding:14px 28px;border-radius:12px;text-decoration:none;font-weight:800;font-size:15px;margin-top:24px;box-shadow:0 6px 20px rgba(110,0,193,.3);">
+        <a href="#form" style="display:inline-flex;align-items:center;gap:8px;background:#0F243E;color:white;padding:14px 28px;border-radius:12px;text-decoration:none;font-weight:800;font-size:15px;margin-top:24px;box-shadow:0 6px 20px rgba(15,36,62,.3);">
           בוא נדבר ←
         </a>
       </div>
@@ -544,7 +545,7 @@
 
 <footer>
   <div class="footer-inner">
-    <img src="hebrewlogo.png" alt="TICO FINANCE" style="height:56px;width:auto;object-fit:contain;display:block;margin:0 auto 16px;" onerror="this.style.display='none';this.nextSibling.style.display='block'"/><span style="display:none;font-size:26px;font-weight:900;color:#6e00c1;">TICO FINANCE</span>
+    <img src="hebrewlogo.png" alt="TICO FINANCE" style="height:56px;width:auto;object-fit:contain;display:block;margin:0 auto 16px;" onerror="this.style.display='none';this.nextSibling.style.display='block'"/><span style="display:none;font-size:26px;font-weight:900;color:#2E8B57;">TICO FINANCE</span>
     <p style="color:var(--text-muted);font-size:14px;font-weight:600;margin-bottom:16px;">עושים את זה פשוט</p>
     <div class="footer-links">
       <a href="#">תנאי שימוש</a>
@@ -689,10 +690,10 @@
     if (sel) sel.value = bankId;
     const bank = bankData[bankId];
     if (!bank) return;
-    const stepsHtml = bank.steps.map((s,i) => `<div style="display:flex;gap:12px;margin-bottom:12px;align-items:flex-start;">${bank.phoneOnly?'<span style="font-size:20px;">📞</span>':`<span style="min-width:24px;height:24px;background:var(--purple);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">${i+1}</span>`}<span style="font-size:14px;line-height:1.6;">${s}</span></div>`).join('');
+    const stepsHtml = bank.steps.map((s,i) => `<div style="display:flex;gap:12px;margin-bottom:12px;align-items:flex-start;">${bank.phoneOnly?'<span style="font-size:20px;">📞</span>':`<span style="min-width:24px;height:24px;background:var(--green);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">${i+1}</span>`}<span style="font-size:14px;line-height:1.6;">${s}</span></div>`).join('');
     const noteHtml = bank.note ? `<div style="background:#fff8e1;border-radius:8px;padding:10px 14px;margin-bottom:16px;font-size:13px;color:#7a5a00;">⚠️ ${bank.note}</div>` : '';
-    const phoneHtml = bank.phone ? `<div style="margin-top:20px;padding:16px;background:var(--purple-light);border-radius:12px;"><div style="font-weight:700;font-size:13px;color:var(--purple);margin-bottom:6px;">📞 ${bank.phoneOnly?'המוקד הטלפוני:':'לחילופין, דרך המוקד:'}</div><div style="font-size:18px;font-weight:800;direction:ltr;text-align:right;">${bank.phone}</div><div style="font-size:12px;color:var(--text-muted);margin-top:4px;">${bank.hours}</div></div>` : '';
-    document.getElementById('modal-content').innerHTML = `<h3 style="font-size:20px;font-weight:800;color:var(--purple);margin-bottom:4px;">איך מוציאים דוח יתרות?</h3><p style="font-size:14px;color:var(--text-muted);margin-bottom:20px;">${bank.name}</p>${noteHtml}${stepsHtml}${phoneHtml}<p style="font-size:12px;color:var(--text-muted);margin-top:16px;">לאחר הורדת הדוח, חזרו לכאן והעלו אותו בטופס 👇</p>`;
+    const phoneHtml = bank.phone ? `<div style="margin-top:20px;padding:16px;background:var(--purple-light);border-radius:12px;"><div style="font-weight:700;font-size:13px;color:var(--green);margin-bottom:6px;">📞 ${bank.phoneOnly?'המוקד הטלפוני:':'לחילופין, דרך המוקד:'}</div><div style="font-size:18px;font-weight:800;direction:ltr;text-align:right;">${bank.phone}</div><div style="font-size:12px;color:var(--text-muted);margin-top:4px;">${bank.hours}</div></div>` : '';
+    document.getElementById('modal-content').innerHTML = `<h3 style="font-size:20px;font-weight:800;color:var(--green);margin-bottom:4px;">איך מוציאים דוח יתרות?</h3><p style="font-size:14px;color:var(--text-muted);margin-bottom:20px;">${bank.name}</p>${noteHtml}${stepsHtml}${phoneHtml}<p style="font-size:12px;color:var(--text-muted);margin-top:16px;">לאחר הורדת הדוח, חזרו לכאן והעלו אותו בטופס 👇</p>`;
     const link = document.getElementById('modal-link');
     if (bank.url && bank.url !== '#') { link.href = bank.url; link.style.display = 'flex'; } else { link.style.display = 'none'; }
     document.getElementById('bank-modal').style.display = 'flex';
@@ -778,7 +779,7 @@
     div.style.cssText = 'background:var(--bg);border:1.5px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px;';
     div.innerHTML = `
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-        <span style="font-weight:800;font-size:15px;color:var(--purple);">מסלול ${trackCount}</span>
+        <span style="font-weight:800;font-size:15px;color:var(--green);">מסלול ${trackCount}</span>
         ${trackCount>1?`<button onclick="removeTrack(${trackCount})" style="background:none;border:none;color:#ccc;font-size:18px;cursor:pointer;">✕</button>`:''}
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
@@ -792,8 +793,8 @@
         <div><label style="font-size:13px;font-weight:700;display:block;margin-bottom:6px;">החזר חודשי (₪)</label><input type="number" id="tp-${trackCount}" placeholder="2800" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:inherit;"/></div>
         <div style="display:flex;align-items:flex-end;">
           <div style="background:var(--purple-light);border-radius:10px;padding:10px 14px;width:100%;">
-            <div style="font-size:11px;color:var(--purple);font-weight:700;">ריבית שוק ממוצעת</div>
-            <div id="tm-${trackCount}" style="font-size:16px;font-weight:900;color:var(--purple);">—</div>
+            <div style="font-size:11px;color:var(--green);font-weight:700;">ריבית שוק ממוצעת</div>
+            <div id="tm-${trackCount}" style="font-size:16px;font-weight:900;color:var(--green);">—</div>
           </div>
         </div>
       </div>`;
@@ -846,8 +847,8 @@
     const tracksHtml=results.map(t=>`<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);"><div><div style="font-weight:700;font-size:14px;">${t.type}</div><div style="font-size:12px;color:var(--text-muted);">ריבית נוכחית: ${t.curRate.toFixed(2)}% | שוק: ${t.newRate.toFixed(2)}%</div></div><div style="font-size:13px;color:${t.diff>0?'var(--success)':'#e74c3c'};font-weight:700;">${t.diff>0?'−':'+'}&rlm;₪${Math.abs(Math.round(t.diff)).toLocaleString()}/חודש</div></div>`).join('');
     const res=document.getElementById('calc-results');
     res.style.display='block';
-    res.innerHTML=`<div style="border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(110,0,193,.12);">
-      <div style="background:linear-gradient(135deg,#2d006e,#6e00c1);padding:32px;color:white;text-align:center;">
+    res.innerHTML=`<div style="border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(46,139,87,.12);">
+      <div style="background:linear-gradient(135deg,#1d5e3a,#2E8B57);padding:32px;color:white;text-align:center;">
         <div style="font-size:13px;opacity:.8;margin-bottom:6px;">הערכת פוטנציאל חיסכון</div>
         ${saving?`
           <div style="font-size:13px;opacity:.75;margin-bottom:2px;">חיסכון כולל לאורך כל התקופה</div>
@@ -862,7 +863,7 @@
       <div style="background:white;padding:24px 28px;"><div style="font-weight:800;font-size:13px;margin-bottom:12px;color:var(--text-muted);">פירוט לפי מסלול</div>${tracksHtml}</div>
       <div style="background:var(--bg);padding:20px 28px;">
         <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px;line-height:1.6;">⚠️ <strong>חשוב:</strong> זוהי הערכה גסה בלבד. החיסכון האמיתי תלוי בעמלות פירעון מוקדם, מבנה התמהיל המלא ומצבך האישי. לסימולציה מדויקת — מלא את הטופס.</p>
-        <a href="#form" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'});return false;" style="display:block;background:var(--purple);color:white;text-align:center;padding:16px;border-radius:12px;font-weight:800;font-size:16px;text-decoration:none;">קבל סימולציה מדויקת ממומחה ←</a>
+        <a href="#form" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'});return false;" style="display:block;background:#0F243E;color:white;text-align:center;padding:16px;border-radius:12px;font-weight:800;font-size:16px;text-decoration:none;">קבל סימולציה מדויקת ממומחה ←</a>
       </div>
     </div>`;
     res.scrollIntoView({behavior:'smooth',block:'start'});
