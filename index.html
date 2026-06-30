@@ -295,6 +295,12 @@
             <div class="file-name" id="file-name"></div>
           </div>
         </div>
+        <div class="field" style="margin-bottom:16px;">
+          <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;font-weight:500;font-size:14px;color:var(--text-muted);line-height:1.5;">
+            <input type="checkbox" id="consent" style="width:20px;height:20px;min-width:20px;margin-top:2px;accent-color:var(--green);cursor:pointer;"/>
+            <span>אני מאשר/ת קבלת מידע ממומחי TICO FINANCE בהתאם ל<a href="privacy.html" style="color:var(--green);font-weight:700;">מדיניות הפרטיות</a></span>
+          </label>
+        </div>
         <button class="submit-btn" id="submit-btn" onclick="submitForm()">שלחו לי ניתוח מומחה</button>
         <div class="error-msg" id="error-msg"></div>
         <div class="trust-note">🔒 המידע מאובטח ומוצפן בתקנים המחמירים ביותר</div>
@@ -546,7 +552,7 @@
 <footer>
   <div class="footer-inner">
     <img src="hebrewlogo.png" alt="TICO FINANCE" style="height:56px;width:auto;object-fit:contain;display:block;margin:0 auto 16px;" onerror="this.style.display='none';this.nextSibling.style.display='block'"/><span style="display:none;font-size:26px;font-weight:900;color:#2E8B57;">TICO FINANCE</span>
-    <p style="color:var(--text-muted);font-size:14px;font-weight:600;margin-bottom:16px;">עושים את זה פשוט</p>
+    <p style="color:var(--text-muted);font-size:14px;font-weight:600;margin-bottom:16px;">כי בלי תכנון, אין כלום.</p>
     <div class="footer-links">
       <a href="terms.html">תנאי שימוש</a>
       <a href="privacy.html">מדיניות פרטיות</a>
@@ -579,6 +585,19 @@
     <p class="footer-copy">© 2025 TICO FINANCE. כל הזכויות שמורות.<br/>אדריכל המשכנתאות — ייעוץ משכנתאות ופיננסים בליווי אישי ומקצועי.</p>
   </div>
 </footer>
+
+<!-- Accessibility Button -->
+<a href="accessibility.html" aria-label="הצהרת נגישות" title="הצהרת נגישות"
+   style="position:fixed;bottom:80px;left:16px;z-index:200;width:52px;height:52px;border-radius:50%;background:#0F243E;color:white;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.3);text-decoration:none;transition:background .2s,transform .15s;"
+   onmouseover="this.style.background='#2E8B57';this.style.transform='scale(1.08)'"
+   onmouseout="this.style.background='#0F243E';this.style.transform='scale(1)'">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="12" cy="4" r="2"/>
+    <path d="M12 7c-1.1 0-2 .9-2 2v4l-2 5h2l1.5-3.5h1L14 18h2l-2-5V9c0-1.1-.9-2-2-2z"/>
+    <path d="M7 10l-3 1 .5 1.5 2.5-.8V10z"/>
+    <path d="M17 10l3 1-.5 1.5-2.5-.8V10z"/>
+  </svg>
+</a>
 
 <nav class="mobile-nav">
   <div class="mobile-nav-inner">
@@ -723,6 +742,7 @@
     if (!bank) { showError('אנא בחר בנק'); return; }
     if (!name) { showError('אנא הכנס שם מלא'); return; }
     if (!phone) { showError('אנא הכנס מספר טלפון'); return; }
+    if (!document.getElementById('consent').checked) { showError('אנא אשר/י את תנאי הפרטיות להמשך'); return; }
     btn.disabled = true;
     btn.innerHTML = 'שולח... <span class="spinner"></span>';
     try {
