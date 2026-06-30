@@ -21,8 +21,20 @@
   .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 14px; transition: color .2s; }
   .nav-links a:hover { color: var(--purple); }
   .nav-cta { background: var(--green); color: white !important; padding: 8px 20px; border-radius: 50px; font-weight: 700 !important; }
-  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
-  .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 4px 0; border-radius: 2px; }
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 201; position: relative; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 4px 0; border-radius: 2px; transition: transform .3s, opacity .3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .mobile-menu { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,.45); backdrop-filter: blur(4px); }
+  .mobile-menu.open { display: block; }
+  .mobile-menu-panel { position: absolute; top: 0; right: 0; width: min(320px, 85vw); height: 100%; background: white; box-shadow: -8px 0 32px rgba(0,0,0,.18); display: flex; flex-direction: column; padding: 80px 28px 32px; gap: 4px; transform: translateX(100%); transition: transform .32s cubic-bezier(.4,0,.2,1); }
+  .mobile-menu.open .mobile-menu-panel { transform: translateX(0); }
+  .mobile-menu-panel a { display: block; padding: 14px 0; font-size: 17px; font-weight: 600; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); }
+  .mobile-menu-panel a:last-child { border-bottom: none; }
+  .mobile-menu-panel a:hover { color: var(--green); }
+  .mobile-menu-panel .m-cta { margin-top: 16px; background: var(--green); color: white !important; text-align: center; padding: 16px; border-radius: 12px; font-weight: 800; border: none; }
+  .mobile-menu-panel .m-wa { background: #25D366; color: white !important; text-align: center; padding: 14px; border-radius: 12px; font-weight: 700; margin-top: 8px; border: none; }
   .hero { padding: 120px 24px 80px; background: linear-gradient(145deg, #1d5e3a 0%, #2E8B57 60%, #3aa869 100%); text-align: center; color: white; }
   .hero-eyebrow { display: inline-block; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); padding: 6px 18px; border-radius: 50px; font-size: 13px; font-weight: 600; margin-bottom: 24px; }
   .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.2; max-width: 700px; margin: 0 auto 20px; }
@@ -123,11 +135,43 @@
       </a>
       <a href="#form" class="nav-cta">בדיקה חינם</a>
     </nav>
-    <button class="hamburger" onclick="var n=document.querySelector('.nav-links');n.style.display=n.style.display==='flex'?'none':'flex'">
+    <button class="hamburger" id="hamburger-btn" onclick="toggleMobileMenu()" aria-label="תפריט">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
+
+<!-- Mobile slide-in menu -->
+<div class="mobile-menu" id="mobile-menu" onclick="closeMobileMenu()">
+  <div class="mobile-menu-panel" onclick="event.stopPropagation()">
+    <a href="#how" onclick="closeMobileMenu()">איך זה עובד?</a>
+    <a href="#banks" onclick="closeMobileMenu()">הבנקים</a>
+    <a href="#calculator" onclick="closeMobileMenu()">מחשבון חיסכון</a>
+    <a href="#testimonials" onclick="closeMobileMenu()">המלצות</a>
+    <a href="#about" onclick="closeMobileMenu()">אודות</a>
+    <a href="#benefits" onclick="closeMobileMenu()">יתרונות</a>
+    <a href="tel:0507700322" onclick="closeMobileMenu()">📞 050-770-0322</a>
+    <a href="#form" class="m-cta" onclick="closeMobileMenu()">בדיקה חינם ←</a>
+    <a href="https://wa.me/972507700322" target="_blank" class="m-wa" onclick="closeMobileMenu()">💬 WhatsApp</a>
+  </div>
+</div>
+
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('hamburger-btn');
+    const isOpen = menu.classList.contains('open');
+    menu.classList.toggle('open', !isOpen);
+    btn.classList.toggle('open', !isOpen);
+    document.body.style.overflow = isOpen ? '' : 'hidden';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('hamburger-btn').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileMenu(); });
+</script>
 
 <section class="hero">
   <div class="hero-eyebrow">✦ ייעוץ אנושי בעידן ה-AI</div>
