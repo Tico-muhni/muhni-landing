@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<title>TICO FINANCE | מימון למשקיעי נדל"ן - מבנה מימון שממקסם תשואה</title>
+<meta name="description" content="משקיעים בנדל״ן? צ'יקו זוויבל בונה עבורכם מבנה מימון חכם שממנף נכון, שומר על תזרים ומאפשר להמשיך לצמוח - ליווי אישי מול הבנקים לכל נכס ונכס."/>
+<meta name="keywords" content="משקיעי נדל&quot;ן, מימון להשקעה, מינוף נדל&quot;ן, משכנתה לנכס שני, יועץ משכנתאות למשקיעים, TICO FINANCE, צ'יקו זוויבל"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://muhni-landing.vercel.app/investors/"/>
+
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://muhni-landing.vercel.app/investors/"/>
+<meta property="og:title" content="TICO FINANCE | מימון למשקיעי נדל״ן"/>
+<meta property="og:description" content="מבנה מימון חכם שממקסם תשואה, שומר על תזרים ומאפשר להמשיך לצמוח - ליווי אישי לכל נכס."/>
+<meta property="og:image" content="https://muhni-landing.vercel.app/hebrewlogo.png"/>
+<meta property="og:locale" content="he_IL"/>
+<meta property="og:site_name" content="TICO FINANCE"/>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "ייעוץ משכנתאות למשקיעי נדל\"ן",
+      "provider": { "@type": "Person", "name": "צ'יקו זוויבל" },
+      "areaServed": { "@type": "Country", "name": "ישראל" },
+      "description": "בניית מבנה מימון חכם למיקסום תשואה בעסקאות נדל\"ן."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "כמה נכסים אפשר לממן במקביל?", "acceptedAnswer": { "@type": "Answer", "text": "אין מגבלה קבועה על מספר הנכסים, אך כל נכס נוסף נבחן לפי יכולת ההחזר, יחס המימון (LTV) הרלוונטי, ומדיניות הבנקים והרגולציה העדכנית של בנק ישראל." } },
+        { "@type": "Question", "name": "איך מבנה המימון משפיע על התשואה?", "acceptedAnswer": { "@type": "Answer", "text": "מינוף נכון מגדיל את התשואה על ההון העצמי, אך דורש איזון מול הסיכון ותזרים המזומנים החודשי. בונים את המבנה בהתאם ליעדים שלכם - צמיחה מהירה או יציבות תזרימית." } }
+      ]
+    }
+  ]
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --purple: #0F243E; --purple-dark: #06111f; --purple-light: #e8f4ed;
+    --text: #1a1a2e; --text-muted: #5a5a7a; --border: #c8ddd2;
+    --bg: #f5faf7; --white: #ffffff; --success: #2E8B57; --radius: 16px;
+    --green: #2E8B57; --gold: #D4AF37;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  header { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 64px; }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 14px; transition: color .2s; }
+  .nav-links a:hover { color: var(--purple); }
+  .nav-cta { background: var(--green); color: white !important; padding: 8px 20px; border-radius: 50px; font-weight: 700 !important; }
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 201; position: relative; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 4px 0; border-radius: 2px; transition: transform .3s, opacity .3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .mobile-menu { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,.45); backdrop-filter: blur(4px); }
+  .mobile-menu.open { display: block; }
+  .mobile-menu-panel { position: absolute; top: 0; right: 0; width: min(320px, 85vw); height: 100%; background: white; box-shadow: -8px 0 32px rgba(0,0,0,.18); display: flex; flex-direction: column; padding: 80px 28px 32px; gap: 4px; transform: translateX(100%); transition: transform .32s cubic-bezier(.4,0,.2,1); }
+  .mobile-menu.open .mobile-menu-panel { transform: translateX(0); }
+  .mobile-menu-panel a { display: block; padding: 14px 0; font-size: 17px; font-weight: 600; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); }
+  .mobile-menu-panel a:last-child { border-bottom: none; }
+  .mobile-menu-panel .m-cta { margin-top: 16px; background: var(--green); color: white !important; text-align: center; padding: 16px; border-radius: 12px; font-weight: 800; border: none; }
+  .mobile-menu-panel .m-wa { background: #25D366; color: white !important; text-align: center; padding: 14px; border-radius: 12px; font-weight: 700; margin-top: 8px; border: none; }
+  .hero { padding: 120px 24px 80px; background: linear-gradient(145deg, #1d5e3a 0%, #2E8B57 60%, #3aa869 100%); text-align: center; color: white; }
+  .hero-eyebrow { display: inline-block; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); padding: 6px 18px; border-radius: 50px; font-size: 13px; font-weight: 600; margin-bottom: 24px; }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.2; max-width: 720px; margin: 0 auto 20px; }
+  .hero h1 em { font-style: normal; color: #D4AF37; }
+  .hero-sub { font-size: 17px; opacity: .9; max-width: 540px; margin: 0 auto 36px; }
+  .hero-btn { display: inline-block; background: white; color: var(--green); font-size: 18px; font-weight: 800; padding: 16px 44px; border-radius: 50px; text-decoration: none; box-shadow: 0 8px 32px rgba(0,0,0,.25); transition: transform .2s, box-shadow .2s; }
+  .hero-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,.3); }
+  section { padding: 80px 24px; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
+  .section-title { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; margin-bottom: 16px; }
+  .section-sub { color: var(--text-muted); font-size: 17px; max-width: 620px; }
+  .about { background: white; }
+  .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; margin-top: 16px; }
+  .about-grid p { color: var(--text-muted); font-size: 16px; margin-bottom: 16px; }
+  .about-grid img { width: 100%; border-radius: var(--radius); object-fit: cover; }
+  .network { background: var(--bg); }
+  .network-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; margin-top: 48px; }
+  .network-card { background: white; border: 1.5px solid var(--border); border-radius: var(--radius); padding: 32px; transition: box-shadow .2s, border-color .2s; }
+  .network-card:hover { box-shadow: 0 8px 32px rgba(46,139,87,.1); border-color: var(--purple); }
+  .network-icon { font-size: 32px; margin-bottom: 14px; }
+  .network-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
+  .network-card p { color: var(--text-muted); font-size: 14.5px; line-height: 1.65; }
+  .how { background: white; }
+  .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; margin-top: 48px; }
+  .step { padding: 32px 24px; border-radius: var(--radius); border: 1.5px solid var(--border); transition: border-color .2s, box-shadow .2s; }
+  .step:hover { border-color: var(--purple); box-shadow: 0 8px 24px rgba(46,139,87,.1); }
+  .step-num { width: 48px; height: 48px; border-radius: 14px; background: var(--green); color: white; font-size: 20px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+  .step h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+  .step p { color: var(--text-muted); font-size: 14px; line-height: 1.6; }
+  .cta-strip { display: block; text-align: center; margin: 48px auto 0; background: var(--purple); color: white; padding: 18px 32px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 15px; max-width: 620px; transition: background .2s, transform .15s; }
+  .cta-strip:hover { background: var(--purple-dark); transform: translateY(-1px); }
+  .faq { background: var(--bg); }
+  .faq-list { max-width: 780px; margin: 48px auto 0; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { background: white; border: 1.5px solid var(--border); border-radius: 14px; padding: 4px 24px; }
+  .faq-item summary { cursor: pointer; list-style: none; padding: 18px 0; font-weight: 700; font-size: 16px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 22px; color: var(--green); font-weight: 400; flex-shrink: 0; transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { color: var(--text-muted); font-size: 14.5px; line-height: 1.7; padding-bottom: 20px; }
+  .final-cta { background: white; }
+  .final-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; background: var(--bg); border: 1.5px solid var(--border); border-radius: 28px; padding: 48px; }
+  .final-grid img { width: 100%; border-radius: var(--radius); object-fit: cover; }
+  .final-grid h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; margin-bottom: 16px; }
+  .final-grid p { color: var(--text-muted); font-size: 16px; margin-bottom: 28px; }
+  .final-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-wa { display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: white; padding: 14px 26px; border-radius: 12px; text-decoration: none; font-weight: 800; font-size: 15px; }
+  .btn-tel { display: inline-flex; align-items: center; gap: 8px; background: white; border: 1.5px solid var(--border); color: var(--text); padding: 14px 26px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 15px; }
+  footer { background: white; border-top: 1px solid var(--border); padding: 48px 24px 80px; text-align: center; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-links { display: flex; justify-content: center; gap: 32px; margin: 20px 0; flex-wrap: wrap; }
+  .footer-links a { text-decoration: none; color: var(--text-muted); font-size: 14px; font-weight: 500; }
+  .footer-links a:hover { color: var(--purple); }
+  .social-row { display: flex; justify-content: center; gap: 16px; margin: 20px 0; }
+  .social-btn { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: opacity .2s; }
+  .social-btn:hover { opacity: .85; }
+  .footer-copy { color: var(--text-muted); font-size: 13px; margin-top: 20px; line-height: 1.7; }
+  @media (max-width: 900px) { .steps { grid-template-columns: 1fr 1fr; } .network-grid { grid-template-columns: 1fr; } .about-grid { grid-template-columns: 1fr; } .about-grid .about-img { order: -1; max-width: 320px; margin: 0 auto; } .final-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 640px) { .nav-links { display: none; } .hamburger { display: block; } .steps { grid-template-columns: 1fr; } section { padding: 60px 16px; } .final-grid { padding: 28px 20px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <img src="../hebrewlogo.png" alt="TICO FINANCE" style="height:40px;width:auto;object-fit:contain;" onerror="this.style.display='none';this.nextSibling.style.display='block'"/><span style="display:none;font-size:22px;font-weight:900;color:#1a2744;">TICO FINANCE</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#advantage">היתרון</a>
+      <a href="#how">איך זה עובד</a>
+      <a href="#faq">שאלות נפוצות</a>
+      <a href="https://wa.me/972507700322?text=%D7%94%D7%99%D7%99%20%D7%A6%27%D7%99%D7%A7%D7%95!%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A9%D7%A7%D7%99%D7%A2%20%D7%95%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%91%D7%99%D7%9F%20%D7%90%D7%99%D7%9A%20%D7%9C%D7%91%D7%A0%D7%95%D7%AA%20%D7%9E%D7%91%D7%A0%D7%94%20%D7%9E%D7%99%D7%9E%D7%95%D7%9F%20%D7%97%D7%9B%D7%9D." target="_blank" class="nav-cta">בדיקה חינם</a>
+    </nav>
+    <button class="hamburger" id="hamburger-btn" onclick="toggleMobileMenu()" aria-label="תפריט">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" onclick="closeMobileMenu()">
+  <div class="mobile-menu-panel" onclick="event.stopPropagation()">
+    <a href="#advantage" onclick="closeMobileMenu()">היתרון</a>
+    <a href="#how" onclick="closeMobileMenu()">איך זה עובד</a>
+    <a href="#faq" onclick="closeMobileMenu()">שאלות נפוצות</a>
+    <a href="https://wa.me/972507700322" target="_blank" class="m-wa" onclick="closeMobileMenu()">💬 WhatsApp</a>
+    <a href="/" onclick="closeMobileMenu()" style="margin-top:8px;text-align:center;">← לדף הבית</a>
+  </div>
+</div>
+
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('hamburger-btn');
+    const isOpen = menu.classList.contains('open');
+    menu.classList.toggle('open', !isOpen);
+    btn.classList.toggle('open', !isOpen);
+    document.body.style.overflow = isOpen ? '' : 'hidden';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('hamburger-btn').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileMenu(); });
+</script>
+
+<section class="hero">
+  <div class="hero-eyebrow">✦ ליווי פיננסי למשקיעי נדל"ן</div>
+  <h1>כל שקל שנשאר בבנק הוא שקל שלא <em>עובד בשבילכם</em></h1>
+  <p class="hero-sub">אני בונה למשקיעים מבנה מימון חכם שממנף נכון, שומר על תזרים בריא, ומאפשר להמשיך לצמוח - נכס אחרי נכס, בלי להתפשר על ביטחון.</p>
+  <a href="https://wa.me/972507700322?text=%D7%94%D7%99%D7%99%20%D7%A6%27%D7%99%D7%A7%D7%95!%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A9%D7%A7%D7%99%D7%A2%20%D7%95%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%91%D7%A0%D7%95%D7%AA%20%D7%9E%D7%91%D7%A0%D7%94%20%D7%9E%D7%99%D7%9E%D7%95%D7%9F%20%D7%97%D7%9B%D7%9D." target="_blank" class="hero-btn">בדיקה חינם ב-WhatsApp</a>
+  <div style="margin-top:16px;">
+    <a href="tel:0507700322" style="color:rgba(255,255,255,.8);font-size:15px;text-decoration:none;">או התקשרו: 050-770-0322</a>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="section-inner about-grid">
+    <div>
+      <div class="section-label">האדריכל הפיננסי שלך</div>
+      <h2 class="section-title">מבנה מימון נכון הוא ההבדל בין תשואה לבין תקיעות</h2>
+      <p>אני צ'יקו זוויבל, יועץ משכנתאות המתמחה במשקיעי נדל"ן. אני מסתכל על התמונה המלאה - לא רק על הריבית של הנכס הבא, אלא על איך כל נכס משפיע על היכולת שלכם למנף את הבא אחריו.</p>
+      <p>המטרה: מבנה מימון שממקסם את המינוף האפשרי, שומר על תזרים יציב, ונותן לכם את החופש להמשיך לגדול.</p>
+      <a href="https://wa.me/972507700322" target="_blank" class="cta-strip" style="margin:24px 0 0;display:inline-block;">בואו נבנה את המבנה הפיננסי שלכם →</a>
+    </div>
+    <div class="about-img">
+      <img src="../fullbody.png" alt="צ'יקו זוויבל"/>
+    </div>
+  </div>
+</section>
+
+<section class="network" id="advantage">
+  <div class="section-inner">
+    <div class="section-label">מה מייחד את הליווי למשקיעים</div>
+    <h2 class="section-title">ליווי שרואה את כל תיק הנדל"ן שלכם</h2>
+    <p class="section-sub">משקיע לא בוחן עסקה בודדת - הוא בונה תיק. אני מתכנן איתכם את המימון כך שכל נכס תומך בבא אחריו.</p>
+    <div class="network-grid">
+      <div class="network-card">
+        <div class="network-icon">📊</div>
+        <h3>מיקסום מינוף</h3>
+        <p>בונים את מבנה המימון כך שתמצו את יחס המימון (LTV) המרבי האפשרי, בהתאם לרגולציה ולתמהיל שמתאים לכם.</p>
+      </div>
+      <div class="network-card">
+        <div class="network-icon">🏘️</div>
+        <h3>ניהול כמה נכסים במקביל</h3>
+        <p>כל משכנתה חדשה נבחנת ביחס לתיק הקיים, כדי לשמור על יכולת מימון לנכסים הבאים בתוכנית.</p>
+      </div>
+      <div class="network-card">
+        <div class="network-icon">💵</div>
+        <h3>תזרים ותשואה מאוזנים</h3>
+        <p>מינוף גבוה יכול להגדיל תשואה, אך גם סיכון. בונים את המבנה שמתאים ליעד שלכם - צמיחה מהירה או יציבות.</p>
+      </div>
+      <div class="network-card">
+        <div class="network-icon">🤝</div>
+        <h3>משא ומתן מול הבנקים</h3>
+        <p>ליווי אישי מול הבנקים לכל עסקה, כדי להשיג את התנאים והריביות הטובים ביותר עבור משקיע.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="section-inner">
+    <div class="section-label">איך זה עובד</div>
+    <h2 class="section-title">תהליך שמסתכל קדימה, לא רק על העסקה הנוכחית</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>מיפוי התיק הקיים</h3>
+        <p>בודקים את הנכסים, המשכנתאות והתזרים הקיימים שלכם - נקודת המוצא לכל תכנון.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>בניית אסטרטגיית מימון</h3>
+        <p>מתכננים כמה ואיך ממנפים, כדי לתמוך גם ברכישה הבאה וגם ברכישות אחריה.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>משא ומתן מול הבנקים</h3>
+        <p>מנהלים את התהליך מול הבנקים לתנאים הטובים ביותר עבור העסקה הנוכחית.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>ליווי מתמשך לצמיחה</h3>
+        <p>ממשיכים ללוות אתכם גם אחרי העסקה, לקראת הנכס הבא בתיק.</p>
+      </div>
+    </div>
+    <a href="https://wa.me/972507700322?text=%D7%94%D7%99%D7%99%20%D7%A6%27%D7%99%D7%A7%D7%95!%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%91%D7%99%D7%9F%20%D7%90%D7%99%D7%9A%20%D7%9C%D7%91%D7%A0%D7%95%D7%AA%20%D7%90%D7%A1%D7%98%D7%A8%D7%98%D7%92%D7%99%D7%99%D7%AA%20%D7%9E%D7%99%D7%9E%D7%95%D7%9F%20%D7%9C%D7%AA%D7%99%D7%A7%20%D7%A9%D7%9C%D7%99." target="_blank" class="cta-strip">אני רוצה לבנות את האסטרטגיה שלי →</a>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="section-inner">
+    <div class="section-label">שאלות נפוצות</div>
+    <h2 class="section-title">עוד לא ברור לכם הכל? הנה תשובות</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>כמה נכסים אפשר לממן במקביל?</summary>
+        <p>אין מגבלה קבועה על מספר הנכסים, אך כל נכס נוסף נבחן לפי יכולת ההחזר, יחס המימון (LTV) הרלוונטי, ומדיניות הבנקים והרגולציה העדכנית של בנק ישראל.</p>
+      </details>
+      <details class="faq-item">
+        <summary>איך מבנה המימון משפיע על התשואה?</summary>
+        <p>מינוף נכון מגדיל את התשואה על ההון העצמי, אך דורש איזון מול הסיכון ותזרים המזומנים החודשי. בונים את המבנה בהתאם ליעדים שלכם - צמיחה מהירה או יציבות תזרימית.</p>
+      </details>
+      <details class="faq-item">
+        <summary>האם יש הבדל בין מימון לנכס ראשון לנכס להשקעה?</summary>
+        <p>כן. משכנתה לנכס שאינו למגורים (נכס להשקעה) כפופה לתנאים ולמגבלות מימון שונים מדירה יחידה. סוקרים את זה בפירוט בייעוץ הראשוני.</p>
+      </details>
+      <details class="faq-item">
+        <summary>הבדיקה הראשונית עולה כסף?</summary>
+        <p>לא. הבדיקה והייעוץ הראשוני חינם וללא התחייבות.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="section-inner">
+    <div class="final-grid">
+      <div>
+        <h2>הנכס הבא בתיק שלכם מתחיל במבנה מימון נכון</h2>
+        <p>עם TICO FINANCE, כל עסקה נבנית כך שתומכת בזו שאחריה. בואו נבנה יחד את האסטרטגיה הפיננסית שתקדם אתכם.</p>
+        <div class="final-actions">
+          <a href="https://wa.me/972507700322?text=%D7%94%D7%99%D7%99%20%D7%A6%27%D7%99%D7%A7%D7%95!%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%AA%D7%97%D7%99%D7%9C%20%D7%91%D7%AA%D7%94%D7%9C%D7%99%D7%9A%20%D7%94%D7%99%D7%99%D7%A2%D7%95%D7%A5." target="_blank" class="btn-wa">💬 דברו איתי ב-WhatsApp</a>
+          <a href="tel:0507700322" class="btn-tel">📞 050-770-0322</a>
+        </div>
+      </div>
+      <img src="../halfbody.png" alt="צ'יקו זוויבל - TICO FINANCE"/>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <img src="../hebrewlogo.png" alt="TICO FINANCE" style="height:56px;width:auto;object-fit:contain;display:block;margin:0 auto 16px;" onerror="this.style.display='none';this.nextSibling.style.display='block'"/><span style="display:none;font-size:26px;font-weight:900;color:#2E8B57;">TICO FINANCE</span>
+    <p style="color:var(--text-muted);font-size:14px;font-weight:600;margin-bottom:16px;">כי בלי תכנון, אין כלום.</p>
+    <div class="footer-links">
+      <a href="../terms.html">תנאי שימוש</a>
+      <a href="../privacy.html">מדיניות פרטיות</a>
+      <a href="https://wa.me/972507700322" target="_blank">צרו קשר</a>
+    </div>
+    <div class="social-row">
+      <a class="social-btn" href="https://www.facebook.com/tico.zveibel" target="_blank" style="background:#1877F2;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+      <a class="social-btn" href="https://www.instagram.com/ticozveibel/" target="_blank" style="background:linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg>
+      </a>
+      <a class="social-btn" href="https://wa.me/972507700322" target="_blank" style="background:#25D366;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.139.564 4.147 1.542 5.888L.057 23.25a.75.75 0 0 0 .921.921l5.47-1.485A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.523-5.2-1.433l-.372-.222-3.863 1.048 1.048-3.754-.243-.386A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      </a>
+    </div>
+    <p class="footer-copy">© 2026 TICO FINANCE. כל הזכויות שמורות.<br/>אדריכל המשכנתאות — ייעוץ משכנתאות ופיננסים בליווי אישי ומקצועי.</p>
+  </div>
+</footer>
+
+</body>
+</html>
