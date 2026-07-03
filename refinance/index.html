@@ -1132,7 +1132,7 @@
     return m.toFixed(2)+'%';
   }
   function addTrack() {
-    if (trackCount >= 4) { document.getElementById('add-track-btn').style.display='none'; return; }
+    if (trackCount >= 10) { document.getElementById('add-track-btn').style.display='none'; return; }
     trackCount++;
     const today = new Date();
     const defEnd = new Date(today.getFullYear()+20, today.getMonth(), 1).toISOString().slice(0,7);
@@ -1163,7 +1163,7 @@
       </div>`;
     document.getElementById('tracks-container').appendChild(div);
     updateMarket(trackCount);
-    if (trackCount>=4) document.getElementById('add-track-btn').style.display='none';
+    if (trackCount>=10) document.getElementById('add-track-btn').style.display='none';
   }
   function removeTrack(id) {
     const el=document.getElementById(`track-${id}`); if(el) el.remove();
