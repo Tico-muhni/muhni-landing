@@ -85,13 +85,20 @@
   .card h3 { font-size: 18px; font-weight: 800; }
   .card p { color: var(--text-muted); font-size: 14px; line-height: 1.6; flex: 1; }
   .card .go { color: var(--green); font-weight: 700; font-size: 14px; margin-top: 4px; }
-  .testimonials { background: white; }
-  .t-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; max-width: 1000px; margin: 40px auto 0; }
-  .t-card { background: var(--bg); border: 1.5px solid var(--border); border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 14px; }
+  .testimonials { background: white; padding-left: 24px; padding-right: 24px; }
+  .t-carousel-wrap { position: relative; max-width: 1100px; margin: 40px auto 0; }
+  .t-track { overflow: hidden; }
+  .t-inner { display: flex; gap: 24px; transition: transform .4s ease; will-change: transform; }
+  .t-card { background: var(--bg); border: 1.5px solid var(--border); border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 14px; min-width: 340px; max-width: 340px; }
   .t-card .stars { color: #f5a623; font-size: 16px; }
   .t-card p { color: var(--text); font-size: 14.5px; line-height: 1.75; flex: 1; }
   .t-who { display: flex; align-items: center; gap: 10px; }
   .t-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--green); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; flex-shrink: 0; }
+  .t-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: white; border: 1.5px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,.1); cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; z-index: 10; transition: all .2s; }
+  .t-arrow:hover { background: var(--purple); color: white; }
+  .t-arrow.prev { right: -20px; }
+  .t-arrow.next { left: -20px; }
+  .t-dots { display: flex; justify-content: center; gap: 8px; margin-top: 28px; }
   .t-name { font-weight: 700; font-size: 13.5px; }
   .t-role { font-size: 11.5px; color: var(--text-muted); }
   .benefits { background: white; }
@@ -108,7 +115,7 @@
   .social-row { display: flex; justify-content: center; gap: 16px; margin: 18px 0; }
   .social-btn { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; }
   .footer-copy { color: var(--text-muted); font-size: 13px; margin-top: 16px; line-height: 1.7; }
-  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } .t-grid { grid-template-columns: 1fr; } .benefits-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } .benefits-grid { grid-template-columns: 1fr 1fr; } }
   .mobile-nav { display: none; position: fixed; bottom: 0; width: 100%; z-index: 100; background: rgba(255,255,255,.96); backdrop-filter: blur(12px); border-top: 1px solid var(--border); }
   .mobile-nav-inner { display: flex; justify-content: space-around; padding: 10px 0 16px; }
   .mobile-nav a { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: var(--text-muted); font-size: 11px; font-weight: 600; }
@@ -253,24 +260,87 @@
   <div class="section-label">לקוחות ממליצים</div>
   <h2 class="section-title">מה אומרים עלינו?</h2>
   <p class="section-sub">מעל 100 לקוחות כבר עברו תהליך מוצלח עם TICO FINANCE</p>
-  <div class="t-grid">
-    <div class="t-card">
-      <div class="stars">★★★★★</div>
-      <p>"חייב להודות לכם על שירות שעלה על הציפיות וחרג מכל שאיפה. היחס האישי, האדיב, המקצועי והמהיר לא יישכח. אתם אלופים אמיתיים."</p>
-      <div class="t-who"><div class="t-avatar">ש</div><div><div class="t-name">שחר ד. ושרה ש.</div><div class="t-role">ליווי וגיוס מימון לקבוצת יזמים</div></div></div>
+  <div class="t-carousel-wrap">
+    <div class="t-track" id="testimonial-track">
+      <div class="t-inner" id="testimonial-inner">
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>"חייב להודות לכם על שירות שעלה על הציפיות וחרג מכל שאיפה. היחס האישי, האדיב, המקצועי והמהיר לא יישכח. אתם אלופים אמיתיים."</p>
+          <div class="t-who"><div class="t-avatar">ש</div><div><div class="t-name">שחר ד. ושרה ש.</div><div class="t-role">ליווי וגיוס מימון לקבוצת יזמים</div></div></div>
+        </div>
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>"צ'יקו לקח על עצמו את כל הפרויקט והוביל אותו בצורה מלאה ומקצועית. הוא באמת דאג שהכול יילך חלק. משכנתא טובה, בית חדש וליווי מקצועי מאין כמוהו."</p>
+          <div class="t-who"><div class="t-avatar">א</div><div><div class="t-name">עידן ומכורה עמר</div><div class="t-role">דירה ראשונה — יו"ש</div></div></div>
+        </div>
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>"הגענו לסיומו של תהליך ואנחנו רוצים להודות על שירות יוצא דופן וסבלני עד לסיום. היה הרבה לחץ סביב המשכנתא וידעת להרגיע ולהיות מקצועי."</p>
+          <div class="t-who"><div class="t-avatar">ל</div><div><div class="t-name">לידור וטל שמאי</div><div class="t-role">דירה ראשונה — ת"א</div></div></div>
+        </div>
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>"נשמח להמליץ על צ'יקו גם לחברינו. בצד המקצועיות הרבה, רמת הזמינות, הסבלנות וההכלה היו מעבר למצופה. תהליך מהיר, יעיל ומקצועי במיוחד."</p>
+          <div class="t-who"><div class="t-avatar">מ</div><div><div class="t-name">מילי א.</div><div class="t-role">דירה להשקעה — ת"א</div></div></div>
+        </div>
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>"פנינו לבדיקת מיחזור ותכנית פירעון חלקי. קיבלנו תמיכה מקצועית ומהירה עם הסבר מפורט לכל האפשרויות. צ'יקו היה זמין, חם ומעל הכל העביר ביטחון גדול בתהליך."</p>
+          <div class="t-who"><div class="t-avatar">צ</div><div><div class="t-name">צחי מיכאלי</div><div class="t-role">מיחזור משכנתה</div></div></div>
+        </div>
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>"ליווה אותי בתהליך מורכב שלא ידעתי אם אקבל משכנתה. ליווי אישי ואמיתי בכל שלב עד שקיבלתי את האישור הסופי. עדיין בקשר עד היום ואני ממליצה בחום ובאהבה!"</p>
+          <div class="t-who"><div class="t-avatar">ס</div><div><div class="t-name">סיגל ב.ל.</div><div class="t-role">רכישת דירת עמידר</div></div></div>
+        </div>
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>"ליווי בתהליך מחיר למשתכן — מאורגן, הסביר הכל כולל ריביות ומסלולים. היה ברור לי שאני עושה את הבחירה הנכונה גם בבחירת הדירה וגם בבחירת היועץ. הצליח לסגור תנאים מצוינים!"</p>
+          <div class="t-who"><div class="t-avatar">ש</div><div><div class="t-name">שחר ש.</div><div class="t-role">מחיר למשתכן</div></div></div>
+        </div>
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>"עבודה מעולה! צ'יקו כיועץ היה מאוד מסייע ותמיד מוכן לעזור בכל דבר. בלעדיו לא מאמינים שהיינו קונים דירה בישראל!"</p>
+          <div class="t-who"><div class="t-avatar">ח</div><div><div class="t-name">חנה ק.</div><div class="t-role">רכישת דירה ראשונה להשקעה</div></div></div>
+        </div>
+      </div>
     </div>
-    <div class="t-card">
-      <div class="stars">★★★★★</div>
-      <p>"הגענו לסיומו של תהליך ואנחנו רוצים להודות על שירות יוצא דופן וסבלני עד לסיום. היה הרבה לחץ סביב המשכנתא וידעת להרגיע ולהיות מקצועי."</p>
-      <div class="t-who"><div class="t-avatar">ל</div><div><div class="t-name">לידור וטל שמאי</div><div class="t-role">דירה ראשונה — ת"א</div></div></div>
-    </div>
-    <div class="t-card">
-      <div class="stars">★★★★★</div>
-      <p>"פנינו לבדיקת מיחזור ותכנית פירעון חלקי. קיבלנו תמיכה מקצועית ומהירה עם הסבר מפורט לכל האפשרויות. צ'יקו היה זמין, חם ומעל הכל העביר ביטחון גדול בתהליך."</p>
-      <div class="t-who"><div class="t-avatar">צ</div><div><div class="t-name">צחי מיכאלי</div><div class="t-role">מיחזור משכנתה</div></div></div>
-    </div>
+    <button class="t-arrow prev" onclick="slideTestimonials(-1)" aria-label="הקודם">‹</button>
+    <button class="t-arrow next" onclick="slideTestimonials(1)" aria-label="הבא">›</button>
   </div>
+  <div class="t-dots" id="t-dots"></div>
 </section>
+
+<script>
+  (function() {
+    const inner = document.getElementById('testimonial-inner');
+    const dotsContainer = document.getElementById('t-dots');
+    const cards = inner.querySelectorAll('.t-card');
+    const cardWidth = 340 + 24;
+    let current = 0;
+    function getVisible() { if (window.innerWidth < 640) return 1; if (window.innerWidth < 1000) return 2; return 3; }
+    function maxIndex() { return Math.max(0, cards.length - getVisible()); }
+    function buildDots() {
+      dotsContainer.innerHTML = '';
+      const total = maxIndex() + 1;
+      for (let i = 0; i < total; i++) {
+        const dot = document.createElement('div');
+        dot.style.cssText = `width:${i===current?'24px':'8px'};height:8px;border-radius:4px;background:${i===current?'#2E8B57':'var(--border)'};transition:all .3s;cursor:pointer;`;
+        dot.onclick = () => goTo(i);
+        dotsContainer.appendChild(dot);
+      }
+    }
+    function goTo(idx) {
+      current = Math.max(0, Math.min(idx, maxIndex()));
+      inner.style.transform = `translateX(${current * cardWidth}px)`;
+      buildDots();
+    }
+    window.slideTestimonials = function(dir) { goTo(current - dir); };
+    setInterval(() => goTo(current < maxIndex() ? current + 1 : 0), 5000);
+    window.addEventListener('resize', () => { goTo(Math.min(current, maxIndex())); });
+    buildDots();
+  })();
+</script>
 
 <section class="benefits">
   <div class="section-label">למה אנחנו?</div>
