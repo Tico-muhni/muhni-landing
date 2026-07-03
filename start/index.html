@@ -34,6 +34,25 @@
   .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 14px; transition: color .2s; }
   .nav-links a:hover { color: var(--purple); }
   .nav-cta { background: var(--green); color: white !important; padding: 8px 20px; border-radius: 50px; font-weight: 700 !important; }
+  .services-wrap { position: relative; }
+  .services-toggle { background: none; border: none; font-family: inherit; color: var(--text-muted); font-weight: 500; font-size: 14px; cursor: pointer; padding: 0; }
+  .services-toggle:hover { color: var(--purple); }
+  .services-panel { display: none; position: absolute; top: 30px; right: 0; background: white; border: 1.5px solid var(--border); border-radius: 14px; box-shadow: 0 12px 32px rgba(0,0,0,.14); padding: 8px; min-width: 210px; z-index: 150; }
+  .services-panel.open { display: block; }
+  .services-panel a { display: block; padding: 10px 12px; border-radius: 8px; color: var(--text); text-decoration: none; font-size: 14px; font-weight: 600; }
+  .services-panel a:hover { background: var(--bg); }
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 201; position: relative; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 4px 0; border-radius: 2px; transition: transform .3s, opacity .3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .mobile-menu { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,.45); backdrop-filter: blur(4px); }
+  .mobile-menu.open { display: block; }
+  .mobile-menu-panel { position: absolute; top: 0; right: 0; width: min(320px, 85vw); height: 100%; background: white; box-shadow: -8px 0 32px rgba(0,0,0,.18); display: flex; flex-direction: column; padding: 80px 28px 32px; gap: 4px; transform: translateX(100%); transition: transform .32s cubic-bezier(.4,0,.2,1); }
+  .mobile-menu.open .mobile-menu-panel { transform: translateX(0); }
+  .mobile-menu-panel a { display: block; padding: 14px 0; font-size: 17px; font-weight: 600; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); }
+  .mobile-menu-panel a:last-child { border-bottom: none; }
+  .mobile-menu-panel .m-cta { margin-top: 16px; background: var(--green); color: white !important; text-align: center; padding: 16px; border-radius: 12px; font-weight: 800; border: none; }
   .hero { padding: 140px 24px 72px; background: linear-gradient(145deg, #1d5e3a 0%, #2E8B57 60%, #3aa869 100%); text-align: center; color: white; }
   .hero-eyebrow { display: inline-block; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); padding: 6px 18px; border-radius: 50px; font-size: 13px; font-weight: 600; margin-bottom: 24px; }
   .hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; line-height: 1.25; max-width: 700px; margin: 0 auto 18px; }
@@ -66,6 +85,15 @@
   .card h3 { font-size: 18px; font-weight: 800; }
   .card p { color: var(--text-muted); font-size: 14px; line-height: 1.6; flex: 1; }
   .card .go { color: var(--green); font-weight: 700; font-size: 14px; margin-top: 4px; }
+  .testimonials { background: white; }
+  .t-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; max-width: 1000px; margin: 40px auto 0; }
+  .t-card { background: var(--bg); border: 1.5px solid var(--border); border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 14px; }
+  .t-card .stars { color: #f5a623; font-size: 16px; }
+  .t-card p { color: var(--text); font-size: 14.5px; line-height: 1.75; flex: 1; }
+  .t-who { display: flex; align-items: center; gap: 10px; }
+  .t-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--green); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; flex-shrink: 0; }
+  .t-name { font-weight: 700; font-size: 13.5px; }
+  .t-role { font-size: 11.5px; color: var(--text-muted); }
   .benefits { background: white; }
   .benefits-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; max-width: 1000px; margin: 40px auto 0; }
   .benefit-card { text-align: center; padding: 8px; }
@@ -80,8 +108,8 @@
   .social-row { display: flex; justify-content: center; gap: 16px; margin: 18px 0; }
   .social-btn { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; }
   .footer-copy { color: var(--text-muted); font-size: 13px; margin-top: 16px; line-height: 1.7; }
-  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } .benefits-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 640px) { .nav-links a:not(.nav-cta) { display: none; } section { padding: 56px 16px; } .about-grid { justify-content: center; text-align: center; } .about-text { text-align: center; } .stats-row { justify-content: center; } }
+  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } .t-grid { grid-template-columns: 1fr; } .benefits-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 640px) { .nav-links { display: none; } .hamburger { display: block; } section { padding: 56px 16px; } .about-grid { justify-content: center; text-align: center; } .about-text { text-align: center; } .stats-row { justify-content: center; } }
 </style>
 </head>
 <body>
@@ -92,10 +120,64 @@
     <nav class="nav-links">
       <a href="#about">אודות</a>
       <a href="#segments">תהליכים</a>
+      <a href="#testimonials">המלצות</a>
+      <div class="services-wrap" id="services-wrap">
+        <button class="services-toggle" onclick="toggleServicesMenu(event)">שירותים נוספים ▾</button>
+        <div class="services-panel" id="services-panel">
+          <a href="/">🏦 מיחזור משכנתה</a>
+          <a href="/upgraders/">🏡 משפרי דיור</a>
+          <a href="/investors/">📈 משקיעי נדל"ן</a>
+          <a href="/br/">🇧🇷 Comprar em Israel</a>
+          <a href="/blog/">✍️ בלוג וטיפים</a>
+        </div>
+      </div>
       <a href="https://wa.me/972507700322" target="_blank" class="nav-cta">דברו איתנו</a>
     </nav>
+    <button class="hamburger" id="hamburger-btn" onclick="toggleMobileMenu()" aria-label="תפריט">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<div class="mobile-menu" id="mobile-menu" onclick="closeMobileMenu()">
+  <div class="mobile-menu-panel" onclick="event.stopPropagation()">
+    <a href="#about" onclick="closeMobileMenu()">אודות</a>
+    <a href="#segments" onclick="closeMobileMenu()">תהליכים</a>
+    <a href="/" onclick="closeMobileMenu()">🏦 מיחזור משכנתה</a>
+    <a href="/upgraders/" onclick="closeMobileMenu()">🏡 משפרי דיור</a>
+    <a href="/investors/" onclick="closeMobileMenu()">📈 משקיעי נדל"ן</a>
+    <a href="/br/" onclick="closeMobileMenu()">🇧🇷 Comprar em Israel</a>
+    <a href="/blog/" onclick="closeMobileMenu()">✍️ בלוג וטיפים</a>
+    <a href="https://wa.me/972507700322" target="_blank" class="m-cta" onclick="closeMobileMenu()">דברו איתנו ←</a>
+  </div>
+</div>
+
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('hamburger-btn');
+    const isOpen = menu.classList.contains('open');
+    menu.classList.toggle('open', !isOpen);
+    btn.classList.toggle('open', !isOpen);
+    document.body.style.overflow = isOpen ? '' : 'hidden';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('hamburger-btn').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileMenu(); });
+  function toggleServicesMenu(e) {
+    e.stopPropagation();
+    document.getElementById('services-panel').classList.toggle('open');
+  }
+  document.addEventListener('click', function(e) {
+    const wrap = document.getElementById('services-wrap');
+    if (wrap && !wrap.contains(e.target)) {
+      document.getElementById('services-panel').classList.remove('open');
+    }
+  });
+</script>
 
 <section class="hero">
   <div class="hero-eyebrow">✦ אדריכל המשכנתאות</div>
@@ -158,6 +240,29 @@
       <p>Você mora no Brasil e quer comprar um imóvel em Israel? Consultoria completa, 100% à distância.</p>
       <div class="go">Saiba mais →</div>
     </a>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="section-label">לקוחות ממליצים</div>
+  <h2 class="section-title">מה אומרים עלינו?</h2>
+  <p class="section-sub">מעל 100 לקוחות כבר עברו תהליך מוצלח עם TICO FINANCE</p>
+  <div class="t-grid">
+    <div class="t-card">
+      <div class="stars">★★★★★</div>
+      <p>"חייב להודות לכם על שירות שעלה על הציפיות וחרג מכל שאיפה. היחס האישי, האדיב, המקצועי והמהיר לא יישכח. אתם אלופים אמיתיים."</p>
+      <div class="t-who"><div class="t-avatar">ש</div><div><div class="t-name">שחר ד. ושרה ש.</div><div class="t-role">ליווי וגיוס מימון לקבוצת יזמים</div></div></div>
+    </div>
+    <div class="t-card">
+      <div class="stars">★★★★★</div>
+      <p>"הגענו לסיומו של תהליך ואנחנו רוצים להודות על שירות יוצא דופן וסבלני עד לסיום. היה הרבה לחץ סביב המשכנתא וידעת להרגיע ולהיות מקצועי."</p>
+      <div class="t-who"><div class="t-avatar">ל</div><div><div class="t-name">לידור וטל שמאי</div><div class="t-role">דירה ראשונה — ת"א</div></div></div>
+    </div>
+    <div class="t-card">
+      <div class="stars">★★★★★</div>
+      <p>"פנינו לבדיקת מיחזור ותכנית פירעון חלקי. קיבלנו תמיכה מקצועית ומהירה עם הסבר מפורט לכל האפשרויות. צ'יקו היה זמין, חם ומעל הכל העביר ביטחון גדול בתהליך."</p>
+      <div class="t-who"><div class="t-avatar">צ</div><div><div class="t-name">צחי מיכאלי</div><div class="t-role">מיחזור משכנתה</div></div></div>
+    </div>
   </div>
 </section>
 

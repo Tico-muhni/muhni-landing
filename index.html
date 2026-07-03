@@ -175,6 +175,13 @@
   .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 14px; transition: color .2s; }
   .nav-links a:hover { color: var(--purple); }
   .nav-cta { background: var(--green); color: white !important; padding: 8px 20px; border-radius: 50px; font-weight: 700 !important; }
+  .services-wrap { position: relative; }
+  .services-toggle { background: none; border: none; font-family: inherit; color: var(--text-muted); font-weight: 500; font-size: 14px; cursor: pointer; padding: 0; }
+  .services-toggle:hover { color: var(--purple); }
+  .services-panel { display: none; position: absolute; top: 30px; right: 0; background: white; border: 1.5px solid var(--border); border-radius: 14px; box-shadow: 0 12px 32px rgba(0,0,0,.14); padding: 8px; min-width: 210px; z-index: 150; }
+  .services-panel.open { display: block; }
+  .services-panel a { display: block; padding: 10px 12px; border-radius: 8px; color: var(--text); text-decoration: none; font-size: 14px; font-weight: 600; }
+  .services-panel a:hover { background: var(--bg); }
   .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 201; position: relative; }
   .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 4px 0; border-radius: 2px; transition: transform .3s, opacity .3s; }
   .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
@@ -287,7 +294,17 @@
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.77-.77a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
         050-770-0322
       </a>
-      <a href="/br/" title="Versão em português" aria-label="Versão em português" style="font-size:19px;text-decoration:none;line-height:1;">🇧🇷</a>
+      <div class="services-wrap" id="services-wrap">
+        <button class="services-toggle" onclick="toggleServicesMenu(event)">שירותים נוספים ▾</button>
+        <div class="services-panel" id="services-panel">
+          <a href="/start/">🧭 כל התהליכים</a>
+          <a href="/">🏦 מיחזור משכנתה</a>
+          <a href="/upgraders/">🏡 משפרי דיור</a>
+          <a href="/investors/">📈 משקיעי נדל"ן</a>
+          <a href="/br/">🇧🇷 Comprar em Israel</a>
+          <a href="/blog/">✍️ בלוג וטיפים</a>
+        </div>
+      </div>
       <a href="#form" class="nav-cta">בדיקה חינם</a>
     </nav>
     <button class="hamburger" id="hamburger-btn" onclick="toggleMobileMenu()" aria-label="תפריט">
@@ -308,7 +325,14 @@
     <a href="tel:0507700322" onclick="closeMobileMenu()">📞 050-770-0322</a>
     <a href="#form" class="m-cta" onclick="closeMobileMenu()">בדיקה חינם ←</a>
     <a href="https://wa.me/972507700322" target="_blank" class="m-wa" onclick="closeMobileMenu()">💬 WhatsApp</a>
-    <a href="/br/" onclick="closeMobileMenu()" style="margin-top:8px;text-align:center;">🇧🇷 Versão em português</a>
+    <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);">
+      <div style="font-size:12px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">שירותים נוספים</div>
+      <a href="/start/" onclick="closeMobileMenu()">🧭 כל התהליכים</a>
+      <a href="/upgraders/" onclick="closeMobileMenu()">🏡 משפרי דיור</a>
+      <a href="/investors/" onclick="closeMobileMenu()">📈 משקיעי נדל"ן</a>
+      <a href="/br/" onclick="closeMobileMenu()">🇧🇷 Comprar em Israel</a>
+      <a href="/blog/" onclick="closeMobileMenu()">✍️ בלוג וטיפים</a>
+    </div>
   </div>
 </div>
 
@@ -327,6 +351,16 @@
     document.body.style.overflow = '';
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileMenu(); });
+  function toggleServicesMenu(e) {
+    e.stopPropagation();
+    document.getElementById('services-panel').classList.toggle('open');
+  }
+  document.addEventListener('click', function(e) {
+    const wrap = document.getElementById('services-wrap');
+    if (wrap && !wrap.contains(e.target)) {
+      document.getElementById('services-panel').classList.remove('open');
+    }
+  });
 </script>
 
 <section class="hero">

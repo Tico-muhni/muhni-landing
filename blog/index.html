@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TICO FINANCE | בלוג וטיפים - משכנתאות ונדל"ן</title>
+<meta name="description" content="טיפים, מאמרים ומדריכים בנושאי משכנתאות, מיחזור, שיפור דיור, השקעות נדל&quot;ן ורכישת נכס בישראל לברזילאים - TICO FINANCE."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://muhni-landing.vercel.app/blog/"/>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --purple: #0F243E; --purple-dark: #06111f; --purple-light: #e8f4ed;
+    --text: #1a1a2e; --text-muted: #5a5a7a; --border: #c8ddd2;
+    --bg: #f5faf7; --white: #ffffff; --radius: 16px;
+    --green: #2E8B57; --gold: #D4AF37;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  header { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 64px; }
+  .header-inner img { height: 40px; width: auto; object-fit: contain; }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 14px; transition: color .2s; }
+  .nav-links a:hover { color: var(--purple); }
+  .nav-cta { background: var(--green); color: white !important; padding: 8px 20px; border-radius: 50px; font-weight: 700 !important; }
+  .services-wrap { position: relative; }
+  .services-toggle { background: none; border: none; font-family: inherit; color: var(--text-muted); font-weight: 500; font-size: 14px; cursor: pointer; padding: 0; }
+  .services-toggle:hover { color: var(--purple); }
+  .services-panel { display: none; position: absolute; top: 30px; right: 0; background: white; border: 1.5px solid var(--border); border-radius: 14px; box-shadow: 0 12px 32px rgba(0,0,0,.14); padding: 8px; min-width: 210px; z-index: 150; }
+  .services-panel.open { display: block; }
+  .services-panel a { display: block; padding: 10px 12px; border-radius: 8px; color: var(--text); text-decoration: none; font-size: 14px; font-weight: 600; }
+  .services-panel a:hover { background: var(--bg); }
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 201; position: relative; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 4px 0; border-radius: 2px; transition: transform .3s, opacity .3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .mobile-menu { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,.45); backdrop-filter: blur(4px); }
+  .mobile-menu.open { display: block; }
+  .mobile-menu-panel { position: absolute; top: 0; right: 0; width: min(320px, 85vw); height: 100%; background: white; box-shadow: -8px 0 32px rgba(0,0,0,.18); display: flex; flex-direction: column; padding: 80px 28px 32px; gap: 4px; transform: translateX(100%); transition: transform .32s cubic-bezier(.4,0,.2,1); }
+  .mobile-menu.open .mobile-menu-panel { transform: translateX(0); }
+  .mobile-menu-panel a { display: block; padding: 14px 0; font-size: 17px; font-weight: 600; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); }
+  .mobile-menu-panel a:last-child { border-bottom: none; }
+  .mobile-menu-panel .m-cta { margin-top: 16px; background: var(--green); color: white !important; text-align: center; padding: 16px; border-radius: 12px; font-weight: 800; border: none; }
+  .hero { padding: 140px 24px 64px; background: linear-gradient(145deg, #1d5e3a 0%, #2E8B57 60%, #3aa869 100%); text-align: center; color: white; }
+  .hero-eyebrow { display: inline-block; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); padding: 6px 18px; border-radius: 50px; font-size: 13px; font-weight: 600; margin-bottom: 24px; }
+  .hero h1 { font-size: clamp(1.8rem, 4.5vw, 2.8rem); font-weight: 900; margin-bottom: 14px; }
+  .hero p { font-size: 16px; opacity: .9; max-width: 520px; margin: 0 auto; }
+  section { padding: 64px 24px; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .cat-block { margin-bottom: 56px; }
+  .cat-block:last-child { margin-bottom: 0; }
+  .cat-head { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+  .cat-head .icon { font-size: 24px; }
+  .cat-head h2 { font-size: 20px; font-weight: 800; }
+  .cat-head a { margin-right: auto; font-size: 13px; font-weight: 700; color: var(--green); text-decoration: none; }
+  .post-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+  .post-card { background: white; border: 1.5px dashed var(--border); border-radius: var(--radius); padding: 26px; display: flex; flex-direction: column; gap: 10px; opacity: .75; }
+  .post-badge { display: inline-block; background: var(--purple-light); color: var(--green); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 50px; width: fit-content; }
+  .post-card h3 { font-size: 15.5px; font-weight: 700; color: var(--text-muted); }
+  .post-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+  footer { background: white; border-top: 1px solid var(--border); padding: 44px 24px 60px; text-align: center; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-links { display: flex; justify-content: center; gap: 28px; margin: 18px 0; flex-wrap: wrap; }
+  .footer-links a { text-decoration: none; color: var(--text-muted); font-size: 14px; font-weight: 500; }
+  .footer-links a:hover { color: var(--purple); }
+  .footer-copy { color: var(--text-muted); font-size: 13px; margin-top: 16px; line-height: 1.7; }
+  @media (max-width: 760px) { .post-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 640px) { .nav-links { display: none; } .hamburger { display: block; } section { padding: 48px 16px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <img src="../hebrewlogo.png" alt="TICO FINANCE" onerror="this.style.display='none'"/>
+    <nav class="nav-links">
+      <a href="/start/">אודות</a>
+      <div class="services-wrap" id="services-wrap">
+        <button class="services-toggle" onclick="toggleServicesMenu(event)">שירותים ▾</button>
+        <div class="services-panel" id="services-panel">
+          <a href="/start/">🧭 כל התהליכים</a>
+          <a href="/">🏦 מיחזור משכנתה</a>
+          <a href="/upgraders/">🏡 משפרי דיור</a>
+          <a href="/investors/">📈 משקיעי נדל"ן</a>
+          <a href="/br/">🇧🇷 Comprar em Israel</a>
+        </div>
+      </div>
+      <a href="https://wa.me/972507700322" target="_blank" class="nav-cta">דברו איתנו</a>
+    </nav>
+    <button class="hamburger" id="hamburger-btn" onclick="toggleMobileMenu()" aria-label="תפריט">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" onclick="closeMobileMenu()">
+  <div class="mobile-menu-panel" onclick="event.stopPropagation()">
+    <a href="/start/" onclick="closeMobileMenu()">🧭 כל התהליכים</a>
+    <a href="/" onclick="closeMobileMenu()">🏦 מיחזור משכנתה</a>
+    <a href="/upgraders/" onclick="closeMobileMenu()">🏡 משפרי דיור</a>
+    <a href="/investors/" onclick="closeMobileMenu()">📈 משקיעי נדל"ן</a>
+    <a href="/br/" onclick="closeMobileMenu()">🇧🇷 Comprar em Israel</a>
+    <a href="https://wa.me/972507700322" target="_blank" class="m-cta" onclick="closeMobileMenu()">דברו איתנו ←</a>
+  </div>
+</div>
+
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('hamburger-btn');
+    const isOpen = menu.classList.contains('open');
+    menu.classList.toggle('open', !isOpen);
+    btn.classList.toggle('open', !isOpen);
+    document.body.style.overflow = isOpen ? '' : 'hidden';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('hamburger-btn').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileMenu(); });
+  function toggleServicesMenu(e) {
+    e.stopPropagation();
+    document.getElementById('services-panel').classList.toggle('open');
+  }
+  document.addEventListener('click', function(e) {
+    const wrap = document.getElementById('services-wrap');
+    if (wrap && !wrap.contains(e.target)) {
+      document.getElementById('services-panel').classList.remove('open');
+    }
+  });
+</script>
+
+<section class="hero">
+  <div class="hero-eyebrow">✦ בקרוב</div>
+  <h1>בלוג וטיפים</h1>
+  <p>מאמרים, טיפים ומדריכים מעשיים בנושאי משכנתאות ונדל"ן - לכל קהל בנפרד. התוכן בדרך, חזרו לבקר בקרוב.</p>
+</section>
+
+<section>
+  <div class="section-inner">
+
+    <div class="cat-block">
+      <div class="cat-head"><span class="icon">🏦</span><h2>מיחזור משכנתה</h2><a href="/">לדף המיחזור ←</a></div>
+      <div class="post-grid">
+        <div class="post-card"><span class="post-badge">בקרוב</span><h3>מתי כדאי למחזר משכנתה?</h3><p>הסימנים שאומרים שהגיע הזמן לבדוק מחדש את התנאים שלכם.</p></div>
+        <div class="post-card"><span class="post-badge">בקרוב</span><h3>עמלת פירעון מוקדם - איך מחשבים?</h3><p>מדריך פשוט להבנת העלות האמיתית של מיחזור.</p></div>
+        <div class="post-card"><span class="post-badge">בקרוב</span><h3>טעויות נפוצות במיחזור משכנתה</h3><p>מה לא לעשות לפני שפונים לבנק.</p></div>
+      </div>
+    </div>
+
+    <div class="cat-block">
+      <div class="cat-head"><span class="icon">🏡</span><h2>משפרי דיור</h2><a href="/upgraders/">לדף משפרי דיור ←</a></div>
+      <div class="post-grid">
+        <div class="post-card"><span class="post-badge">בקרוב</span><h3>הלוואת גישור - כל מה שצריך לדעת</h3><p>מדריך מעשי להבנת התהליך והעלויות.</p></div>
+        <div class="post-card"><span class="post-badge">בקרוב</span><h3>איך לתזמן מכירה וקנייה נכון</h3><p>טיפים לתכנון שתי העסקאות בלי לחץ מיותר.</p></div>
+        <div class="post-card"><span class="post-badge">בקרוב</span><h3>מה עושים אם הדירה לא נמכרת בזמן?</h3><p>תרחישי גיבוי שכל משפר דיור צריך להכיר.</p></div>
+      </div>
+    </div>
+
+    <div class="cat-block">
+      <div class="cat-head"><span class="icon">📈</span><h2>משקיעי נדל"ן</h2><a href="/investors/">לדף המשקיעים ←</a></div>
+      <div class="post-grid">
+        <div class="post-card"><span class="post-badge">בקרוב</span><h3>איך למקסם מינוף בלי לסכן את התיק</h3><p>עקרונות לבניית מבנה מימון נכון למשקיעים.</p></div>
+        <div class="post-card"><span class="post-badge">בקרוב</span><h3>משכנתה לנכס שני - מה שונה?</h3><p>ההבדלים המרכזיים מול משכנתה לדירה יחידה.</p></div>
+        <div class="post-card"><span class="post-badge">בקרוב</span><h3>תזרים מול תשואה - איך מוצאים איזון</h3><p>שאלות שכדאי לשאול לפני כל רכישה נוספת.</p></div>
+      </div>
+    </div>
+
+    <div class="cat-block">
+      <div class="cat-head"><span class="icon">🇧🇷</span><h2>Comprar imóvel em Israel</h2><a href="/br/">Ir para a página →</a></div>
+      <div class="post-grid">
+        <div class="post-card"><span class="post-badge">Em breve</span><h3>Guia: financiamento para residentes no exterior</h3><p>O que você precisa saber antes de começar.</p></div>
+        <div class="post-card"><span class="post-badge">Em breve</span><h3>Documentos necessários do Brasil</h3><p>Checklist completo para organizar sua papelada.</p></div>
+        <div class="post-card"><span class="post-badge">Em breve</span><h3>Como funciona a transferência internacional</h3><p>Entendendo taxas, impostos e prazos.</p></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <img src="../hebrewlogo.png" alt="TICO FINANCE" style="height:52px;width:auto;object-fit:contain;display:block;margin:0 auto 16px;" onerror="this.style.display='none'"/>
+    <p style="color:var(--text-muted);font-size:14px;font-weight:600;margin-bottom:16px;">כי בלי תכנון, אין כלום.</p>
+    <div class="footer-links">
+      <a href="../terms.html">תנאי שימוש</a>
+      <a href="../privacy.html">מדיניות פרטיות</a>
+      <a href="https://wa.me/972507700322" target="_blank">צרו קשר</a>
+    </div>
+    <p class="footer-copy">© 2026 TICO FINANCE. כל הזכויות שמורות.</p>
+  </div>
+</footer>
+
+</body>
+</html>

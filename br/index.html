@@ -110,6 +110,13 @@
   .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 14px; transition: color .2s; }
   .nav-links a:hover { color: var(--purple); }
   .nav-cta { background: var(--green); color: white !important; padding: 8px 20px; border-radius: 50px; font-weight: 700 !important; }
+  .services-wrap { position: relative; }
+  .services-toggle { background: none; border: none; font-family: inherit; color: var(--text-muted); font-weight: 500; font-size: 14px; cursor: pointer; padding: 0; }
+  .services-toggle:hover { color: var(--purple); }
+  .services-panel { display: none; position: absolute; top: 30px; right: 0; background: white; border: 1.5px solid var(--border); border-radius: 14px; box-shadow: 0 12px 32px rgba(0,0,0,.14); padding: 8px; min-width: 210px; z-index: 150; }
+  .services-panel.open { display: block; }
+  .services-panel a { display: block; padding: 10px 12px; border-radius: 8px; color: var(--text); text-decoration: none; font-size: 14px; font-weight: 600; }
+  .services-panel a:hover { background: var(--bg); }
   .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 201; position: relative; }
   .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 4px 0; border-radius: 2px; transition: transform .3s, opacity .3s; }
   .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
@@ -196,7 +203,16 @@
       <a href="#network">Nossa rede</a>
       <a href="#how">Como funciona</a>
       <a href="#faq">Perguntas frequentes</a>
-      <a href="/" title="Versão em hebraico" aria-label="Versão em hebraico" style="font-size:19px;text-decoration:none;line-height:1;">🇮🇱</a>
+      <div class="services-wrap" id="services-wrap">
+        <button class="services-toggle" onclick="toggleServicesMenu(event)">Outros serviços ▾</button>
+        <div class="services-panel" id="services-panel">
+          <a href="/start/">🧭 Todos os processos</a>
+          <a href="/">🇮🇱 Site em hebraico</a>
+          <a href="/upgraders/">🏡 Trocar de imóvel</a>
+          <a href="/investors/">📈 Investidores</a>
+          <a href="/blog/">✍️ Blog e dicas</a>
+        </div>
+      </div>
       <a href="https://wa.me/972507700322?text=Ol%C3%A1%20Tico!%20Vim%20do%20site%20e%20quero%20saber%20mais%20sobre%20comprar%20um%20im%C3%B3vel%20em%20Israel." target="_blank" class="nav-cta">Falar no WhatsApp</a>
     </nav>
     <button class="hamburger" id="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Menu">
@@ -211,7 +227,14 @@
     <a href="#how" onclick="closeMobileMenu()">Como funciona</a>
     <a href="#faq" onclick="closeMobileMenu()">Perguntas frequentes</a>
     <a href="https://wa.me/972507700322" target="_blank" class="m-wa" onclick="closeMobileMenu()">💬 WhatsApp</a>
-    <a href="/" onclick="closeMobileMenu()" style="margin-top:8px;text-align:center;">🇮🇱 גרסה בעברית</a>
+    <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);">
+      <div style="font-size:12px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Outros serviços</div>
+      <a href="/start/" onclick="closeMobileMenu()">🧭 Todos os processos</a>
+      <a href="/" onclick="closeMobileMenu()">🇮🇱 Site em hebraico</a>
+      <a href="/upgraders/" onclick="closeMobileMenu()">🏡 Trocar de imóvel</a>
+      <a href="/investors/" onclick="closeMobileMenu()">📈 Investidores</a>
+      <a href="/blog/" onclick="closeMobileMenu()">✍️ Blog e dicas</a>
+    </div>
   </div>
 </div>
 
@@ -230,6 +253,16 @@
     document.body.style.overflow = '';
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileMenu(); });
+  function toggleServicesMenu(e) {
+    e.stopPropagation();
+    document.getElementById('services-panel').classList.toggle('open');
+  }
+  document.addEventListener('click', function(e) {
+    const wrap = document.getElementById('services-wrap');
+    if (wrap && !wrap.contains(e.target)) {
+      document.getElementById('services-panel').classList.remove('open');
+    }
+  });
 </script>
 
 <section class="hero">
@@ -326,6 +359,20 @@
       </div>
     </div>
     <a href="https://wa.me/972507700322?text=Ol%C3%A1%20Tico!%20Quero%20entender%20como%20funciona%20o%20processo%20de%20compra%20de%20im%C3%B3vel%20em%20Israel." target="_blank" class="cta-strip">Quero entender meu processo →</a>
+  </div>
+</section>
+
+<section class="trust" id="trust" style="background:var(--bg);">
+  <div class="section-inner" style="text-align:center;">
+    <div class="section-label">Confiança</div>
+    <h2 class="section-title">Um consultor com experiência comprovada</h2>
+    <div style="display:flex;justify-content:center;gap:40px;margin-top:28px;flex-wrap:wrap;">
+      <div style="text-align:center;"><div style="font-size:34px;font-weight:900;color:var(--green);">100+</div><div style="font-size:13px;color:var(--text-muted);">clientes atendidos</div></div>
+      <div style="width:1px;background:var(--border);"></div>
+      <div style="text-align:center;"><div style="font-size:34px;font-weight:900;color:var(--green);">3+</div><div style="font-size:13px;color:var(--text-muted);">anos de experiência</div></div>
+      <div style="width:1px;background:var(--border);"></div>
+      <div style="text-align:center;"><div style="font-size:34px;font-weight:900;color:var(--green);">100%</div><div style="font-size:13px;color:var(--text-muted);">consultoria remota</div></div>
+    </div>
   </div>
 </section>
 

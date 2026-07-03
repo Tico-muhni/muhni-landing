@@ -57,6 +57,13 @@
   .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 14px; transition: color .2s; }
   .nav-links a:hover { color: var(--purple); }
   .nav-cta { background: var(--green); color: white !important; padding: 8px 20px; border-radius: 50px; font-weight: 700 !important; }
+  .services-wrap { position: relative; }
+  .services-toggle { background: none; border: none; font-family: inherit; color: var(--text-muted); font-weight: 500; font-size: 14px; cursor: pointer; padding: 0; }
+  .services-toggle:hover { color: var(--purple); }
+  .services-panel { display: none; position: absolute; top: 30px; right: 0; background: white; border: 1.5px solid var(--border); border-radius: 14px; box-shadow: 0 12px 32px rgba(0,0,0,.14); padding: 8px; min-width: 210px; z-index: 150; }
+  .services-panel.open { display: block; }
+  .services-panel a { display: block; padding: 10px 12px; border-radius: 8px; color: var(--text); text-decoration: none; font-size: 14px; font-weight: 600; }
+  .services-panel a:hover { background: var(--bg); }
   .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 201; position: relative; }
   .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 4px 0; border-radius: 2px; transition: transform .3s, opacity .3s; }
   .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
@@ -102,6 +109,15 @@
   .step p { color: var(--text-muted); font-size: 14px; line-height: 1.6; }
   .cta-strip { display: block; text-align: center; margin: 48px auto 0; background: var(--purple); color: white; padding: 18px 32px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 15px; max-width: 620px; transition: background .2s, transform .15s; }
   .cta-strip:hover { background: var(--purple-dark); transform: translateY(-1px); }
+  .testimonials { background: white; }
+  .t-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 48px; }
+  .t-card { background: var(--bg); border: 1.5px solid var(--border); border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 14px; }
+  .t-card .stars { color: #f5a623; font-size: 16px; }
+  .t-card p { color: var(--text); font-size: 14.5px; line-height: 1.75; flex: 1; }
+  .t-who { display: flex; align-items: center; gap: 10px; }
+  .t-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--green); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; flex-shrink: 0; }
+  .t-name { font-weight: 700; font-size: 13.5px; }
+  .t-role { font-size: 11.5px; color: var(--text-muted); }
   .faq { background: var(--bg); }
   .faq-list { max-width: 780px; margin: 48px auto 0; display: flex; flex-direction: column; gap: 12px; }
   .faq-item { background: white; border: 1.5px solid var(--border); border-radius: 14px; padding: 4px 24px; }
@@ -127,7 +143,7 @@
   .social-btn { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: opacity .2s; }
   .social-btn:hover { opacity: .85; }
   .footer-copy { color: var(--text-muted); font-size: 13px; margin-top: 20px; line-height: 1.7; }
-  @media (max-width: 900px) { .steps { grid-template-columns: 1fr 1fr; } .network-grid { grid-template-columns: 1fr; } .about-grid { grid-template-columns: 1fr; } .about-grid .about-img { order: -1; max-width: 320px; margin: 0 auto; } .final-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) { .steps { grid-template-columns: 1fr 1fr; } .network-grid { grid-template-columns: 1fr; } .t-grid { grid-template-columns: 1fr; } .about-grid { grid-template-columns: 1fr; } .about-grid .about-img { order: -1; max-width: 320px; margin: 0 auto; } .final-grid { grid-template-columns: 1fr; } }
   @media (max-width: 640px) { .nav-links { display: none; } .hamburger { display: block; } .steps { grid-template-columns: 1fr; } section { padding: 60px 16px; } .final-grid { padding: 28px 20px; } }
 </style>
 </head>
@@ -141,7 +157,18 @@
     <nav class="nav-links">
       <a href="#advantage">היתרון</a>
       <a href="#how">איך זה עובד</a>
+      <a href="#testimonials">המלצות</a>
       <a href="#faq">שאלות נפוצות</a>
+      <div class="services-wrap" id="services-wrap">
+        <button class="services-toggle" onclick="toggleServicesMenu(event)">שירותים נוספים ▾</button>
+        <div class="services-panel" id="services-panel">
+          <a href="/start/">🧭 כל התהליכים</a>
+          <a href="/">🏦 מיחזור משכנתה</a>
+          <a href="/upgraders/">🏡 משפרי דיור</a>
+          <a href="/br/">🇧🇷 Comprar em Israel</a>
+          <a href="/blog/">✍️ בלוג וטיפים</a>
+        </div>
+      </div>
       <a href="https://wa.me/972507700322?text=%D7%94%D7%99%D7%99%20%D7%A6%27%D7%99%D7%A7%D7%95!%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A9%D7%A7%D7%99%D7%A2%20%D7%95%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%91%D7%99%D7%9F%20%D7%90%D7%99%D7%9A%20%D7%9C%D7%91%D7%A0%D7%95%D7%AA%20%D7%9E%D7%91%D7%A0%D7%94%20%D7%9E%D7%99%D7%9E%D7%95%D7%9F%20%D7%97%D7%9B%D7%9D." target="_blank" class="nav-cta">בדיקה חינם</a>
     </nav>
     <button class="hamburger" id="hamburger-btn" onclick="toggleMobileMenu()" aria-label="תפריט">
@@ -156,7 +183,14 @@
     <a href="#how" onclick="closeMobileMenu()">איך זה עובד</a>
     <a href="#faq" onclick="closeMobileMenu()">שאלות נפוצות</a>
     <a href="https://wa.me/972507700322" target="_blank" class="m-wa" onclick="closeMobileMenu()">💬 WhatsApp</a>
-    <a href="/" onclick="closeMobileMenu()" style="margin-top:8px;text-align:center;">← לדף הבית</a>
+    <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);">
+      <div style="font-size:12px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">שירותים נוספים</div>
+      <a href="/start/" onclick="closeMobileMenu()">🧭 כל התהליכים</a>
+      <a href="/" onclick="closeMobileMenu()">🏦 מיחזור משכנתה</a>
+      <a href="/upgraders/" onclick="closeMobileMenu()">🏡 משפרי דיור</a>
+      <a href="/br/" onclick="closeMobileMenu()">🇧🇷 Comprar em Israel</a>
+      <a href="/blog/" onclick="closeMobileMenu()">✍️ בלוג וטיפים</a>
+    </div>
   </div>
 </div>
 
@@ -175,6 +209,16 @@
     document.body.style.overflow = '';
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileMenu(); });
+  function toggleServicesMenu(e) {
+    e.stopPropagation();
+    document.getElementById('services-panel').classList.toggle('open');
+  }
+  document.addEventListener('click', function(e) {
+    const wrap = document.getElementById('services-wrap');
+    if (wrap && !wrap.contains(e.target)) {
+      document.getElementById('services-panel').classList.remove('open');
+    }
+  });
 </script>
 
 <section class="hero">
@@ -259,6 +303,31 @@
       </div>
     </div>
     <a href="https://wa.me/972507700322?text=%D7%94%D7%99%D7%99%20%D7%A6%27%D7%99%D7%A7%D7%95!%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%91%D7%99%D7%9F%20%D7%90%D7%99%D7%9A%20%D7%9C%D7%91%D7%A0%D7%95%D7%AA%20%D7%90%D7%A1%D7%98%D7%A8%D7%98%D7%92%D7%99%D7%99%D7%AA%20%D7%9E%D7%99%D7%9E%D7%95%D7%9F%20%D7%9C%D7%AA%D7%99%D7%A7%20%D7%A9%D7%9C%D7%99." target="_blank" class="cta-strip">אני רוצה לבנות את האסטרטגיה שלי →</a>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="section-inner">
+    <div class="section-label">לקוחות ממליצים</div>
+    <h2 class="section-title">מה אומרים עלינו?</h2>
+    <p class="section-sub">מעל 100 לקוחות כבר עברו תהליך מוצלח עם TICO FINANCE</p>
+    <div class="t-grid">
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p>"נשמח להמליץ על צ'יקו גם לחברינו. בצד המקצועיות הרבה, רמת הזמינות, הסבלנות וההכלה היו מעבר למצופה. מודים על התהליך המהיר, היעיל והמקצועי במיוחד."</p>
+        <div class="t-who"><div class="t-avatar">מ</div><div><div class="t-name">מילי א.</div><div class="t-role">דירה להשקעה — ת"א</div></div></div>
+      </div>
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p>"עבודה מעולה! צ'יקו כיועץ היה מאוד מסייע ותמיד מוכן לעזור בכל דבר. בלעדיו לא מאמינים שהיינו קונים דירה בישראל!"</p>
+        <div class="t-who"><div class="t-avatar">ח</div><div><div class="t-name">חנה ק.</div><div class="t-role">רכישת דירה ראשונה להשקעה</div></div></div>
+      </div>
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p>"חייב להודות לכם על שירות שעלה על הציפיות וחרג מכל שאיפה. היחס האישי, האדיב, המקצועי והמהיר לא יישכח. אתם אלופים אמיתיים."</p>
+        <div class="t-who"><div class="t-avatar">ש</div><div><div class="t-name">שחר ד. ושרה ש.</div><div class="t-role">ליווי וגיוס מימון לקבוצת יזמים</div></div></div>
+      </div>
+    </div>
   </div>
 </section>
 
