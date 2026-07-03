@@ -27,7 +27,7 @@
   }
   html { scroll-behavior: smooth; }
   body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-  header { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  header { position: fixed; top: 0; width: 100%; z-index: 210; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
   .header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 64px; }
   .header-inner img { height: 40px; width: auto; object-fit: contain; }
   .nav-links { display: flex; gap: 24px; align-items: center; }
@@ -115,6 +115,7 @@
   .mobile-nav a span:first-child { font-size: 22px; }
   .mobile-nav a.active { color: var(--green); }
   @media (max-width: 640px) { .nav-links { display: none; } .hamburger { display: block; } section { padding: 56px 16px; } .about-grid { justify-content: center; text-align: center; } .about-text { text-align: center; } .stats-row { justify-content: center; } .mobile-nav { display: block; } }
+  @media (max-width: 1200px) { .nav-links { display: none; } .hamburger { display: block; } .mobile-nav { display: block; } }
 </style>
 </head>
 <body>
