@@ -9,69 +9,304 @@
 <link rel="canonical" href="https://muhni-landing.vercel.app/privacy.html"/>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  :root{--blue:#0F243E;--green:#2E8B57;--gold:#D4AF37;--text:#0F243E;--text-muted:#5a6b7a;--border:#dde5ec;--bg:#F9F9F7}
-  body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);line-height:1.8}
-  .top{background:var(--blue);color:white;padding:48px 24px;text-align:center}
-  .top a{color:var(--gold);text-decoration:none;font-size:14px;display:inline-block;margin-bottom:16px}
-  .top h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800}
-  .wrap{max-width:780px;margin:0 auto;padding:48px 24px 80px}
-  h2{font-size:20px;font-weight:800;color:var(--blue);margin:32px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--gold)}
-  h2:first-child{margin-top:0}
-  p{margin-bottom:14px;color:#33434f}
-  ul{margin:0 24px 16px;color:#33434f}
-  li{margin-bottom:8px}
-  .updated{font-size:13px;color:var(--text-muted);font-style:italic;margin-bottom:24px}
-  .back{display:inline-block;margin-top:32px;background:var(--green);color:white;padding:12px 28px;border-radius:10px;text-decoration:none;font-weight:700}
-  strong{color:var(--blue)}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --purple: #0F243E; --purple-dark: #06111f; --purple-light: #e8f4ed;
+    --text: #1a1a2e; --text-muted: #5a5a7a; --border: #c8ddd2;
+    --bg: #f5faf7; --white: #ffffff; --radius: 16px;
+    --green: #2E8B57; --gold: #D4AF37;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  header { position: fixed; top: 0; width: 100%; z-index: 210; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 64px; }
+  .header-inner img { height: 40px; width: auto; object-fit: contain; }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 14px; transition: color .2s; }
+  .nav-links a:hover { color: var(--purple); }
+  .nav-cta { background: var(--green); color: white !important; padding: 8px 20px; border-radius: 50px; font-weight: 700 !important; }
+  .services-wrap { position: relative; }
+  .services-toggle { background: none; border: none; font-family: inherit; color: var(--text-muted); font-weight: 500; font-size: 14px; cursor: pointer; padding: 0; }
+  .services-toggle:hover { color: var(--purple); }
+  .services-panel { display: none; position: absolute; top: 30px; right: 0; background: white; border: 1.5px solid var(--border); border-radius: 14px; box-shadow: 0 12px 32px rgba(0,0,0,.14); padding: 8px; min-width: 210px; z-index: 150; }
+  .services-panel.open { display: block; }
+  .services-panel a { display: block; padding: 10px 12px; border-radius: 8px; color: var(--text); text-decoration: none; font-size: 14px; font-weight: 600; }
+  .services-panel a:hover { background: var(--bg); }
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 201; position: relative; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 4px 0; border-radius: 2px; transition: transform .3s, opacity .3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .mobile-menu { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,.45); backdrop-filter: blur(4px); }
+  .mobile-menu.open { display: block; }
+  .mobile-menu-panel { position: absolute; top: 0; right: 0; width: min(320px, 85vw); height: 100%; background: white; box-shadow: -8px 0 32px rgba(0,0,0,.18); display: flex; flex-direction: column; padding: 80px 28px 32px; gap: 4px; transform: translateX(100%); transition: transform .32s cubic-bezier(.4,0,.2,1); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .mobile-menu.open .mobile-menu-panel { transform: translateX(0); }
+  .mobile-menu-panel a { display: block; padding: 14px 0; font-size: 17px; font-weight: 600; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); }
+  .mobile-menu-panel a:last-child { border-bottom: none; }
+  .mobile-menu-panel .m-cta { margin-top: 16px; background: var(--green); color: white !important; text-align: center; padding: 16px; border-radius: 12px; font-weight: 800; border: none; }
+  .legal-hero { padding: 132px 24px 40px; background: linear-gradient(145deg, #1d5e3a 0%, #2E8B57 60%, #3aa869 100%); color: white; text-align: center; }
+  .legal-hero h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 900; }
+  main { max-width: 720px; margin: 0 auto; padding: 40px 24px 24px; }
+  .updated { font-size: 13px; color: var(--text-muted); font-style: italic; margin-bottom: 24px; }
+  .legal-body h2 { font-size: 19px; font-weight: 800; color: var(--purple); margin: 32px 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--gold); }
+  .legal-body h2:first-child { margin-top: 0; }
+  .legal-body p { margin-bottom: 14px; color: var(--text); font-size: 15.5px; line-height: 1.8; }
+  .legal-body ul { margin: 0 24px 16px; color: var(--text); font-size: 15.5px; }
+  .legal-body li { margin-bottom: 8px; }
+  .legal-body strong { color: var(--purple); }
+  .highlight { background: #fff8e8; border: 1px solid var(--gold); border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+  .contact-box { background: white; border: 1.5px solid var(--border); border-radius: 12px; padding: 24px; margin: 16px 0; }
+  .back-link { display: inline-block; margin-top: 20px; background: var(--green); color: white !important; padding: 12px 28px; border-radius: 10px; text-decoration: none; font-weight: 700; }
+  footer { background: white; border-top: 1px solid var(--border); padding: 44px 24px 80px; text-align: center; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-links { display: flex; justify-content: center; gap: 28px; margin: 18px 0; flex-wrap: wrap; }
+  .footer-links a { text-decoration: none; color: var(--text-muted); font-size: 14px; font-weight: 500; }
+  .footer-links a:hover { color: var(--purple); }
+  .footer-copy { color: var(--text-muted); font-size: 13px; margin-top: 16px; line-height: 1.7; }
+  .mobile-nav { display: none; position: fixed; bottom: 0; width: 100%; z-index: 100; background: rgba(255,255,255,.96); backdrop-filter: blur(12px); border-top: 1px solid var(--border); }
+  .mobile-nav-inner { display: flex; justify-content: space-around; padding: 10px 0 16px; }
+  .mobile-nav a { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: var(--text-muted); font-size: 11px; font-weight: 600; }
+  .mobile-nav a span:first-child { font-size: 22px; }
+  .mobile-nav a.active { color: var(--green); }
+  @media (max-width: 640px) { .nav-links { display: none; } .hamburger { display: block; } .mobile-nav { display: block; } main { padding: 32px 18px 16px; } .legal-hero { padding: 112px 18px 32px; } }
+  @media (max-width: 1200px) { .nav-links { display: none; } .hamburger { display: block; } .mobile-nav { display: block; } }
 </style>
 </head>
 <body>
-<div class="top">
-  <a href="index.html">← חזרה לדף הבית</a>
+
+<header>
+  <div class="header-inner">
+    <img src="hebrewlogo.png" alt="TICO FINANCE" onerror="this.style.display='none'"/>
+    <nav class="nav-links">
+      <a href="/">אודות</a>
+      <div class="services-wrap" id="services-wrap">
+        <button class="services-toggle" onclick="toggleServicesMenu(event)">שירותים ▾</button>
+        <div class="services-panel" id="services-panel">
+          <a href="/">🧭 כל התהליכים</a>
+          <a href="/refinance/">🏦 מיחזור משכנתה</a>
+          <a href="/upgraders/">🏡 משפרי דיור</a>
+          <a href="/investors/">📈 משקיעי נדל"ן</a>
+          <a href="/br/">🇧🇷 Comprar em Israel</a>
+          <a href="/blog/">✍️ בלוג וטיפים</a>
+        </div>
+      </div>
+      <a href="https://wa.me/972507700322" target="_blank" class="nav-cta">דברו איתנו</a>
+    </nav>
+    <button class="hamburger" id="hamburger-btn" onclick="toggleMobileMenu()" aria-label="תפריט">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" onclick="closeMobileMenu()">
+  <div class="mobile-menu-panel" onclick="event.stopPropagation()">
+    <a href="/" onclick="closeMobileMenu()">🧭 כל התהליכים</a>
+    <a href="/refinance/" onclick="closeMobileMenu()">🏦 מיחזור משכנתה</a>
+    <a href="/upgraders/" onclick="closeMobileMenu()">🏡 משפרי דיור</a>
+    <a href="/investors/" onclick="closeMobileMenu()">📈 משקיעי נדל"ן</a>
+    <a href="/br/" onclick="closeMobileMenu()">🇧🇷 Comprar em Israel</a>
+    <a href="/blog/" onclick="closeMobileMenu()">✍️ בלוג וטיפים</a>
+    <a href="https://wa.me/972507700322" target="_blank" class="m-cta" onclick="closeMobileMenu()">דברו איתנו ←</a>
+  </div>
+</div>
+
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('hamburger-btn');
+    const isOpen = menu.classList.contains('open');
+    menu.classList.toggle('open', !isOpen);
+    btn.classList.toggle('open', !isOpen);
+    document.body.style.overflow = isOpen ? '' : 'hidden';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('hamburger-btn').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileMenu(); });
+  function toggleServicesMenu(e) {
+    e.stopPropagation();
+    document.getElementById('services-panel').classList.toggle('open');
+  }
+  document.addEventListener('click', function(e) {
+    const wrap = document.getElementById('services-wrap');
+    if (wrap && !wrap.contains(e.target)) {
+      document.getElementById('services-panel').classList.remove('open');
+    }
+  });
+</script>
+
+<section class="legal-hero">
   <h1>מדיניות פרטיות</h1>
-</div>
-<div class="wrap">
+</section>
+
+<main>
   <p class="updated">עודכן לאחרונה: יוני 2026</p>
+  <div class="legal-body">
 
-  <p>Tico Finance (להלן: "החברה", "אנחנו") מכבדת את פרטיותך ומחויבת להגן על המידע האישי שתמסור לנו. מדיניות זו מסבירה כיצד אנו אוספים, משתמשים, שומרים ומגנים על המידע שלך, בהתאם לחוק הגנת הפרטיות, התשמ"א-1981 ותקנותיו.</p>
+    <p>Tico Finance (להלן: "החברה", "אנחנו") מכבדת את פרטיותך ומחויבת להגן על המידע האישי שתמסור לנו. מדיניות זו מסבירה כיצד אנו אוספים, משתמשים, שומרים ומגנים על המידע שלך, בהתאם לחוק הגנת הפרטיות, התשמ"א-1981 ותקנותיו.</p>
 
-  <h2>1. המידע שאנו אוספים</h2>
-  <p>במסגרת השימוש באתר ובשירותים, אנו עשויים לאסוף את סוגי המידע הבאים:</p>
-  <ul>
-    <li><strong>מידע מזהה:</strong> שם מלא, מספר טלפון, כתובת דוא"ל.</li>
-    <li><strong>מידע פיננסי:</strong> דוח יתרות משכנתא, נתוני הלוואה, פרטי בנק, ומידע נוסף שתבחר למסור לצורך קבלת השירות.</li>
-    <li><strong>מידע טכני:</strong> כתובת IP, סוג דפדפן, ונתוני גלישה הנאספים אוטומטית.</li>
-  </ul>
+    <h2>1. המידע שאנו אוספים</h2>
+    <p>במסגרת השימוש באתר ובשירותים, אנו עשויים לאסוף את סוגי המידע הבאים:</p>
+    <ul>
+      <li><strong>מידע מזהה:</strong> שם מלא, מספר טלפון, כתובת דוא"ל.</li>
+      <li><strong>מידע פיננסי:</strong> דוח יתרות משכנתא, נתוני הלוואה, פרטי בנק, ומידע נוסף שתבחר למסור לצורך קבלת השירות.</li>
+      <li><strong>מידע טכני:</strong> כתובת IP, סוג דפדפן, ונתוני גלישה הנאספים אוטומטית.</li>
+    </ul>
 
-  <h2>2. מטרות השימוש במידע</h2>
-  <p>אנו משתמשים במידע שנאסף למטרות הבאות:</p>
-  <ul>
-    <li>מתן שירותי ייעוץ משכנתאות ובדיקת כדאיות מיחזור.</li>
-    <li>יצירת קשר עמך לצורך מתן השירות והמשך הטיפול.</li>
-    <li>שיפור השירותים והתאמתם לצרכיך.</li>
-    <li>עמידה בדרישות חוקיות ורגולטוריות.</li>
-  </ul>
+    <h2>2. מטרות השימוש במידע</h2>
+    <p>אנו משתמשים במידע שנאסף למטרות הבאות:</p>
+    <ul>
+      <li>מתן שירותי ייעוץ משכנתאות ובדיקת כדאיות מיחזור.</li>
+      <li>יצירת קשר עמך לצורך מתן השירות והמשך הטיפול.</li>
+      <li>שיפור השירותים והתאמתם לצרכיך.</li>
+      <li>עמידה בדרישות חוקיות ורגולטוריות.</li>
+    </ul>
 
-  <h2>3. מסירת מידע לצדדים שלישיים</h2>
-  <p>אנו לא נמכור, נשכיר או נעביר את המידע האישי שלך לצדדים שלישיים, למעט במקרים הבאים: בהסכמתך המפורשת; כאשר הדבר נדרש לצורך מתן השירות (למשל מול גורם מממן); או כאשר אנו מחויבים לכך על פי דין או צו שיפוטי.</p>
+    <h2>3. מסירת מידע לצדדים שלישיים</h2>
+    <p>אנו לא נמכור, נשכיר או נעביר את המידע האישי שלך לצדדים שלישיים, למעט במקרים הבאים: בהסכמתך המפורשת; כאשר הדבר נדרש לצורך מתן השירות (למשל מול גורם מממן); או כאשר אנו מחויבים לכך על פי דין או צו שיפוטי.</p>
 
-  <h2>4. אבטחת מידע</h2>
-  <p>אנו נוקטים באמצעי אבטחה סבירים ומקובלים כדי להגן על המידע שלך מפני גישה, שימוש או חשיפה בלתי מורשים. עם זאת, אין באפשרותנו להבטיח הגנה מוחלטת, ואנו ממליצים לנקוט אף אתה באמצעי זהירות.</p>
+    <h2>4. אבטחת מידע</h2>
+    <p>אנו נוקטים באמצעי אבטחה סבירים ומקובלים כדי להגן על המידע שלך מפני גישה, שימוש או חשיפה בלתי מורשים. עם זאת, אין באפשרותנו להבטיח הגנה מוחלטת, ואנו ממליצים לנקוט אף אתה באמצעי זהירות.</p>
 
-  <h2>5. זכויותיך</h2>
-  <p>בהתאם לחוק הגנת הפרטיות, עומדת לך הזכות לעיין במידע האישי שלך המוחזק אצלנו, לבקש את תיקונו או מחיקתו. לבקשות מסוג זה ניתן לפנות אלינו בכתובת הדוא"ל: <strong>ticozveibel@hotmail.com</strong>.</p>
+    <h2>5. זכויותיך</h2>
+    <p>בהתאם לחוק הגנת הפרטיות, עומדת לך הזכות לעיין במידע האישי שלך המוחזק אצלנו, לבקש את תיקונו או מחיקתו. לבקשות מסוג זה ניתן לפנות אלינו בכתובת הדוא"ל: <strong>ticozveibel@hotmail.com</strong>.</p>
 
-  <h2>6. עוגיות (Cookies)</h2>
-  <p>האתר עשוי לעשות שימוש בעוגיות לצורך שיפור חוויית המשתמש וניתוח תנועה. באפשרותך לחסום עוגיות דרך הגדרות הדפדפן שלך, אך הדבר עלול להשפיע על תפקוד האתר.</p>
+    <h2>6. עוגיות (Cookies)</h2>
+    <p>האתר עשוי לעשות שימוש בעוגיות לצורך שיפור חוויית המשתמש וניתוח תנועה. באפשרותך לחסום עוגיות דרך הגדרות הדפדפן שלך, אך הדבר עלול להשפיע על תפקוד האתר.</p>
 
-  <h2>7. שינויים במדיניות</h2>
-  <p>אנו רשאים לעדכן מדיניות זו מעת לעת. הנוסח המעודכן יפורסם בעמוד זה, ותאריך העדכון האחרון יצוין בראשו.</p>
+    <h2>7. שינויים במדיניות</h2>
+    <p>אנו רשאים לעדכן מדיניות זו מעת לעת. הנוסח המעודכן יפורסם בעמוד זה, ותאריך העדכון האחרון יצוין בראשו.</p>
 
-  <h2>8. יצירת קשר</h2>
-  <p>בכל שאלה הנוגעת למדיניות פרטיות זו, ניתן לפנות אלינו בדוא"ל: <strong>ticozveibel@hotmail.com</strong>.</p>
+    <h2>8. יצירת קשר</h2>
+    <p>בכל שאלה הנוגעת למדיניות פרטיות זו, ניתן לפנות אלינו בדוא"ל: <strong>ticozveibel@hotmail.com</strong>.</p>
 
-  <a href="index.html" class="back">← חזרה לדף הבית</a>
+  </div>
+  <a href="/" class="back-link">← חזרה לדף הבית</a>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <img src="hebrewlogo.png" alt="TICO FINANCE" style="height:52px;width:auto;object-fit:contain;display:block;margin:0 auto 16px;" onerror="this.style.display='none'"/>
+    <p style="color:var(--text-muted);font-size:14px;font-weight:600;margin-bottom:16px;">כי בלי תכנון, אין כלום.</p>
+    <div class="footer-links">
+      <a href="terms.html">תנאי שימוש</a>
+      <a href="privacy.html">מדיניות פרטיות</a>
+      <a href="accessibility.html">הצהרת נגישות</a>
+      <a href="https://wa.me/972507700322" target="_blank">צרו קשר</a>
+    </div>
+    <p class="footer-copy">© 2026 TICO FINANCE. כל הזכויות שמורות.</p>
+  </div>
+</footer>
+
+
+<!-- Accessibility Widget -->
+<div id="a11y-widget" style="position:fixed;bottom:80px;left:16px;z-index:300;">
+
+  <!-- Toggle button -->
+  <button id="a11y-btn" onclick="toggleA11y()" aria-label="כלי נגישות" title="כלי נגישות"
+    style="width:52px;height:52px;border-radius:50%;background:#0F243E;color:white;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.3);transition:background .2s,transform .15s;"
+    onmouseover="this.style.background='#2E8B57';this.style.transform='scale(1.08)'"
+    onmouseout="this.style.background='#0F243E';this.style.transform='scale(1)'">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="4" r="2"/><path d="M19 9h-6V7h-2v2H5l1 2h2.5l-1.8 7h2l1.3-5h4l1.3 5h2l-1.8-7H18z"/></svg>
+  </button>
+
+  <!-- Panel -->
+  <div id="a11y-panel" role="dialog" aria-label="אפשרויות נגישות" style="display:none;position:absolute;bottom:60px;left:0;width:260px;background:white;border-radius:18px;box-shadow:0 12px 48px rgba(0,0,0,.22);border:1.5px solid #c8ddd2;overflow:hidden;font-family:'Heebo',sans-serif;">
+    <div style="background:#0F243E;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;">
+      <span style="color:white;font-weight:800;font-size:15px;">כלי נגישות</span>
+      <button onclick="toggleA11y()" style="background:none;border:none;color:rgba(255,255,255,.7);font-size:20px;cursor:pointer;line-height:1;">✕</button>
+    </div>
+    <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+
+      <!-- Font size -->
+      <div style="background:#f5faf7;border-radius:12px;padding:12px 14px;">
+        <div style="font-size:12px;font-weight:700;color:#5a5a7a;margin-bottom:8px;">גודל טקסט</div>
+        <div style="display:flex;gap:8px;">
+          <button onclick="a11yFont(-1)" style="flex:1;padding:8px;border:1.5px solid #c8ddd2;border-radius:8px;background:white;cursor:pointer;font-size:13px;font-family:inherit;font-weight:700;">A−</button>
+          <button onclick="a11yFont(0)" style="flex:1;padding:8px;border:1.5px solid #c8ddd2;border-radius:8px;background:white;cursor:pointer;font-size:13px;font-family:inherit;font-weight:700;">איפוס</button>
+          <button onclick="a11yFont(1)" style="flex:1;padding:8px;border:1.5px solid #c8ddd2;border-radius:8px;background:white;cursor:pointer;font-size:15px;font-family:inherit;font-weight:700;">A+</button>
+        </div>
+      </div>
+
+      <!-- Contrast -->
+      <div style="background:#f5faf7;border-radius:12px;padding:12px 14px;">
+        <div style="font-size:12px;font-weight:700;color:#5a5a7a;margin-bottom:8px;">ניגודיות</div>
+        <div style="display:flex;gap:8px;">
+          <button onclick="a11yContrast('high')" id="btn-contrast-high" style="flex:1;padding:8px;border:1.5px solid #c8ddd2;border-radius:8px;background:white;cursor:pointer;font-size:12px;font-family:inherit;font-weight:700;">גבוהה</button>
+          <button onclick="a11yContrast('invert')" id="btn-contrast-invert" style="flex:1;padding:8px;border:1.5px solid #c8ddd2;border-radius:8px;background:white;cursor:pointer;font-size:12px;font-family:inherit;font-weight:700;">הפוך</button>
+          <button onclick="a11yContrast('none')" style="flex:1;padding:8px;border:1.5px solid #c8ddd2;border-radius:8px;background:white;cursor:pointer;font-size:12px;font-family:inherit;font-weight:700;">רגיל</button>
+        </div>
+      </div>
+
+      <!-- Toggles -->
+      <div style="background:#f5faf7;border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;">
+        <label style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;">
+          <span style="font-size:13px;font-weight:700;">הדגשת קישורים</span>
+          <input type="checkbox" id="a11y-links" onchange="a11yLinks(this.checked)" style="width:18px;height:18px;accent-color:#2E8B57;cursor:pointer;"/>
+        </label>
+        <label style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;">
+          <span style="font-size:13px;font-weight:700;">מרווח שורות רחב</span>
+          <input type="checkbox" id="a11y-spacing" onchange="a11ySpacing(this.checked)" style="width:18px;height:18px;accent-color:#2E8B57;cursor:pointer;"/>
+        </label>
+        <label style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;">
+          <span style="font-size:13px;font-weight:700;">ללא אנימציות</span>
+          <input type="checkbox" id="a11y-anim" onchange="a11yAnim(this.checked)" style="width:18px;height:18px;accent-color:#2E8B57;cursor:pointer;"/>
+        </label>
+      </div>
+
+      <!-- Statement link -->
+      <a href="accessibility.html" style="display:block;text-align:center;padding:10px;color:#2E8B57;font-size:13px;font-weight:700;text-decoration:none;border-top:1px solid #c8ddd2;margin-top:4px;">הצהרת נגישות ←</a>
+    </div>
+  </div>
 </div>
+
+<style>
+  body.a11y-high-contrast { filter: contrast(1.6) saturate(0); }
+  body.a11y-invert { filter: invert(1) hue-rotate(180deg); }
+  body.a11y-links a { text-decoration: underline !important; outline: 2px solid #2E8B57 !important; }
+  body.a11y-spacing { line-height: 2 !important; letter-spacing: .04em !important; }
+  body.a11y-no-anim *, body.a11y-no-anim *::before, body.a11y-no-anim *::after { animation: none !important; transition: none !important; }
+</style>
+
+<script>
+  let a11yOpen = false;
+  let fontScale = 0;
+  function toggleA11y() {
+    a11yOpen = !a11yOpen;
+    document.getElementById('a11y-panel').style.display = a11yOpen ? 'block' : 'none';
+  }
+  document.addEventListener('click', function(e) {
+    if (a11yOpen && !document.getElementById('a11y-widget').contains(e.target)) {
+      a11yOpen = false;
+      document.getElementById('a11y-panel').style.display = 'none';
+    }
+  });
+  function a11yFont(dir) {
+    if (dir === 0) { fontScale = 0; } else { fontScale = Math.max(-2, Math.min(4, fontScale + dir)); }
+    document.documentElement.style.fontSize = fontScale === 0 ? '' : (100 + fontScale * 10) + '%';
+  }
+  function a11yContrast(mode) {
+    document.body.classList.remove('a11y-high-contrast','a11y-invert');
+    if (mode === 'high') document.body.classList.add('a11y-high-contrast');
+    if (mode === 'invert') document.body.classList.add('a11y-invert');
+  }
+  function a11yLinks(on) { document.body.classList.toggle('a11y-links', on); }
+  function a11ySpacing(on) { document.body.classList.toggle('a11y-spacing', on); }
+  function a11yAnim(on) { document.body.classList.toggle('a11y-no-anim', on); }
+</script>
+
+
+<nav class="mobile-nav">
+  <div class="mobile-nav-inner">
+    <a href="/"><span>🏠</span><span>בית</span></a>
+    <a href="/refinance/"><span>🏦</span><span>מיחזור</span></a>
+    <a href="/upgraders/"><span>🏡</span><span>משפרים</span></a>
+    <a href="/investors/"><span>📈</span><span>משקיעים</span></a>
+    <a href="https://wa.me/972507700322" target="_blank"><span>💬</span><span>צ'אט</span></a>
+  </div>
+</nav>
+
 </body>
 </html>
