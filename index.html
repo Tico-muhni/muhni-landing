@@ -73,10 +73,6 @@
   .about-photo .role { color: rgba(255,255,255,.8); font-size: 13px; }
   .about-text { flex: 1; min-width: 280px; }
   .about-text p { color: var(--text-muted); font-size: 16px; line-height: 1.85; margin-bottom: 14px; }
-  .stats-row { display: flex; gap: 32px; margin-top: 24px; flex-wrap: wrap; }
-  .stat { text-align: center; }
-  .stat b { display: block; font-size: 24px; font-weight: 900; color: var(--green); }
-  .stat span { font-size: 12px; color: var(--text-muted); }
   .segments { background: var(--bg); }
   .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 900px; margin: 40px auto 0; }
   .card { background: white; border: 1.5px solid var(--border); border-radius: var(--radius); padding: 30px 26px; text-decoration: none; color: var(--text); box-shadow: 0 6px 20px rgba(0,0,0,.05); transition: transform .18s, box-shadow .18s, border-color .18s; display: flex; flex-direction: column; gap: 10px; }
@@ -121,7 +117,7 @@
   .mobile-nav a { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: var(--text-muted); font-size: 11px; font-weight: 600; }
   .mobile-nav a span:first-child { font-size: 22px; }
   .mobile-nav a.active { color: var(--green); }
-  @media (max-width: 640px) { .nav-links { display: none; } .hamburger { display: block; } section { padding: 56px 16px; } .about-grid { justify-content: center; text-align: center; } .about-text { text-align: center; } .stats-row { justify-content: center; } .mobile-nav { display: block; } }
+  @media (max-width: 640px) { .nav-links { display: none; } .hamburger { display: block; } section { padding: 56px 16px; } .about-grid { justify-content: center; text-align: center; } .about-text { text-align: center; } .mobile-nav { display: block; } }
   @media (max-width: 1200px) { .nav-links { display: none; } .hamburger { display: block; } .mobile-nav { display: block; } }
 </style>
 </head>
@@ -211,11 +207,6 @@
     <div class="about-text">
       <p>אני מאמין שמשכנתה היא אף פעם לא רק "השוואת ריביות", אלא <strong>ארכיטקטורה פיננסית שלמה</strong>. אני מסתכל על הפאזל המלא של החיים והעסקים שלכם - ובונה עבורכם את המסלול המדויק ביותר, בהתאמה אישית מלאה.</p>
       <p>בין אם אתם ממחזרים משכנתה קיימת, מתכננים מעבר דירה, בונים תיק נדל"ן להשקעה, או קונים נכס בישראל מרחוק - אני כאן ללוות אתכם צעד אחר צעד, מול הבנקים ומול המספרים הקטנים שעושים את כל ההבדל.</p>
-      <div class="stats-row">
-        <div class="stat"><b>3+</b><span>שנות ניסיון</span></div>
-        <div class="stat"><b>100+</b><span>לקוחות מרוצים</span></div>
-        <div class="stat"><b>4</b><span>תחומי התמחות</span></div>
-      </div>
     </div>
   </div>
 </section>
