@@ -103,6 +103,18 @@
   .benefit-card .icon { font-size: 30px; margin-bottom: 10px; }
   .benefit-card h4 { font-size: 15px; font-weight: 800; margin-bottom: 6px; }
   .benefit-card p { color: var(--text-muted); font-size: 13px; line-height: 1.6; }
+  .blog-preview { background: var(--bg); }
+  .post-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; max-width: 1000px; margin: 40px auto 0; }
+  .post-card { background: white; border: 1.5px solid var(--border); border-radius: var(--radius); padding: 26px; display: flex; flex-direction: column; gap: 10px; text-decoration: none; transition: transform .18s, box-shadow .18s, border-color .18s; }
+  .post-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(46,139,87,.12); border-color: var(--purple); }
+  .post-badge { display: inline-block; background: var(--purple-light); color: var(--green); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 50px; width: fit-content; }
+  .post-card h3 { font-size: 15.5px; font-weight: 700; color: var(--text); }
+  .post-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+  .post-card .read-more { font-size: 12.5px; font-weight: 700; color: var(--green); margin-top: 2px; }
+  .blog-more { text-align: center; margin-top: 32px; }
+  .blog-more a { color: var(--green); font-weight: 700; font-size: 15px; text-decoration: none; }
+  .blog-more a:hover { text-decoration: underline; }
+  @media (max-width: 760px) { .post-grid { grid-template-columns: 1fr; } }
   footer { background: white; border-top: 1px solid var(--border); padding: 44px 24px 80px; text-align: center; }
   .footer-inner { max-width: 1100px; margin: 0 auto; }
   .footer-links { display: flex; justify-content: center; gap: 28px; margin: 18px 0; flex-wrap: wrap; }
@@ -342,6 +354,18 @@
     <div class="benefit-card"><div class="icon">💰</div><h4>חיסכון משמעותי</h4><p>תכנון נכון שחוזר לכיס שלכם לאורך שנים.</p></div>
     <div class="benefit-card"><div class="icon">🔐</div><h4>פרטיות מלאה</h4><p>סודיות מוחלטת בכל שלב בתהליך.</p></div>
   </div>
+</section>
+
+<section class="blog-preview">
+  <div class="section-label">ידע אסטרטגי</div>
+  <h2 class="section-title">מהבלוג</h2>
+  <p class="section-sub">טיפים ומדריכים שיעזרו לכם לקבל החלטות פיננסיות נכונות.</p>
+  <div class="post-grid">
+    <a class="post-card" href="/blog/refinance-timing/"><span class="post-badge">מאמר</span><h3>מתי באמת כדאי למחזר משכנתה?</h3><p>הסימנים שאומרים שהגיע הזמן לבדוק מחדש את התנאים שלכם.</p><span class="read-more">קראו עוד ←</span></a>
+    <a class="post-card" href="/blog/apartment-not-selling/"><span class="post-badge">מאמר</span><h3>מה עושים אם הדירה לא נמכרת בזמן?</h3><p>תרחישי גיבוי שכל משפר דיור צריך להכיר.</p><span class="read-more">קראו עוד ←</span></a>
+    <a class="post-card" href="/blog/leverage-guide/"><span class="post-badge">מאמר</span><h3>מינוף הוא לא הימור</h3><p>עקרונות לבניית מבנה מימון נכון למשקיעים.</p><span class="read-more">קראו עוד ←</span></a>
+  </div>
+  <div class="blog-more"><a href="/blog/">לכל המאמרים ←</a></div>
 </section>
 
 <footer>
