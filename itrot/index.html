@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>איך מוציאים דו"ח יתרה לסילוק | TICO FINANCE</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root{
+    --green:#2E8B57;
+    --green-dark:#20603C;
+    --navy:#001B37;
+    --orange:#F7AC32;
+    --bg:#FBFBF9;
+    --card:#FFFFFF;
+    --border:#E3E6E2;
+    --text:#1C2420;
+    --muted:#5B6660;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Assistant','Segoe UI',Arial,sans-serif;
+    line-height:1.55;
+  }
+  header.hero{
+    background:linear-gradient(160deg,var(--green) 0%,var(--green-dark) 100%);
+    color:#fff;
+    padding:56px 20px 70px;
+    text-align:center;
+    position:relative;
+  }
+  header.hero .brand{
+    font-family:Georgia,serif;
+    font-size:22px;
+    letter-spacing:1px;
+    opacity:.95;
+    margin-bottom:18px;
+    font-weight:700;
+  }
+  header.hero .brand span{ color:var(--orange); }
+  header.hero h1{
+    font-family:Georgia,serif;
+    font-size:clamp(26px,5vw,42px);
+    margin:0 0 14px;
+    font-weight:700;
+  }
+  header.hero p{
+    max-width:620px;
+    margin:0 auto;
+    font-size:17px;
+    opacity:.95;
+  }
+  .facts{
+    max-width:880px;
+    margin:-40px auto 0;
+    padding:0 20px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    position:relative;
+    z-index:2;
+  }
+  .fact{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:18px 14px;
+    text-align:center;
+    box-shadow:0 6px 18px rgba(0,27,55,.06);
+  }
+  .fact .num{ font-family:Georgia,serif; font-size:22px; color:var(--green); font-weight:700; }
+  .fact .lbl{ font-size:13px; color:var(--muted); margin-top:4px; }
+  main{ max-width:980px; margin:0 auto; padding:60px 20px 40px; }
+  .intro{ max-width:760px; margin:0 auto 46px; text-align:center; }
+  .intro h2{ font-family:Georgia,serif; font-size:24px; color:var(--navy); margin-bottom:10px; }
+  .intro p{ color:var(--muted); font-size:15.5px; }
+  h3.section-title{ font-family:Georgia,serif; font-size:20px; color:var(--navy); text-align:center; margin:0 0 24px; }
+  .bank-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:18px; margin-bottom:56px; }
+  .bank-card{ background:var(--card); border:1px solid var(--border); border-radius:16px; padding:22px 20px 18px; text-align:center; transition:box-shadow .18s ease, transform .18s ease; }
+  .bank-card:hover{ box-shadow:0 10px 26px rgba(0,27,55,.09); transform:translateY(-2px); }
+  .bank-card .logo-wrap{ height:64px; display:flex; align-items:center; justify-content:center; margin-bottom:12px; }
+  .bank-card .logo-wrap img{ max-height:56px; max-width:170px; object-fit:contain; }
+  .bank-card .top{ display:flex; flex-direction:column; align-items:center; gap:6px; margin-bottom:10px; }
+  .bank-card h4{ margin:0; font-family:Georgia,serif; font-size:17px; color:var(--navy); }
+  .badge{ font-size:11px; padding:3px 9px; border-radius:20px; white-space:nowrap; font-weight:600; }
+  .badge.web{ background:#E7F3EC; color:var(--green-dark); }
+  .badge.phoneonly{ background:#FCEFD9; color:#9A6A0E; }
+  .bank-card .phone{ font-size:14.5px; color:var(--muted); margin-bottom:14px; text-align:center; }
+  .bank-card .phone b{ color:var(--text); }
+  .bank-card .req{ font-size:12.5px; color:#9A6A0E; background:#FCEFD9; border-radius:8px; padding:6px 10px; margin-bottom:10px; text-align:right; }
+  .actions{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+  .btn{ display:inline-flex; align-items:center; gap:6px; padding:9px 16px; border-radius:9px; font-size:14px; font-weight:600; text-decoration:none; border:1px solid transparent; cursor:pointer; }
+  .btn.primary{ background:var(--green); color:#fff; }
+  .btn.primary:hover{ background:var(--green-dark); }
+  .btn.ghost{ background:transparent; color:var(--navy); border-color:var(--border); }
+  .btn.ghost:hover{ border-color:var(--navy); }
+  details{ margin-top:12px; }
+  summary{ cursor:pointer; font-size:13.5px; color:var(--green-dark); font-weight:600; list-style:none; }
+  summary::-webkit-details-marker{ display:none; }
+  summary::before{ content:"איך עושים את זה באתר ▾ "; }
+  details[open] summary::before{ content:"הסתר הוראות ▴ "; }
+  details ol{ margin:10px 0 0; padding-inline-start:20px; font-size:13.5px; color:var(--muted); }
+  details li{ margin-bottom:5px; }
+  .cta{ background:var(--green-dark); color:#fff; border-radius:20px; padding:46px 30px; text-align:center; margin-bottom:20px; }
+  .cta h3{ font-family:Georgia,serif; font-size:24px; margin:0 0 10px; }
+  .cta p{ opacity:.85; margin:0 0 22px; font-size:15px; }
+  .cta .btn.primary{ background:var(--orange); color:var(--navy); font-size:15px; padding:12px 26px; }
+  .cta .btn.primary:hover{ background:#ffbf55; }
+  footer{ text-align:center; padding:30px 20px 40px; color:var(--muted); font-size:13px; }
+  footer .brand{ font-family:Georgia,serif; color:var(--green-dark); font-weight:700; font-size:15px; margin-bottom:4px;}
+  footer a{ color:var(--green-dark); text-decoration:none; }
+  @media (max-width:640px){ .facts{ grid-template-columns:1fr; margin-top:-24px; } header.hero{ padding:42px 16px 60px; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <img src="/hebrewlogo.png" alt="TICO FINANCE" style="height:38px;margin-bottom:18px;filter:brightness(0) invert(1);">
+  <h1>איך מוציאים דו"ח יתרה לסילוק?</h1>
+  <p>מדריך קצר, לפי הבנק שלכם - בלי לחפש, בלי להתבלבל. בוחרים בנק, לוחצים, מקבלים את הדו"ח.</p>
+</header>
+
+<div class="facts">
+  <div class="fact"><div class="num">2 ימי עסקים</div><div class="lbl">הבנק מחויב לספק את הדו"ח</div></div>
+  <div class="fact"><div class="num">₪0-30</div><div class="lbl">עלות טיפוסית להוצאת הדו"ח</div></div>
+  <div class="fact"><div class="num">1x בשנה</div><div class="lbl">חינם עפ"י הוראת בנק ישראל</div></div>
+</div>
+
+<main>
+  <div class="intro">
+    <h2>מה זה בעצם "דו"ח יתרה לסילוק"?</h2>
+    <p>
+      מסמך רשמי מהבנק שמפרט את כל נתוני המשכנתה שלכם - סכום ההלוואה, תקופה, ריביות ועמלות פירעון.
+      לפעמים הוא מופיע תחת שם אחר: "דו"ח ריכוז יתרות", "אישור יתרות משכנתה" או "דו"ח פרטי משכנתה" - זה אותו מסמך.
+    </p>
+  </div>
+
+  <h3 class="section-title">בחרו את הבנק שלכם</h3>
+  <div class="bank-grid" id="bankGrid"></div>
+
+  <div class="cta">
+    <h3>לא בטוחים אם המחזור משתלם לכם?</h3>
+    <p>שלחו לי את הדו"ח שקיבלתם - ונבדוק ביחד תוך זמן קצר אם יש טעם למחזר.</p>
+    <a class="btn primary" href="https://wa.me/972507700322" target="_blank" rel="noopener">💬 לשלוח בוואטסאפ</a>
+  </div>
+</main>
+
+<footer>
+  <img src="/hebrewlogo.png" alt="TICO FINANCE" style="height:28px;margin-bottom:10px;">
+  <div>כי בלי תכנון, אין כלום.</div>
+  <div style="margin-top:8px;">
+    <a href="/" target="_blank" rel="noopener">muhni-landing.vercel.app</a>
+    &nbsp;&middot;&nbsp;
+    <a href="tel:0507700322">050-770-0322</a>
+  </div>
+</footer>
+
+<script>
+const banks = [
+  { name:"בנק לאומי", logo:"לאומי.png", type:"web", phone:"6062*", hours:"א׳–ה׳ 8:30–16:00", url:"https://www.leumi.co.il",
+    steps:["מזינים שם משתמש וסיסמה","נכנסים לתפריט בצד ימין","לוחצים על \"הלוואות ומשכנתאות\"","בוחרים \"הזמנת מסמכי משכנתאות\""] },
+  { name:"מזרחי טפחות", logo:"מזרחי.png", type:"web", phone:"8860*", hours:"א׳–ה׳ 8:00–18:30, ו׳ 8:00–13:00", url:"https://www.mizrahi-tefahot.co.il",
+    steps:["✅ יש לכם רק משכנתה בבנק (בלי עו\"ש): נכנסים ל\"כניסה ללקוחות טפחות\", מזינים פרטי זיהוי, מקבלים קוד חד-פעמי לנייד ומזינים אותו",
+           "✅ יש לכם גם חשבון עו\"ש בבנק: נכנסים לחשבון, לוחצים \"הלוואות ומשכנתאות\" ← \"המשכנתה שלי\" ← \"טפסים ואישורים\" ומזמינים את המסמך"] },
+  { name:"בנק הפועלים", logo:"פועלים.png", type:"web", phone:"2401*", hours:"א׳–ה׳ 8:00–16:00", url:"https://www.bankhapoalim.co.il",
+    req:"⚠ באתר רק אם יש לכם קוד משתמש+סיסמה וגם חשבון עו\"ש בבנק (לא רק משכנתה). אחרת - דרך המוקד בלבד.",
+    steps:["כניסה לחשבונות פרטיים עם קוד משתמש וסיסמה","בוחרים באפשרות \"דוח פרטי משכנתאות\"","מאשרים קבלת דו\"ח ומקבלים אותו מיד לקובץ להדפסה/שמירה"] },
+  { name:"בנק דיסקונט", logo:"דיסקונט.png", type:"web", phone:"2009*", hours:"א׳–ה׳ 8:00–19:00, ו׳ 8:00–13:00", url:"https://www.discountbank.co.il",
+    req:"⚠ באתר רק אם יש לכם קוד משתמש+סיסמה וגם חשבון עו\"ש בבנק (לא רק משכנתה). אחרת - דרך המוקד בלבד.",
+    steps:["כניסה לחשבונות פרטיים עם קוד משתמש וסיסמה","בתפריט ימין בוחרים \"משכנתאות\"","בדף הראשי: כפתור \"פירוט משכנתה מלא כולל יתרה לסילוק\" (תדפיס)"] },
+  { name:"מרכנתיל דיסקונט", logo:"מרכנתיל.png", type:"web", phone:"3477*", hours:"א׳,ג׳,ה׳ 8:30–13:45 | ב׳,ד׳ 8:30–13:00,16:00–18:15", url:"https://www.mercantile.co.il",
+    req:"⚠ באתר רק אם יש לכם קוד משתמש+סיסמה וגם חשבון עו\"ש בבנק (לא רק משכנתה). אחרת - דרך המוקד בלבד.",
+    steps:["כניסה לחשבונות פרטיים עם קוד משתמש וסיסמה","בתפריט ימין בוחרים \"משכנתאות\"","בדף הראשי: כפתור \"פירוט משכנתה מלא כולל יתרה לסילוק\" (תדפיס)"] },
+  { name:"הבנק הבינלאומי", logo:"בינלאומי.png", type:"phone", phone:"1-700-700-185 שלוחה 2", hours:"א׳–ה׳ 8:00–18:00", url:"https://www.fibi.co.il" },
+  { name:"בנק ירושלים", logo:"ירושלים.png", type:"phone", phone:"076-8095115", hours:"א׳,ג׳,ד׳ 8:30–15:30 | ב׳,ה׳ 9:00–14:00,16:00–18:00 | ו׳ 9:00–12:00", url:"https://www.bankjerusalem.co.il" },
+];
+
+const LOGO_BASE = "/";
+
+const grid = document.getElementById("bankGrid");
+banks.forEach(b=>{
+  const card = document.createElement("div");
+  card.className = "bank-card";
+
+  const badge = b.type==="web"
+    ? '<span class="badge web">אתר + מוקד</span>'
+    : '<span class="badge phoneonly">מוקד בלבד</span>';
+
+  const telHref = "tel:" + b.phone.replace(/[^0-9+]/g,"");
+
+  let actions = `<a class="btn ghost" href="${telHref}">📞 חייגו</a>`;
+  if (b.url) {
+    actions = `<a class="btn primary" href="${b.url}" target="_blank" rel="noopener">לאתר הבנק ↗</a>` + actions;
+  }
+
+  let stepsHtml = "";
+  if (b.steps) {
+    stepsHtml = `<details><summary></summary><ol>${b.steps.map(s=>`<li>${s}</li>`).join("")}</ol></details>`;
+  }
+
+  const reqHtml = b.req ? `<div class="req">${b.req}</div>` : "";
+
+  card.innerHTML = `
+    <div class="logo-wrap"><img src="${LOGO_BASE}${b.logo}" alt="${b.name}" loading="lazy"></div>
+    <div class="top"><h4>${b.name}</h4>${badge}</div>
+    <div class="phone">מוקד: <b>${b.phone}</b><br>${b.hours}</div>
+    ${reqHtml}
+    <div class="actions">${actions}</div>
+    ${stepsHtml}
+  `;
+  grid.appendChild(card);
+});
+</script>
+
+</body>
+</html>
