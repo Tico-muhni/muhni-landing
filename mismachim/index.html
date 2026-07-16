@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>אילו מסמכים צריך להכין? | TICO FINANCE</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root{
+    --green:#2E8B57;
+    --green-dark:#20603C;
+    --navy:#001B37;
+    --orange:#F7AC32;
+    --bg:#FBFBF9;
+    --card:#FFFFFF;
+    --border:#E3E6E2;
+    --text:#1C2420;
+    --muted:#5B6660;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Assistant','Segoe UI',Arial,sans-serif;
+    line-height:1.6;
+  }
+  header.hero{
+    background:linear-gradient(160deg,var(--green) 0%,var(--green-dark) 100%);
+    color:#fff;
+    padding:56px 20px 60px;
+    text-align:center;
+  }
+  header.hero h1{
+    font-family:Georgia,serif;
+    font-size:clamp(24px,4.6vw,38px);
+    margin:0 0 14px;
+    font-weight:700;
+  }
+  header.hero p{
+    max-width:620px;
+    margin:0 auto;
+    font-size:17px;
+    opacity:.95;
+  }
+  .scenario-menu{
+    max-width:960px;
+    margin:-30px auto 0;
+    padding:0 20px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+    position:relative;
+    z-index:2;
+  }
+  .scenario-menu a{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:18px 14px;
+    text-align:center;
+    text-decoration:none;
+    color:var(--navy);
+    font-weight:700;
+    font-size:14px;
+    box-shadow:0 6px 18px rgba(0,27,55,.06);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .scenario-menu a:hover{ transform:translateY(-2px); box-shadow:0 10px 26px rgba(0,27,55,.1); }
+  main{ max-width:820px; margin:0 auto; padding:60px 20px 40px; }
+  .intro{ max-width:760px; margin:0 auto 46px; text-align:center; }
+  .intro p{ color:var(--muted); font-size:15.5px; }
+  .disclaimer{ background:#FCEFD9; border:1px solid #EBD3A0; border-radius:12px; padding:14px 18px; font-size:13px; color:#7a5a12; margin:0 auto 56px; max-width:760px; text-align:center; }
+  .topic-section{ margin-bottom:64px; scroll-margin-top:24px; }
+  .topic-head{ text-align:center; margin-bottom:24px; }
+  .topic-head .eyebrow{ font-size:12.5px; font-weight:700; color:var(--green-dark); letter-spacing:.5px; }
+  .topic-head h2{ font-family:Georgia,serif; font-size:24px; color:var(--navy); margin:6px 0 8px; }
+  .topic-head p{ color:var(--muted); font-size:14.5px; max-width:640px; margin:0 auto; }
+  .subtab-menu{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:20px 0 28px; }
+  .subtab-menu a{ background:var(--card); border:1px solid var(--border); border-radius:50px; padding:7px 16px; font-size:13px; font-weight:600; color:var(--green-dark); text-decoration:none; }
+  .subtab-menu a:hover{ border-color:var(--green); }
+  .checklist-block{ background:var(--card); border:1px solid var(--border); border-radius:16px; padding:22px 24px; margin-bottom:20px; scroll-margin-top:24px; }
+  .checklist-block h3{ font-family:Georgia,serif; font-size:18px; color:var(--navy); margin:0; }
+  .block-head{ display:flex; align-items:baseline; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--border); }
+  .progress{ font-size:12.5px; color:var(--muted); font-weight:600; white-space:nowrap; }
+  ul.checklist{ list-style:none; margin:0; padding:0; }
+  .chk-item{ display:block; padding:8px 0; border-bottom:1px dashed var(--border); }
+  .chk-item:last-child{ border-bottom:none; }
+  .chk-row{ display:flex; align-items:flex-start; gap:10px; cursor:pointer; }
+  .chk-item input[type=checkbox]{ flex-shrink:0; width:19px; height:19px; margin-top:2px; accent-color:var(--green); cursor:pointer; }
+  .chk-item span.txt{ font-size:14.5px; color:var(--text); flex:1 1 auto; min-width:0; }
+  .chk-item.checked span.txt{ color:var(--muted); text-decoration:line-through; }
+  .chk-item span.txt b{ color:var(--navy); }
+  .chk-item.checked span.txt b{ color:var(--muted); }
+  .chk-item a{ color:var(--green-dark); font-weight:600; }
+  details.nested{ margin-top:6px; margin-bottom:2px; background:#F5F7F5; border-radius:10px; padding:2px 12px; }
+  details.nested summary{ cursor:pointer; font-size:13.5px; color:var(--green-dark); font-weight:700; padding:8px 0; list-style:none; }
+  details.nested summary::-webkit-details-marker{ display:none; }
+  details.nested summary::before{ content:"פירוט ▾ "; }
+  details.nested[open] summary::before{ content:"הסתר ▴ "; }
+  details.nested .sub-block{ padding:0 0 12px; font-size:13.5px; color:var(--muted); }
+  details.nested .sub-block p{ margin:0 0 8px; }
+  .download-box{ display:flex; align-items:center; gap:12px; background:#F0F7F2; border:1px solid #D5E8DA; border-radius:12px; padding:14px 16px; margin-top:10px; font-size:13.5px; }
+  .download-box a{ background:var(--green); color:#fff; text-decoration:none; padding:8px 16px; border-radius:8px; font-weight:700; font-size:13px; white-space:nowrap; }
+  .download-box a:hover{ background:var(--green-dark); }
+  .cta{ background:var(--green-dark); color:#fff; border-radius:20px; padding:46px 30px; text-align:center; margin:40px 0 20px; }
+  .cta h3{ font-family:Georgia,serif; font-size:24px; margin:0 0 10px; }
+  .cta p{ opacity:.85; margin:0 0 22px; font-size:15px; }
+  .btn{ display:inline-flex; align-items:center; gap:6px; padding:12px 26px; border-radius:9px; font-size:15px; font-weight:600; text-decoration:none; border:1px solid transparent; cursor:pointer; }
+  .cta .btn{ background:var(--orange); color:var(--navy); }
+  .cta .btn:hover{ background:#ffbf55; }
+  footer{ text-align:center; padding:30px 20px 40px; color:var(--muted); font-size:13px; }
+  footer a{ color:var(--green-dark); text-decoration:none; }
+  @media (max-width:760px){ .scenario-menu{ grid-template-columns:1fr 1fr; margin-top:-20px; } }
+  @media (max-width:520px){ .scenario-menu{ grid-template-columns:1fr; } header.hero{ padding:42px 16px 50px; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <img src="/hebrewlogo.png" alt="TICO FINANCE" style="height:38px;margin-bottom:18px;filter:brightness(0) invert(1);">
+  <h1>אילו מסמכים צריך להכין?</h1>
+  <p>בחרו את התהליך שלכם, וקבלו רשימה מסודרת עם צ'קליסט לסימון - כדי שלא תשכחו כלום בדרך.</p>
+</header>
+
+<div class="scenario-menu">
+  <a href="#used-apartment">🏠 רכישת יד שנייה - ניירת לבקשה</a>
+  <a href="#collateral">🔐 מסמכי בטחונות לתיק</a>
+  <a href="#appraisal">📐 מסמכים לשמאות</a>
+  <a href="#eligibility">🎖️ תעודת זכאות</a>
+</div>
+
+<main>
+  <div class="intro">
+    <p>כל תהליך פיננסי דורש ניירת אחרת, ולפעמים קשה לדעת מראש מה בדיוק צריך. הכנו כאן רשימות מסודרות, לפי הנושא הרלוונטי לכם - סמנו כל מסמך שכבר אספתם, וכשהרשימה שלמה, אתם מוכנים.</p>
+  </div>
+
+  <div class="disclaimer">
+    הרשימות מבוססות על המקרים הנפוצים ומשמשות ככלי עזר כללי. הרשימה המחייבת והמדויקת לתיק שלכם תלויה בבנק, בסוג העסקה ובנסיבות האישיות, ותימסר תמיד על ידי הבנק או הגורם המטפל.
+  </div>
+
+  <!-- ============ SECTION 1: USED APARTMENT PAPERWORK ============ -->
+  <section class="topic-section" id="used-apartment">
+    <div class="topic-head">
+      <div class="eyebrow">רכישה יד שנייה</div>
+      <h2>ניירת נדרשת לבקשת המשכנתא</h2>
+      <p>המסמכים שצריך לאסוף לפני שפותחים תיק משכנתא לרכישת דירה יד שנייה.</p>
+    </div>
+
+    <div class="checklist-block">
+      <div class="block-head"><h3>רשימת מסמכים לאיסוף</h3><span class="progress"></span></div>
+      <ul class="checklist">
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">כתב הסמכה</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">צילום ת.ז + ספח</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">אישור לניהול חשבון או צילום צ'ק מבוטל</span></div></li>
+        <li class="chk-item">
+          <div class="chk-row"><input type="checkbox"><span class="txt">אישורי הכנסה 3 חודשים (לפי סוג ההכנסה - ראו פירוט)</span></div>
+          <details class="nested" style="margin-right:29px;">
+            <summary></summary>
+            <div class="sub-block">
+              <p><b>שכיר</b> - 3 תלושי שכר אחרונים (במידה ורלוונטי לטובת הגדלת הכנסה, גם טופס 106).</p>
+              <p><b>עצמאי</b> - שומת מס 2022 + 2023 במידה וישנה. במידה ולא - אישור רואה חשבון ל-2023 + 2024.</p>
+              <p><b>בעל חברה</b> - דוחות כספיים מבוקרים שנתיים אחורה, ואם אין אז לא מבוקרים. שומת מס של החברה + שומת מס אישית שנתיים אחורה. במידה ועדיין אין שומה - אישור רואה חשבון לשנה הנוכחית + לשנה הקודמת. במידה ומושך משכורת - 3 תלושי שכר אחרונים + טופס 106. במידה ורוצים להכיר בדיבידנדים - דוח דיבידנדים שנתיים אחורה.</p>
+              <p><b>גרושים</b> - הסכם גירושין חתום על ידי בית המשפט.</p>
+              <p><b>קצבאות</b> - אישור מביטוח לאומי על שיעור הקצבה ואופן התשלומים השנתי, או מהגוף שנותן הקצבה.</p>
+              <p><b>חופשת לידה</b> - אישור על דמי לידה מביטוח לאומי + 3 תלושי משכורת אחרונים טרם היציאה לחופשת הלידה + אישור מעסיק על חזרה לעבודה.</p>
+              <p><b>מלגות</b> - אישורי מלגות למיניהן (אוניברסיטה / כוללים) - אישור כולל / מוסד אקדמי.</p>
+              <p><b>הכנסות משכר דירה</b> - חוזה שכירות חתום.</p>
+              <p style="margin-bottom:4px;"><b>הלוואת זכאות</b> (במידה ורלוונטי) - ראו פירוט מסמכים נפרד:</p>
+              <details class="nested" style="margin-top:0;margin-bottom:0;">
+                <summary></summary>
+                <div class="sub-block">
+                  <p>מסמך זה פונה לכל אחד מבני הזוג מבקשי הבקשה:</p>
+                  <p>ת.ז + ספח של הלקוחות.</p>
+                  <p>ת.ז של אחד ההורים, כולל ספח שמצוינים בו כל האחים והאחיות של מבקש הבקשה.</p>
+                  <p>תעודת סיום שירות צבאי / לאומי, שמצוין בה מספר חודשי השירות.</p>
+                  <p style="margin-bottom:0;">צילום תעודת נישואין.</p>
+                </div>
+              </details>
+            </div>
+          </details>
+        </li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">פירוט עו"ש 3 חודשים אחרונים מכלל החשבונות (פרטי + עסקי)</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">במידה ויש הלוואות - דו"ח פירוט הלוואות</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">חוזה רכישה על כל נספחיו</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">נסח טאבו / אישור זכויות / אישור זכויות חברה משכנת</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">אישור תשלום הון עצמי - צילום צ'ק בנקאי או עו"ש שדרכו רואים את ההעברה</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">מש"ח + הצהרה על נכונות הפרטים</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">שונות - במידה ורלוונטי</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 2: COLLATERAL DOCUMENTS ============ -->
+  <section class="topic-section" id="collateral">
+    <div class="topic-head">
+      <div class="eyebrow">פתיחת תיק משכנתא</div>
+      <h2>מסמכי בטחונות</h2>
+      <p>כאשר מגיעים לפתיחת תיק משכנתא, יש מספר מסמכי בטחונות בהם ניתקל - לפי סוג הרכישה.</p>
+    </div>
+
+    <div class="subtab-menu">
+      <a href="#collateral-kablan">רכישה מקבלן</a>
+      <a href="#collateral-mechir">מחיר למשתכן</a>
+      <a href="#collateral-yad2">רכישה יד שנייה</a>
+      <a href="#collateral-anypurpose">הלוואה לכל מטרה</a>
+      <a href="#collateral-land">מגרש + בנייה עצמית</a>
+    </div>
+
+    <div class="checklist-block" id="collateral-kablan">
+      <div class="block-head"><h3>רכישה מקבלן</h3><span class="progress"></span></div>
+      <ul class="checklist">
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>שמאות מקרקעין</b> - לא, למעט מקרים בהם אין בנק מלווה</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>ביטוחים</b> - ביטוח חיים החל מלקיחת המשכנתא, ביטוח מבנה החל מקבלת טופס 4</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">ייפוי כח נוטריוני</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>תצהיר דירה יחידה/חלופית</b> - בהנחה ונלקחה משכנתא בשיעור מימון שעולה על 50%</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">כתב התחייבויות לרישום משכנתא</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">רישום הערת אזהרה לטובת הבנק המלווה</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>בקשה להסבת ערבות</b> - במידה והמשכנתא נלקחה לא בבנק שמלווה את הפרויקט</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>אישור תשלום הון עצמי</b> - צילום שוברים מפנקס התשלומים</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">דפים מפנקס השוברים - על מנת שהבנק יוכל לשלם באמצעותם</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">רשם המשכונות + דוחות עיון</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">מכתב החרגה</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>טופס דיווח לרשויות המס</b> - מש"ח</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">הוראת קבע לתשלומי המשכנתא</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">תשלום דמי פתיחת תיק</span></div></li>
+      </ul>
+    </div>
+
+    <div class="checklist-block" id="collateral-mechir">
+      <div class="block-head"><h3>רכישה ממחיר למשתכן</h3><span class="progress"></span></div>
+      <ul class="checklist">
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>שמאות מקרקעין</b> - כן, מלבד מקרים בהם יש הנחיות ברמת שווי השוק</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>ביטוחים</b> - ביטוח חיים + מבנה</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">ייפוי כח נוטריוני</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>תצהיר דירה יחידה/חלופית</b> - בהנחה ונלקחה משכנתא בשיעור מימון שעולה על 50%</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">כתב התחייבויות לרישום משכנתא</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">רישום הערת אזהרה לטובת הבנק המלווה</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>בקשה להסבת ערבות</b> - במידה והמשכנתא נלקחה לא בבנק שמלווה את הפרויקט</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>אישור תשלום הון עצמי</b> - צילום שוברים מפנקס התשלומים</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">דפים מפנקס השוברים - על מנת שהבנק יוכל לשלם באמצעותם</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">רשם המשכונות + דוחות עיון</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">מכתב החרגה</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>טופס דיווח לרשויות המס</b> - מש"ח</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">הוראת קבע לתשלומי המשכנתא</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">תשלום דמי פתיחת תיק</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">אישור זכייה מחיר למשתכן</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">תעודת זכאות מחיר למשתכן</span></div></li>
+      </ul>
+    </div>
+
+    <div class="checklist-block" id="collateral-yad2">
+      <div class="block-head"><h3>רכישה יד שנייה</h3><span class="progress"></span></div>
+      <ul class="checklist">
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>שמאות מקרקעין</b> - במידה ואין ליווי בנקאי לפרויקט או חשבון ערבויות, נצטרך לעשות שמאות</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>ביטוחים</b> - ביטוח חיים + מבנה</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>ייפוי כח נוטריוני</b> - כן, מלבד מיחזור פנימי באותו בנק</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">רישום הערת אזהרה לטובת הבנק המלווה</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">רשם המשכונות + דוחות עיון</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">רישום שטרות משכנתא בפועל</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">מכתב כוונות מהבנק הקיים</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">הסכמה לדרגה שנייה מהבנק הקיים לבנק החדש</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">הוראת קבע לתשלומי המשכנתא</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">תשלום דמי פתיחת תיק</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">ת.ז + ספח של המוכרים</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">אישור ניהול חשבון</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">במידה וישנו חשבון נאמנות - אישור לניהול חשבון + צילום ת.ז נאמן</span></div></li>
+      </ul>
+    </div>
+
+    <div class="checklist-block" id="collateral-anypurpose">
+      <div class="block-head"><h3>הלוואה לכל מטרה</h3><span class="progress"></span></div>
+      <ul class="checklist">
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">שמאות מקרקעין</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>ביטוחים</b> - ביטוח חיים + מבנה</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">ייפוי כח נוטריוני</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">רשם המשכונות + דוחות עיון</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>כתב התחייבויות לרישום משכנתא</b> - בחלק מהמקרים</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">רישום הערת אזהרה לטובת הבנק המלווה</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">רישום שטרות משכנתא בפועל</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">הוראת קבע לתשלומי המשכנתא</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">תשלום דמי פתיחת תיק</span></div></li>
+      </ul>
+    </div>
+
+    <div class="checklist-block" id="collateral-land">
+      <div class="block-head"><h3>רכישת מגרש + בנייה עצמית</h3><span class="progress"></span></div>
+      <ul class="checklist">
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">שמאות מקרקעין</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>שוברים מהמנהל</b> - במידה והקרקע מתנהלת ברמ"י</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>ביטוחים</b> - ביטוח חיים רק על המשכנתא, ביטוח מבנה רק כאשר נקבל טופס 4</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">ייפוי כח נוטריוני</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>תצהיר דירה יחידה/חלופית</b> - בהנחה ונלקחה משכנתא בשיעור מימון שעולה על 50%</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">רשם המשכונות + דוחות עיון</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>כתב התחייבויות לרישום משכנתא</b> - בחלק מהמקרים</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">רישום הערת אזהרה לטובת הבנק המלווה</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">אישור תשלום הון עצמי</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">רישום שטרות משכנתא בפועל</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>טופס דיווח לרשויות המס</b> - מש"ח</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">הוראת קבע לתשלומי המשכנתא</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">תשלום דמי פתיחת תיק</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">אישור עירייה להעדר חובות</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>מכתב כוונות</b> - במידה ולמוכרים יש משכנתא</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 3: APPRAISAL ============ -->
+  <section class="topic-section" id="appraisal">
+    <div class="topic-head">
+      <div class="eyebrow">שמאות מקרקעין</div>
+      <h2>מסמכים לשמאות</h2>
+      <p>המסמכים שהשמאי יבקש כדי להעריך את הנכס - כולל קישורים ישירים להפקת המסמכים באתר הממשלתי.</p>
+    </div>
+
+    <div class="subtab-menu">
+      <a href="#appraisal-bank">שמאות עם הפניה מהבנק</a>
+      <a href="#appraisal-early">שמאות מוקדמת</a>
+    </div>
+
+    <div class="checklist-block" id="appraisal-bank">
+      <div class="block-head"><h3>שמאות עם הפנייה מהבנק</h3><span class="progress"></span></div>
+      <ul class="checklist">
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">הפנייה להערכת שמאי מהבנק</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">אישור זכויות (חברה משכנת / מינהל אזרחי / רמ"י) / נסח טאבו - <a href="https://www.gov.il/he/service/land_registration_extract" target="_blank" rel="noopener">הפקת נסח טאבו</a></span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">קבצי בית משותף - תשריט, תקנון וצו - <a href="https://www.gov.il/he/service/common_house_files" target="_blank" rel="noopener">הזמנת מסמכי בית משותף</a></span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">טופס ארנונה</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">צילום ת.ז מוכרים + ספח</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">צילום ת.ז רוכשים + ספח</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">היתר בניה - מילולי מטעם העירייה</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">תשריט להיתר - גרמושקה</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">חוזה מכר חתום + כל הנספחים</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">חוזה שכירות (במידה והנכס מושכר)</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">שטר/חוזה חכירה (במידה וקיימת חכירה)</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">במידה וקיימות הערות בנסח, יש לשלוח שטר על ההערות הקיימות - <a href="https://www.gov.il/he/service/first_registration" target="_blank" rel="noopener">הזמנת תיק מקרקעין, שטר מקרקעין או נסח מקרקעין היסטורי</a></span></div></li>
+      </ul>
+    </div>
+
+    <div class="checklist-block" id="appraisal-early">
+      <div class="block-head"><h3>שמאות מוקדמת</h3><span class="progress"></span></div>
+      <ul class="checklist">
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">אישור זכויות (חברה משכנת / מינהל אזרחי / רמ"י) / נסח טאבו - <a href="https://www.gov.il/he/service/land_registration_extract" target="_blank" rel="noopener">הפקת נסח טאבו</a></span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">קבצי בית משותף - תשריט, תקנון וצו - <a href="https://www.gov.il/he/service/common_house_files" target="_blank" rel="noopener">הזמנת מסמכי בית משותף</a></span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">טופס ארנונה</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">צילום ת.ז בעלי הנכס + ספח</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">היתר בניה - מילולי מטעם העירייה</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">תשריט להיתר - גרמושקה</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">חוזה שכירות (במידה והנכס מושכר)</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">שטר/חוזה חכירה (במידה וקיימת חכירה)</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">במידה וקיימות הערות בנסח, יש לשלוח שטר על ההערות הקיימות - <a href="https://www.gov.il/he/service/first_registration" target="_blank" rel="noopener">הזמנת תיק מקרקעין, שטר מקרקעין או נסח מקרקעין היסטורי</a></span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 4: ELIGIBILITY CERTIFICATE ============ -->
+  <section class="topic-section" id="eligibility">
+    <div class="topic-head">
+      <div class="eyebrow">משרד השיכון והבינוי</div>
+      <h2>תעודת זכאות</h2>
+      <p>המסמכים הנדרשים להמצאה לקבלת תעודת זכאות ממשרד השיכון והבינוי.</p>
+    </div>
+
+    <div class="checklist-block">
+      <div class="block-head"><h3>רשימת מסמכים</h3><span class="progress"></span></div>
+      <ul class="checklist">
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">תעודת זהות של המבקשים (כולל ספח מעודכן עם הפרטים האישיים ופרטי הילדים)</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">תעודת עולה (לעולים חדשים בלבד - אם אחד מהמבקשים הוא עולה חדש, גם אם אינה בתוקף)</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">תעודת נישואין (לזוגות נשואים) או אישור הרשמה לנישואין (תאריך הנישואין העתידי חייב להיות במהלך תקופה של עד 3 חודשים מיום הגשת הבקשה)</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">אישור מקצין העיר על משך שירות החובה בצה"ל, או אישור על שירות לאומי / שירות אזרחי מאגודות שהוכרו לכך על ידי משרד הבינוי והשיכון</span></div></li>
+        <li class="chk-item">
+          <div class="chk-row"><input type="checkbox"><span class="txt">פרטי אחים ואחיות - שמות, מספרי ת.ז, כתובות מגורים בארץ ושנת לידה, לכל אחד מהאחים והאחיות של הנרשמים לזכאות</span></div>
+          <div class="download-box" style="margin-right:29px;margin-top:8px;">
+            <span>אם אין ברשותכם צילומי ת.ז של האחים/אחיות - ניתן למלא ולהחתים תצהיר חלופי:</span>
+            <a href="/mismachim/tzhirat-achim-achayot.pdf" target="_blank" rel="noopener">📄 הורדת התצהיר</a>
+          </div>
+        </li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">להורים לילדים - פרטי הילדים כפי שמופיעים בתעודת הזהות (הריון מחודש חמישי / 20 שבועות נחשב גם, באישור קופת חולים חתום על ידי רופא)</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">שירות מילואים - אישור מסוג "אישור שירות מילואים שש שנתי", ניתן להנפיק באתר המילואים של צה"ל</span></div></li>
+        <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">מסמכים המעידים על מצב אישי (תעודת נישואין, תעודת גירושין וכדומה)</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="cta">
+    <h3>לא בטוחים מה בדיוק צריך במקרה שלכם?</h3>
+    <p>שלחו לי הודעה ונעבור ביחד על הרשימה המדויקת לתהליך שלכם.</p>
+    <a class="btn" href="https://wa.me/972507700322" target="_blank" rel="noopener">💬 לשלוח בוואטסאפ</a>
+  </div>
+</main>
+
+<footer>
+  <img src="/hebrewlogo.png" alt="TICO FINANCE" style="height:28px;margin-bottom:10px;">
+  <div>כי בלי תכנון, אין כלום.</div>
+  <div style="margin-top:8px;">
+    <a href="/" target="_blank" rel="noopener">muhni-landing.vercel.app</a>
+    &nbsp;&middot;&nbsp;
+    <a href="tel:0507700322">050-770-0322</a>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.chk-item input[type=checkbox]').forEach((cb, i) => {
+    const key = 'mismachim_chk_' + i;
+    cb.checked = localStorage.getItem(key) === '1';
+    syncItem(cb);
+    cb.addEventListener('change', () => {
+      localStorage.setItem(key, cb.checked ? '1' : '0');
+      syncItem(cb);
+      updateProgress();
+    });
+  });
+  function syncItem(cb){
+    const item = cb.closest('.chk-item');
+    if (item) item.classList.toggle('checked', cb.checked);
+  }
+  function updateProgress(){
+    document.querySelectorAll('.checklist-block').forEach(block => {
+      const boxes = block.querySelectorAll('.chk-item input[type=checkbox]');
+      if (!boxes.length) return;
+      const checked = Array.from(boxes).filter(b => b.checked).length;
+      const label = block.querySelector('.progress');
+      if (label) label.textContent = checked + ' מתוך ' + boxes.length + ' סומנו';
+    });
+  }
+  updateProgress();
+</script>
+
+</body>
+</html>
