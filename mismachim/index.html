@@ -83,7 +83,10 @@
   .checklist-block{ background:var(--card); border:1px solid var(--border); border-radius:16px; padding:22px 24px; margin-bottom:20px; scroll-margin-top:24px; }
   .checklist-block h3{ font-family:Georgia,serif; font-size:18px; color:var(--navy); margin:0; }
   .block-head{ display:flex; align-items:baseline; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--border); }
+  .block-head-right{ display:flex; align-items:center; gap:12px; }
   .progress{ font-size:12.5px; color:var(--muted); font-weight:600; white-space:nowrap; }
+  .pdf-dl{ display:inline-flex; align-items:center; gap:4px; font-size:12px; font-weight:700; color:var(--green-dark); text-decoration:none; background:#F0F7F2; border:1px solid #D5E8DA; border-radius:50px; padding:5px 12px; white-space:nowrap; }
+  .pdf-dl:hover{ background:#E0F0E5; }
   ul.checklist{ list-style:none; margin:0; padding:0; }
   .chk-item{ display:block; padding:8px 0; border-bottom:1px dashed var(--border); }
   .chk-item:last-child{ border-bottom:none; }
@@ -149,7 +152,7 @@
     </div>
 
     <div class="checklist-block">
-      <div class="block-head"><h3>רשימת מסמכים לאיסוף</h3><span class="progress"></span></div>
+      <div class="block-head"><h3>רשימת מסמכים לאיסוף</h3><div class="block-head-right"><span class="progress"></span><a class="pdf-dl" href="/mismachim/pdf/used-apartment.pdf" target="_blank" rel="noopener">📄 PDF</a></div></div>
       <ul class="checklist">
         <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">כתב הסמכה</span></div></li>
         <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">צילום ת.ז + ספח</span></div></li>
@@ -209,7 +212,7 @@
     </div>
 
     <div class="checklist-block" id="collateral-kablan">
-      <div class="block-head"><h3>רכישה מקבלן</h3><span class="progress"></span></div>
+      <div class="block-head"><h3>רכישה מקבלן</h3><div class="block-head-right"><span class="progress"></span><a class="pdf-dl" href="/mismachim/pdf/collateral-kablan.pdf" target="_blank" rel="noopener">📄 PDF</a></div></div>
       <ul class="checklist">
         <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>שמאות מקרקעין</b> - לא, למעט מקרים בהם אין בנק מלווה</span></div></li>
         <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>ביטוחים</b> - ביטוח חיים החל מלקיחת המשכנתא, ביטוח מבנה החל מקבלת טופס 4</span></div></li>
@@ -229,7 +232,7 @@
     </div>
 
     <div class="checklist-block" id="collateral-mechir">
-      <div class="block-head"><h3>רכישה ממחיר למשתכן</h3><span class="progress"></span></div>
+      <div class="block-head"><h3>רכישה ממחיר למשתכן</h3><div class="block-head-right"><span class="progress"></span><a class="pdf-dl" href="/mismachim/pdf/collateral-mechir.pdf" target="_blank" rel="noopener">📄 PDF</a></div></div>
       <ul class="checklist">
         <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>שמאות מקרקעין</b> - כן, מלבד מקרים בהם יש הנחיות ברמת שווי השוק</span></div></li>
         <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>ביטוחים</b> - ביטוח חיים + מבנה</span></div></li>
@@ -251,7 +254,7 @@
     </div>
 
     <div class="checklist-block" id="collateral-yad2">
-      <div class="block-head"><h3>רכישה יד שנייה</h3><span class="progress"></span></div>
+      <div class="block-head"><h3>רכישה יד שנייה</h3><div class="block-head-right"><span class="progress"></span><a class="pdf-dl" href="/mismachim/pdf/collateral-yad2.pdf" target="_blank" rel="noopener">📄 PDF</a></div></div>
       <ul class="checklist">
         <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>שמאות מקרקעין</b> - במידה ואין ליווי בנקאי לפרויקט או חשבון ערבויות, נצטרך לעשות שמאות</span></div></li>
         <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>ביטוחים</b> - ביטוח חיים + מבנה</span></div></li>
@@ -270,7 +273,7 @@
     </div>
 
     <div class="checklist-block" id="collateral-anypurpose">
-      <div class="block-head"><h3>הלוואה לכל מטרה</h3><span class="progress"></span></div>
+      <div class="block-head"><h3>הלוואה לכל מטרה</h3><div class="block-head-right"><span class="progress"></span><a class="pdf-dl" href="/mismachim/pdf/collateral-anypurpose.pdf" target="_blank" rel="noopener">📄 PDF</a></div></div>
       <ul class="checklist">
         <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">שמאות מקרקעין</span></div></li>
         <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>ביטוחים</b> - ביטוח חיים + מבנה</span></div></li>
@@ -285,7 +288,7 @@
     </div>
 
     <div class="checklist-block" id="collateral-land">
-      <div class="block-head"><h3>רכישת מגרש + בנייה עצמית</h3><span class="progress"></span></div>
+      <div class="block-head"><h3>רכישת מגרש + בנייה עצמית</h3><div class="block-head-right"><span class="progress"></span><a class="pdf-dl" href="/mismachim/pdf/collateral-land.pdf" target="_blank" rel="noopener">📄 PDF</a></div></div>
       <ul class="checklist">
         <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">שמאות מקרקעין</span></div></li>
         <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt"><b>שוברים מהמנהל</b> - במידה והקרקע מתנהלת ברמ"י</span></div></li>
@@ -320,7 +323,7 @@
     </div>
 
     <div class="checklist-block" id="appraisal-bank">
-      <div class="block-head"><h3>שמאות עם הפנייה מהבנק</h3><span class="progress"></span></div>
+      <div class="block-head"><h3>שמאות עם הפנייה מהבנק</h3><div class="block-head-right"><span class="progress"></span><a class="pdf-dl" href="/mismachim/pdf/appraisal-bank.pdf" target="_blank" rel="noopener">📄 PDF</a></div></div>
       <ul class="checklist">
         <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">הפנייה להערכת שמאי מהבנק</span></div></li>
         <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">אישור זכויות (חברה משכנת / מינהל אזרחי / רמ"י) / נסח טאבו - <a href="https://www.gov.il/he/service/land_registration_extract" target="_blank" rel="noopener">הפקת נסח טאבו</a></span></div></li>
@@ -338,7 +341,7 @@
     </div>
 
     <div class="checklist-block" id="appraisal-early">
-      <div class="block-head"><h3>שמאות מוקדמת</h3><span class="progress"></span></div>
+      <div class="block-head"><h3>שמאות מוקדמת</h3><div class="block-head-right"><span class="progress"></span><a class="pdf-dl" href="/mismachim/pdf/appraisal-early.pdf" target="_blank" rel="noopener">📄 PDF</a></div></div>
       <ul class="checklist">
         <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">אישור זכויות (חברה משכנת / מינהל אזרחי / רמ"י) / נסח טאבו - <a href="https://www.gov.il/he/service/land_registration_extract" target="_blank" rel="noopener">הפקת נסח טאבו</a></span></div></li>
         <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">קבצי בית משותף - תשריט, תקנון וצו - <a href="https://www.gov.il/he/service/common_house_files" target="_blank" rel="noopener">הזמנת מסמכי בית משותף</a></span></div></li>
@@ -362,7 +365,7 @@
     </div>
 
     <div class="checklist-block">
-      <div class="block-head"><h3>רשימת מסמכים</h3><span class="progress"></span></div>
+      <div class="block-head"><h3>רשימת מסמכים</h3><div class="block-head-right"><span class="progress"></span><a class="pdf-dl" href="/mismachim/pdf/eligibility.pdf" target="_blank" rel="noopener">📄 PDF</a></div></div>
       <ul class="checklist">
         <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">תעודת זהות של המבקשים (כולל ספח מעודכן עם הפרטים האישיים ופרטי הילדים)</span></div></li>
         <li class="chk-item"><div class="chk-row"><input type="checkbox"><span class="txt">תעודת עולה (לעולים חדשים בלבד - אם אחד מהמבקשים הוא עולה חדש, גם אם אינה בתוקף)</span></div></li>
