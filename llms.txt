@@ -1,0 +1,20 @@
+# TICO FINANCE
+
+> TICO FINANCE (אדריכל המשכנתאות / Mortgage Architect) is a licensed Israeli mortgage consultancy led by Tico Zveibel (צ'יקו זוויבל), offering personalized, human-led mortgage advice - not just rate comparison. Independent of the banks, working exclusively for the client. Contact: +972-50-770-0322, ticozveibel@hotmail.com.
+
+## Services
+
+- [Mortgage refinancing (מיחזור משכנתה)](https://www.ticofinance.co.il/refinance/): Free review of an existing mortgage to find savings opportunities; average client saving ₪847/month.
+- [Upgraders (משפרי דיור)](https://www.ticofinance.co.il/upgraders/): Financing structure and bridge-loan timing for clients selling one home and buying another.
+- [Real estate investors (משקיעי נדל"ן)](https://www.ticofinance.co.il/investors/): Financing structures that maximize leverage and cash flow across multiple properties.
+- [Brazilians buying property in Israel (Comprar imóvel em Israel)](https://www.ticofinance.co.il/br/): Remote-friendly consultancy for Brazilian residents purchasing real estate in Israel, coordinating financing, lawyers, and agents.
+
+## About
+
+- [Homepage](https://www.ticofinance.co.il/): Overview of TICO FINANCE and all four client segments above.
+- [Blog](https://www.ticofinance.co.il/blog/): Articles on mortgage refinancing, investment financing, upgrader timing, and buying property in Israel from abroad.
+
+## Notes
+
+- Alternate/brand name: "טיקו פיננס" (Tico Finance). Not affiliated with any other business using a similar name.
+- Site is in Hebrew (primary) and Portuguese (/br/ section, for the Brazilian audience).
