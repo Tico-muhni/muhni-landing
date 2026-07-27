@@ -123,6 +123,8 @@
   .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 14px; transition: color .2s; }
   .nav-links a:hover { color: var(--purple); }
   .nav-cta { background: var(--green); color: white !important; padding: 8px 20px; border-radius: 50px; font-weight: 700 !important; }
+  .lang-flag { font-size: 20px; line-height: 1; text-decoration: none; padding: 6px 9px; border-radius: 10px; border: 1.5px solid var(--border); transition: background .2s, border-color .2s; }
+  .lang-flag:hover { background: var(--bg); border-color: var(--green); }
   .services-wrap { position: relative; }
   .services-toggle { background: none; border: none; font-family: inherit; color: var(--text-muted); font-weight: 500; font-size: 14px; cursor: pointer; padding: 0; }
   .services-toggle:hover { color: var(--purple); }
@@ -219,6 +221,7 @@
       <img src="../englishlogo.png" alt="TICO FINANCE" style="height:40px;width:auto;object-fit:contain;" onerror="this.style.display='none';this.nextSibling.style.display='block'"/><span style="display:none;font-size:22px;font-weight:900;color:#1a2744;">TICO FINANCE</span>
     </div>
     <nav class="nav-links">
+      <a href="/" class="lang-flag" title="עברית" aria-label="Site em hebraico">🇮🇱</a>
       <a href="#network">Nossa rede</a>
       <a href="#how">Como funciona</a>
       <a href="#faq">Perguntas frequentes</a>
@@ -226,7 +229,7 @@
         <button class="services-toggle" onclick="toggleServicesMenu(event)">Outros serviços ▾</button>
         <div class="services-panel" id="services-panel">
           <a href="/">🧭 Todos os processos</a>
-          <a href="/refinance/">🇮🇱 Site em hebraico</a>
+          <a href="/">🇮🇱 Site em hebraico</a>
           <a href="/upgraders/">🏡 Trocar de imóvel</a>
           <a href="/investors/">📈 Investidores</a>
           <a href="/blog/">✍️ Blog e dicas</a>
@@ -242,6 +245,7 @@
 
 <div class="mobile-menu" id="mobile-menu" onclick="closeMobileMenu()">
   <div class="mobile-menu-panel" onclick="event.stopPropagation()">
+    <a href="/" onclick="closeMobileMenu()">🇮🇱 Site em hebraico</a>
     <a href="#network" onclick="closeMobileMenu()">Nossa rede</a>
     <a href="#how" onclick="closeMobileMenu()">Como funciona</a>
     <a href="#faq" onclick="closeMobileMenu()">Perguntas frequentes</a>
@@ -249,7 +253,7 @@
     <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);">
       <div style="font-size:12px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Outros serviços</div>
       <a href="/" onclick="closeMobileMenu()">🧭 Todos os processos</a>
-      <a href="/refinance/" onclick="closeMobileMenu()">🇮🇱 Site em hebraico</a>
+      <a href="/" onclick="closeMobileMenu()">🇮🇱 Site em hebraico</a>
       <a href="/upgraders/" onclick="closeMobileMenu()">🏡 Trocar de imóvel</a>
       <a href="/investors/" onclick="closeMobileMenu()">📈 Investidores</a>
       <a href="/blog/" onclick="closeMobileMenu()">✍️ Blog e dicas</a>

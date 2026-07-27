@@ -96,6 +96,8 @@
   .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 14px; transition: color .2s; }
   .nav-links a:hover { color: var(--purple); }
   .nav-cta { background: var(--green); color: white !important; padding: 8px 20px; border-radius: 50px; font-weight: 700 !important; }
+  .lang-flag { font-size: 20px; line-height: 1; text-decoration: none; padding: 6px 9px; border-radius: 10px; border: 1.5px solid var(--border); transition: background .2s, border-color .2s; }
+  .lang-flag:hover { background: var(--bg); border-color: var(--green); }
   .services-wrap { position: relative; }
   .services-toggle { background: none; border: none; font-family: inherit; color: var(--text-muted); font-weight: 500; font-size: 14px; cursor: pointer; padding: 0; }
   .services-toggle:hover { color: var(--purple); }
@@ -228,6 +230,7 @@
       <img src="../hebrewlogo.png" alt="TICO FINANCE" style="height:40px;width:auto;object-fit:contain;" onerror="this.style.display='none';this.nextSibling.style.display='block'"/><span style="display:none;font-size:22px;font-weight:900;color:#1a2744;">TICO FINANCE</span>
     </div>
     <nav class="nav-links">
+      <a href="/br/" class="lang-flag" title="Português (Brasil)" aria-label="Versão em português">🇧🇷</a>
       <a href="#advantage">היתרון</a>
       <a href="#how">איך זה עובד</a>
       <a href="#testimonials">המלצות</a>
@@ -252,6 +255,7 @@
 
 <div class="mobile-menu" id="mobile-menu" onclick="closeMobileMenu()">
   <div class="mobile-menu-panel" onclick="event.stopPropagation()">
+    <a href="/br/" onclick="closeMobileMenu()">🇧🇷 Português (Brasil)</a>
     <a href="#advantage" onclick="closeMobileMenu()">היתרון</a>
     <a href="#how" onclick="closeMobileMenu()">איך זה עובד</a>
     <a href="#faq" onclick="closeMobileMenu()">שאלות נפוצות</a>
