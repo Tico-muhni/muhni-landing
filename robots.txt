@@ -1,8 +1,9 @@
 User-agent: *
 Allow: /
-Disallow: /itrot/
-Disallow: /ashrai/
-Disallow: /mismachim/
-Disallow: /thank-you.html
+
+# חסום דפי מערכת
+Disallow: /terms.html
+Disallow: /privacy.html
+Disallow: /accessibility.html
 
 Sitemap: https://www.ticofinance.co.il/sitemap.xml
