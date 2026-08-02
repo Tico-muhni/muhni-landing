@@ -87,12 +87,6 @@
   }
   .input-row input:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(46,139,87,.12); }
   .input-row .suffix { font-size: 13px; color: var(--text-muted); white-space: nowrap; }
-  .constants-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
-  .constant-item { background: var(--bg); border: 1.5px solid var(--border); border-radius: 12px; padding: 12px 14px; }
-  .constant-item .c-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
-  .constant-item .c-label { font-size: 12px; font-weight: 700; color: var(--text-muted); }
-  .constant-item .c-badge { font-size: 10px; font-weight: 800; color: var(--text-muted); background: rgba(0,0,0,.06); padding: 2px 8px; border-radius: 50px; }
-  .constant-item .c-value { font-size: 14px; font-weight: 800; color: var(--text); }
   .grant-options { display: flex; flex-wrap: wrap; gap: 16px; }
   .grant-options label { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; cursor: pointer; }
   .grant-options input { width: 18px; height: 18px; accent-color: var(--green); cursor: pointer; }
@@ -130,7 +124,7 @@
   .mobile-nav-inner { display: flex; justify-content: space-around; padding: 10px 0 16px; }
   .mobile-nav a { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: var(--text-muted); font-size: 11px; font-weight: 600; }
   .mobile-nav a span:first-child { font-size: 22px; }
-  @media (max-width: 900px) { .field-grid { grid-template-columns: 1fr; } .constants-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 900px) { .field-grid { grid-template-columns: 1fr; } }
   @media (max-width: 640px) { .nav-links { display: none; } .hamburger { display: block; } section { padding: 40px 16px; } .card { padding: 20px; } .size-row { grid-template-columns: 1fr; } .mobile-nav { display: block; } }
   @media (max-width: 1200px) { .nav-links { display: none; } .hamburger { display: block; } .mobile-nav { display: block; } }
 </style>
@@ -239,29 +233,6 @@
         <div class="field">
           <label for="storageSqm">גודל מחסן (מחושב לפי 25% ממחיר מ״ר - קבוע)</label>
           <div class="input-row"><input type="number" id="storageSqm" min="0" value="6"/><span class="suffix">מ״ר</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>הנחות קבועות של המחשבון</h2>
-      <p class="card-note">ערכים קבועים שאינם משתנים בין הגרלות, ולכן נעולים לעריכה.</p>
-      <div class="constants-grid">
-        <div class="constant-item">
-          <div class="c-top"><span class="c-label">מע״מ</span><span class="c-badge">קבוע</span></div>
-          <div class="c-value">18%</div>
-        </div>
-        <div class="constant-item">
-          <div class="c-top"><span class="c-label">מכפיל מרפסת</span><span class="c-badge">קבוע</span></div>
-          <div class="c-value">50% ממחיר מ״ר</div>
-        </div>
-        <div class="constant-item">
-          <div class="c-top"><span class="c-label">מכפיל מחסן</span><span class="c-badge">קבוע</span></div>
-          <div class="c-value">25% ממחיר מ״ר</div>
-        </div>
-        <div class="constant-item">
-          <div class="c-top"><span class="c-label">חניה</span><span class="c-badge">קבוע</span></div>
-          <div class="c-value">70,000 ₪ (1, מחיר מלא ללא הנחה)</div>
         </div>
       </div>
     </div>
