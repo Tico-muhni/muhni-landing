@@ -273,7 +273,7 @@
 
     <div class="card">
       <h2>הון עצמי ומשכנתא (לפי כללי מחיר למשתכן)</h2>
-      <p class="card-note">אם המחיר לפני הנחה (שווי השוק) עולה על 2.1 מיליון ₪: משכנתא של עד 75% מהגבוה מבין 2.1 מיליון ₪ למחיר החוזה. אחרת: משכנתא של עד 75% ממחיר החוזה בפועל. בכפוף למינימום הון עצמי - 60,000 ₪ אם יש מענק מקום, אחרת 100,000 ₪.</p>
+      <p class="card-note">משכנתא של עד 75% משווי השוק (המחיר לפני הנחה); אם שווי השוק עולה על 2.1 מיליון ₪, המשכנתא מבוססת על הגבוה מבין 2.1 מיליון ₪ למחיר החוזה. בכפוף למינימום הון עצמי - 60,000 ₪ אם יש מענק מקום, אחרת 100,000 ₪.</p>
       <div class="table-wrap">
         <table>
           <thead>
@@ -328,7 +328,7 @@
     var minEquity = grant > 0 ? MIN_EQUITY_WITH_GRANT : MIN_EQUITY_NO_GRANT;
     var recognizedValue = marketValue > MORTGAGE_PRICE_CAP
       ? Math.max(MORTGAGE_PRICE_CAP, contractPrice)
-      : contractPrice;
+      : marketValue;
     var mortgage = Math.max(
       Math.min(MORTGAGE_LTV * recognizedValue, contractPrice - minEquity),
       0
