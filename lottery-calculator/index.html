@@ -90,12 +90,6 @@
   .grant-options { display: flex; flex-wrap: wrap; gap: 16px; }
   .grant-options label { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; cursor: pointer; }
   .grant-options input { width: 18px; height: 18px; accent-color: var(--green); cursor: pointer; }
-  .size-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; align-items: center; margin-bottom: 10px; }
-  .size-row input[type=text] { padding: 10px 12px; border: 1.5px solid var(--border); border-radius: 10px; font-family: 'Heebo', sans-serif; font-size: 14px; }
-  .size-row .size-sqm { display: flex; align-items: center; gap: 8px; }
-  .size-row .size-sqm input { width: 100%; padding: 10px 12px; border: 1.5px solid var(--border); border-radius: 10px; font-family: 'Heebo', sans-serif; font-size: 14px; }
-  .size-row .size-remove { background: none; border: none; color: #c0392b; font-weight: 700; font-size: 13px; cursor: pointer; white-space: nowrap; }
-  .add-size-btn { background: none; border: 1.5px solid var(--green); color: var(--green); font-weight: 700; font-size: 13.5px; padding: 8px 18px; border-radius: 50px; cursor: pointer; font-family: 'Heebo', sans-serif; }
   .table-wrap { overflow-x: auto; }
   table { width: 100%; min-width: 620px; border-collapse: collapse; font-size: 13.5px; }
   thead th { text-align: right; padding: 8px 6px; border-bottom: 1.5px solid var(--border); color: var(--text-muted); font-weight: 700; font-size: 12.5px; }
@@ -125,7 +119,7 @@
   .mobile-nav a { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: var(--text-muted); font-size: 11px; font-weight: 600; }
   .mobile-nav a span:first-child { font-size: 22px; }
   @media (max-width: 900px) { .field-grid { grid-template-columns: 1fr; } }
-  @media (max-width: 640px) { .nav-links { display: none; } .hamburger { display: block; } section { padding: 40px 16px; } .card { padding: 20px; } .size-row { grid-template-columns: 1fr; } .mobile-nav { display: block; } }
+  @media (max-width: 640px) { .nav-links { display: none; } .hamburger { display: block; } section { padding: 40px 16px; } .card { padding: 20px; } .mobile-nav { display: block; } }
   @media (max-width: 1200px) { .nav-links { display: none; } .hamburger { display: block; } .mobile-nav { display: block; } }
 </style>
 <link rel="alternate" hreflang="he" href="https://www.ticofinance.co.il/lottery-calculator/" />
@@ -227,11 +221,11 @@
           <div class="input-row"><input type="number" id="referencePrice" min="0" value="0"/><span class="suffix">₪</span></div>
         </div>
         <div class="field">
-          <label for="balconySqm">גודל מרפסת (מחושב לפי 50% ממחיר מ״ר - קבוע)</label>
+          <label for="balconySqm">גודל מרפסת</label>
           <div class="input-row"><input type="number" id="balconySqm" min="0" value="12"/><span class="suffix">מ״ר</span></div>
         </div>
         <div class="field">
-          <label for="storageSqm">גודל מחסן (מחושב לפי 25% ממחיר מ״ר - קבוע)</label>
+          <label for="storageSqm">גודל מחסן</label>
           <div class="input-row"><input type="number" id="storageSqm" min="0" value="6"/><span class="suffix">מ״ר</span></div>
         </div>
       </div>
@@ -244,15 +238,6 @@
         <label><input type="radio" name="grant" value="40000"/>40,000 ₪</label>
         <label><input type="radio" name="grant" value="60000"/>60,000 ₪</label>
       </div>
-    </div>
-
-    <div class="card">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
-        <h2 style="margin-bottom:0;">גדלי דירות</h2>
-        <button type="button" class="add-size-btn" onclick="addSize()">+ הוספת גודל</button>
-      </div>
-      <div style="height:14px;"></div>
-      <div id="sizesContainer"></div>
     </div>
 
     <div class="card">
@@ -305,13 +290,12 @@
 
   var currency = new Intl.NumberFormat('he-IL', { maximumFractionDigits: 0 });
 
-  var sizes = [
+  var SIZES = [
     { id: 1, label: '3 חדרים', mainSqm: 84 },
     { id: 2, label: '4 חדרים', mainSqm: 100 },
     { id: 3, label: '5 חדרים', mainSqm: 115 },
     { id: 4, label: '6 חדרים', mainSqm: 125 }
   ];
-  var nextId = 5;
 
   function num(id) {
     var el = document.getElementById(id);
@@ -336,54 +320,6 @@
     return { mortgage: mortgage, equity: contractPrice - mortgage };
   }
 
-  function renderSizes() {
-    var container = document.getElementById('sizesContainer');
-    container.innerHTML = '';
-    sizes.forEach(function (size) {
-      var row = document.createElement('div');
-      row.className = 'size-row';
-      row.innerHTML =
-        '<input type="text" value="" data-id="' + size.id + '" class="size-label"/>' +
-        '<div class="size-sqm"><input type="number" min="0" value="" data-id="' + size.id + '" class="size-sqm-input"/><span class="suffix">מ״ר עיקרי</span></div>' +
-        '<button type="button" class="size-remove" data-id="' + size.id + '">הסרה</button>';
-      container.appendChild(row);
-      row.querySelector('.size-label').value = size.label;
-      row.querySelector('.size-sqm-input').value = size.mainSqm;
-    });
-
-    container.querySelectorAll('.size-label').forEach(function (input) {
-      input.addEventListener('input', function () {
-        var id = parseInt(input.dataset.id, 10);
-        var size = sizes.find(function (s) { return s.id === id; });
-        if (size) size.label = input.value;
-        recalculate();
-      });
-    });
-    container.querySelectorAll('.size-sqm-input').forEach(function (input) {
-      input.addEventListener('input', function () {
-        var id = parseInt(input.dataset.id, 10);
-        var size = sizes.find(function (s) { return s.id === id; });
-        if (size) size.mainSqm = parseFloat(input.value) || 0;
-        recalculate();
-      });
-    });
-    container.querySelectorAll('.size-remove').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var id = parseInt(btn.dataset.id, 10);
-        sizes = sizes.filter(function (s) { return s.id !== id; });
-        renderSizes();
-        recalculate();
-      });
-    });
-  }
-
-  window.addSize = function () {
-    sizes.push({ id: nextId, label: 'דירה ' + (sizes.length + 1), mainSqm: 90 });
-    nextId += 1;
-    renderSizes();
-    recalculate();
-  };
-
   function recalculate() {
     var pricePerSqm = num('pricePerSqm');
     var discountPercent = num('discountPercent');
@@ -401,7 +337,7 @@
     priceBody.innerHTML = '';
     equityBody.innerHTML = '';
 
-    sizes.forEach(function (size) {
+    SIZES.forEach(function (size) {
       var calcSqm = size.mainSqm + balconySqmEquivalent + storageSqmEquivalent;
       var preDiscountExVat = calcSqm * pricePerSqm;
       var preDiscountIncVat = preDiscountExVat * (1 + VAT_PERCENT / 100);
@@ -453,7 +389,6 @@
   });
   document.getElementById('grantOptions').addEventListener('change', recalculate);
 
-  renderSizes();
   recalculate();
 })();
 </script>
