@@ -82,10 +82,10 @@
   .help-tip { position: relative; display: inline-flex; }
   .help-btn { width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid var(--text-muted); background: none; color: var(--text-muted); font-size: 10px; font-weight: 800; line-height: 1; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; font-family: inherit; }
   .help-btn:hover { border-color: var(--green); color: var(--green); }
-  .help-panel { display: none; position: absolute; top: 24px; right: 0; z-index: 20; width: 280px; background: white; border: 1.5px solid var(--border); border-radius: 14px; box-shadow: 0 12px 32px rgba(0,0,0,.16); padding: 12px; text-align: right; }
-  .help-tip:hover .help-panel, .help-tip.open .help-panel { display: block; }
+  .help-panel { display: none; position: fixed; z-index: 300; width: 280px; background: white; border: 1.5px solid var(--border); border-radius: 14px; box-shadow: 0 12px 32px rgba(0,0,0,.16); padding: 12px; text-align: right; }
+  .help-tip.open .help-panel, .help-tip.hovering .help-panel { display: block; }
   .help-panel p { font-size: 12px; font-weight: 400; color: var(--text-muted); line-height: 1.6; margin-bottom: 8px; }
-  .help-panel img { width: 100%; border-radius: 10px; border: 1px solid var(--border); display: block; }
+  .help-panel img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--border); display: block; }
   .input-row { display: flex; align-items: center; gap: 8px; }
   .input-row input[type=number], .input-row input[type=text] {
     width: 100%; padding: 11px 14px; background: white; border: 1.5px solid var(--border);
@@ -105,6 +105,9 @@
   .highlight { font-weight: 800; color: var(--green); }
   .empty-note { font-size: 13.5px; color: var(--text-muted); padding: 8px 0; }
   .disclaimer { font-size: 12px; color: var(--text-muted); text-align: center; max-width: 700px; margin: 0 auto; }
+  .income-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; background: var(--bg); border-radius: 12px; padding: 14px 16px; margin-top: 8px; }
+  .income-cta p { font-size: 14px; color: var(--text); margin: 0; }
+  .income-cta .btn-wa { padding: 10px 20px; font-size: 14px; white-space: nowrap; }
   .final-cta { background: white; }
   .final-grid { max-width: 900px; margin: 0 auto; text-align: center; background: var(--bg); border: 1.5px solid var(--border); border-radius: 28px; padding: 40px 28px; }
   .final-grid h2 { font-size: clamp(1.3rem, 3vw, 1.7rem); font-weight: 800; margin-bottom: 12px; }
@@ -310,6 +313,10 @@
           <tbody id="equityResultsBody"></tbody>
         </table>
       </div>
+      <div class="income-cta">
+        <p>רוצים לבדוק אם ההכנסה שלכם מתאימה להחזר הזה? זה בדיוק מה שאני בודק בשיחה.</p>
+        <a href="https://wa.me/972507700322?text=%D7%94%D7%99%D7%99%20%D7%A6%27%D7%99%D7%A7%D7%95!%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%91%D7%9E%D7%97%D7%A9%D7%91%D7%95%D7%9F%20%D7%90%D7%AA%20%D7%94%D7%94%D7%97%D7%96%D7%A8%20%D7%94%D7%97%D7%95%D7%93%D7%A9%D7%99%20%D7%94%D7%A6%D7%A4%D7%95%D7%99%2C%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%91%D7%93%D7%95%D7%A7%20%D7%90%D7%9D%20%D7%94%D7%94%D7%9B%D7%A0%D7%A1%D7%94%20%D7%A9%D7%9C%D7%99%20%D7%9E%D7%AA%D7%90%D7%99%D7%9E%D7%94%20%D7%9C%D7%9E%D7%A9%D7%9B%D7%A0%D7%AA%D7%94%20%D7%94%D7%96%D7%95." target="_blank" rel="noopener" class="btn-wa">💬 בדיקה מול היועץ</a>
+      </div>
     </div>
 
     <p class="disclaimer">המחשבון הוא כלי עזר להערכה בלבד ואינו מהווה ייעוץ פיננסי. יש לבדוק את פרטי ההגרלה המדויקים באתר הרשמי ואת תנאי המימון מול הבנק לפני קבלת החלטה.</p>
@@ -444,16 +451,62 @@
   });
   document.getElementById('grantOptions').addEventListener('change', recalculate);
 
-  document.querySelectorAll('.help-tip').forEach(function (tip) {
-    tip.querySelector('.help-btn').addEventListener('click', function (e) {
-      e.stopPropagation();
-      var wasOpen = tip.classList.contains('open');
-      document.querySelectorAll('.help-tip.open').forEach(function (t) { t.classList.remove('open'); });
-      if (!wasOpen) tip.classList.add('open');
-    });
-  });
-  document.addEventListener('click', function () {
+  var hoverCapable = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  function closeAllPinned() {
     document.querySelectorAll('.help-tip.open').forEach(function (t) { t.classList.remove('open'); });
+  }
+
+  // ממקם את חלונית העזרה עם קואורדינטות מוחלטות ביחס ל-viewport (position: fixed)
+  // ומהדק אותה לגבולות המסך, כדי שלא תיחתך או "תקפוץ" במובייל בלי קשר לאיפה
+  // כפתור ה-"?" נופל בפועל כשתווית השדה עוברת שורה.
+  function positionPanel(tip) {
+    var btn = tip.querySelector('.help-btn');
+    var panel = tip.querySelector('.help-panel');
+    var rect = btn.getBoundingClientRect();
+    var margin = 12;
+    var panelWidth = Math.min(280, window.innerWidth - margin * 2);
+    var left = rect.right - panelWidth;
+    left = Math.min(left, window.innerWidth - panelWidth - margin);
+    left = Math.max(left, margin);
+    var top = rect.bottom + 8;
+    panel.style.width = panelWidth + 'px';
+    panel.style.top = top + 'px';
+    panel.style.left = left + 'px';
+  }
+
+  document.querySelectorAll('.help-tip').forEach(function (tip) {
+    if (hoverCapable) {
+      tip.addEventListener('mouseenter', function () {
+        tip.classList.add('hovering');
+        positionPanel(tip);
+      });
+      tip.addEventListener('mouseleave', function () {
+        tip.classList.remove('hovering');
+      });
+    }
+  });
+
+  // הלחיצה מנעצת/משחררת רק את מצב ה"נעיצה" (open), בלי קשר למצב ה-hover -
+  // כדי שלחיצה על מצביע שכבר נמצא בהובר תפתח אותה בנעיצה ולא תסגור אותה.
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.help-btn');
+    if (btn) {
+      var tip = btn.closest('.help-tip');
+      var wasPinned = tip.classList.contains('open');
+      closeAllPinned();
+      if (!wasPinned) {
+        tip.classList.add('open');
+        positionPanel(tip);
+      }
+      return;
+    }
+    if (!e.target.closest('.help-panel')) closeAllPinned();
+  });
+
+  window.addEventListener('resize', function () {
+    var activeTip = document.querySelector('.help-tip.open, .help-tip.hovering');
+    if (activeTip) positionPanel(activeTip);
   });
 
   recalculate();
