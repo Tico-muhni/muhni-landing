@@ -78,7 +78,14 @@
   .card .card-note { font-size: 12.5px; color: var(--text-muted); margin-bottom: 18px; }
   .field-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .field { display: flex; flex-direction: column; gap: 6px; }
-  .field label { font-size: 13.5px; font-weight: 700; color: var(--text); }
+  .field label { font-size: 13.5px; font-weight: 700; color: var(--text); display: flex; align-items: center; gap: 6px; }
+  .help-tip { position: relative; display: inline-flex; }
+  .help-btn { width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid var(--text-muted); background: none; color: var(--text-muted); font-size: 10px; font-weight: 800; line-height: 1; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; font-family: inherit; }
+  .help-btn:hover { border-color: var(--green); color: var(--green); }
+  .help-panel { display: none; position: absolute; top: 24px; right: 0; z-index: 20; width: 280px; background: white; border: 1.5px solid var(--border); border-radius: 14px; box-shadow: 0 12px 32px rgba(0,0,0,.16); padding: 12px; text-align: right; }
+  .help-tip:hover .help-panel, .help-tip.open .help-panel { display: block; }
+  .help-panel p { font-size: 12px; font-weight: 400; color: var(--text-muted); line-height: 1.6; margin-bottom: 8px; }
+  .help-panel img { width: 100%; border-radius: 10px; border: 1px solid var(--border); display: block; }
   .input-row { display: flex; align-items: center; gap: 8px; }
   .input-row input[type=number], .input-row input[type=text] {
     width: 100%; padding: 11px 14px; background: white; border: 1.5px solid var(--border);
@@ -205,15 +212,39 @@
       <p class="card-note">משתנים מהגרלה להגרלה - יש למלא לפי הפרטים באתר.</p>
       <div class="field-grid">
         <div class="field">
-          <label for="pricePerSqm">מחיר מוצג למ״ר (ללא מע״מ, ללא הצמדה)</label>
+          <label for="pricePerSqm">מחיר מוצג למ״ר (ללא מע״מ, ללא הצמדה)
+            <span class="help-tip">
+              <button type="button" class="help-btn" aria-label="איפה למצוא את זה באתר ההגרלה">?</button>
+              <div class="help-panel" role="tooltip">
+                <p>בעמוד הדירה הספציפית באתר ההגרלה, בכרטיס "מחיר", מופיעה השורה "מחיר למטר" - זה המספר שיש להזין כאן.</p>
+                <img src="img/price-example.jpg" alt="דוגמה לכרטיס מחיר באתר ההגרלה" width="800" height="737"/>
+              </div>
+            </span>
+          </label>
           <div class="input-row"><input type="number" id="pricePerSqm" min="0" value="0"/><span class="suffix">₪</span></div>
         </div>
         <div class="field">
-          <label for="discountPercent">אחוז הנחה (מסלול א׳)</label>
+          <label for="discountPercent">אחוז הנחה (מסלול א׳)
+            <span class="help-tip">
+              <button type="button" class="help-btn" aria-label="איפה למצוא את זה באתר ההגרלה">?</button>
+              <div class="help-panel" role="tooltip">
+                <p>מתחת לכרטיס המחיר, בכרטיס "הערה", כתובה נוסחת ההנחה: הנמוך מבין אחוז מסוים (למשל 25%) לבין תקרה בש״ח. האחוז הוא המספר הזה.</p>
+                <img src="img/note-example.jpg" alt="דוגמה לכרטיס הערה עם נוסחת ההנחה באתר ההגרלה" width="800" height="620"/>
+              </div>
+            </span>
+          </label>
           <div class="input-row"><input type="number" id="discountPercent" min="0" value="25"/><span class="suffix">%</span></div>
         </div>
         <div class="field">
-          <label for="discountCap">תקרת הנחה מקסימלית (מסלול ב׳)</label>
+          <label for="discountCap">תקרת הנחה מקסימלית (מסלול ב׳)
+            <span class="help-tip">
+              <button type="button" class="help-btn" aria-label="איפה למצוא את זה באתר ההגרלה">?</button>
+              <div class="help-panel" role="tooltip">
+                <p>באותו כרטיס "הערה", התקרה בש״ח (למשל 500,000 ₪) היא המספר השני בנוסחת ההנחה - ההנחה בפועל היא הנמוך מבין האחוז לתקרה.</p>
+                <img src="img/note-example.jpg" alt="דוגמה לכרטיס הערה עם נוסחת ההנחה באתר ההגרלה" width="800" height="620"/>
+              </div>
+            </span>
+          </label>
           <div class="input-row"><input type="number" id="discountCap" min="0" value="500000"/><span class="suffix">₪</span></div>
         </div>
         <div class="field">
@@ -388,6 +419,18 @@
     document.getElementById(id).addEventListener('input', recalculate);
   });
   document.getElementById('grantOptions').addEventListener('change', recalculate);
+
+  document.querySelectorAll('.help-tip').forEach(function (tip) {
+    tip.querySelector('.help-btn').addEventListener('click', function (e) {
+      e.stopPropagation();
+      var wasOpen = tip.classList.contains('open');
+      document.querySelectorAll('.help-tip.open').forEach(function (t) { t.classList.remove('open'); });
+      if (!wasOpen) tip.classList.add('open');
+    });
+  });
+  document.addEventListener('click', function () {
+    document.querySelectorAll('.help-tip.open').forEach(function (t) { t.classList.remove('open'); });
+  });
 
   recalculate();
 })();
