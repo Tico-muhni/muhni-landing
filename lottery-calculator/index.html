@@ -248,7 +248,15 @@
           <div class="input-row"><input type="number" id="discountCap" min="0" value="500000"/><span class="suffix">₪</span></div>
         </div>
         <div class="field">
-          <label for="referencePrice">מחיר ייחוס בהערות (מידע בלבד, לא נכנס לחישוב)</label>
+          <label for="referencePrice">מחיר ייחוס בהערות (ללא מע״מ, למ״ר)
+            <span class="help-tip">
+              <button type="button" class="help-btn" aria-label="איפה למצוא את זה באתר ההגרלה">?</button>
+              <div class="help-panel" role="tooltip">
+                <p>באותו כרטיס "הערה", "מחיר הדירה המעודכן" למ״ר - זה שווי השוק הרשמי של הפרויקט, ומשמש לחישוב המשכנתה (לא לחישוב ההנחה).</p>
+                <img src="img/note-example.jpg" alt="דוגמה לכרטיס הערה עם מחיר הדירה המעודכן באתר ההגרלה" width="800" height="620"/>
+              </div>
+            </span>
+          </label>
           <div class="input-row"><input type="number" id="referencePrice" min="0" value="0"/><span class="suffix">₪</span></div>
         </div>
         <div class="field">
@@ -289,7 +297,7 @@
 
     <div class="card">
       <h2>הון עצמי ומשכנתא (לפי כללי מחיר למשתכן)</h2>
-      <p class="card-note">משכנתא של עד 75% משווי השוק (המחיר לפני הנחה); אם שווי השוק עולה על 2.1 מיליון ₪, המשכנתא מבוססת על הגבוה מבין 2.1 מיליון ₪ למחיר החוזה. בכפוף למינימום הון עצמי - 60,000 ₪ אם יש מענק מקום, אחרת 100,000 ₪. ההחזר החודשי מוערך לפי ריבית ממוצעת לדוגמה של 4.7% - אינו הצעה מחייבת מבנק כלשהו.</p>
+      <p class="card-note">משכנתא של עד 75% משווי השוק (מחיר ייחוס אם הוזן, אחרת המחיר לפני הנחה); אם שווי השוק עולה על 2.1 מיליון ₪, המשכנתא מבוססת על הגבוה מבין 2.1 מיליון ₪ למחיר החוזה. בכפוף למינימום הון עצמי - 60,000 ₪ אם יש מענק מקום, אחרת 100,000 ₪. ההחזר החודשי מוערך לפי ריבית ממוצעת לדוגמה של 4.7% - אינו הצעה מחייבת מבנק כלשהו.</p>
       <div class="table-wrap">
         <table>
           <thead>
@@ -364,6 +372,7 @@
     var pricePerSqm = num('pricePerSqm');
     var discountPercent = num('discountPercent');
     var discountCap = num('discountCap');
+    var referencePrice = num('referencePrice');
     var balconySqm = num('balconySqm');
     var storageSqm = num('storageSqm');
     var grant = selectedGrant();
@@ -390,7 +399,11 @@
       var finalIncVat = preDiscountIncVat - discount;
       var contractPrice = finalIncVat + parkingCost;
 
-      var em = calculateEquityAndMortgage(contractPrice, preDiscountIncVat, grant);
+      var marketValue = referencePrice > 0
+        ? referencePrice * calcSqm * (1 + VAT_PERCENT / 100)
+        : preDiscountIncVat;
+
+      var em = calculateEquityAndMortgage(contractPrice, marketValue, grant);
       var monthlyPaymentsHtml = MORTGAGE_TERM_YEARS.map(function (years) {
         return '<td>' + currency.format(calculateMonthlyPayment(em.mortgage, years)) + ' ₪</td>';
       }).join('');
