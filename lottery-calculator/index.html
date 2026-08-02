@@ -98,7 +98,7 @@
   .grant-options label { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; cursor: pointer; }
   .grant-options input { width: 18px; height: 18px; accent-color: var(--green); cursor: pointer; }
   .table-wrap { overflow-x: auto; }
-  table { width: 100%; min-width: 620px; border-collapse: collapse; font-size: 13.5px; }
+  table { width: 100%; min-width: 760px; border-collapse: collapse; font-size: 13.5px; }
   thead th { text-align: right; padding: 8px 6px; border-bottom: 1.5px solid var(--border); color: var(--text-muted); font-weight: 700; font-size: 12.5px; }
   tbody td { padding: 10px 6px; border-bottom: 1px solid var(--border); }
   tbody tr:last-child td { border-bottom: none; }
@@ -289,13 +289,14 @@
 
     <div class="card">
       <h2>הון עצמי ומשכנתא (לפי כללי מחיר למשתכן)</h2>
-      <p class="card-note">משכנתא של עד 75% משווי השוק (המחיר לפני הנחה); אם שווי השוק עולה על 2.1 מיליון ₪, המשכנתא מבוססת על הגבוה מבין 2.1 מיליון ₪ למחיר החוזה. בכפוף למינימום הון עצמי - 60,000 ₪ אם יש מענק מקום, אחרת 100,000 ₪.</p>
+      <p class="card-note">משכנתא של עד 75% משווי השוק (המחיר לפני הנחה); אם שווי השוק עולה על 2.1 מיליון ₪, המשכנתא מבוססת על הגבוה מבין 2.1 מיליון ₪ למחיר החוזה. בכפוף למינימום הון עצמי - 60,000 ₪ אם יש מענק מקום, אחרת 100,000 ₪. ההחזר החודשי מוערך לפי ריבית ממוצעת לדוגמה של 4.7% - אינו הצעה מחייבת מבנק כלשהו.</p>
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
               <th>גודל</th><th>מחיר חוזה</th><th>הון עצמי נדרש</th>
-              <th>מענק מקום</th><th>הון עצמי מהכיס (נטו)</th><th>גובה משכנתא</th>
+              <th>מענק מקום</th><th>גובה משכנתא</th>
+              <th>החזר חודשי ל-20 שנה</th><th>החזר חודשי ל-25 שנה</th><th>החזר חודשי ל-30 שנה</th>
             </tr>
           </thead>
           <tbody id="equityResultsBody"></tbody>
@@ -318,6 +319,8 @@
   var MORTGAGE_LTV = 0.75;
   var MIN_EQUITY_WITH_GRANT = 60000;
   var MIN_EQUITY_NO_GRANT = 100000;
+  var MORTGAGE_INTEREST_RATE_PERCENT = 4.7;
+  var MORTGAGE_TERM_YEARS = [20, 25, 30];
 
   var currency = new Intl.NumberFormat('he-IL', { maximumFractionDigits: 0 });
 
@@ -351,6 +354,12 @@
     return { mortgage: mortgage, equity: contractPrice - mortgage };
   }
 
+  function calculateMonthlyPayment(principal, years) {
+    var monthlyRate = MORTGAGE_INTEREST_RATE_PERCENT / 100 / 12;
+    var numPayments = years * 12;
+    return (principal * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -numPayments));
+  }
+
   function recalculate() {
     var pricePerSqm = num('pricePerSqm');
     var discountPercent = num('discountPercent');
@@ -382,7 +391,9 @@
       var contractPrice = finalIncVat + parkingCost;
 
       var em = calculateEquityAndMortgage(contractPrice, preDiscountIncVat, grant);
-      var netEquityAfterGrant = Math.max(em.equity - grant, 0);
+      var monthlyPaymentsHtml = MORTGAGE_TERM_YEARS.map(function (years) {
+        return '<td>' + currency.format(calculateMonthlyPayment(em.mortgage, years)) + ' ₪</td>';
+      }).join('');
 
       var priceRow = document.createElement('tr');
       priceRow.innerHTML =
@@ -399,10 +410,10 @@
       equityRow.innerHTML =
         '<td><strong>' + escapeHtml(size.label) + '</strong> <span style="color:var(--text-muted);">(' + size.mainSqm + ' מ״ר)</span></td>' +
         '<td>' + currency.format(contractPrice) + ' ₪</td>' +
-        '<td>' + currency.format(em.equity) + ' ₪</td>' +
+        '<td class="highlight">' + currency.format(em.equity) + ' ₪</td>' +
         '<td>' + currency.format(grant) + ' ₪</td>' +
-        '<td class="highlight">' + currency.format(netEquityAfterGrant) + ' ₪</td>' +
-        '<td>' + currency.format(em.mortgage) + ' ₪</td>';
+        '<td>' + currency.format(em.mortgage) + ' ₪</td>' +
+        monthlyPaymentsHtml;
       equityBody.appendChild(equityRow);
     });
 
