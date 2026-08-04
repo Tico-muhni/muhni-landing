@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<title>תהליך המשכנתא | Tico Finance</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap');
+
+  :root {
+    --green: #2E8B57;
+    --green-light: #3aa86a;
+    --green-pale: #e8f5ee;
+    --navy: #1a2640;
+    --navy-mid: #2c3e5a;
+    --orange: #E07B39;
+    --orange-pale: #fdf0e8;
+    --blue: #3a6abf;
+    --blue-pale: #e8f0fb;
+    --gray: #6b7280;
+    --gray-light: #f4f6f8;
+    --border: #e2e8f0;
+    --white: #ffffff;
+    --text: #1e293b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Heebo', sans-serif;
+    background: var(--gray-light);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* Header */
+  .header {
+    background: var(--navy);
+    color: white;
+    padding: 36px 48px 30px;
+  }
+
+  .brand {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green-light);
+    margin-bottom: 10px;
+  }
+
+  .header h1 {
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+
+  .header p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+  }
+
+  /* Main */
+  .main {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 32px 20px 60px;
+  }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .legend-label {
+    font-size: 12px;
+    color: var(--gray);
+    margin-left: 6px;
+  }
+
+  .badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  .badge.green { background: var(--green-pale); color: var(--green); }
+  .badge.orange { background: var(--orange-pale); color: var(--orange); }
+  .badge.blue { background: var(--blue-pale); color: var(--blue); }
+
+  /* Update box */
+  .update-box {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-bottom: 24px;
+    color: white;
+  }
+
+  .update-box .update-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--green-light);
+    margin-bottom: 6px;
+  }
+
+  .update-box p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.6;
+  }
+
+  /* Step card */
+  .step {
+    background: var(--white);
+    border-radius: 12px;
+    margin-bottom: 12px;
+    border: 1.5px solid var(--border);
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+
+  .step.green  { border-top: 4px solid var(--green); }
+  .step.orange { border-top: 4px solid var(--orange); }
+  .step.blue   { border-top: 4px solid var(--blue); }
+
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px 14px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .step-num {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700;
+    flex-shrink: 0;
+    color: white;
+  }
+
+  .step.green  .step-num { background: var(--green); }
+  .step.orange .step-num { background: var(--orange); }
+  .step.blue   .step-num { background: var(--blue); }
+
+  .step-meta { flex: 1; }
+
+  .step-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+
+  .step-time {
+    font-size: 12px;
+    color: var(--gray);
+  }
+
+  .step-resp {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+
+  .step.green  .step-resp { background: var(--green-pale);  color: var(--green); }
+  .step.orange .step-resp { background: var(--orange-pale); color: var(--orange); }
+  .step.blue   .step-resp { background: var(--blue-pale);   color: var(--blue); }
+
+  .step-arrow {
+    font-size: 16px;
+    color: var(--gray);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .step.open .step-arrow { transform: rotate(180deg); }
+
+  .step-body {
+    display: none;
+    padding: 0 20px 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  .step.open .step-body { display: block; }
+
+  .step-lines {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .step-line {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  .step-line-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  .step.green  .step-line-dot { background: var(--green); }
+  .step.orange .step-line-dot { background: var(--orange); }
+  .step.blue   .step-line-dot { background: var(--blue); }
+
+  .step-note {
+    margin-top: 12px;
+    background: var(--gray-light);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--gray);
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="brand">Tico Finance</div>
+  <h1>תהליך המשכנתא — מא׳ עד ת׳</h1>
+  <p>מסמך משותף · יועץ ולקוח · סדר גודל כולל: 6–8 שבועות</p>
+</div>
+
+<div class="main">
+
+  <!-- Legend -->
+  <div class="legend">
+    <span class="legend-label">מקרא אחריות:</span>
+    <span class="badge green">אני — יועץ</span>
+    <span class="badge orange">לקוח</span>
+    <span class="badge blue">בנק</span>
+  </div>
+
+  <!-- Update box -->
+  <div class="update-box">
+    <div class="update-title">📅 מדיניות עדכונים</div>
+    <p>כל יום ראשון וכל יום חמישי — אתה מקבל עדכון ממני, גם אם לא קרה שום דבר.<br>
+    לא תמצא את עצמך מחכה ותוהה מה קורה עם התיק שלך.</p>
+  </div>
+
+  <!-- Step 1 -->
+  <div class="step orange" id="s1">
+    <div class="step-header" data-target="s1">
+      <div class="step-num">1</div>
+      <div class="step-meta">
+        <div class="step-title">איסוף מסמכים</div>
+        <div class="step-time">⏱ עד 6 ימים</div>
+      </div>
+      <div class="step-resp">לקוח</div>
+      <div class="step-arrow">▾</div>
+    </div>
+    <div class="step-body">
+      <div class="step-lines">
+        <div class="step-line"><div class="step-line-dot"></div><span>רשימת מסמכים נשלחת ללקוח מיד עם תחילת התהליך (אזור אישי + וואטסאפ).</span></div>
+        <div class="step-line"><div class="step-line-dot"></div><span>ללקוח 3 ימים להעביר את כל המסמכים.</span></div>
+        <div class="step-line"><div class="step-line-dot"></div><span>לא התקבל — תזכורת + 3 ימים נוספים.</span></div>
+        <div class="step-line"><div class="step-line-dot"></div><span>לא יחלפו יותר מ-6 ימים בסה"כ לשלב זה.</span></div>
+      </div>
+      <div class="step-note">💬 השלב הזה תלוי בך, הלקוח. ככל שתעביר מהר יותר — כך נתקדם מהר יותר.</div>
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="step green" id="s2">
+    <div class="step-header" data-target="s2">
+      <div class="step-num">2</div>
+      <div class="step-meta">
+        <div class="step-title">ניתוח והגשה לבנקים</div>
+        <div class="step-time">⏱ עד 2 ימים</div>
+      </div>
+      <div class="step-resp">אני — יועץ</div>
+      <div class="step-arrow">▾</div>
+    </div>
+    <div class="step-body">
+      <div class="step-lines">
+        <div class="step-line"><div class="step-line-dot"></div><span>לאחר קבלת כל המסמכים — ניתוח מלא של התיק.</span></div>
+        <div class="step-line"><div class="step-line-dot"></div><span>הכנת מייל מסודר והגשה לבנקים.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="step blue" id="s3">
+    <div class="step-header" data-target="s3">
+      <div class="step-num">3</div>
+      <div class="step-meta">
+        <div class="step-title">אישור עקרוני מהבנקים</div>
+        <div class="step-time">⏱ עד 5 ימי עסקים (על פי חוק)</div>
+      </div>
+      <div class="step-resp">בנק</div>
+      <div class="step-arrow">▾</div>
+    </div>
+    <div class="step-body">
+      <div class="step-lines">
+        <div class="step-line"><div class="step-line-dot"></div><span>הבנקים מחויבים על פי חוק להשיב תוך 5 ימי עסקים.</span></div>
+        <div class="step-line"><div class="step-line-dot"></div><span>בשלב זה אנחנו ממתינים — אעדכן אותך בכל התפתחות.</span></div>
+      </div>
+      <div class="step-note">💬 שלב שלא בשליטתנו — אבל אתה תדע ממני מה קורה.</div>
+    </div>
+  </div>
+
+  <!-- Step 4 -->
+  <div class="step green" id="s4">
+    <div class="step-header" data-target="s4">
+      <div class="step-num">4</div>
+      <div class="step-meta">
+        <div class="step-title">פגישת תמהיל והגשה מחודשת</div>
+        <div class="step-time">⏱ תיאום תוך 3 ימי עסקים</div>
+      </div>
+      <div class="step-resp">אני — יועץ</div>
+      <div class="step-arrow">▾</div>
+    </div>
+    <div class="step-body">
+      <div class="step-lines">
+        <div class="step-line"><div class="step-line-dot"></div><span>מיד עם קבלת האישורים — ניצור קשר לתיאום פגישת תמהיל.</span></div>
+        <div class="step-line"><div class="step-line-dot"></div><span>הפגישה תתקיים תוך שבוע מהפנייה.</span></div>
+        <div class="step-line"><div class="step-line-dot"></div><span>בונים יחד את התמהיל ומגישים מחדש לבנקים.</span></div>
+      </div>
+      <div class="step-note">💬 חשוב להיות זמין לתיאום מהיר — זה שלב קריטי.</div>
+    </div>
+  </div>
+
+  <!-- Step 5 -->
+  <div class="step green" id="s5">
+    <div class="step-header" data-target="s5">
+      <div class="step-num">5</div>
+      <div class="step-meta">
+        <div class="step-title">הגשה מחודשת + השלמת מסמכים</div>
+        <div class="step-time">⏱ עד 3 ימים</div>
+      </div>
+      <div class="step-resp">אני — יועץ</div>
+      <div class="step-arrow">▾</div>
+    </div>
+    <div class="step-body">
+      <div class="step-lines">
+        <div class="step-line"><div class="step-line-dot"></div><span>תמהיל בנוי מוגש לבנקים.</span></div>
+        <div class="step-line"><div class="step-line-dot"></div><span>אם חסרים מסמכים — הלקוח מתבקש להעביר תוך אותו טווח.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 6 -->
+  <div class="step green" id="s6">
+    <div class="step-header" data-target="s6">
+      <div class="step-num">6</div>
+      <div class="step-meta">
+        <div class="step-title">ניהול מו"מ מול הבנקים</div>
+        <div class="step-time">⏱ 7–10 ימים בממוצע</div>
+      </div>
+      <div class="step-resp">אני — יועץ</div>
+      <div class="step-arrow">▾</div>
+    </div>
+    <div class="step-body">
+      <div class="step-lines">
+        <div class="step-line"><div class="step-line-dot"></div><span>ניהול משא ומתן מול הבנקים להשגת התנאים הטובים ביותר.</span></div>
+        <div class="step-line"><div class="step-line-dot"></div><span>מיד עם סיום המו"מ — מציג ללקוח את ההצעות ובוחרים יחד בנק מנצח.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 7 -->
+  <div class="step blue" id="s7">
+    <div class="step-header" data-target="s7">
+      <div class="step-num">7</div>
+      <div class="step-meta">
+        <div class="step-title">חיתום וקבלת בטחונות</div>
+        <div class="step-time">⏱ עד 3–5 ימים</div>
+      </div>
+      <div class="step-resp">בנק</div>
+      <div class="step-arrow">▾</div>
+    </div>
+    <div class="step-body">
+      <div class="step-lines">
+        <div class="step-line"><div class="step-line-dot"></div><span>הבנק הנבחר מבצע חיתום ומבקש בטחונות.</span></div>
+        <div class="step-line"><div class="step-line-dot"></div><span>אם חורג מ-5 ימים — מערב גורם בכיר בבנק.</span></div>
+      </div>
+      <div class="step-note">💬 אני עוקב אחרי זה בצמוד ומדווח לך.</div>
+    </div>
+  </div>
+
+  <!-- Step 8 -->
+  <div class="step orange" id="s8">
+    <div class="step-header" data-target="s8">
+      <div class="step-num">8</div>
+      <div class="step-meta">
+        <div class="step-title">ביצוע בטחונות</div>
+        <div class="step-time">⏱ עד שבועיים</div>
+      </div>
+      <div class="step-resp">לקוח</div>
+      <div class="step-arrow">▾</div>
+    </div>
+    <div class="step-body">
+      <div class="step-lines">
+        <div class="step-line"><div class="step-line-dot"></div><span>שלב זה שייך ללקוח — העברה לעו"ד לביצוע הבטחונות.</span></div>
+        <div class="step-line"><div class="step-line-dot"></div><span>ככל שתתקדם מהר יותר — כך נסגור מהר יותר.</span></div>
+        <div class="step-line"><div class="step-line-dot"></div><span>תפקידי: להיות עם יד על הדופק ולדחוף קדימה.</span></div>
+      </div>
+      <div class="step-note">💬 זה השלב שבו קצב ההתקדמות תלוי בך לחלוטין.</div>
+    </div>
+  </div>
+
+  <!-- Step 9 -->
+  <div class="step green" id="s9">
+    <div class="step-header" data-target="s9">
+      <div class="step-num">9</div>
+      <div class="step-meta">
+        <div class="step-title">חתימות ומסירת בטחונות</div>
+        <div class="step-time">⏱ עד 3 ימי עסקים מאישור ביצוע</div>
+      </div>
+      <div class="step-resp">אני — יועץ</div>
+      <div class="step-arrow">▾</div>
+    </div>
+    <div class="step-body">
+      <div class="step-lines">
+        <div class="step-line"><div class="step-line-dot"></div><span>לאחר אישור ביצוע כלל הבטחונות — תיאום חתימות.</span></div>
+        <div class="step-line"><div class="step-line-dot"></div><span>סגירת התיק — קבלת אישור ביצוע סופי מהבנק.</span></div>
+      </div>
+      <div class="step-note">💬 זה הרגע שסיימנו. מזל טוב! 🎉</div>
+    </div>
+  </div>
+
+  <!-- Total timeline -->
+  <div style="background: var(--navy); border-radius: 12px; padding: 20px 24px; margin-top: 20px; color: white;">
+    <div style="font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green-light); margin-bottom: 14px;">⏱ סיכום לוחות זמנים</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+      <div style="background: rgba(255,255,255,0.06); border-radius: 8px; padding: 12px 14px;">
+        <div style="font-size: 11px; color: rgba(255,255,255,0.5); margin-bottom: 4px;">שלבי איסוף והגשה</div>
+        <div style="font-size: 15px; font-weight: 700;">כ־2 שבועות</div>
+        <div style="font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 2px;">שלבים 1–2</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.06); border-radius: 8px; padding: 12px 14px;">
+        <div style="font-size: 11px; color: rgba(255,255,255,0.5); margin-bottom: 4px;">אישורים ומו"מ</div>
+        <div style="font-size: 15px; font-weight: 700;">כ־3 שבועות</div>
+        <div style="font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 2px;">שלבים 3–6</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.06); border-radius: 8px; padding: 12px 14px;">
+        <div style="font-size: 11px; color: rgba(255,255,255,0.5); margin-bottom: 4px;">חיתום וביצוע</div>
+        <div style="font-size: 15px; font-weight: 700;">כ־3 שבועות</div>
+        <div style="font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 2px;">שלבים 7–9</div>
+      </div>
+      <div style="background: var(--green); border-radius: 8px; padding: 12px 14px;">
+        <div style="font-size: 11px; color: rgba(255,255,255,0.7); margin-bottom: 4px;">סה"כ תהליך ממוצע</div>
+        <div style="font-size: 18px; font-weight: 900;">6–8 שבועות</div>
+        <div style="font-size: 11px; color: rgba(255,255,255,0.7); margin-top: 2px;">תלוי בתיק ובמהירות הלקוח</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background: var(--gray-light); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; margin-top: 16px; font-size: 12.5px; color: var(--gray); line-height: 1.7;">
+    <strong style="color: var(--text);">⚡ לתשומת לבך:</strong> לוחות הזמנים המפורטים הם הערכה ממוצעת בלבד. התהליך עשוי להסתיים מהר יותר — ולעיתים משמעותית — בהתאם למהירות הלקוח בביצוע החלקים שלו, מצב הבנקים ועומס העבודה שלהם, ולוחות הזמנים ודרישת התשלום של העסקה.<br><br>כמו כן, מתווה העסקה עצמו משפיע על משך התהליך — עסקאות כגון שיפור דיור הכוללות מכירת נכס קיים, תלות בגורם חיצוני, או מימון מורכב, עשויות להיות תהליכי טווח ארוך יותר באופן מובנה. במקרים אלו נגדיר יחד מראש את לוח הזמנים הרלוונטי לעסקה הספציפית שלך.
+  </div>
+
+  <div class="footer">
+    Tico Finance · מסמך משותף · לא להפצה
+  </div>
+
+</div>
+
+<script>
+  document.querySelectorAll('.step-header').forEach(function(header) {
+    header.addEventListener('click', function() {
+      var id = header.getAttribute('data-target');
+      var step = document.getElementById(id);
+      step.classList.toggle('open');
+    });
+  });
+</script>
+
+</body>
+</html>
