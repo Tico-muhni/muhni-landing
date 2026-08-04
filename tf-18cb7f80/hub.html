@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<title>מרכז ניווט | Tico Finance</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap');
+  :root {
+    --green: #2E8B57; --green-light: #3aa86a; --green-pale: #e8f5ee;
+    --navy: #1a2640; --orange: #E07B39; --orange-pale: #fdf0e8;
+    --blue: #3a6abf; --blue-pale: #e8f0fb;
+    --purple: #7c3aed; --purple-pale: #f3eefe;
+    --gray: #6b7280; --gray-light: #f4f6f8; --border: #e2e8f0; --text: #1e293b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Heebo', sans-serif; background: var(--gray-light); color: var(--text); line-height: 1.7; min-height: 100vh; }
+
+  .header {
+    background: var(--navy);
+    color: white;
+    padding: 36px 48px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: -60px;
+    width: 300px; height: 300px;
+    background: var(--green);
+    opacity: 0.08;
+    border-radius: 50%;
+  }
+  .header-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
+  .brand { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green-light); margin-bottom: 10px; }
+  .header h1 { font-size: 32px; font-weight: 900; line-height: 1.2; margin-bottom: 10px; }
+  .header p { font-size: 15px; color: rgba(255,255,255,0.6); font-weight: 300; }
+
+  .main { max-width: 860px; margin: 0 auto; padding: 32px 24px 80px; }
+
+  .section { margin-bottom: 36px; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+  }
+  .section-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .section-title { font-size: 18px; font-weight: 900; color: var(--navy); }
+  .section-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-right: auto;
+  }
+
+  .cards { display: flex; flex-direction: column; gap: 10px; }
+
+  .card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    transition: box-shadow 0.15s, transform 0.15s;
+  }
+  .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.08); transform: translateY(-1px); }
+
+  .card-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .card-title { font-size: 15px; font-weight: 700; color: var(--navy); }
+  .card-sub { font-size: 12px; color: var(--gray); margin-top: 1px; }
+  .card-arrow { margin-right: auto; color: var(--gray); font-size: 14px; }
+
+  .card-copy {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--gray-light);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    flex-shrink: 0;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .card-copy:hover { background: var(--green-pale); border-color: var(--green); }
+  .card-copy.copied { background: var(--green); border-color: var(--green); }
+
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: var(--navy);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+    z-index: 100;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  .footer-note {
+    text-align: center;
+    color: var(--gray);
+    font-size: 13px;
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 600px) {
+    .header { padding: 28px 20px; }
+    .header h1 { font-size: 24px; }
+    .main { padding: 24px 16px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="brand">Tico Finance</div>
+    <h1>מרכז ניווט</h1>
+    <p>כל הדפים באתר · לחץ על הקישור לפתיחה · לחץ על 📋 להעתקת הקישור</p>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- Internal tools -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--orange-pale);">🔒</div>
+      <div class="section-title">כלים פנימיים</div>
+      <span class="section-badge" style="background:var(--orange-pale); color:var(--orange);">לא מוצג באתר</span>
+    </div>
+    <div class="cards">
+      <a class="card" href="/tf-18cb7f80/index.html" data-url="/tf-18cb7f80/index.html">
+        <div class="card-dot" style="background:var(--orange);"></div>
+        <div>
+          <div class="card-title">עמוד ראשי — חומרים פנימיים</div>
+          <div class="card-sub">דף מרכז לכל הכלים הפנימיים</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/tf-18cb7f80/script.html" data-url="/tf-18cb7f80/script.html">
+        <div class="card-dot" style="background:var(--orange);"></div>
+        <div>
+          <div class="card-title">תסריט פגישה ראשונה</div>
+          <div class="card-sub">מדריך שיחה — פתיחה, אבחון, סגירה</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/tf-18cb7f80/refinance-script.html" data-url="/tf-18cb7f80/refinance-script.html">
+        <div class="card-dot" style="background:var(--orange);"></div>
+        <div>
+          <div class="card-title">תסריט מיחזור משכנתא</div>
+          <div class="card-sub">שיטת הסכם מראש · 6 שלבים לסגירה</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/tf-18cb7f80/checklist.html" data-url="/tf-18cb7f80/checklist.html">
+        <div class="card-dot" style="background:var(--orange);"></div>
+        <div>
+          <div class="card-title">צ׳קליסט תפעולי</div>
+          <div class="card-sub">ניהול תיק משלב א׳ ועד סגירה · מעקב לפי לקוח</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/tf-18cb7f80/templates.html" data-url="/tf-18cb7f80/templates.html">
+        <div class="card-dot" style="background:var(--orange);"></div>
+        <div>
+          <div class="card-title">תבניות הודעות</div>
+          <div class="card-sub">הודעות מוכנות + צ׳קליסט מסמכים</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Shareable with clients -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--green-pale);">📤</div>
+      <div class="section-title">לשיתוף עם לקוחות</div>
+      <span class="section-badge" style="background:var(--green-pale); color:var(--green);">אפשר לשלוח ללקוח</span>
+    </div>
+    <div class="cards">
+      <a class="card" href="/tf-18cb7f80/process.html" data-url="/tf-18cb7f80/process.html">
+        <div class="card-dot" style="background:var(--green);"></div>
+        <div>
+          <div class="card-title">תהליך המשכנתא — מא׳ עד ת׳</div>
+          <div class="card-sub">מסמך משותף ליועץ וללקוח</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/mismachim/" data-url="/mismachim/">
+        <div class="card-dot" style="background:var(--green);"></div>
+        <div>
+          <div class="card-title">אילו מסמכים צריך להכין?</div>
+          <div class="card-sub">רשימת מסמכים נדרשים ללקוח</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/itrot/" data-url="/itrot/">
+        <div class="card-dot" style="background:var(--green);"></div>
+        <div>
+          <div class="card-title">איך מוציאים דו״ח יתרה לסילוק</div>
+          <div class="card-sub">מדריך ללקוח</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/ashrai/" data-url="/ashrai/">
+        <div class="card-dot" style="background:var(--green);"></div>
+        <div>
+          <div class="card-title">איך מוציאים דו״ח נתוני אשראי מלא</div>
+          <div class="card-sub">מדריך ללקוח</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main site pages -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--blue-pale);">🌐</div>
+      <div class="section-title">דפי שירות ראשיים</div>
+      <span class="section-badge" style="background:var(--blue-pale); color:var(--blue);">מוצג באתר</span>
+    </div>
+    <div class="cards">
+      <a class="card" href="/" data-url="/">
+        <div class="card-dot" style="background:var(--blue);"></div>
+        <div>
+          <div class="card-title">עמוד הבית</div>
+          <div class="card-sub">דף נחיתה ראשי — יועץ משכנתאות אישי</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/refinance/" data-url="/refinance/">
+        <div class="card-dot" style="background:var(--blue);"></div>
+        <div>
+          <div class="card-title">מיחזור משכנתה</div>
+          <div class="card-sub">דף נחיתה + מחשבון מיחזור</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/investors/" data-url="/investors/">
+        <div class="card-dot" style="background:var(--blue);"></div>
+        <div>
+          <div class="card-title">משקיעי נדל״ן</div>
+          <div class="card-sub">מבנה מימון חכם לתיק השקעות</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/upgraders/" data-url="/upgraders/">
+        <div class="card-dot" style="background:var(--blue);"></div>
+        <div>
+          <div class="card-title">משפרי דיור</div>
+          <div class="card-sub">ליווי מקצועי למעבר דירה</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/lottery-calculator/" data-url="/lottery-calculator/">
+        <div class="card-dot" style="background:var(--blue);"></div>
+        <div>
+          <div class="card-title">מחשבון הגרלות דיור</div>
+          <div class="card-sub">מחיר למשתכן, דירה בהנחה, מחיר מטרה</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Brazil -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--purple-pale);">🇧🇷</div>
+      <div class="section-title">Brasil</div>
+      <span class="section-badge" style="background:var(--purple-pale); color:var(--purple);">פורטוגזית</span>
+    </div>
+    <div class="cards">
+      <a class="card" href="/br/" data-url="/br/">
+        <div class="card-dot" style="background:var(--purple);"></div>
+        <div>
+          <div class="card-title">דף נחיתה ברזיל</div>
+          <div class="card-sub">Comprar apartamento em Israel morando no Brasil</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Blog -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--green-pale);">📝</div>
+      <div class="section-title">בלוג</div>
+      <span class="section-badge" style="background:var(--green-pale); color:var(--green);">מוצג באתר</span>
+    </div>
+    <div class="cards">
+      <a class="card" href="/blog/" data-url="/blog/">
+        <div class="card-dot" style="background:var(--green);"></div>
+        <div>
+          <div class="card-title">עמוד ראשי — בלוג</div>
+          <div class="card-sub">כל המאמרים</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/blog/refinance-timing/" data-url="/blog/refinance-timing/">
+        <div class="card-dot" style="background:var(--green);"></div>
+        <div>
+          <div class="card-title">מתי כדאי למחזר משכנתה?</div>
+          <div class="card-sub">הסימנים שצריך להכיר</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/blog/refinance-mistakes/" data-url="/blog/refinance-mistakes/">
+        <div class="card-dot" style="background:var(--green);"></div>
+        <div>
+          <div class="card-title">5 הטעויות הקריטיות במיחזור משכנתה</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/blog/prepayment-fee/" data-url="/blog/prepayment-fee/">
+        <div class="card-dot" style="background:var(--green);"></div>
+        <div>
+          <div class="card-title">עמלת פירעון מוקדם: קנס או כלי אסטרטגי?</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/blog/second-property-mortgage/" data-url="/blog/second-property-mortgage/">
+        <div class="card-dot" style="background:var(--green);"></div>
+        <div>
+          <div class="card-title">משכנתה לנכס שני — מה שונה מדירה יחידה?</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/blog/leverage-guide/" data-url="/blog/leverage-guide/">
+        <div class="card-dot" style="background:var(--green);"></div>
+        <div>
+          <div class="card-title">מינוף נדל״ן נכון — עקרונות מבנה מימון למשקיעים</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/blog/rentvesting/" data-url="/blog/rentvesting/">
+        <div class="card-dot" style="background:var(--green);"></div>
+        <div>
+          <div class="card-title">Rentvesting — לקנות להשקעה לפני דירה למגורים</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/blog/cashflow-vs-yield/" data-url="/blog/cashflow-vs-yield/">
+        <div class="card-dot" style="background:var(--green);"></div>
+        <div>
+          <div class="card-title">תזרים מול תשואה בנדל״ן — איך מוצאים איזון?</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/blog/apartment-not-selling/" data-url="/blog/apartment-not-selling/">
+        <div class="card-dot" style="background:var(--green);"></div>
+        <div>
+          <div class="card-title">הדירה לא נמכרת בזמן? תרחישי גיבוי למשפרי דיור</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/blog/buy-sell-timing/" data-url="/blog/buy-sell-timing/">
+        <div class="card-dot" style="background:var(--green);"></div>
+        <div>
+          <div class="card-title">איך לתזמן מכירה וקנייה של דירה נכון</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/blog/bridge-loan/" data-url="/blog/bridge-loan/">
+        <div class="card-dot" style="background:var(--green);"></div>
+        <div>
+          <div class="card-title">הלוואת גישור למשפרי דיור — כל מה שצריך לדעת</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Blog BR -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--purple-pale);">📝</div>
+      <div class="section-title">בלוג — פורטוגזית</div>
+      <span class="section-badge" style="background:var(--purple-pale); color:var(--purple);">Brasil</span>
+    </div>
+    <div class="cards">
+      <a class="card" href="/blog/compliance-documents/" data-url="/blog/compliance-documents/">
+        <div class="card-dot" style="background:var(--purple);"></div>
+        <div>
+          <div class="card-title">Documentação para comprar imóvel em Israel</div>
+          <div class="card-sub">Checklist completo</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/blog/financing-guide/" data-url="/blog/financing-guide/">
+        <div class="card-dot" style="background:var(--purple);"></div>
+        <div>
+          <div class="card-title">Como financiar imóvel em Israel</div>
+          <div class="card-sub">Sendo não residente</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/blog/interest-rates/" data-url="/blog/interest-rates/">
+        <div class="card-dot" style="background:var(--purple);"></div>
+        <div>
+          <div class="card-title">Juros em Israel vs Brasil</div>
+          <div class="card-sub">Por que muda o jogo do investidor</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/blog/international-transfer/" data-url="/blog/international-transfer/">
+        <div class="card-dot" style="background:var(--purple);"></div>
+        <div>
+          <div class="card-title">Transferência internacional para imóvel em Israel</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/blog/financial-strategist/" data-url="/blog/financial-strategist/">
+        <div class="card-dot" style="background:var(--purple);"></div>
+        <div>
+          <div class="card-title">O papel do estrategista financeiro</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/blog/remote-management/" data-url="/blog/remote-management/">
+        <div class="card-dot" style="background:var(--purple);"></div>
+        <div>
+          <div class="card-title">Como gerenciar imóvel em Israel morando no Brasil</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/blog/rentvesting-br/" data-url="/blog/rentvesting-br/">
+        <div class="card-dot" style="background:var(--purple);"></div>
+        <div>
+          <div class="card-title">Rentvesting: investir em Israel antes da casa própria</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/blog/roi-valuation/" data-url="/blog/roi-valuation/">
+        <div class="card-dot" style="background:var(--purple);"></div>
+        <div>
+          <div class="card-title">ROI e valorização de imóvel em Israel</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/blog/safe-haven/" data-url="/blog/safe-haven/">
+        <div class="card-dot" style="background:var(--purple);"></div>
+        <div>
+          <div class="card-title">Israel como Safe Haven</div>
+          <div class="card-sub">Por que protege o patrimônio do brasileiro</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+      <a class="card" href="/blog/tax-guide/" data-url="/blog/tax-guide/">
+        <div class="card-dot" style="background:var(--purple);"></div>
+        <div>
+          <div class="card-title">Impostos Brasil-Israel</div>
+          <div class="card-sub">O que saber antes de comprar imóvel</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-note">Tico Finance · מרכז ניווט פנימי · לא להפצה</div>
+</div>
+
+<div class="toast" id="toast">הקישור הועתק</div>
+
+<script>
+  var BASE = 'https://ticofinance.co.il';
+  var toast = document.getElementById('toast');
+  var toastTimer;
+
+  document.querySelectorAll('.card-copy').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var card = btn.closest('.card');
+      var path = card.getAttribute('data-url');
+      var url = BASE + path;
+      navigator.clipboard.writeText(url).then(function() {
+        btn.textContent = '✓';
+        btn.classList.add('copied');
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function() {
+          toast.classList.remove('show');
+          btn.textContent = '📋';
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
