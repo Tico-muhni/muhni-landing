@@ -513,7 +513,7 @@
       <div class="section-label">מחשבון חיסכון</div>
       <h2 class="section-title">כמה תוכל לחסוך במשכנתה?</h2>
       <p class="section-sub">הכנס את נתוני המסלולים שלך וקבל הערכת חיסכון פוטנציאלי, בחינם ובשניות</p>
-      <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">מבוסס על ריביות שוק ממוצעות · עודכן 24/06/2026</p>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">מבוסס על ריביות שוק ממוצעות · עודכן 04/08/2026</p>
     </div>
     <div style="max-width:780px;margin:0 auto;">
       <div id="tracks-container"></div>
@@ -1142,14 +1142,14 @@
   // ===== CALCULATOR =====
   const PRIME_RATE = 5.25;
   const CPI_FORECAST = 1.8;
-  // ריביות שוק ממוצעות (לפי נתוני יועץ, יוני 2026)
+  // ריביות שוק ממוצעות (לפי נתוני יועץ, אוגוסט 2026)
   // ק"צ = קבועה צמודה | קל"צ = קבועה לא צמודה
   const MARKET_RATES = {
-    'fixed_cpi':     2.85,  // ק"צ: 2.7%-3.0%
-    'fixed_nominal': 4.55,  // קל"צ: 4.3%-4.8%
-    'var_nominal':   0.95,  // מל"צ: עוגן + 0.95%
-    'var_cpi':       3.00,  // מ"צ: ריבית שוק ממוצעת 3.0%
-    'prime':        -0.70,  // פריים: פריים - 0.70%
+    'fixed_cpi':     2.90,  // ק"צ: 2.79%-3.17%
+    'fixed_nominal': 4.55,  // קל"צ: 4.35%-4.65%
+    'var_nominal':   0.90,  // מל"צ: עוגן + 0.85%-0.94%
+    'var_cpi':       1.28,  // מ"צ: עוגן + 1.28%
+    'prime':        -0.80,  // פריים: פריים - 0.80%-0.85%
   };
   const TRACK_TYPES = [
     { label:'ק"צ - קבועה צמודה למדד', type:'fixed_cpi', anchor:1.82 },
