@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<title>צ'קליסט תפעולי | Tico Finance</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap');
+
+  :root {
+    --green: #2E8B57;
+    --green-light: #3aa86a;
+    --green-pale: #e8f5ee;
+    --navy: #1a2640;
+    --navy-mid: #2c3e5a;
+    --orange: #E07B39;
+    --orange-pale: #fdf0e8;
+    --blue: #3a6abf;
+    --blue-pale: #e8f0fb;
+    --gray: #6b7280;
+    --gray-light: #f4f6f8;
+    --border: #e2e8f0;
+    --white: #ffffff;
+    --text: #1e293b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Heebo', sans-serif; background: var(--gray-light); color: var(--text); line-height: 1.7; }
+
+  .header { background: var(--navy); color: white; padding: 32px 48px 28px; }
+  .brand { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green-light); margin-bottom: 8px; }
+  .header h1 { font-size: 26px; font-weight: 900; margin-bottom: 6px; }
+  .header p { font-size: 13px; color: rgba(255,255,255,0.5); font-weight: 300; }
+
+  .main { max-width: 820px; margin: 0 auto; padding: 32px 20px 60px; }
+
+  /* Progress summary */
+  .progress-summary {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 18px 22px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .progress-summary-title { font-size: 13px; font-weight: 700; color: var(--navy); flex-shrink: 0; }
+
+  .progress-bar-wrap { flex: 1; min-width: 160px; }
+  .progress-bar { height: 8px; background: var(--border); border-radius: 8px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--green); border-radius: 8px; transition: width 0.3s; }
+  .progress-count { font-size: 12px; color: var(--gray); margin-top: 4px; }
+
+  .reset-all-btn {
+    padding: 7px 14px; border-radius: 8px; border: 1px solid var(--border);
+    background: white; font-family: 'Heebo', sans-serif; font-size: 12px;
+    cursor: pointer; color: var(--gray); font-weight: 600;
+    flex-shrink: 0;
+  }
+  .reset-all-btn:hover { background: var(--gray-light); }
+
+  /* Phase block */
+  .phase { margin-bottom: 16px; }
+
+  .phase-header {
+    display: flex; align-items: center; gap: 12px;
+    padding: 16px 20px;
+    background: white;
+    border-radius: 12px 12px 0 0;
+    border: 1px solid var(--border);
+    border-bottom: none;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .phase.collapsed .phase-header {
+    border-radius: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .phase-icon { width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+  .phase-meta { flex: 1; }
+  .phase-title { font-size: 15px; font-weight: 700; color: var(--navy); }
+  .phase-sub { font-size: 12px; color: var(--gray); }
+
+  .phase-badge {
+    font-size: 11px; font-weight: 700;
+    padding: 3px 10px; border-radius: 20px;
+    flex-shrink: 0;
+  }
+
+  .phase-arrow { font-size: 14px; color: var(--gray); transition: transform 0.2s; flex-shrink: 0; }
+  .phase.collapsed .phase-arrow { transform: rotate(-90deg); }
+
+  .phase-body {
+    background: white;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    overflow: hidden;
+  }
+
+  .phase.collapsed .phase-body { display: none; }
+
+  /* Checklist item */
+  .cli {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 20px;
+    border-bottom: 1px solid #f0f4f8;
+    transition: background 0.1s;
+  }
+
+  .cli:last-child { border-bottom: none; }
+  .cli:hover { background: #fafbfc; }
+  .cli.done { background: #f8fff9; }
+  .cli.done .cli-text { color: var(--gray); text-decoration: line-through; }
+
+  .cli-check {
+    width: 20px; height: 20px;
+    border-radius: 6px;
+    border: 2px solid var(--border);
+    background: white;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: all 0.15s;
+  }
+
+  .cli.done .cli-check { background: var(--green); border-color: var(--green); }
+  .cli.done .cli-check::after { content: '✓'; color: white; font-size: 13px; font-weight: 700; }
+
+  .cli-content { flex: 1; }
+  .cli-text { font-size: 14px; line-height: 1.5; }
+  .cli-note { font-size: 12px; color: var(--gray); margin-top: 2px; }
+
+  .cli-tag {
+    font-size: 10px; font-weight: 700;
+    padding: 2px 8px; border-radius: 10px;
+    flex-shrink: 0; margin-top: 3px;
+    align-self: flex-start;
+  }
+
+  .tag-send { background: #dbeafe; color: #1e40af; }
+  .tag-system { background: #f3e8ff; color: #6b21a8; }
+  .tag-call { background: #fef9c3; color: #854d0e; }
+  .tag-check { background: var(--green-pale); color: var(--green); }
+  .tag-wait { background: #f1f5f9; color: #475569; }
+
+  /* Parallel notice */
+  .parallel-notice {
+    background: var(--orange-pale);
+    border-right: 3px solid var(--orange);
+    padding: 8px 14px;
+    margin: 0 20px 10px;
+    border-radius: 0 6px 6px 0;
+    font-size: 12px;
+    color: var(--orange);
+    font-weight: 600;
+  }
+
+  .footer { text-align: center; font-size: 12px; color: var(--gray); margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="brand">Tico Finance</div>
+  <h1>צ'קליסט תפעולי — ניהול תיק</h1>
+  <p>מסגירת ליד ועד סגירת תיק · כל פעולה מחייבת סימון ביצוע</p>
+</div>
+
+<div class="main">
+
+  <!-- Progress summary -->
+  <div class="progress-summary">
+    <div class="progress-summary-title">התקדמות כללית</div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar"><div class="progress-fill" id="global-fill" style="width:0%"></div></div>
+      <div class="progress-count" id="global-count">0 מתוך 0 משימות</div>
+    </div>
+    <button class="reset-all-btn" onclick="resetAll()">🔄 אפס הכל</button>
+  </div>
+
+  <!-- ═══ שלב א: פתיחת תיק ═══ -->
+  <div class="phase" id="phase-a">
+    <div class="phase-header" onclick="togglePhase('phase-a')">
+      <div class="phase-icon" style="background:#e8ecf3;">🗂️</div>
+      <div class="phase-meta">
+        <div class="phase-title">א. פתיחת תיק</div>
+        <div class="phase-sub">מרגע הסגירה — לפני כל דבר אחר</div>
+      </div>
+      <div class="phase-badge" id="badge-phase-a" style="background:var(--gray-light);color:var(--gray);">0/0</div>
+      <div class="phase-arrow">▾</div>
+    </div>
+    <div class="phase-body">
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">פתיחת ליד בתוכנה — הזנת פרטים אישיים מלאים</div>
+          <div class="cli-note">שם מלא · ת.ז · כתובת מגורים · תאריך לידה · מייל · טלפון</div>
+        </div>
+        <div class="cli-tag tag-system">מערכת</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">הקמת אזור אישי ושליחת הסכם התקשרות</div>
+          <div class="cli-note">לוודא שהלקוח קיבל גישה ויכול להיכנס</div>
+        </div>
+        <div class="cli-tag tag-system">מערכת</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">פתיחת קבוצת וואטסאפ</div>
+          <div class="cli-note">לזוגות/משפחות בלבד — לקוח יחיד: שיחה אישית</div>
+        </div>
+        <div class="cli-tag tag-system">מערכת</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">שליחת הודעת ברוכים הבאים</div>
+          <div class="cli-note">כולל פרטי תשלום, קישור לאזור האישי, אופן עבודה</div>
+        </div>
+        <div class="cli-tag tag-send">שליחה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">שליחת רשימת מסמכים</div>
+          <div class="cli-note">בוואטסאפ + באזור האישי · קישור לticofinance.co.il/mismachim</div>
+        </div>
+        <div class="cli-tag tag-send">שליחה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">וידוא חתימה על הסכם התקשרות</div>
+          <div class="cli-note">לא ממשיכים לפני שהסכם חתום</div>
+        </div>
+        <div class="cli-tag tag-check">בדיקה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">קביעת תזכורת לבדיקה בעוד 3 ימים</div>
+          <div class="cli-note">אם לא התקבלו מסמכים — שליחת תזכורת ללקוח</div>
+        </div>
+        <div class="cli-tag tag-system">מערכת</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">וידוא קבלת תשלום + הנפקת חשבונית</div>
+          <div class="cli-note">תשלום מראש — תנאי להמשך התהליך</div>
+        </div>
+        <div class="cli-tag tag-check">בדיקה</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ שלב ב: איסוף מסמכים ═══ -->
+  <div class="phase collapsed" id="phase-b">
+    <div class="phase-header" onclick="togglePhase('phase-b')">
+      <div class="phase-icon" style="background:var(--orange-pale);">📄</div>
+      <div class="phase-meta">
+        <div class="phase-title">ב. איסוף מסמכים</div>
+        <div class="phase-sub">עד 6 ימים — אחריות הלקוח</div>
+      </div>
+      <div class="phase-badge" id="badge-phase-b" style="background:var(--gray-light);color:var(--gray);">0/0</div>
+      <div class="phase-arrow">▾</div>
+    </div>
+    <div class="phase-body">
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">התקבלו מסמכים ראשוניים מהלקוח</div>
+        </div>
+        <div class="cli-tag tag-check">בדיקה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">בדיקת שלמות המסמכים</div>
+          <div class="cli-note">לרשום מה חסר ולעדכן לקוח</div>
+        </div>
+        <div class="cli-tag tag-check">בדיקה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">שליחת דרישת השלמת חוסרים</div>
+          <div class="cli-note">אם חסר משהו — הודעה מסודרת עם רשימה</div>
+        </div>
+        <div class="cli-tag tag-send">שליחה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">כל המסמכים התקבלו ומאומתים</div>
+          <div class="cli-note">ניתן להתקדם לניתוח</div>
+        </div>
+        <div class="cli-tag tag-check">בדיקה</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ שלב ג: ניתוח והגשה ═══ -->
+  <div class="phase collapsed" id="phase-c">
+    <div class="phase-header" onclick="togglePhase('phase-c')">
+      <div class="phase-icon" style="background:var(--green-pale);">📊</div>
+      <div class="phase-meta">
+        <div class="phase-title">ג. ניתוח והגשה לבנקים</div>
+        <div class="phase-sub">עד 2 ימים — אחריות יועץ</div>
+      </div>
+      <div class="phase-badge" id="badge-phase-c" style="background:var(--gray-light);color:var(--gray);">0/0</div>
+      <div class="phase-arrow">▾</div>
+    </div>
+    <div class="phase-body">
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">ניתוח מלא של התיק</div>
+          <div class="cli-note">הכנסה פנויה, יחס החזר, כושר החזר, סיכונים</div>
+        </div>
+        <div class="cli-tag tag-check">בדיקה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">בחירת בנקים להגשה</div>
+        </div>
+        <div class="cli-tag tag-check">בדיקה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">הכנת מייל הגשה מסודר</div>
+        </div>
+        <div class="cli-tag tag-system">מערכת</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">הגשה לבנקים</div>
+          <div class="cli-note">לרשום תאריך הגשה — מכאן מתחיל מנין 5 ימי העסקים</div>
+        </div>
+        <div class="cli-tag tag-send">שליחה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">עדכון לקוח — הוגשה בקשה לבנקים</div>
+        </div>
+        <div class="cli-tag tag-send">שליחה</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ שלב ד: אישור עקרוני ═══ -->
+  <div class="phase collapsed" id="phase-d">
+    <div class="phase-header" onclick="togglePhase('phase-d')">
+      <div class="phase-icon" style="background:var(--blue-pale);">🏦</div>
+      <div class="phase-meta">
+        <div class="phase-title">ד. אישור עקרוני</div>
+        <div class="phase-sub">עד 5 ימי עסקים — אחריות בנק</div>
+      </div>
+      <div class="phase-badge" id="badge-phase-d" style="background:var(--gray-light);color:var(--gray);">0/0</div>
+      <div class="phase-arrow">▾</div>
+    </div>
+    <div class="phase-body">
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">התקבלו אישורים עקרוניים מהבנקים</div>
+        </div>
+        <div class="cli-tag tag-wait">המתנה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">ניתוח והשוואת ההצעות</div>
+        </div>
+        <div class="cli-tag tag-check">בדיקה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">עדכון לקוח + תיאום פגישת תמהיל</div>
+          <div class="cli-note">לשלוח 2 מועדים מוצעים — תוך 3 ימי עסקים</div>
+        </div>
+        <div class="cli-tag tag-send">שליחה</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ שלב ה: תמהיל והגשה מחודשת ═══ -->
+  <div class="phase collapsed" id="phase-e">
+    <div class="phase-header" onclick="togglePhase('phase-e')">
+      <div class="phase-icon" style="background:var(--green-pale);">⚖️</div>
+      <div class="phase-meta">
+        <div class="phase-title">ה. פגישת תמהיל והגשה מחודשת</div>
+        <div class="phase-sub">עד 3 ימים — אחריות יועץ</div>
+      </div>
+      <div class="phase-badge" id="badge-phase-e" style="background:var(--gray-light);color:var(--gray);">0/0</div>
+      <div class="phase-arrow">▾</div>
+    </div>
+    <div class="phase-body">
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">פגישת תמהיל התקיימה</div>
+        </div>
+        <div class="cli-tag tag-call">פגישה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">תמהיל סופי בנוי ומאושר על ידי הלקוח</div>
+        </div>
+        <div class="cli-tag tag-check">בדיקה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">בדיקת השלמת מסמכים לפני הגשה מחודשת</div>
+        </div>
+        <div class="cli-tag tag-check">בדיקה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">הגשה מחודשת לבנקים עם התמהיל הסופי</div>
+        </div>
+        <div class="cli-tag tag-send">שליחה</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ שלב ו: מו"מ ובחירת בנק ═══ -->
+  <div class="phase collapsed" id="phase-f">
+    <div class="phase-header" onclick="togglePhase('phase-f')">
+      <div class="phase-icon" style="background:var(--orange-pale);">🤝</div>
+      <div class="phase-meta">
+        <div class="phase-title">ו. ניהול מו"מ ובחירת בנק</div>
+        <div class="phase-sub">7–10 ימים — אחריות יועץ</div>
+      </div>
+      <div class="phase-badge" id="badge-phase-f" style="background:var(--gray-light);color:var(--gray);">0/0</div>
+      <div class="phase-arrow">▾</div>
+    </div>
+    <div class="phase-body">
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">ניהול מו"מ מול הבנקים</div>
+        </div>
+        <div class="cli-tag tag-call">פגישה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">קבלת הצעות סופיות מכל הבנקים</div>
+        </div>
+        <div class="cli-tag tag-check">בדיקה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">הצגת הצעות ללקוח + בחירת בנק מנצח</div>
+        </div>
+        <div class="cli-tag tag-send">שליחה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">עדכון לקוח — בנק מנצח + פרטי עסקה סופיים</div>
+        </div>
+        <div class="cli-tag tag-send">שליחה</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ שלב ז: חיתום ובטחונות ═══ -->
+  <div class="phase collapsed" id="phase-g">
+    <div class="phase-header" onclick="togglePhase('phase-g')">
+      <div class="phase-icon" style="background:var(--blue-pale);">🔐</div>
+      <div class="phase-meta">
+        <div class="phase-title">ז. חיתום וביצוע בטחונות</div>
+        <div class="phase-sub">שלבים מקבילים — מעקב צמוד</div>
+      </div>
+      <div class="phase-badge" id="badge-phase-g" style="background:var(--gray-light);color:var(--gray);">0/0</div>
+      <div class="phase-arrow">▾</div>
+    </div>
+    <div class="phase-body">
+      <div class="parallel-notice">⚡ שלבים א–ג מתבצעים במקביל</div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">אישור חיתום התקבל מהבנק</div>
+        </div>
+        <div class="cli-tag tag-wait">המתנה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">עדכון לקוח — אישור חיתום + 3 הרכיבים לביצוע</div>
+          <div class="cli-note">ביטוח · שמאות (אם נדרש) · בטחונות</div>
+        </div>
+        <div class="cli-tag tag-send">שליחה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">העברת פרטי לקוח לסוכן ביטוח</div>
+        </div>
+        <div class="cli-tag tag-send">שליחה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">שליחת רשימת שמאים מהבנק ללקוח</div>
+          <div class="cli-note">אם נדרשת שמאות — לפי סוג העסקה</div>
+        </div>
+        <div class="cli-tag tag-send">שליחה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">קבלת דרישות בטחונות מהבנק</div>
+        </div>
+        <div class="cli-tag tag-wait">המתנה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">העברת דרישות בטחונות לעו"ד וללקוח</div>
+        </div>
+        <div class="cli-tag tag-send">שליחה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">וידוא ביטוח חיים ומבנה בוצע ושועבד לבנק</div>
+          <div class="cli-note">הבנק הוא מוטב בלתי חוזר</div>
+        </div>
+        <div class="cli-tag tag-check">בדיקה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">וידוא שמאות הושלמה ונשלחה לבנק</div>
+          <div class="cli-note">אם נדרשה</div>
+        </div>
+        <div class="cli-tag tag-check">בדיקה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">קבלת סריקת כלל מסמכי הבטחונות מהלקוח</div>
+        </div>
+        <div class="cli-tag tag-check">בדיקה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">בדיקת מסמכים מול הבנק — אישור שלמות</div>
+          <div class="cli-note">לא מתאמים חתימות לפני אישור הבנק</div>
+        </div>
+        <div class="cli-tag tag-check">בדיקה</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ שלב ח: חתימות וסגירה ═══ -->
+  <div class="phase collapsed" id="phase-h">
+    <div class="phase-header" onclick="togglePhase('phase-h')">
+      <div class="phase-icon" style="background:var(--green-pale);">🎉</div>
+      <div class="phase-meta">
+        <div class="phase-title">ח. חתימות וסגירת תיק</div>
+        <div class="phase-sub">עד 3 ימי עסקים מאישור הבנק</div>
+      </div>
+      <div class="phase-badge" id="badge-phase-h" style="background:var(--gray-light);color:var(--gray);">0/0</div>
+      <div class="phase-arrow">▾</div>
+    </div>
+    <div class="phase-body">
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">תיאום מועד חתימות</div>
+        </div>
+        <div class="cli-tag tag-call">פגישה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">חתימות בוצעו</div>
+        </div>
+        <div class="cli-tag tag-check">בדיקה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">קבלת אישור ביצוע סופי מהבנק</div>
+        </div>
+        <div class="cli-tag tag-wait">המתנה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">שליחת אישור ביצוע ללקוח</div>
+        </div>
+        <div class="cli-tag tag-send">שליחה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">שליחת הודעת סגירה — מזל טוב + משוב + הפניה</div>
+        </div>
+        <div class="cli-tag tag-send">שליחה</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">שליחת טופס משוב מהתוכנה</div>
+        </div>
+        <div class="cli-tag tag-system">מערכת</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">סגירת תיק בתוכנה</div>
+        </div>
+        <div class="cli-tag tag-system">מערכת</div>
+      </div>
+      <div class="cli" onclick="toggleItem(this)">
+        <div class="cli-check"></div>
+        <div class="cli-content">
+          <div class="cli-text">קביעת תזכורת שנתית ביומן — בדיקת מחזור</div>
+          <div class="cli-note">שנה קדימה מתאריך הסגירה</div>
+        </div>
+        <div class="cli-tag tag-system">מערכת</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">Tico Finance · צ'קליסט פנימי · לא להפצה</div>
+
+</div>
+
+<script>
+  function togglePhase(id) {
+    document.getElementById(id).classList.toggle('collapsed');
+    updateAll();
+  }
+
+  function toggleItem(el) {
+    el.classList.toggle('done');
+    updateAll();
+  }
+
+  function updateAll() {
+    var phases = ['a','b','c','d','e','f','g','h'];
+    var totalDone = 0, totalAll = 0;
+
+    phases.forEach(function(p) {
+      var phase = document.getElementById('phase-' + p);
+      var items = phase.querySelectorAll('.cli');
+      var done = phase.querySelectorAll('.cli.done').length;
+      var all = items.length;
+      totalDone += done; totalAll += all;
+
+      var badge = document.getElementById('badge-phase-' + p);
+      badge.textContent = done + '/' + all;
+      if (done === all && all > 0) {
+        badge.style.background = 'var(--green-pale)';
+        badge.style.color = 'var(--green)';
+      } else if (done > 0) {
+        badge.style.background = 'var(--orange-pale)';
+        badge.style.color = 'var(--orange)';
+      } else {
+        badge.style.background = 'var(--gray-light)';
+        badge.style.color = 'var(--gray)';
+      }
+    });
+
+    var pct = totalAll ? Math.round(totalDone / totalAll * 100) : 0;
+    document.getElementById('global-fill').style.width = pct + '%';
+    document.getElementById('global-count').textContent = totalDone + ' מתוך ' + totalAll + ' משימות (' + pct + '%)';
+  }
+
+  function resetAll() {
+    document.querySelectorAll('.cli.done').forEach(function(el) { el.classList.remove('done'); });
+    updateAll();
+  }
+
+  updateAll();
+</script>
+</body>
+</html>
