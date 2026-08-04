@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<title>תסריט מיחזור משכנתא | Tico Finance</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap');
+
+  :root {
+    --green: #2E8B57;
+    --green-light: #3aa86a;
+    --green-pale: #e8f5ee;
+    --navy: #1a2640;
+    --navy-mid: #2c3e5a;
+    --orange: #E07B39;
+    --orange-pale: #fdf0e8;
+    --blue: #3a6abf;
+    --blue-pale: #e8f0fb;
+    --gray: #6b7280;
+    --gray-light: #f4f6f8;
+    --white: #ffffff;
+    --border: #e2e8f0;
+    --text: #1e293b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Heebo', sans-serif;
+    background: var(--gray-light);
+    color: var(--text);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  .header {
+    background: var(--navy);
+    color: var(--white);
+    padding: 36px 48px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: -60px;
+    width: 300px; height: 300px;
+    background: var(--green);
+    opacity: 0.08;
+    border-radius: 50%;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; right: 80px;
+    width: 200px; height: 200px;
+    background: var(--orange);
+    opacity: 0.06;
+    border-radius: 50%;
+  }
+
+  .header-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .brand {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green-light);
+    margin-bottom: 10px;
+  }
+
+  .header h1 {
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  .header p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 300;
+  }
+
+  .main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  .stage {
+    background: var(--white);
+    border-radius: 16px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+
+  .stage-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 28px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+  }
+
+  .stage-header:hover {
+    background: var(--gray-light);
+  }
+
+  .stage-number {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .stage-title {
+    flex: 1;
+  }
+
+  .stage-title h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+
+  .stage-title span {
+    font-size: 13px;
+    color: var(--gray);
+    font-weight: 400;
+  }
+
+  .stage-arrow {
+    font-size: 18px;
+    color: var(--gray);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .stage.open .stage-arrow {
+    transform: rotate(180deg);
+  }
+
+  .stage-body {
+    display: none;
+    padding: 0 28px 28px;
+    border-top: 1px solid var(--border);
+  }
+
+  .stage.open .stage-body {
+    display: block;
+  }
+
+  .stage.green .stage-number { background: var(--green-pale); color: var(--green); }
+  .stage.navy .stage-number { background: #e8ecf3; color: var(--navy); }
+  .stage.orange .stage-number { background: var(--orange-pale); color: var(--orange); }
+  .stage.blue .stage-number { background: var(--blue-pale); color: var(--blue); }
+
+  .stage.green .stage-header:hover { background: #f0faf5; }
+
+  .script-block {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 20px;
+    position: relative;
+  }
+
+  .script-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--green-light);
+    margin-bottom: 10px;
+  }
+
+  .script-block p {
+    color: rgba(255,255,255,0.88);
+    font-size: 15px;
+    line-height: 1.75;
+    font-weight: 400;
+  }
+
+  .script-block .highlight {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .tips {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .tip {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: var(--gray-light);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .tip-icon {
+    font-size: 17px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .case-tabs {
+    display: flex;
+    gap: 8px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .case-tab {
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    border: 2px solid var(--border);
+    background: var(--white);
+    color: var(--gray);
+    transition: all 0.15s;
+  }
+
+  .case-tab:hover {
+    border-color: var(--green);
+    color: var(--green);
+  }
+
+  .case-tab.active {
+    background: var(--green);
+    color: var(--white);
+    border-color: var(--green);
+  }
+
+  .case-content {
+    display: none;
+  }
+
+  .case-content.active {
+    display: block;
+  }
+
+  .key-moment {
+    background: linear-gradient(135deg, var(--green) 0%, #1e6b40 100%);
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-top: 20px;
+    color: white;
+  }
+
+  .key-moment-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 10px;
+  }
+
+  .key-moment p {
+    font-size: 15px;
+    line-height: 1.75;
+    font-weight: 400;
+  }
+
+  .key-moment strong {
+    font-weight: 700;
+  }
+
+  .silence-note {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #fef9f0;
+    border: 1px solid #f0d9b5;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-top: 18px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text);
+  }
+
+  .silence-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gray);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin: 20px 0 10px;
+  }
+
+  .footer-note {
+    text-align: center;
+    color: var(--gray);
+    font-size: 13px;
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 600px) {
+    .header { padding: 28px 20px; }
+    .header h1 { font-size: 24px; }
+    .main { padding: 24px 16px 60px; }
+    .stage-header { padding: 18px 20px; }
+    .stage-body { padding: 0 20px 24px; }
+    .script-block { padding: 16px 18px; }
+    .case-tab { padding: 8px 14px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="brand">Tico Finance</div>
+    <h1>תסריט מיחזור משכנתא</h1>
+    <p>שיטת הסכם מראש · מדריך עבודה פנימי · לשימוש יועץ בלבד</p>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- Stage 1 -->
+  <div class="stage green open">
+    <div class="stage-header">
+      <div class="stage-number">1</div>
+      <div class="stage-title">
+        <h2>הסכם מראש</h2>
+        <span>המטרה: ליצור מחויבות הדדית לפני הצגת הנתונים</span>
+      </div>
+      <div class="stage-arrow">▾</div>
+    </div>
+    <div class="stage-body">
+      <div class="script-block">
+        <div class="script-label">נוסח מומלץ</div>
+        <p>
+          "לפני שאני נכנס לנתונים — <span class="highlight">בוא נעשה הסכם קטן ביננו.</span><br><br>
+          אני הולך להראות לך בדיוק מה קורה עם המשכנתא שלך היום, ומה אפשר לעשות.<br><br>
+          אם זה לא מתאים לך — תגיד לי ישר, בסדר? לא 'אני אחשוב על זה', לא 'אולי'. <span class="highlight">כן או לא. מקובל?</span>"
+        </p>
+      </div>
+      <div class="tips">
+        <div class="tip">
+          <div class="tip-icon">🎯</div>
+          <div>ההסכם יוצר מחויבות פסיכולוגית — הלקוח נכנס למצב שבו הוא כבר הסכים להחליט, לא רק להקשיב.</div>
+        </div>
+        <div class="tip">
+          <div class="tip-icon">💡</div>
+          <div>חכה לתשובה. אל תמשיך לפני שהלקוח אומר "מקובל" או "בסדר".</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 2 -->
+  <div class="stage navy">
+    <div class="stage-header">
+      <div class="stage-number">2</div>
+      <div class="stage-title">
+        <h2>הצגת הבעיה</h2>
+        <span>המטרה: להראות ללקוח מה קורה עם המשכנתא שלו היום</span>
+      </div>
+      <div class="stage-arrow">▾</div>
+    </div>
+    <div class="stage-body">
+      <div class="section-title">בחר את המקרה הרלוונטי</div>
+      <div class="case-tabs">
+        <div class="case-tab active" data-case="index">הצמדה למדד</div>
+        <div class="case-tab" data-case="rate">ריבית משתנה</div>
+        <div class="case-tab" data-case="term">קיצור תקופה</div>
+      </div>
+
+      <div class="case-content active" data-case="index">
+        <div class="script-block">
+          <div class="script-label">נוסח — הצמדה למדד</div>
+          <p>
+            "יש לך מסלול שצמוד למדד המחירים. מה זה אומר בפועל?<br><br>
+            כל חודש, המדד עולה קצת — וזה <span class="highlight">מוסיף כסף על הקרן שלך.</span><br><br>
+            ההחזר החודשי נראה אותו דבר, אבל החוב האמיתי שלך גדל מאחורי הקלעים.<br><br>
+            זה כמו ברז שמטפטף — אתה לא שומע אותו, אבל בסוף החודש חשבון המים קפץ."
+          </p>
+        </div>
+      </div>
+
+      <div class="case-content" data-case="rate">
+        <div class="script-block">
+          <div class="script-label">נוסח — ריבית משתנה שהתעדכנה</div>
+          <p>
+            "יש לך מסלול עם ריבית שמתעדכנת כל 5 שנים. כשלקחת את המשכנתא, הריבית הייתה סבירה.<br><br>
+            אבל אחרי העדכון? <span class="highlight">אתה יושב על 6%.</span><br><br>
+            למה? כי העוגן — הבסיס שממנו מחשבים את הריבית — עלה, ועוד הוסיפו לך מרווח גבוה מעליו.<br><br>
+            היום, את אותו מסלול בדיוק, אפשר לקבל מתחת ל-5%, אפילו קרוב ל-4.5%.<br><br>
+            אתה משלם יותר מדי על משהו שאפשר לקנות בזול יותר."
+          </p>
+        </div>
+      </div>
+
+      <div class="case-content" data-case="term">
+        <div class="script-block">
+          <div class="script-label">נוסח — קיצור תקופה</div>
+          <p>
+            "היום אתה משלם X ויש לך עוד 20 שנה.<br><br>
+            אם נסדר את המסלולים מחדש, אפשר <span class="highlight">לסיים את המשכנתא 3-4 שנים קודם</span> — באותו החזר, או קרוב מאוד.<br><br>
+            תחשוב על זה — 3 שנים שאתה לא משלם בכלל. מישהו נותן לך מתנה של 3 שנות חופש מתשלומים."
+          </p>
+        </div>
+      </div>
+
+      <div class="tips">
+        <div class="tip">
+          <div class="tip-icon">📝</div>
+          <div>התאם את המספרים ללקוח ספציפי. ככל שהדוגמה מדויקת יותר — האמינות עולה.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 3 -->
+  <div class="stage orange">
+    <div class="stage-header">
+      <div class="stage-number">3</div>
+      <div class="stage-title">
+        <h2>הקדמת ההתנגדות</h2>
+        <span>המטרה: לענות על "איפה הכסף?" לפני שהלקוח שואל</span>
+      </div>
+      <div class="stage-arrow">▾</div>
+    </div>
+    <div class="stage-body">
+      <div class="script-block">
+        <div class="script-label">נוסח מומלץ</div>
+        <p>
+          "עכשיו, אתה בטח שואל את עצמך — <span class="highlight">אם ההחזר נשאר אותו דבר, איפה החיסכון?</span><br><br>
+          שאלה מצוינת.<br><br>
+          הכסף הזה לא נעלם — היום הוא הולך לבנק בשקט, בלי שאתה שם לב.<br><br>
+          ב[הצמדה שמנפחת את הקרן / ריבית גבוהה מדי / שנים עודפות של תשלומים] — זה פשוט מוסיף לחוב שלך מאחורי הקלעים.<br><br>
+          <span class="highlight">כל מה שאנחנו עושים זה לסגור את הברז הזה.</span>"
+        </p>
+      </div>
+      <div class="tips">
+        <div class="tip">
+          <div class="tip-icon">⚡</div>
+          <div>השתמש באותה אנלוגיה שבחרת בשלב 2. אם דיברת על ברז מטפטף — תסגור את הברז. אם דיברת על קניה בזול — תקנה בזול.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 4 -->
+  <div class="stage green">
+    <div class="stage-header">
+      <div class="stage-number">4</div>
+      <div class="stage-title">
+        <h2>המספר הגדול</h2>
+        <span>המטרה: לעגן את החיסכון כמספר ברור וחד</span>
+      </div>
+      <div class="stage-arrow">▾</div>
+    </div>
+    <div class="stage-body">
+      <div class="script-block">
+        <div class="script-label">נוסח מומלץ</div>
+        <p>
+          "בשורה התחתונה, ההפרש בין מה שתשלם היום לאורך כל התקופה, לבין מה שתשלם אחרי המיחזור — <span class="highlight">זה בערך 100 אלף שקל.</span><br><br>
+          ההחזר החודשי? כמעט לא משתנה. אולי 50 שקל פחות, אולי 100 שקל יותר.<br><br>
+          אבל ה-100 אלף האלה? הם לא הולכים לבנק. <span class="highlight">הם נשארים אצלך.</span>"
+        </p>
+      </div>
+      <div class="tips">
+        <div class="tip">
+          <div class="tip-icon">💡</div>
+          <div>התאם את המספר ללקוח. 100 אלף זה דוגמה — השתמש בחיסכון האמיתי שחישבת.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 5 -->
+  <div class="stage blue">
+    <div class="stage-header">
+      <div class="stage-number">5</div>
+      <div class="stage-title">
+        <h2>תמחור — מה נדרש מהלקוח</h2>
+        <span>המטרה: להציג את ההשקעה כחלק מתהליך פשוט</span>
+      </div>
+      <div class="stage-arrow">▾</div>
+    </div>
+    <div class="stage-body">
+      <div class="script-block">
+        <div class="script-label">נוסח — מיחזור פנימי (רוב המקרים)</div>
+        <p>
+          "תראה, בשביל לחסוך לך זמן, כאב ראש, ביורוקרטיה מול הבנק, מו״מ, ו-100 אלף שקל — <span class="highlight">מה שנדרש ממך זה:</span><br><br>
+          [לפרט שלבים נדרשים — מסמכים, תלושי שכר, הכנסות, וכו׳].<br><br>
+          <span class="highlight">ההשקעה שלך היא 6,000 + מע״מ.</span>"
+        </p>
+      </div>
+
+      <div class="silence-note">
+        <div class="silence-icon">🤫</div>
+        <div><strong>שותקים.</strong> מחכים שהלקוח יגיב. מי שמדבר ראשון — מפסיד.</div>
+      </div>
+
+      <div class="script-block" style="margin-top: 18px; background: var(--navy-mid);">
+        <div class="script-label">נוסח — מיחזור חיצוני (כשרלוונטי)</div>
+        <p>
+          "תראה, בשביל לחסוך לך זמן, כאב ראש, ביורוקרטיה מול הבנק, מו״מ, ו-100 אלף שקל — <span class="highlight">מה שנדרש ממך זה:</span><br><br>
+          [לפרט שלבים — מסמכים, שמאות, עו״ד, וכו׳].<br><br>
+          <span class="highlight">ההשקעה שלך היא X + מע״מ.</span>"
+        </p>
+      </div>
+
+      <div class="tips" style="margin-top: 16px;">
+        <div class="tip">
+          <div class="tip-icon">🎯</div>
+          <div>המחיר נכנס כחלק מרשימת פעולות, לא כנקודה בפני עצמה. המילה "השקעה" נכנסת בטבעיות — בלי להסביר למה.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 6 -->
+  <div class="stage navy">
+    <div class="stage-header">
+      <div class="stage-number">6</div>
+      <div class="stage-title">
+        <h2>סגירה</h2>
+        <span>המטרה: לצאת עם החלטה ברורה</span>
+      </div>
+      <div class="stage-arrow">▾</div>
+    </div>
+    <div class="stage-body">
+      <div class="script-block">
+        <div class="script-label">נוסח מומלץ</div>
+        <p>
+          "<span class="highlight">רוצה שנתקדם?</span>"
+        </p>
+      </div>
+      <div class="tips">
+        <div class="tip">
+          <div class="tip-icon">💡</div>
+          <div>קצר, ישיר, בלי לחץ. אם עשית את שלבים 1-5 נכון — הלקוח כבר יודע מה הוא רוצה.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    Tico Finance · מסמך פנימי · לא להפצה
+  </div>
+
+</div>
+
+<script>
+  document.querySelectorAll('.stage-header').forEach(function(header) {
+    header.addEventListener('click', function() {
+      var stage = header.closest('.stage');
+      stage.classList.toggle('open');
+    });
+  });
+
+  document.querySelectorAll('.case-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      var caseId = tab.getAttribute('data-case');
+      var stageBody = tab.closest('.stage-body');
+      stageBody.querySelectorAll('.case-tab').forEach(function(t) { t.classList.remove('active'); });
+      stageBody.querySelectorAll('.case-content').forEach(function(c) { c.classList.remove('active'); });
+      tab.classList.add('active');
+      stageBody.querySelector('.case-content[data-case="' + caseId + '"]').classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
