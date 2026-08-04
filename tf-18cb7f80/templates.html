@@ -597,18 +597,30 @@
   });
 
   // Copy message text
-  function copyToClipboard(text) {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      return navigator.clipboard.writeText(text);
-    }
+  function fallbackCopy(text) {
     var ta = document.createElement('textarea');
     ta.value = text;
-    ta.style.position = 'fixed';
-    ta.style.opacity = '0';
+    ta.setAttribute('readonly', '');
+    ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;padding:0;border:none;outline:none;opacity:0;';
     document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
+    var range = document.createRange();
+    range.selectNodeContents(ta);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    ta.setSelectionRange(0, text.length);
+    var ok = document.execCommand('copy');
     document.body.removeChild(ta);
+    return ok;
+  }
+
+  function copyToClipboard(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text).catch(function() {
+        fallbackCopy(text);
+      });
+    }
+    fallbackCopy(text);
     return Promise.resolve();
   }
 
@@ -671,10 +683,10 @@
       });
       lines.push('');
     });
+    var listBtn = document.querySelector('.action-btn.copy-list');
     copyToClipboard(lines.join('\n').trim()).then(function() {
-      var btn = document.querySelector('.action-btn.copy-list');
-      btn.textContent = '✅ הועתק!';
-      setTimeout(function() { btn.textContent = '📋 העתק רשימה ללקוח'; }, 2000);
+      listBtn.textContent = '✅ הועתק!';
+      setTimeout(function() { listBtn.textContent = '📋 העתק רשימה ללקוח'; }, 2000);
     });
   }
 
