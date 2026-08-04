@@ -170,6 +170,57 @@
   }
 
   .footer { text-align: center; font-size: 12px; color: var(--gray); margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border); }
+
+  /* Client bar */
+  .client-bar {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    margin-bottom: 16px;
+  }
+  .client-bar-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .client-bar label { font-size: 13px; font-weight: 700; color: var(--navy); flex-shrink: 0; }
+  .client-select, .client-input {
+    font-family: 'Heebo', sans-serif; font-size: 13px;
+    padding: 7px 10px; border-radius: 8px; border: 1px solid var(--border);
+    background: white; color: var(--text);
+  }
+  .client-select { min-width: 160px; }
+  .client-input { flex: 1; min-width: 140px; }
+  .client-btn {
+    padding: 7px 14px; border-radius: 8px; border: none;
+    font-family: 'Heebo', sans-serif; font-size: 12px; font-weight: 600;
+    cursor: pointer; flex-shrink: 0;
+  }
+  .client-btn.add { background: var(--green); color: white; }
+  .client-btn.add:hover { background: var(--green-light); }
+  .client-btn.delete { background: var(--gray-light); color: var(--gray); }
+  .client-btn.delete:hover { background: #fde8e8; color: #b91c1c; }
+  .client-btn.export { background: var(--navy); color: white; }
+  .client-btn.export:hover { background: var(--green); }
+  .client-status { font-size: 12px; color: var(--gray); margin-top: 8px; }
+  .client-status.active { color: var(--green); font-weight: 600; }
+
+  .print-header { display: none; }
+
+  @media print {
+    body { background: white; }
+    .client-bar, .reset-all-btn, .phase-arrow, .client-btn.export { display: none !important; }
+    .phase-header { cursor: default; }
+    .phase.collapsed .phase-body { display: block !important; }
+    .phase.collapsed .phase-header { border-radius: 12px 12px 0 0; border-bottom: none; }
+    .phase { break-inside: avoid; }
+    .cli { break-inside: avoid; }
+    .print-header {
+      display: block;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--navy);
+    }
+    .print-header .ph-title { font-size: 18px; font-weight: 900; color: var(--navy); }
+    .print-header .ph-sub { font-size: 12px; color: var(--gray); margin-top: 4px; }
+  }
 </style>
 </head>
 <body>
@@ -181,6 +232,27 @@
 </div>
 
 <div class="main">
+
+  <!-- Print-only header, filled in from the active client -->
+  <div class="print-header" id="print-header">
+    <div class="ph-title">צ'קליסט תפעולי — <span id="print-client-name"></span></div>
+    <div class="ph-sub">Tico Finance · הופק בתאריך <span id="print-date"></span></div>
+  </div>
+
+  <!-- Client bar -->
+  <div class="client-bar">
+    <div class="client-bar-row">
+      <label for="client-select">לקוח:</label>
+      <select class="client-select" id="client-select" onchange="onClientSelectChange()">
+        <option value="">— בחר לקוח —</option>
+      </select>
+      <input type="text" class="client-input" id="new-client-input" placeholder="שם לקוח חדש" onkeydown="if(event.key==='Enter'){createClient();}">
+      <button class="client-btn add" onclick="createClient()">+ הוסף לקוח</button>
+      <button class="client-btn delete" id="delete-client-btn" onclick="deleteClient()" style="display:none;">מחק לקוח</button>
+      <button class="client-btn export" onclick="exportPDF()">📄 ייצוא ל-PDF</button>
+    </div>
+    <div class="client-status" id="client-status">לא נבחר לקוח — הסימונים לא יישמרו</div>
+  </div>
 
   <!-- Progress summary -->
   <div class="progress-summary">
@@ -660,6 +732,11 @@
 </div>
 
 <script>
+  var STORAGE_CLIENTS = 'tico_checklist_clients';
+  var STORAGE_LAST = 'tico_checklist_last_client';
+  var STORAGE_STATE_PREFIX = 'tico_checklist_state_';
+  var activeClient = null;
+
   function togglePhase(id) {
     document.getElementById(id).classList.toggle('collapsed');
     updateAll();
@@ -668,6 +745,7 @@
   function toggleItem(el) {
     el.classList.toggle('done');
     updateAll();
+    saveActiveClientState();
   }
 
   function updateAll() {
@@ -703,9 +781,126 @@
   function resetAll() {
     document.querySelectorAll('.cli.done').forEach(function(el) { el.classList.remove('done'); });
     updateAll();
+    saveActiveClientState();
   }
 
-  updateAll();
+  // ── Assign a stable key to every checklist item, based on its position ──
+  function assignItemKeys() {
+    document.querySelectorAll('.phase').forEach(function(phase) {
+      phase.querySelectorAll('.cli').forEach(function(item, idx) {
+        item.dataset.key = phase.id + '-' + idx;
+      });
+    });
+  }
+
+  // ── Client list (stored in localStorage as a JSON array of names) ──
+  function getClientList() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_CLIENTS) || '[]');
+    } catch (e) { return []; }
+  }
+
+  function setClientList(list) {
+    localStorage.setItem(STORAGE_CLIENTS, JSON.stringify(list));
+  }
+
+  function refreshClientSelect(selected) {
+    var select = document.getElementById('client-select');
+    var list = getClientList();
+    select.innerHTML = '<option value="">— בחר לקוח —</option>';
+    list.forEach(function(name) {
+      var opt = document.createElement('option');
+      opt.value = name;
+      opt.textContent = name;
+      if (name === selected) opt.selected = true;
+      select.appendChild(opt);
+    });
+  }
+
+  // ── Per-client checklist state ──
+  function saveActiveClientState() {
+    if (!activeClient) return;
+    var state = {};
+    document.querySelectorAll('.cli.done').forEach(function(el) {
+      state[el.dataset.key] = true;
+    });
+    localStorage.setItem(STORAGE_STATE_PREFIX + activeClient, JSON.stringify(state));
+  }
+
+  function loadClientState(name) {
+    var raw = localStorage.getItem(STORAGE_STATE_PREFIX + name);
+    var state = {};
+    try { state = raw ? JSON.parse(raw) : {}; } catch (e) { state = {}; }
+    document.querySelectorAll('.cli').forEach(function(el) {
+      if (state[el.dataset.key]) el.classList.add('done');
+      else el.classList.remove('done');
+    });
+    updateAll();
+  }
+
+  function activateClient(name) {
+    activeClient = name || null;
+    localStorage.setItem(STORAGE_LAST, activeClient || '');
+    document.getElementById('delete-client-btn').style.display = activeClient ? 'inline-block' : 'none';
+    var status = document.getElementById('client-status');
+    if (activeClient) {
+      status.textContent = 'עוקב אחרי: ' + activeClient + ' — הסימונים נשמרים אוטומטית';
+      status.classList.add('active');
+      loadClientState(activeClient);
+    } else {
+      status.textContent = 'לא נבחר לקוח — הסימונים לא יישמרו';
+      status.classList.remove('active');
+      document.querySelectorAll('.cli.done').forEach(function(el) { el.classList.remove('done'); });
+      updateAll();
+    }
+    document.getElementById('client-select').value = activeClient || '';
+  }
+
+  function onClientSelectChange() {
+    var name = document.getElementById('client-select').value;
+    activateClient(name);
+  }
+
+  function createClient() {
+    var input = document.getElementById('new-client-input');
+    var name = input.value.trim();
+    if (!name) return;
+    var list = getClientList();
+    if (list.indexOf(name) === -1) {
+      list.push(name);
+      setClientList(list);
+    }
+    input.value = '';
+    refreshClientSelect(name);
+    activateClient(name);
+  }
+
+  function deleteClient() {
+    if (!activeClient) return;
+    if (!confirm('למחוק את הלקוח "' + activeClient + '" ואת כל הסימונים שלו?')) return;
+    var list = getClientList().filter(function(n) { return n !== activeClient; });
+    setClientList(list);
+    localStorage.removeItem(STORAGE_STATE_PREFIX + activeClient);
+    refreshClientSelect(null);
+    activateClient(null);
+  }
+
+  // ── Export the current checklist as a PDF via the browser's print dialog ──
+  function exportPDF() {
+    document.getElementById('print-client-name').textContent = activeClient || 'ללא לקוח';
+    document.getElementById('print-date').textContent = new Date().toLocaleDateString('he-IL');
+    window.print();
+  }
+
+  assignItemKeys();
+  refreshClientSelect(null);
+  var lastClient = localStorage.getItem(STORAGE_LAST);
+  if (lastClient && getClientList().indexOf(lastClient) !== -1) {
+    refreshClientSelect(lastClient);
+    activateClient(lastClient);
+  } else {
+    updateAll();
+  }
 </script>
 </body>
 </html>
