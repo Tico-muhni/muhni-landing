@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<title>תבניות הודעות | Tico Finance</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap');
+  :root {
+    --green: #2E8B57; --green-light: #3aa86a; --green-pale: #e8f5ee;
+    --navy: #1a2640; --navy-mid: #2c3e5a;
+    --orange: #E07B39; --orange-pale: #fdf0e8;
+    --blue: #3a6abf; --blue-pale: #e8f0fb;
+    --gray: #6b7280; --gray-light: #f4f6f8;
+    --border: #e2e8f0; --white: #ffffff; --text: #1e293b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Heebo', sans-serif; background: var(--gray-light); color: var(--text); line-height: 1.7; }
+  .header { background: var(--navy); color: white; padding: 32px 48px 28px; }
+  .brand { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green-light); margin-bottom: 8px; }
+  .header h1 { font-size: 26px; font-weight: 900; margin-bottom: 6px; }
+  .header p { font-size: 13px; color: rgba(255,255,255,0.5); font-weight: 300; }
+  .main { max-width: 820px; margin: 0 auto; padding: 32px 20px 60px; }
+  .cat-header { display: flex; align-items: center; gap: 12px; margin: 32px 0 14px; }
+  .cat-header:first-child { margin-top: 0; }
+  .cat-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .cat-title { font-size: 16px; font-weight: 700; color: var(--navy); }
+  .cat-sub { font-size: 12px; color: var(--gray); }
+  .tpl { background: var(--white); border-radius: 12px; border: 1px solid var(--border); margin-bottom: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+  .tpl-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; cursor: pointer; user-select: none; border-bottom: 1px solid transparent; transition: background 0.15s; }
+  .tpl-header:hover { background: var(--gray-light); }
+  .tpl.open .tpl-header { border-bottom-color: var(--border); }
+  .tpl-label { font-size: 14px; font-weight: 600; color: var(--navy); }
+  .tpl-arrow { font-size: 14px; color: var(--gray); transition: transform 0.2s; }
+  .tpl.open .tpl-arrow { transform: rotate(180deg); }
+  .tpl-body { display: none; padding: 18px; }
+  .tpl.open .tpl-body { display: block; }
+  .wa-bubble { background: #DCF8C6; border-radius: 12px 12px 4px 12px; padding: 14px 16px; font-size: 14px; line-height: 1.85; color: #111; white-space: pre-wrap; word-break: break-word; font-family: 'Heebo', sans-serif; border: 1px solid #c5e8b0; }
+  .ph { background: #ffe08a; border-radius: 4px; padding: 1px 5px; font-size: 13px; font-weight: 600; color: #7a5800; }
+  .copy-btn { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; background: var(--navy); color: white; border: none; border-radius: 8px; padding: 8px 14px; font-size: 12px; font-family: 'Heebo', sans-serif; font-weight: 600; cursor: pointer; transition: background 0.15s; }
+  .copy-btn:hover { background: var(--green); }
+  .copy-btn.copied { background: var(--green); }
+  .tpl-note { margin-top: 10px; font-size: 12px; color: var(--gray); background: var(--gray-light); border-radius: 8px; padding: 8px 12px; line-height: 1.6; }
+  .divider { height: 1px; background: var(--border); margin: 28px 0 0; }
+  .footer { text-align: center; font-size: 12px; color: var(--gray); margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border); }
+
+  /* Checklist */
+  .checklist-card { background: white; border-radius: 12px; border: 1px solid var(--border); padding: 20px; }
+  .checklist-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+  .tab-btn { padding: 7px 14px; border-radius: 20px; border: 1.5px solid var(--border); background: white; font-family: 'Heebo', sans-serif; font-size: 13px; cursor: pointer; color: var(--gray); transition: all 0.15s; }
+  .tab-btn.active { background: var(--navy); color: white; border-color: var(--navy); }
+  .checklist-section { display: none; }
+  .checklist-section.active { display: block; }
+  .checklist-group { margin-bottom: 16px; }
+  .checklist-group-title { font-size: 12px; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px solid var(--border); }
+  .checklist-item { display: flex; align-items: flex-start; gap: 10px; padding: 7px 0; border-bottom: 1px solid #f0f0f0; }
+  .checklist-item:last-child { border-bottom: none; }
+  .checklist-item input[type=checkbox] { margin-top: 3px; width: 16px; height: 16px; accent-color: var(--green); flex-shrink: 0; cursor: pointer; }
+  .checklist-item label { font-size: 13.5px; line-height: 1.5; cursor: pointer; }
+  .checklist-item label small { display: block; color: var(--gray); font-size: 11.5px; margin-top: 2px; }
+  .checklist-item.checked label { text-decoration: line-through; color: var(--gray); }
+  .checklist-actions { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  .action-btn { padding: 7px 14px; border-radius: 8px; border: none; font-family: 'Heebo', sans-serif; font-size: 12px; cursor: pointer; font-weight: 600; }
+  .action-btn.reset { background: var(--gray-light); color: var(--gray); }
+  .action-btn.copy-list { background: var(--navy); color: white; }
+  .action-btn:hover { opacity: 0.85; }
+  .progress-bar { height: 4px; background: var(--border); border-radius: 4px; margin-bottom: 14px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--green); border-radius: 4px; transition: width 0.3s; }
+  .progress-label { font-size: 11px; color: var(--gray); text-align: left; margin-bottom: 6px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="brand">Tico Finance</div>
+  <h1>תבניות הודעות</h1>
+  <p>העתק · ערוך · שלח · לשימוש פנימי בלבד</p>
+</div>
+
+<div class="main">
+
+  <!-- ═══ קטגוריה 1: פתיחה ═══ -->
+  <div class="cat-header">
+    <div class="cat-icon" style="background:#e8ecf3;">👋</div>
+    <div><div class="cat-title">הודעות פתיחה</div><div class="cat-sub">ברוכים הבאים + פרטי תשלום + אופן עבודה</div></div>
+  </div>
+
+  <div class="tpl open" id="t1">
+    <div class="tpl-header" data-target="t1"><span class="tpl-label">פתיחה — לקוח חדש (כל סוגי העסקאות)</span><span class="tpl-arrow">▾</span></div>
+    <div class="tpl-body">
+      <div class="wa-bubble" id="msg-t1">היי <span class="ph">[שמות הלקוחות]</span> 👋
+
+קודם כל, תודה על האמון! 🙏 שמח שהתחלנו לעבוד יחד.
+
+אני כאן כדי להוביל אותך/כם בתהליך <span class="ph">[סוג התהליך — לדוגמה: רכישת דירה / מחזור משכנתא]</span> מתחילתו ועד סופו.
+
+כדי שנוכל להתחיל לעבוד יחד, יש לבצע את השלבים הבאים:
+
+━━━━━━━━━━━━━━━
+📋 הצעדים הראשונים
+━━━━━━━━━━━━━━━
+1. כניסה לאזור האישי שלכם בתוכנה — <span class="ph">[קישור לאזור האישי]</span>
+2. חתימה על הסכם התקשרות (לאחר כניסה לאזור האישי, לחצו על 3 הפסים למעלה → תפריט → מסמכים — שם יחכה לכם ההסכם).
+3. מילוי פרטים אישיים.
+4. חתימה על כתבי הסמכה (מסמך המאפשר לי לדבר עם הבנקים בשמכם).
+
+באזור האישי תמצאו גם רשימת מסמכים להעלאה — אנא העלו את המסמכים ישירות שם.
+רשימת המסמכים המלאה זמינה גם כאן:
+👉 www.ticofinance.co.il/mismachim
+
+━━━━━━━━━━━━━━━
+⚙️ איך אנחנו עובדים
+━━━━━━━━━━━━━━━
+✅ תהליך מובנה — כל שלב מוגדר מראש עם לוחות זמנים ברורים.
+📅 עדכון קבוע — כל יום ראשון וכל יום חמישי, גם אם אין חדשות.
+💪 מה שנדרש מכם — להיות איתי 100% בתהליך כשתידרש מעורבותכם. ככל שתעבירו מסמכים מהר יותר — כך נתקדם מהר יותר.
+
+━━━━━━━━━━━━━━━
+💳 פרטי תשלום
+━━━━━━━━━━━━━━━
+בנק הפועלים - 12
+סניף: 615
+מספר חשבון: 495625
+ע"ש תיאגו זוויבל
+
+סכום לתשלום: <span class="ph">[סכום]</span> + מע"מ כדין
+סה"כ כולל מע"מ: <span class="ph">[סכום כולל]</span>
+
+נא לציין בהעברה את שמכם המלא.
+לאחר ביצוע ההעברה — אשמח לקבל צילום מסך / אסמכתא לביצוע, כדי לשייך את התשלום אליכם ולהנפיק חשבונית מס/קבלה.
+
+כל שאלה — אני זמין.
+שיהיה לכולנו בהצלחה ובשעה טובה!
+ושוב, תודה על האמון! 🙏</div>
+      <button class="copy-btn" onclick="copyMsg('msg-t1',this)">📋 העתק הודעה</button>
+      <div class="tpl-note">💡 לשלוח מיד לאחר שיחת הפתיחה. לא לשכוח למלא את הסכום ואת קישור האזור האישי.</div>
+    </div>
+  </div>
+
+
+
+  <!-- ═══ קטגוריה 2: עדכוני ראשון/חמישי ═══ -->
+  <div class="divider"></div>
+  <div class="cat-header">
+    <div class="cat-icon" style="background:var(--green-pale);">📅</div>
+    <div><div class="cat-title">עדכוני ראשון / חמישי</div><div class="cat-sub">תבנית קבועה — מלא את הפרטים הרלוונטיים</div></div>
+  </div>
+
+  <div class="tpl" id="t3">
+    <div class="tpl-header" data-target="t3"><span class="tpl-label">עדכון שוטף — יש התקדמות</span><span class="tpl-arrow">▾</span></div>
+    <div class="tpl-body">
+      <div class="wa-bubble" id="msg-t3">היי <span class="ph">[שם]</span> 👋
+
+עדכון <span class="ph">[ראשון / חמישי]</span> כמובטח 📋
+
+מה קרה מאז העדכון האחרון:
+• <span class="ph">[פרט 1]</span>
+• <span class="ph">[פרט 2 — אם רלוונטי]</span>
+
+איפה אנחנו עכשיו:
+אנחנו בשלב <span class="ph">[שם השלב]</span> — ממתינים ל<span class="ph">[מה]</span>.
+
+הצעד הבא:
+<span class="ph">[מה קורה / מה נדרש מהלקוח]</span>
+
+כל שאלה — אני כאן 👍</div>
+      <button class="copy-btn" onclick="copyMsg('msg-t3',this)">📋 העתק הודעה</button>
+    </div>
+  </div>
+
+  <div class="tpl" id="t4">
+    <div class="tpl-header" data-target="t4"><span class="tpl-label">עדכון שוטף — אין חדשות</span><span class="tpl-arrow">▾</span></div>
+    <div class="tpl-body">
+      <div class="wa-bubble" id="msg-t4">היי <span class="ph">[שם]</span> 👋
+
+עדכון <span class="ph">[ראשון / חמישי]</span> כמובטח 📋
+
+אין חדשות מהותיות מאז הפעם הקודמת — התיק עדיין נמצא ב<span class="ph">[שלב / בבחינה בבנק / המתנה לחיתום]</span>.
+
+ממשיך לעקוב בצמוד ואעדכן ברגע שיש התפתחות.
+
+כל שאלה — אני כאן 👍</div>
+      <button class="copy-btn" onclick="copyMsg('msg-t4',this)">📋 העתק הודעה</button>
+      <div class="tpl-note">💡 גם כשאין חדשות — ההודעה הזו שומרת על שקט נפשי אצל הלקוח.</div>
+    </div>
+  </div>
+
+  <!-- ═══ קטגוריה 3: עדכוני שלבים ═══ -->
+  <div class="divider"></div>
+  <div class="cat-header">
+    <div class="cat-icon" style="background:var(--orange-pale);">🔔</div>
+    <div><div class="cat-title">עדכוני שלבים</div><div class="cat-sub">הודעה ייעודית לכל אבן דרך בתהליך</div></div>
+  </div>
+
+  <div class="tpl" id="t5">
+    <div class="tpl-header" data-target="t5"><span class="tpl-label">הוגשה בקשה לבנקים</span><span class="tpl-arrow">▾</span></div>
+    <div class="tpl-body">
+      <div class="wa-bubble" id="msg-t5">היי <span class="ph">[שם]</span> 👋
+
+עדכון חשוב — התיק שלכם הוגש הרגע לבנקים! 🎯
+
+הגשנו ל: <span class="ph">[שמות הבנקים]</span>
+
+על פי חוק, הבנקים מחויבים להשיב תוך 5 ימי עסקים.
+ברגע שיגיעו תשובות — אעדכן אותכם מיד.
+
+בינתיים, אין צורך בשום פעולה מצידכם 🙂</div>
+      <button class="copy-btn" onclick="copyMsg('msg-t5',this)">📋 העתק הודעה</button>
+    </div>
+  </div>
+
+  <div class="tpl" id="t6">
+    <div class="tpl-header" data-target="t6"><span class="tpl-label">התקבל אישור עקרוני — תיאום פגישת תמהיל</span><span class="tpl-arrow">▾</span></div>
+    <div class="tpl-body">
+      <div class="wa-bubble" id="msg-t6">היי <span class="ph">[שם]</span> 🎉
+
+חדשות טובות — קיבלנו אישור עקרוני!
+
+קיבלנו תשובות מ: <span class="ph">[בנקים]</span>
+<span class="ph">[פירוט קצר של ההצעות אם רלוונטי]</span>
+
+הצעד הבא: פגישת תמהיל — נבנה יחד את המבנה הנכון למשכנתא שלכם ונגיש מחדש לבנקים עם הבקשה הסופית.
+
+מועדים שפנויים לי כרגע:
+1. <span class="ph">[תאריך, שעה]</span>
+2. <span class="ph">[תאריך, שעה]</span>
+
+אם לא מסתדר — תעדכנו ונמצא מועד חלופי 👍</div>
+      <button class="copy-btn" onclick="copyMsg('msg-t6',this)">📋 העתק הודעה</button>
+    </div>
+  </div>
+
+  <div class="tpl" id="t7">
+    <div class="tpl-header" data-target="t7"><span class="tpl-label">בנק מנצח נבחר — מתחילים חיתום</span><span class="tpl-arrow">▾</span></div>
+    <div class="tpl-body">
+      <div class="wa-bubble" id="msg-t7">היי <span class="ph">[שם]</span> 👋
+
+סיכמנו את המו"מ מול הבנקים — והבנק המנצח הוא <span class="ph">[שם הבנק]</span> 🏆
+
+התנאים שהשגנו:
+• ריבית: <span class="ph">[X%]</span>
+• תמהיל: <span class="ph">[תיאור קצר]</span>
+• <span class="ph">[פרט נוסף אם רלוונטי]</span>
+
+עכשיו מתחיל שלב החיתום — הבנק יאשר את ההלוואה הסופית ויוציא דרישות לביצוע בטחונות.
+טווח זמן משוער: 3–5 ימי עסקים.
+
+אעקוב בצמוד ואעדכן בכל התפתחות 👍</div>
+      <button class="copy-btn" onclick="copyMsg('msg-t7',this)">📋 העתק הודעה</button>
+    </div>
+  </div>
+
+  <div class="tpl" id="t8">
+    <div class="tpl-header" data-target="t8"><span class="tpl-label">אישור חיתום — 3 הרכיבים לביצוע</span><span class="tpl-arrow">▾</span></div>
+    <div class="tpl-body">
+      <div class="wa-bubble" id="msg-t8">היי <span class="ph">[שם]</span> 🎉
+
+אישור החיתום התקבל — כמעט סיימנו!
+
+עכשיו יש לבצע 3 דברים במקביל:
+
+1️⃣ ביטוח חיים ומבנה
+אני מעביר את פרטיכם לסוכן הביטוח שעובד איתי. לרוב, הוא מביא את המחירים הכי זולים בשוק.
+הוא יצור אתכם קשר בהקדם לקבלת הצעות מחיר.
+
+חשוב לדעת על הביטוחים:
+
+🔵 ביטוח חיים
+מטרתו להבטיח שלא יישארו חובות משכנתא לבן/בת הזוג הנותר.
+הביטוח חייב להיות בתוקף מתחילת המשכנתא ועד התאריך האחרון של המסלול הארוך ביותר.
+אנחנו מחפשים תמיד את הביטוח הכי זול שאפשר.
+יש לכם סוכן שאתם עובדים איתו? מעולה — תביאו גם ממנו הצעה ותשוו מחירים 👍
+
+🔵 ביטוח מבנה
+ביטוח מבנה מכסה את עלות בניית 4 הקירות מחדש. בשמאות יש מרכיב שנקרא "ערך כינון" — הוא הקובע את גובה הביטוח.
+חשוב: וודאו שהפוליסה כוללת כיסוי לצד ג'. סוכנות הביטוח של הבנק לא כוללת צד ג' — לכן לא מומלץ לסגור דרכם.
+
+⚠️ חשוב לכל הביטוחים: יש לשעבד את הפוליסה לטובת הבנק, והבנק יהיה מוטב בלתי חוזר — חברות הביטוח מכירות את זה, פשוט לציין זאת בעת הסגירה.
+
+2️⃣ שמאות מקרקעין <span class="ph">(במידה ונדרש לסוג העסקה שלכם)</span>
+אשלח לכם רשימת שמאים מומלצים לתיאום — אתם בוחרים ומתאמים ישירות מולו.
+
+3️⃣ בטחונות (מסמכים משפטיים)
+אני אקבל את דרישות הבטחונות מהבנק ואעביר לכם ולעו"ד שלכם במייל לביצוע.
+
+━━━━━━━━━━━━━━━
+⚠️ שלב חשוב לפני החתימות
+━━━━━━━━━━━━━━━
+ברגע שכל הבטחונות מוכנים — יש לסרוק את כלל המסמכים ולשלוח לי.
+אני אבדוק מול הבנק שהכל תקין ולא חסר כלום — ורק לאחר אישור, אתאם את מועד החתימות.
+
+ככל שתתקדמו מהר יותר — כך נסגור מהר יותר 💪
+כל שאלה — אני זמין!</div>
+      <button class="copy-btn" onclick="copyMsg('msg-t8',this)">📋 העתק הודעה</button>
+      <div class="tpl-note">💡 הסר את שורת השמאות אם לא רלוונטית לסוג העסקה.</div>
+    </div>
+  </div>
+
+  <!-- ═══ קטגוריה 4: ניירת ומסמכים ═══ -->
+  <div class="divider"></div>
+  <div class="cat-header">
+    <div class="cat-icon" style="background:var(--blue-pale);">📄</div>
+    <div><div class="cat-title">צ'קליסט מסמכים</div><div class="cat-sub">סמן מה הוכן — העתק לשליחה ללקוח</div></div>
+  </div>
+
+  <div class="tpl open" id="tchecklist">
+    <div class="tpl-header" data-target="tchecklist"><span class="tpl-label">רשימת מסמכים לפי סוג עסקה</span><span class="tpl-arrow">▾</span></div>
+    <div class="tpl-body">
+      <div class="checklist-card">
+        <div class="checklist-tabs">
+          <button class="tab-btn active" onclick="switchTab('tab-bitsua')">פתיחת תיק — יד שנייה</button>
+          <button class="tab-btn" onclick="switchTab('tab-bituchon')">בטחונות — יד שנייה</button>
+          <button class="tab-btn" onclick="switchTab('tab-shmaut')">שמאות</button>
+          <button class="tab-btn" onclick="switchTab('tab-zkaot')">תעודת זכאות</button>
+        </div>
+
+        <div class="progress-label" id="progress-label">0 מתוך 0 מסמכים</div>
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+
+        <!-- פתיחת תיק -->
+        <div class="checklist-section active" id="tab-bitsua">
+          <div class="checklist-group">
+            <div class="checklist-group-title">מסמכי זהות</div>
+            <div class="checklist-item" id="ci-1"><input type="checkbox" id="c1" onchange="updateProgress()"><label for="c1">כתב הסמכה</label></div>
+            <div class="checklist-item" id="ci-2"><input type="checkbox" id="c2" onchange="updateProgress()"><label for="c2">צילום ת.ז + ספח <small>לכל לווה</small></label></div>
+            <div class="checklist-item" id="ci-3"><input type="checkbox" id="c3" onchange="updateProgress()"><label for="c3">אישור לניהול חשבון / צ'ק מבוטל</label></div>
+          </div>
+          <div class="checklist-group">
+            <div class="checklist-group-title">מסמכי הכנסה</div>
+            <div class="checklist-item" id="ci-4"><input type="checkbox" id="c4" onchange="updateProgress()"><label for="c4">שכיר — 3 תלושי שכר אחרונים <small>+ טופס 106 במידה ורלוונטי</small></label></div>
+            <div class="checklist-item" id="ci-5"><input type="checkbox" id="c5" onchange="updateProgress()"><label for="c5">עצמאי — שומת מס 2022+2023 / אישור רואה חשבון</label></div>
+            <div class="checklist-item" id="ci-6"><input type="checkbox" id="c6" onchange="updateProgress()"><label for="c6">בעל חברה — דוחות כספיים + שומות מס <small>2 שנים אחורה</small></label></div>
+            <div class="checklist-item" id="ci-7"><input type="checkbox" id="c7" onchange="updateProgress()"><label for="c7">גרושים — הסכם גירושין חתום על ידי בית משפט</label></div>
+            <div class="checklist-item" id="ci-8"><input type="checkbox" id="c8" onchange="updateProgress()"><label for="c8">קצבאות — אישור ביטוח לאומי / גוף משלם</label></div>
+            <div class="checklist-item" id="ci-9"><input type="checkbox" id="c9" onchange="updateProgress()"><label for="c9">חופשת לידה — אישור דמי לידה + תלושים + אישור מעסיק על חזרה</label></div>
+            <div class="checklist-item" id="ci-10"><input type="checkbox" id="c10" onchange="updateProgress()"><label for="c10">שכר דירה — חוזה שכירות חתום</label></div>
+          </div>
+          <div class="checklist-group">
+            <div class="checklist-group-title">מסמכים פיננסיים</div>
+            <div class="checklist-item" id="ci-11"><input type="checkbox" id="c11" onchange="updateProgress()"><label for="c11">פירוט עו"ש 3 חודשים אחרונים <small>מכלל החשבונות (פרטי + עסקי)</small></label></div>
+            <div class="checklist-item" id="ci-12"><input type="checkbox" id="c12" onchange="updateProgress()"><label for="c12">דו"ח פירוט הלוואות <small>במידה ויש הלוואות קיימות</small></label></div>
+          </div>
+          <div class="checklist-group">
+            <div class="checklist-group-title">מסמכי הנכס</div>
+            <div class="checklist-item" id="ci-13"><input type="checkbox" id="c13" onchange="updateProgress()"><label for="c13">חוזה רכישה על כל נספחיו</label></div>
+            <div class="checklist-item" id="ci-14"><input type="checkbox" id="c14" onchange="updateProgress()"><label for="c14">נסח טאבו / אישור זכויות / חברה משכנת</label></div>
+            <div class="checklist-item" id="ci-15"><input type="checkbox" id="c15" onchange="updateProgress()"><label for="c15">אישור תשלום הון עצמי <small>צ'ק בנקאי / עו"ש</small></label></div>
+            <div class="checklist-item" id="ci-16"><input type="checkbox" id="c16" onchange="updateProgress()"><label for="c16">מש"ח + הצהרה על נכונות הפרטים</label></div>
+          </div>
+        </div>
+
+        <!-- בטחונות יד שנייה -->
+        <div class="checklist-section" id="tab-bituchon">
+          <div class="checklist-group">
+            <div class="checklist-group-title">בטחונות — רכישה יד שנייה</div>
+            <div class="checklist-item"><input type="checkbox" id="b1" onchange="updateProgress()"><label for="b1">שמאות מקרקעין <small>במידה ואין ליווי בנקאי / חשבון ערבויות</small></label></div>
+            <div class="checklist-item"><input type="checkbox" id="b2" onchange="updateProgress()"><label for="b2">ביטוח חיים + ביטוח מבנה</label></div>
+            <div class="checklist-item"><input type="checkbox" id="b3" onchange="updateProgress()"><label for="b3">ייפוי כח נוטריוני <small>למעט מיחזור פנימי באותו בנק</small></label></div>
+            <div class="checklist-item"><input type="checkbox" id="b4" onchange="updateProgress()"><label for="b4">רישום הערת אזהרה לטובת הבנק המלווה</label></div>
+            <div class="checklist-item"><input type="checkbox" id="b5" onchange="updateProgress()"><label for="b5">רשם המשכונות + דוחות עיון</label></div>
+            <div class="checklist-item"><input type="checkbox" id="b6" onchange="updateProgress()"><label for="b6">רישום שטרות משכנתא בפועל</label></div>
+            <div class="checklist-item"><input type="checkbox" id="b7" onchange="updateProgress()"><label for="b7">מכתב כוונות מהבנק הקיים</label></div>
+            <div class="checklist-item"><input type="checkbox" id="b8" onchange="updateProgress()"><label for="b8">הסכמה לדרגה שנייה מהבנק הקיים <small>לבנק החדש</small></label></div>
+            <div class="checklist-item"><input type="checkbox" id="b9" onchange="updateProgress()"><label for="b9">הוראת קבע לתשלומי המשכנתא</label></div>
+            <div class="checklist-item"><input type="checkbox" id="b10" onchange="updateProgress()"><label for="b10">תשלום דמי פתיחת תיק</label></div>
+            <div class="checklist-item"><input type="checkbox" id="b11" onchange="updateProgress()"><label for="b11">ת.ז + ספח של המוכרים</label></div>
+            <div class="checklist-item"><input type="checkbox" id="b12" onchange="updateProgress()"><label for="b12">אישור ניהול חשבון</label></div>
+          </div>
+        </div>
+
+        <!-- שמאות -->
+        <div class="checklist-section" id="tab-shmaut">
+          <div class="checklist-group">
+            <div class="checklist-group-title">שמאות עם הפנייה מהבנק</div>
+            <div class="checklist-item"><input type="checkbox" id="s1" onchange="updateProgress()"><label for="s1">הפנייה להערכת שמאי מהבנק</label></div>
+            <div class="checklist-item"><input type="checkbox" id="s2" onchange="updateProgress()"><label for="s2">נסח טאבו / אישור זכויות</label></div>
+            <div class="checklist-item"><input type="checkbox" id="s3" onchange="updateProgress()"><label for="s3">קבצי בית משותף — תשריט, תקנון וצו</label></div>
+            <div class="checklist-item"><input type="checkbox" id="s4" onchange="updateProgress()"><label for="s4">טופס ארנונה</label></div>
+            <div class="checklist-item"><input type="checkbox" id="s5" onchange="updateProgress()"><label for="s5">צילום ת.ז מוכרים + ספח</label></div>
+            <div class="checklist-item"><input type="checkbox" id="s6" onchange="updateProgress()"><label for="s6">צילום ת.ז רוכשים + ספח</label></div>
+            <div class="checklist-item"><input type="checkbox" id="s7" onchange="updateProgress()"><label for="s7">היתר בניה מילולי מטעם העירייה</label></div>
+            <div class="checklist-item"><input type="checkbox" id="s8" onchange="updateProgress()"><label for="s8">תשריט להיתר — גרמושקה</label></div>
+            <div class="checklist-item"><input type="checkbox" id="s9" onchange="updateProgress()"><label for="s9">חוזה מכר חתום + כל הנספחים</label></div>
+            <div class="checklist-item"><input type="checkbox" id="s10" onchange="updateProgress()"><label for="s10">חוזה שכירות <small>במידה והנכס מושכר</small></label></div>
+          </div>
+        </div>
+
+        <!-- זכאות -->
+        <div class="checklist-section" id="tab-zkaot">
+          <div class="checklist-group">
+            <div class="checklist-group-title">תעודת זכאות — משרד השיכון</div>
+            <div class="checklist-item"><input type="checkbox" id="z1" onchange="updateProgress()"><label for="z1">תעודת זהות כולל ספח מעודכן <small>לכל המבקשים</small></label></div>
+            <div class="checklist-item"><input type="checkbox" id="z2" onchange="updateProgress()"><label for="z2">תעודת עולה <small>לעולים חדשים בלבד</small></label></div>
+            <div class="checklist-item"><input type="checkbox" id="z3" onchange="updateProgress()"><label for="z3">תעודת נישואין / אישור הרשמה לנישואין</label></div>
+            <div class="checklist-item"><input type="checkbox" id="z4" onchange="updateProgress()"><label for="z4">אישור משך שירות חובה בצה"ל / שירות לאומי</label></div>
+            <div class="checklist-item"><input type="checkbox" id="z5" onchange="updateProgress()"><label for="z5">פרטי אחים ואחיות <small>שמות, ת.ז, כתובות, שנת לידה</small></label></div>
+            <div class="checklist-item"><input type="checkbox" id="z6" onchange="updateProgress()"><label for="z6">פרטי ילדים כפי שמופיעים בת.ז <small>מחודש 5 להריון ואילך</small></label></div>
+            <div class="checklist-item"><input type="checkbox" id="z7" onchange="updateProgress()"><label for="z7">אישור שירות מילואים שש שנתי <small>מאתר המילואים של צה"ל</small></label></div>
+          </div>
+        </div>
+
+        <div class="checklist-actions">
+          <button class="action-btn reset" onclick="resetChecklist()">🔄 אפס רשימה</button>
+          <button class="action-btn copy-list" onclick="copyChecklist()">📋 העתק רשימה ללקוח</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ קטגוריה 5: לקוח מאחר ═══ -->
+  <div class="divider"></div>
+  <div class="cat-header">
+    <div class="cat-icon" style="background:#fdf0e8;">⏰</div>
+    <div><div class="cat-title">כשהלקוח מאחר</div><div class="cat-sub">עדין, מנומס — אבל עם תחושת דחיפות ברורה</div></div>
+  </div>
+
+  <!-- תזכורת חוסרים -->
+  <div class="tpl" id="t10">
+    <div class="tpl-header" data-target="t10"><span class="tpl-label">מסמכים שלא הגיעו</span><span class="tpl-arrow">▾</span></div>
+    <div class="tpl-body">
+      <div class="wa-bubble" id="msg-t10">היי <span class="ph">[שם]</span> 👋
+
+רציתי לעדכן — אנחנו עדיין ממתינים למספר מסמכים כדי שנוכל להתחיל לעבוד על התיק שלכם 📋
+
+חסרים:
+• <span class="ph">[מסמך 1]</span>
+• <span class="ph">[מסמך 2]</span>
+
+חשוב שתדעו — כל יום שעובר דוחה את תחילת התהליך. ברגע שנקבל את הכל, אנחנו נכנסים לפעולה מיד.
+
+תוכלו להעביר בהקדם? 🙏</div>
+      <button class="copy-btn" onclick="copyMsg('msg-t10',this)">📋 העתק הודעה</button>
+      <div class="tpl-note">💡 לשלוח ביום ה-4 אם לא התקבל כלום. אחרי שליחה שנייה — שיחת טלפון.</div>
+    </div>
+  </div>
+
+  <!-- לא מגיב לתיאום תמהיל -->
+  <div class="tpl" id="t-delay2">
+    <div class="tpl-header" data-target="t-delay2"><span class="tpl-label">לא מגיב לתיאום פגישת תמהיל</span><span class="tpl-arrow">▾</span></div>
+    <div class="tpl-body">
+      <div class="wa-bubble" id="msg-tdelay2">היי <span class="ph">[שם]</span> 👋
+
+רציתי לחזור אליכם בנושא פגישת התמהיל — זה שלב קריטי בתהליך וחשוב שנתאם אותו בהקדם 📅
+
+תזכורת — קיבלנו אישור עקרוני מהבנקים, וכעת אנחנו צריכים לבנות יחד את התמהיל ולהגיש מחדש.
+ככל שנתאם מוקדם יותר — כך נשמור על התנאים שקיבלנו ונמנע עיכובים מיותרים.
+
+מועדים שעדיין פנויים לי:
+1. <span class="ph">[תאריך, שעה]</span>
+2. <span class="ph">[תאריך, שעה]</span>
+
+אם לא מסתדר — תעדכנו ונמצא פתרון 🙏</div>
+      <button class="copy-btn" onclick="copyMsg('msg-tdelay2',this)">📋 העתק הודעה</button>
+      <div class="tpl-note">💡 אם אין מענה תוך יום-יומיים — להתקשר ישירות. האישור העקרוני לא מחכה לנצח.</div>
+    </div>
+  </div>
+
+  <!-- מתעכב בביצוע בטחונות -->
+  <div class="tpl" id="t-delay3">
+    <div class="tpl-header" data-target="t-delay3"><span class="tpl-label">מתעכב בביצוע בטחונות</span><span class="tpl-arrow">▾</span></div>
+    <div class="tpl-body">
+      <div class="wa-bubble" id="msg-tdelay3">היי <span class="ph">[שם]</span> 👋
+
+רציתי לעדכן על מצב התיק — אנחנו בשלב הביצוע, וחשוב מאוד שנתקדם מהר 🙏
+
+כרגע ממתינים ל:
+• <span class="ph">[פרט 1 — לדוגמה: ביטוח חיים / מבנה]</span>
+• <span class="ph">[פרט 2 — לדוגמה: מסמכי בטחונות מעו"ד]</span>
+
+חשוב שתבינו — הבנק מחכה לאישורים אלה לפני שנוכל לתאם חתימות ולסיים את התהליך. כל עיכוב כאן עלול לדחות את מועד השלמת המשכנתא.
+
+אני כאן לכל שאלה וסיוע — בוא נסיים את זה יחד 💪</div>
+      <button class="copy-btn" onclick="copyMsg('msg-tdelay3',this)">📋 העתק הודעה</button>
+      <div class="tpl-note">💡 זה השלב הכי מתמשך ותלוי בלקוח — אם אין תגובה, שיחת טלפון ישירה עדיפה על הודעות.</div>
+    </div>
+  </div>
+
+  <!-- שמאות -->
+  <div class="tpl" id="t11">
+    <div class="tpl-header" data-target="t11"><span class="tpl-label">שמאות — תיאום עם שמאי</span><span class="tpl-arrow">▾</span></div>
+    <div class="tpl-body">
+      <div class="wa-bubble" id="msg-t11">היי <span class="ph">[שם]</span> 👋
+
+הגיע הזמן לתאם שמאות לנכס 🏠
+
+אני שולח לכם את רשימת השמאים מטעם הבנק — בחרו שמאי מהרשימה, שלחו לו את המסמכים הנדרשים, ולאחר מכן תאמו מולו ישירות את מועד הביקור.
+
+<span class="ph">[רשימת השמאים מהבנק]</span>
+
+<span class="ph">[אם מכיר שמאי ברשימה — להוסיף: "אם תרצו המלצה, אני מכיר את [שם] ויכול להמליץ עליו 👍"]</span>
+
+📋 רשימת המסמכים הנדרשים לשמאי זמינה כאן:
+👉 www.ticofinance.co.il/mismachim (תחת "מסמכים לשמאות")
+
+כל שאלה — אני כאן 👍
+
+כל שאלה — אני כאן 👍</div>
+      <button class="copy-btn" onclick="copyMsg('msg-t11',this)">📋 העתק הודעה</button>
+    </div>
+  </div>
+
+  <!-- ═══ קטגוריה 6: סגירת תיק ═══ -->
+  <div class="divider"></div>
+  <div class="cat-header">
+    <div class="cat-icon" style="background:var(--green-pale);">🎉</div>
+    <div><div class="cat-title">סגירת תיק</div><div class="cat-sub">מזל טוב + משוב + הפניה</div></div>
+  </div>
+
+  <div class="tpl open" id="t-close">
+    <div class="tpl-header" data-target="t-close"><span class="tpl-label">הודעת סיום — מזל טוב, משוב והפניה</span><span class="tpl-arrow">▾</span></div>
+    <div class="tpl-body">
+      <div class="wa-bubble" id="msg-tclose">היי <span class="ph">[שם]</span> 🎉
+
+עכשיו רשמי — סיימנו! אישור הביצוע בדרך אליכם.
+
+רציתי לעצור שנייה ולומר — היה לי עונג אמיתי ללוות אתכם בתהליך הזה. כבר לא רק לקוחות 😄 תמיד שמח לעזור, לייעץ, לענות על שאלה — גם אחרי שסגרנו. ככה אני עובד.
+
+━━━━━━━━━━━━━━━
+📅 תזכורת חשובה לעתיד
+━━━━━━━━━━━━━━━
+שימו לכם תזכורת שנתית לצלצל אליי — בדיקת מצב המשכנתא ובחינת מחזור יכולה לחסוך לכם עשרות אלפי שקלים. שוק הריביות משתנה, וכדאי לבדוק פעם בשנה שאתם עדיין על המסלול הכי טוב.
+אני כאן 📞
+
+━━━━━━━━━━━━━━━
+⭐ משוב
+━━━━━━━━━━━━━━━
+שלחתי לכם לינק למילוי משוב קצר — יקח דקה, ועוזר לי לשפר ולתת שירות עוד יותר טוב. אשמח שתמלאו 🙏
+
+ובנוסף — תעזרו לי לעזור לעוד אנשים 🙂
+אנשים תמיד מחפשים מישהו שסומכים עליו בעניין משכנתא, וביקורת אמיתית ממכם שווה הרבה. אשמח אם תשאירו כמה מילים בגוגל:
+👉 <span class="ph">[לינק לגוגל ביזנס — יעודכן בהשקת Tico Finance]</span>
+
+━━━━━━━━━━━━━━━
+🤝 מכירים מישהו?
+━━━━━━━━━━━━━━━
+תעשו טובה לחברים ולמשפחה שלכם — תנו אותם אליי ואני אדאג להם כמו שדאגתי לכם 💪
+
+ומישהו הגיע דרככם? מעולה — קבלו הטבה ממני באהבה 🎁
+אתם בוחרים:
+💵 300 ש"ח בהעברה בנקאית
+או
+🎁 5% הנחה על השירות הבא
+
+בהצלחה עם הבית! 🏠
+תיאגו 😊</div>
+      <button class="copy-btn" onclick="copyMsg('msg-tclose',this)">📋 העתק הודעה</button>
+      <div class="tpl-note">💡 לשלוח מיד עם העברת אישור הביצוע. טופס המשוב נשלח מהתוכנה בנפרד — באותו יום.</div>
+    </div>
+  </div>
+
+  <!-- ═══ קטגוריה 7: שמירת קשר ═══ -->
+  <div class="divider"></div>
+  <div class="cat-header">
+    <div class="cat-icon" style="background:#e8f0fb;">🔁</div>
+    <div><div class="cat-title">שמירת קשר אחרי הסגירה</div><div class="cat-sub">תזכורת שנתית · חגים · עדכוני שוק</div></div>
+  </div>
+
+  <!-- תזכורת שנתית -->
+  <div class="tpl open" id="t-annual">
+    <div class="tpl-header" data-target="t-annual"><span class="tpl-label">תזכורת שנתית — בדיקת מחזור</span><span class="tpl-arrow">▾</span></div>
+    <div class="tpl-body">
+      <div class="wa-bubble" id="msg-tannual">היי <span class="ph">[שם]</span>! מה שלומכם? 👋
+
+הייתם מאמינים שיש לכם יומולדת היום? 🎂
+
+כן, עברה שנה מאז שלקחתם את המשכנתא — וכמובטח, מגיע לכם בדיקה שנתית של מצב הריביות והמסלולים 🎁
+
+תוציאו דוח יתרות בבקשה — הנה מדריך קצר איך עושים את זה:
+👉 https://tico-finance-yitra-lesiluk-ticos-projects-cad3fd09.vercel.app/
+
+ותשלחו לי — ואני מבצע את הבחינה ושולח לכם דוח מסודר.
+
+תקראו, תסתכלו, ומשם נעשה שיחה קצרה של 5–10 דקות במידה ויש מה לעשות ומה האפשרויות.
+אם הכל בסדר ולא נדרש לעשות כלום — אני מעדכן אתכם כאן 👍</div>
+      <button class="copy-btn" onclick="copyMsg('msg-tannual',this)">📋 העתק הודעה</button>
+      <div class="tpl-note">💡 לשים תזכורת ביומן לכל לקוח שנה קדימה מתאריך הסגירה. הקישור יתעדכן בהשקת הדומיין הסופי.</div>
+    </div>
+  </div>
+
+  <div class="footer">Tico Finance · תבניות פנימיות · לא להפצה</div>
+
+</div>
+
+<script>
+  // Toggle accordion
+  document.querySelectorAll('.tpl-header').forEach(function(header) {
+    header.addEventListener('click', function() {
+      var id = header.getAttribute('data-target');
+      var tpl = document.getElementById(id);
+      tpl.classList.toggle('open');
+    });
+  });
+
+  // Copy message text
+  function copyMsg(id, btn) {
+    var el = document.getElementById(id);
+    var clone = el.cloneNode(true);
+    var text = clone.innerText || clone.textContent;
+    navigator.clipboard.writeText(text.trim()).then(function() {
+      btn.textContent = '✅ הועתק!';
+      btn.classList.add('copied');
+      setTimeout(function() { btn.innerHTML = '📋 העתק הודעה'; btn.classList.remove('copied'); }, 2000);
+    });
+  }
+
+  // Checklist tabs
+  function switchTab(id) {
+    document.querySelectorAll('.checklist-section').forEach(function(s) { s.classList.remove('active'); });
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+    // Uncheck all in previous tab, update progress
+    updateProgress();
+  }
+
+  // Progress bar
+  function updateProgress() {
+    var activeTab = document.querySelector('.checklist-section.active');
+    var all = activeTab.querySelectorAll('input[type=checkbox]');
+    var checked = activeTab.querySelectorAll('input[type=checkbox]:checked');
+    var pct = all.length ? Math.round(checked.length / all.length * 100) : 0;
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-label').textContent = checked.length + ' מתוך ' + all.length + ' מסמכים';
+    // Strike through checked items
+    all.forEach(function(cb) {
+      var item = cb.closest('.checklist-item');
+      if (cb.checked) item.classList.add('checked'); else item.classList.remove('checked');
+    });
+  }
+
+  // Reset
+  function resetChecklist() {
+    var activeTab = document.querySelector('.checklist-section.active');
+    activeTab.querySelectorAll('input[type=checkbox]').forEach(function(cb) { cb.checked = false; });
+    updateProgress();
+  }
+
+  // Copy checklist as text
+  function copyChecklist() {
+    var activeTab = document.querySelector('.checklist-section.active');
+    var lines = ['רשימת מסמכים — Tico Finance', ''];
+    activeTab.querySelectorAll('.checklist-group').forEach(function(group) {
+      var title = group.querySelector('.checklist-group-title');
+      if (title) lines.push('📌 ' + title.textContent.trim());
+      group.querySelectorAll('.checklist-item').forEach(function(item) {
+        var cb = item.querySelector('input');
+        var lbl = item.querySelector('label').childNodes[0].textContent.trim();
+        var small = item.querySelector('small');
+        var sub = small ? ' (' + small.textContent.trim() + ')' : '';
+        lines.push((cb.checked ? '✅ ' : '☐ ') + lbl + sub);
+      });
+      lines.push('');
+    });
+    navigator.clipboard.writeText(lines.join('\n').trim()).then(function() {
+      var btn = document.querySelector('.action-btn.copy-list');
+      btn.textContent = '✅ הועתק!';
+      setTimeout(function() { btn.textContent = '📋 העתק רשימה ללקוח'; }, 2000);
+    });
+  }
+
+  updateProgress();
+</script>
+</body>
+</html>

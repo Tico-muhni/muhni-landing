@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<title>תסריט פגישה ראשונה | Tico Finance</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap');
+
+  :root {
+    --green: #2E8B57;
+    --green-light: #3aa86a;
+    --green-pale: #e8f5ee;
+    --navy: #1a2640;
+    --navy-mid: #2c3e5a;
+    --orange: #E07B39;
+    --gray: #6b7280;
+    --gray-light: #f4f6f8;
+    --white: #ffffff;
+    --border: #e2e8f0;
+    --text: #1e293b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Heebo', sans-serif;
+    background: var(--gray-light);
+    color: var(--text);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* Header */
+  .header {
+    background: var(--navy);
+    color: var(--white);
+    padding: 36px 48px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: -60px;
+    width: 300px; height: 300px;
+    background: var(--green);
+    opacity: 0.08;
+    border-radius: 50%;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; right: 80px;
+    width: 200px; height: 200px;
+    background: var(--orange);
+    opacity: 0.06;
+    border-radius: 50%;
+  }
+
+  .header-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .brand {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green-light);
+    margin-bottom: 10px;
+  }
+
+  .header h1 {
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  .header p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 300;
+  }
+
+  /* Main */
+  .main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* Stage card */
+  .stage {
+    background: var(--white);
+    border-radius: 16px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+
+  .stage-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 28px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+  }
+
+  .stage-header:hover {
+    background: var(--gray-light);
+  }
+
+  .stage-number {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .stage-title {
+    flex: 1;
+  }
+
+  .stage-title h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+
+  .stage-title span {
+    font-size: 13px;
+    color: var(--gray);
+    font-weight: 400;
+  }
+
+  .stage-arrow {
+    font-size: 18px;
+    color: var(--gray);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .stage.open .stage-arrow {
+    transform: rotate(180deg);
+  }
+
+  .stage-body {
+    display: none;
+    padding: 0 28px 28px;
+    border-top: 1px solid var(--border);
+  }
+
+  .stage.open .stage-body {
+    display: block;
+  }
+
+  /* Color variants */
+  .stage.green .stage-number { background: var(--green-pale); color: var(--green); }
+  .stage.navy .stage-number { background: #e8ecf3; color: var(--navy); }
+  .stage.orange .stage-number { background: #fdf0e8; color: var(--orange); }
+
+  .stage.green .stage-header:hover { background: #f0faf5; }
+
+  /* Script block */
+  .script-block {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 20px;
+    position: relative;
+  }
+
+  .script-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--green-light);
+    margin-bottom: 10px;
+  }
+
+  .script-block p {
+    color: rgba(255,255,255,0.88);
+    font-size: 15px;
+    line-height: 1.75;
+    font-weight: 400;
+  }
+
+  .script-block .highlight {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  /* Tips */
+  .tips {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .tip {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: var(--gray-light);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .tip-icon {
+    font-size: 17px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* Questions list */
+  .questions {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .question-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .q-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  .green-dot { background: var(--green); }
+  .navy-dot { background: var(--navy); }
+  .orange-dot { background: var(--orange); }
+
+  /* Key moment */
+  .key-moment {
+    background: linear-gradient(135deg, var(--green) 0%, #1e6b40 100%);
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-top: 20px;
+    color: white;
+  }
+
+  .key-moment-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 10px;
+  }
+
+  .key-moment p {
+    font-size: 15px;
+    line-height: 1.75;
+    font-weight: 400;
+  }
+
+  .key-moment strong {
+    font-weight: 700;
+  }
+
+  /* Next steps */
+  .next-steps {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .next-step {
+    border-radius: 10px;
+    padding: 16px 18px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .next-step.yours {
+    background: var(--green-pale);
+    border: 1px solid #b8dfc9;
+  }
+
+  .next-step.theirs {
+    background: #fdf0e8;
+    border: 1px solid #f0c9a8;
+  }
+
+  .next-step-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .yours .next-step-label { color: var(--green); }
+  .theirs .next-step-label { color: var(--orange); }
+
+  /* Section title inside body */
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gray);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin: 20px 0 10px;
+  }
+
+  /* Footer note */
+  .footer-note {
+    text-align: center;
+    color: var(--gray);
+    font-size: 13px;
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 600px) {
+    .header { padding: 28px 20px; }
+    .header h1 { font-size: 24px; }
+    .main { padding: 24px 16px 60px; }
+    .stage-header { padding: 18px 20px; }
+    .stage-body { padding: 0 20px 24px; }
+    .next-steps { grid-template-columns: 1fr; }
+    .script-block { padding: 16px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="brand">Tico Finance</div>
+    <h1>תסריט פגישה ראשונה</h1>
+    <p>מדריך עבודה פנימי · זום / טלפון · לשימוש יועץ בלבד</p>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- Stage 1 -->
+  <div class="stage green open">
+    <div class="stage-header">
+      <div class="stage-number">1</div>
+      <div class="stage-title">
+        <h2>פתיחה — יצירת אמון</h2>
+        <span>דקה 0–3 · המטרה: שהלקוח ירגיש בידיים טובות</span>
+      </div>
+      <div class="stage-arrow">▾</div>
+    </div>
+    <div class="stage-body">
+      <div class="script-block">
+        <div class="script-label">נוסח מומלץ</div>
+        <p>
+          "שלום [שם], שמח שהגענו לשיחה הזו.<br>
+          אני [שם], יועץ משכנתאות עצמאי מ-Tico Finance.<br><br>
+          <span class="highlight">המטרה שלי בשיחה הזו היא קודם כל להבין את המצב שלך —</span> בלי למכור כלום, בלי להבטיח שום דבר. רק להבין אם יש כאן משהו שאני יכול לעזור איתו, ואיך נראה הדרך הנכונה עבורך."
+        </p>
+      </div>
+      <div class="tips">
+        <div class="tip">
+          <div class="tip-icon">💡</div>
+          <div>אל תמהר לדבר על הריביות או התמהיל. הלקוח צריך קודם כל להרגיש שמישהו מקשיב לו.</div>
+        </div>
+        <div class="tip">
+          <div class="tip-icon">🎯</div>
+          <div>שאל שאלה פותחת אחת: <strong>"ספר לי על העסקה — מה אתם מחפשים?"</strong> ותן לו לדבר.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 2 -->
+  <div class="stage navy">
+    <div class="stage-header">
+      <div class="stage-number">2</div>
+      <div class="stage-title">
+        <h2>אבחון — בדיקת ייתכנות</h2>
+        <span>דקה 3–15 · המטרה: לקבל תמונת מצב מלאה</span>
+      </div>
+      <div class="stage-arrow">▾</div>
+    </div>
+    <div class="stage-body">
+      <div class="section-title">שאלות ליבה</div>
+      <div class="questions">
+        <div class="question-item">
+          <div class="q-dot navy-dot"></div>
+          <div><strong>העסקה:</strong> קנייה / מחזור / שיפוץ? מה סכום הנכס ומה הסכום שצריך לממן?</div>
+        </div>
+        <div class="question-item">
+          <div class="q-dot navy-dot"></div>
+          <div><strong>הלווים:</strong> יחיד / זוג? שכירים / עצמאים? כמה שנות ותק?</div>
+        </div>
+        <div class="question-item">
+          <div class="q-dot navy-dot"></div>
+          <div><strong>הכנסה:</strong> הכנסה פנויה משוערת? הלוואות קיימות? מחויבויות?</div>
+        </div>
+        <div class="question-item">
+          <div class="q-dot navy-dot"></div>
+          <div><strong>לוח זמנים:</strong> יש תאריך יעד? עסקה תחת לחץ זמן?</div>
+        </div>
+        <div class="question-item">
+          <div class="q-dot navy-dot"></div>
+          <div><strong>ניסיון קודם:</strong> היו אי פעם עם יועץ משכנתאות? מה עבד / לא עבד?</div>
+        </div>
+      </div>
+      <div class="tips" style="margin-top: 16px;">
+        <div class="tip">
+          <div class="tip-icon">📝</div>
+          <div>רשום בזמן אמת. זה גם מקצועי וגם גורם ללקוח להרגיש שמה שהוא אומר חשוב.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 3 -->
+  <div class="stage orange">
+    <div class="stage-header">
+      <div class="stage-number">3</div>
+      <div class="stage-title">
+        <h2>גשר — מהאבחון למכירה</h2>
+        <span>דקה 15–20 · המטרה: להראות שאתה מבין ויודע מה לעשות</span>
+      </div>
+      <div class="stage-arrow">▾</div>
+    </div>
+    <div class="stage-body">
+      <div class="script-block">
+        <div class="script-label">נוסח מומלץ</div>
+        <p>
+          "בסדר, אני מבין את התמונה.<br><br>
+          <span class="highlight">על בסיס מה שסיפרת לי,</span> אני רואה [תיאור קצר של המצב — ז"א מה הכוח שלהם, מה האתגר].<br><br>
+          יש כאן עבודה שאפשר לעשות — ואני יכול להוביל אותה. אשמח לספר לך איך אני עובד, כדי שתדע בדיוק למה לצפות."
+        </p>
+      </div>
+      <div class="tips">
+        <div class="tip">
+          <div class="tip-icon">⚡</div>
+          <div>אל תמהר לתת מספרים בשלב הזה. הלקוח עדיין לא יודע אם הוא רוצה לעבוד איתך — תמכור קודם את <strong>עצמך</strong>.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 4 -->
+  <div class="stage green">
+    <div class="stage-header">
+      <div class="stage-number">4</div>
+      <div class="stage-title">
+        <h2>הצגת אופן העבודה</h2>
+        <span>דקה 20–28 · המטרה: ליצור ציפיות ברורות ולבסס אמון</span>
+      </div>
+      <div class="stage-arrow">▾</div>
+    </div>
+    <div class="stage-body">
+      <div class="script-block">
+        <div class="script-label">נוסח מומלץ — הלב של הפגישה</div>
+        <p>
+          "אני רוצה לספר לך איך אני עובד, כי זה חשוב לי שנהיה מסונכרנים לגמרי.<br><br>
+          <span class="highlight">אני עובד בתהליך מובנה לחלוטין</span> — כל שלב מוגדר מראש, עם לוחות זמנים ברורים ועדכונים קבועים. אתה תדע בכל רגע נתון איפה התיק שלך עומד.<br><br>
+          מה שנדרש ממך: <strong>להיות איתי 100% בתהליך.</strong> כשאני מבקש מסמך — הוא צריך להגיע תוך 3 ימים. כשאני מזמין אותך לפגישת תמהיל — צריך למצוא מועד תוך ימים ספורים.<br><br>
+          המטרה שלך פשוטה: <strong>לעשות מה שצריך, הכי מהר שאפשר — ולשכוח מזה.</strong> אני כאן בשביל שזה יקרה."
+        </p>
+      </div>
+
+      <div class="key-moment">
+        <div class="key-moment-label">🔑 נקודת המפתח</div>
+        <p>
+          "דבר אחד שחשוב לי שתדע: <strong>אני מעדכן אותך כל ראשון וכל חמישי</strong> — גם אם לא קרה שום דבר. לא יהיה מצב שאתה מחכה ותוהה מה קורה. אם יש עיכוב, אתה תדע ממני — לא מהבנק."
+        </p>
+      </div>
+
+      <div class="tips" style="margin-top: 16px;">
+        <div class="tip">
+          <div class="tip-icon">🤝</div>
+          <div>אחרי שאמרת את זה — עצור. תן לו להגיב. לרוב תשמע "מושלם" או שאלה. זה הרגע שהוא מחליט שהוא רוצה לעבוד איתך.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 5 -->
+  <div class="stage navy">
+    <div class="stage-header">
+      <div class="stage-number">5</div>
+      <div class="stage-title">
+        <h2>סגירה — מה הצעד הבא</h2>
+        <span>דקה 28–35 · המטרה: לצאת עם מחויבות ברורה</span>
+      </div>
+      <div class="stage-arrow">▾</div>
+    </div>
+    <div class="stage-body">
+      <div class="script-block">
+        <div class="script-label">אם מסכים להתקדם — נוסח מומלץ</div>
+        <p>
+          "מעולה. אז כך נתחיל:<br>
+          <span class="highlight">אני שולח לך עכשיו / מיד אחרי השיחה רשימת מסמכים.</span><br>
+          יש לך 3 ימים להעביר הכל — אחרי זה אני נכנס לפעולה ומנתח את התיק.<br><br>
+          כל שאלה — אני זמין. נתחיל?"
+        </p>
+      </div>
+
+      <div class="script-block" style="margin-top: 12px; background: var(--navy-mid);">
+        <div class="script-label">אם צריך פגישת המשך — נוסח מומלץ</div>
+        <p>
+          "בסדר גמור. בוא נקבע שיחה קצרה נוספת ב-[מועד] — אכין עד אז [מה שרלוונטי], ונסגור."
+        </p>
+      </div>
+
+      <div class="section-title">מי עושה מה עכשיו</div>
+      <div class="next-steps">
+        <div class="next-step yours">
+          <div class="next-step-label">אתה</div>
+          שולח רשימת מסמכים<br>
+          מוסיף ל-CRM<br>
+          קובע תזכורת לעדכון ראשון
+        </div>
+        <div class="next-step theirs">
+          <div class="next-step-label">הלקוח</div>
+          מעביר מסמכים תוך 3 ימים<br>
+          זמין לשאלות בוואטסאפ<br>
+          יודע מה לצפות
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    Tico Finance · מסמך פנימי · לא להפצה
+  </div>
+
+</div>
+
+<script>
+  document.querySelectorAll('.stage-header').forEach(function(header) {
+    header.addEventListener('click', function() {
+      var stage = header.closest('.stage');
+      stage.classList.toggle('open');
+    });
+  });
+</script>
+
+</body>
+</html>
