@@ -597,11 +597,26 @@
   });
 
   // Copy message text
+  function copyToClipboard(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text);
+    }
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    return Promise.resolve();
+  }
+
   function copyMsg(id, btn) {
     var el = document.getElementById(id);
     var clone = el.cloneNode(true);
     var text = clone.innerText || clone.textContent;
-    navigator.clipboard.writeText(text.trim()).then(function() {
+    copyToClipboard(text.trim()).then(function() {
       btn.textContent = '✅ הועתק!';
       btn.classList.add('copied');
       setTimeout(function() { btn.innerHTML = '📋 העתק הודעה'; btn.classList.remove('copied'); }, 2000);
@@ -656,7 +671,7 @@
       });
       lines.push('');
     });
-    navigator.clipboard.writeText(lines.join('\n').trim()).then(function() {
+    copyToClipboard(lines.join('\n').trim()).then(function() {
       var btn = document.querySelector('.action-btn.copy-list');
       btn.textContent = '✅ הועתק!';
       setTimeout(function() { btn.textContent = '📋 העתק רשימה ללקוח'; }, 2000);
