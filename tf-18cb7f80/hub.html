@@ -207,6 +207,15 @@
         <div class="card-copy" title="העתק קישור">📋</div>
         <div class="card-arrow">‹</div>
       </a>
+      <a class="card" href="/tf-18cb7f80/followup.html" data-url="/tf-18cb7f80/followup.html">
+        <div class="card-dot" style="background:var(--orange);"></div>
+        <div>
+          <div class="card-title">מערך Follow-Up ופנייה יזומה</div>
+          <div class="card-sub">תבניות הודעות · תזמונים · קטגוריות לידים</div>
+        </div>
+        <div class="card-copy" title="העתק קישור">📋</div>
+        <div class="card-arrow">‹</div>
+      </a>
     </div>
   </div>
 
@@ -540,6 +549,33 @@
   var toast = document.getElementById('toast');
   var toastTimer;
 
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;padding:0;border:none;outline:none;opacity:0;';
+    document.body.appendChild(ta);
+    var range = document.createRange();
+    range.selectNodeContents(ta);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    ta.setSelectionRange(0, text.length);
+    var ok = document.execCommand('copy');
+    document.body.removeChild(ta);
+    return ok;
+  }
+
+  function copyToClipboard(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text).catch(function() {
+        fallbackCopy(text);
+      });
+    }
+    fallbackCopy(text);
+    return Promise.resolve();
+  }
+
   document.querySelectorAll('.card-copy').forEach(function(btn) {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
@@ -547,7 +583,7 @@
       var card = btn.closest('.card');
       var path = card.getAttribute('data-url');
       var url = BASE + path;
-      navigator.clipboard.writeText(url).then(function() {
+      copyToClipboard(url).then(function() {
         btn.textContent = '✓';
         btn.classList.add('copied');
         toast.classList.add('show');
