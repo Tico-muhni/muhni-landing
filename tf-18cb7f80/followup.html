@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<title>מערך Follow-Up | Tico Finance</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap');
+
+  :root {
+    --green: #2E8B57;
+    --green-light: #3aa86a;
+    --green-pale: #e8f5ee;
+    --navy: #1a2640;
+    --navy-mid: #2c3e5a;
+    --orange: #E07B39;
+    --orange-pale: #fdf0e8;
+    --blue: #3a6abf;
+    --blue-pale: #e8f0fb;
+    --gray: #6b7280;
+    --gray-light: #f4f6f8;
+    --border: #e2e8f0;
+    --white: #ffffff;
+    --text: #1e293b;
+    --red: #dc2626;
+    --red-pale: #fef2f2;
+    --purple: #7c3aed;
+    --purple-pale: #f3e8ff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Heebo', sans-serif; background: var(--gray-light); color: var(--text); line-height: 1.7; }
+
+  .header {
+    background: var(--navy);
+    color: white;
+    padding: 32px 48px 28px;
+  }
+  .brand { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green-light); margin-bottom: 8px; }
+  .header h1 { font-size: 26px; font-weight: 900; margin-bottom: 6px; }
+  .header p { font-size: 13px; color: rgba(255,255,255,0.5); font-weight: 300; }
+
+  .main { max-width: 860px; margin: 0 auto; padding: 32px 20px 60px; }
+
+  /* Intro box */
+  .intro-box {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 20px 24px;
+    margin-bottom: 28px;
+  }
+  .intro-box h2 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .intro-box p { font-size: 13px; color: var(--gray); line-height: 1.8; }
+
+  /* Category block */
+  .category { margin-bottom: 20px; }
+
+  .cat-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 22px;
+    background: white;
+    border-radius: 12px 12px 0 0;
+    border: 1px solid var(--border);
+    border-bottom: none;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .category.collapsed .cat-header {
+    border-radius: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cat-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .cat-meta { flex: 1; }
+  .cat-title { font-size: 16px; font-weight: 700; color: var(--navy); }
+  .cat-desc { font-size: 12px; color: var(--gray); margin-top: 2px; }
+
+  .cat-arrow { font-size: 14px; color: var(--gray); transition: transform 0.2s; flex-shrink: 0; }
+  .category.collapsed .cat-arrow { transform: rotate(-90deg); }
+
+  .cat-body {
+    background: white;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    overflow: hidden;
+  }
+  .category.collapsed .cat-body { display: none; }
+
+  /* Principle box inside category */
+  .principle {
+    padding: 14px 22px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--navy-mid);
+    line-height: 1.7;
+  }
+  .principle strong { color: var(--navy); }
+
+  /* Message card */
+  .msg-card {
+    padding: 18px 22px;
+    border-bottom: 1px solid #f0f4f8;
+  }
+  .msg-card:last-child { border-bottom: none; }
+
+  .msg-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+
+  .msg-number {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .msg-title { font-size: 14px; font-weight: 700; color: var(--navy); }
+
+  .msg-timing {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-right: auto;
+  }
+
+  .msg-goal {
+    font-size: 12px;
+    color: var(--gray);
+    margin-bottom: 10px;
+    padding-right: 38px;
+  }
+
+  .msg-body {
+    background: var(--gray-light);
+    border-radius: 10px;
+    padding: 16px 18px;
+    font-size: 13.5px;
+    line-height: 1.85;
+    white-space: pre-line;
+    position: relative;
+  }
+
+  .msg-body .placeholder {
+    background: #fef3c7;
+    color: #92400e;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .copy-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-family: 'Heebo', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gray);
+    cursor: pointer;
+  }
+  .copy-btn:hover { background: var(--green-pale); color: var(--green); }
+
+  .msg-note {
+    font-size: 12px;
+    color: var(--orange);
+    margin-top: 8px;
+    padding-right: 38px;
+  }
+
+  /* Section dividers */
+  .section-divider {
+    text-align: center;
+    margin: 36px 0 24px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+  }
+  .section-divider::before,
+  .section-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 60px;
+    height: 1px;
+    background: var(--border);
+  }
+  .section-divider::before { right: calc(50% + 80px); }
+  .section-divider::after { left: calc(50% + 80px); }
+
+  /* Outreach section */
+  .outreach-category { border-right: 3px solid var(--green); }
+  .followup-category { border-right: 3px solid var(--orange); }
+
+  .back-link { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 13px; font-weight: 500; margin-bottom: 12px; transition: color 0.15s; }
+  .back-link:hover { color: white; }
+
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--gray);
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Quick reference bar */
+  .quick-ref {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .qr-card {
+    background: white;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+    text-align: center;
+  }
+  .qr-card .qr-icon { font-size: 22px; margin-bottom: 6px; }
+  .qr-card .qr-label { font-size: 12px; color: var(--gray); font-weight: 500; }
+  .qr-card .qr-value { font-size: 20px; font-weight: 900; color: var(--navy); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a class="back-link" href="/tf-18cb7f80/hub.html">› חזרה למרכז הניווט</a>
+  <div class="brand">Tico Finance</div>
+  <h1>מערך Follow-Up ופנייה יזומה</h1>
+  <p>תבניות הודעות · תזמונים · קטגוריות לידים · הכל במקום אחד</p>
+</div>
+
+<div class="main">
+
+  <!-- Quick reference -->
+  <div class="quick-ref">
+    <div class="qr-card">
+      <div class="qr-icon">📨</div>
+      <div class="qr-value">2</div>
+      <div class="qr-label">הודעות פנייה יזומה</div>
+    </div>
+    <div class="qr-card">
+      <div class="qr-icon">🔄</div>
+      <div class="qr-value">3</div>
+      <div class="qr-label">קטגוריות Follow-Up</div>
+    </div>
+    <div class="qr-card">
+      <div class="qr-icon">💬</div>
+      <div class="qr-value">9</div>
+      <div class="qr-label">תבניות הודעות</div>
+    </div>
+  </div>
+
+  <div class="intro-box">
+    <h2>איך להשתמש בכלי הזה</h2>
+    <p>
+      הקובץ מחולק לשני חלקים: <strong>פנייה יזומה</strong> — הודעות חד-פעמיות לרשת הקשרים שלך, ו<strong>רצפי Follow-Up</strong> — סדרות הודעות לפי קטגוריית ליד.
+      כל הודעה כוללת תזמון, מטרה, ותבנית מוכנה. החלף את ה<span style="background:#fef3c7;color:#92400e;padding:1px 6px;border-radius:4px;font-size:12px;font-weight:600;">[שדות צהובים]</span> בפרטים אישיים לפני שליחה.
+      שלח תמיד בוואטסאפ אישי — לא קבוצה, לא רשימת תפוצה.
+    </p>
+  </div>
+
+  <!-- ═══════════ חלק א: פנייה יזומה ═══════════ -->
+  <div class="section-divider">📨 פנייה יזומה</div>
+
+  <!-- לקוחות עבר -->
+  <div class="category outreach-category" id="cat-clients">
+    <div class="cat-header" onclick="toggleCat('cat-clients')">
+      <div class="cat-icon" style="background:var(--green-pale);">💚</div>
+      <div class="cat-meta">
+        <div class="cat-title">הודעה ללקוחות עבר</div>
+        <div class="cat-desc">~30 לקוחות אישיים · הודעה חד-פעמית · כולל תמריץ הפניה</div>
+      </div>
+      <div class="cat-arrow">▾</div>
+    </div>
+    <div class="cat-body">
+      <div class="principle">
+        <strong>המטרה:</strong> לעדכן על המהלך העצמאי, להציע בדיקת מחזור, ולבקש הפניות. הקשר עם לקוחות אלה הוא אישי — ההודעה צריכה להרגיש כמו עדכון לחבר, לא כמו פרסומת.
+      </div>
+      <div class="msg-card">
+        <div class="msg-header">
+          <div class="msg-number" style="background:var(--green);">✉</div>
+          <div class="msg-title">הודעת עדכון + בקשת הפניה</div>
+          <div class="msg-timing" style="background:var(--green-pale);color:var(--green);">חד-פעמי</div>
+        </div>
+        <div class="msg-goal">עדכון אישי → הצעת ערך → בקשת הפניה עם תמריץ</div>
+        <div class="msg-body">היי <span class="placeholder">[שם]</span> 😊 מה נשמע?
+
+אני שמח ונרגש לשתף אותך שעשיתי צעד משמעותי — אחרי כמעט 4 שנים במשרד, החלטתי לצאת לדרך עצמאית לגמרי.
+
+בלי לחצים ויעדים של משרד, אלא שירות באמת אישי ומותאם.
+
+הקמתי את Tico Finance — משרד בוטיקי לייעוץ משכנתאות, שנותן שירות למשפרי דיור, משקיעים, וכמובן גם מחזורי משכנתא — התאמה של המשכנתא הקיימת שלכם למצב הפיננסי שלכם היום ולתנאי השוק הנוכחיים.
+
+עשיתי את הצעד הזה מתוך הבנה פשוטה: אם אני רוצה להיות 100% עם הלקוחות שלי, הכל צריך להיות שקוף, ברור, ובלי ציפיות של מישהו אחר מלבד הלקוח שמולי.
+
+בהזדמנות הזו, שני דברים:
+
+✅ אם לא עשיתם בדיקת מחזור בשנה האחרונה — אני מזמין אתכם לבדוק. ללא עלות וללא התחייבות.
+
+✅ אם תשמעו על מישהו בסביבתכם שצריך ייעוץ משכנתא — תזכרו אותי. כל לקוח שיסגור תהליך ושהגיע דרככם = הטבה לבחירתכם: 300₪ מזומן או 5% הנחה על השירות הבא שלכם.
+
+תעזרו לי להפיץ את הבשורה! 🙏
+
+הנה קישור לאתר שלי, שם תמצאו מידע על התהליכים וגם מחשבון מחזור עצמאי:
+www.ticofinance.co.il
+
+אוהב אתכם!
+
+צ'יקו זוויבל 🟢
+אדריכל המשכנתאות — כי בלי תכנון, אין כלום.<button class="copy-btn" onclick="copyMsg(this, event)">📋 העתק</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- רשת קשרים כללית -->
+  <div class="category outreach-category collapsed" id="cat-network">
+    <div class="cat-header" onclick="toggleCat('cat-network')">
+      <div class="cat-icon" style="background:var(--blue-pale);">🌐</div>
+      <div class="cat-meta">
+        <div class="cat-title">הודעה לרשת קשרים כללית</div>
+        <div class="cat-desc">קולגות · שת"פים · מכרים · הודעה חד-פעמית</div>
+      </div>
+      <div class="cat-arrow">▾</div>
+    </div>
+    <div class="cat-body">
+      <div class="principle">
+        <strong>המטרה:</strong> להודיע שאתה קיים ומה אתה עושה — בצורה ספציפית מספיק כדי שמי שקורא יחשוב על מישהו קונקרטי שהוא מכיר. בלי תמריץ כספי, רק בקשה אישית.
+      </div>
+      <div class="msg-card">
+        <div class="msg-header">
+          <div class="msg-number" style="background:var(--blue);">✉</div>
+          <div class="msg-title">הודעת היכרות + שלושת המצבים</div>
+          <div class="msg-timing" style="background:var(--blue-pale);color:var(--blue);">חד-פעמי</div>
+        </div>
+        <div class="msg-goal">עדכון אישי → תיאור ספציפי של מי שאתה עוזר לו → בקשת הפניה</div>
+        <div class="msg-body">היי <span class="placeholder">[שם]</span> 😊 מה נשמע?
+
+רציתי לשתף אותך במשהו אישי — אחרי כמעט 4 שנים בתחום המשכנתאות, החלטתי לצאת לדרך עצמאית והקמתי את Tico Finance — משרד בוטיקי לייעוץ משכנתאות.
+
+במילים פשוטות, אני עוזר לאנשים בשלושה מצבים:
+
+🏠 מי שרוצה להגיע לדירה הבאה שלו — גם כשעדיין יש דירה בבעלות ועדיין לא מכרו.
+
+📈 מי שרוצה להשקיע בנדל"ן — לעשות את זה בצורה חכמה ואחראית, עם מימון שעוזר למקסם רווח ולא לייצר סיכון.
+
+💧 מי שיש לו משכנתא ומרגיש שהוא "מטפטף" כסף לבנק בלי סיבה — לסגור את הברז ולהפסיק לתת לבנק בונוסים מטורפים על חשבונו.
+
+אם עלה לך מישהו ספציפי בראש עכשיו — אשמח מאוד שתעביר לו את הפרטים שלי 🙏
+
+www.ticofinance.co.il
+
+תודה רבה!
+צ'יקו זוויבל 🟢
+אדריכל המשכנתאות — כי בלי תכנון, אין כלום.<button class="copy-btn" onclick="copyMsg(this, event)">📋 העתק</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ חלק ב: רצפי Follow-Up ═══════════ -->
+  <div class="section-divider">🔄 רצפי Follow-Up</div>
+
+  <!-- קטגוריה 1: נעלם באמצע -->
+  <div class="category followup-category collapsed" id="cat-disappeared">
+    <div class="cat-header" onclick="toggleCat('cat-disappeared')">
+      <div class="cat-icon" style="background:var(--orange-pale);">👻</div>
+      <div class="cat-meta">
+        <div class="cat-title">נעלם באמצע התהליך</div>
+        <div class="cat-desc">היה מעוניין, דיברתם, ואז שקט · 3 הודעות על פני חודש</div>
+      </div>
+      <div class="cat-arrow">▾</div>
+    </div>
+    <div class="cat-body">
+      <div class="principle">
+        <strong>הגישה:</strong> לא "נו, מה החלטת?" — אלא לתת סיבה לחזור בלי להרגיש מחויב. הליד הזה כבר היה מעוניין, משהו קרה בדרך. הודעה אחת יכולה להחזיר אותו.
+      </div>
+
+      <div class="msg-card">
+        <div class="msg-header">
+          <div class="msg-number" style="background:var(--orange);">1</div>
+          <div class="msg-title">צ'ק-אין רך</div>
+          <div class="msg-timing" style="background:var(--orange-pale);color:var(--orange);">יומיים אחרי שנעלם</div>
+        </div>
+        <div class="msg-goal">לפתוח דלת בלי לחץ — "אני כאן כשמתאים לך"</div>
+        <div class="msg-body">היי <span class="placeholder">[שם]</span> 😊
+
+רק רציתי לוודא שהכל בסדר מצידך — נשארנו באמצע ולא הספקתי לשמוע ממך.
+
+אין שום לחץ, אני כאן כשזה מתאים לך. אם משהו השתנה או עלו שאלות חדשות — תרגיש חופשי לכתוב.
+
+צ'יקו 💚<button class="copy-btn" onclick="copyMsg(this, event)">📋 העתק</button></div>
+      </div>
+
+      <div class="msg-card">
+        <div class="msg-header">
+          <div class="msg-number" style="background:var(--orange);">2</div>
+          <div class="msg-title">ערך — עדכון שוק</div>
+          <div class="msg-timing" style="background:var(--orange-pale);color:var(--orange);">שבוע אחרי</div>
+        </div>
+        <div class="msg-goal">לתת סיבה להגיב — תובנה רלוונטית למצב שלו</div>
+        <div class="msg-body">היי <span class="placeholder">[שם]</span>,
+
+חשבתי עליך — ראיתי שהריבית <span class="placeholder">[עלתה/ירדה/צפויה לזוז]</span> בתקופה הקרובה, וזה יכול להשפיע על מה שדיברנו עליו.
+
+אם תרצה שאני אעדכן אותך מה זה אומר במספרים לגבי המקרה שלך — שלח לי הודעה ואני אחזור אליך.
+
+צ'יקו 💚<button class="copy-btn" onclick="copyMsg(this, event)">📋 העתק</button></div>
+        <div class="msg-note">💡 התאם את העדכון למצב השוק הנוכחי — ריבית, תוכנית ממשלתית, מגמת מחירים</div>
+      </div>
+
+      <div class="msg-card">
+        <div class="msg-header">
+          <div class="msg-number" style="background:var(--orange);">3</div>
+          <div class="msg-title">סגירה מכובדת</div>
+          <div class="msg-timing" style="background:var(--orange-pale);color:var(--orange);">3 שבועות אחרי</div>
+        </div>
+        <div class="msg-goal">לסגור את הלולאה בכבוד — דלת פתוחה + בקשת הפניה</div>
+        <div class="msg-body">היי <span class="placeholder">[שם]</span>,
+
+רק רציתי לסגור מצידי — אני כמובן כאן אם תצטרך אותי בעתיד, בלי תאריך תפוגה 😊
+
+אם בינתיים אתה מכיר מישהו שמחפש ייעוץ משכנתא — אשמח להמלצה. אתה יודע איזה שירות אני נותן.
+
+בהצלחה בכל דבר!
+צ'יקו 💚<button class="copy-btn" onclick="copyMsg(this, event)">📋 העתק</button></div>
+        <div class="msg-note">⛔ אחרי הודעה 3 — עוצרים. אם לא הגיב, לא שולחים יותר.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- קטגוריה 2: לא הבין את הערך (מחזורים) -->
+  <div class="category followup-category collapsed" id="cat-value">
+    <div class="cat-header" onclick="toggleCat('cat-value')">
+      <div class="cat-icon" style="background:var(--red-pale);">💧</div>
+      <div class="cat-meta">
+        <div class="cat-title">לא הבין את הערך — מחזורים</div>
+        <div class="cat-desc">יש לו משכנתא, לא הרגיש את הכאב · 3 הודעות על פני חודש</div>
+      </div>
+      <div class="cat-arrow">▾</div>
+    </div>
+    <div class="cat-body">
+      <div class="principle">
+        <strong>הגישה:</strong> הליד לא נעלם — הוא שמע אותך ולא השתכנע. הבעיה היא לא תזמון אלא שהוא לא הרגיש את הכאב. המטרה: להפוך מספר מופשט לכאב ממשי.
+      </div>
+
+      <div class="msg-card">
+        <div class="msg-header">
+          <div class="msg-number" style="background:var(--red);">1</div>
+          <div class="msg-title">מספרים אישיים</div>
+          <div class="msg-timing" style="background:var(--red-pale);color:var(--red);">3 ימים אחרי השיחה</div>
+        </div>
+        <div class="msg-goal">להראות את הכסף שהוא מפסיד — בסכום ספציפי ואישי</div>
+        <div class="msg-body">היי <span class="placeholder">[שם]</span> 😊
+
+חשבתי עליך אחרי השיחה שלנו. עשיתי חישוב מהיר — משכנתא כמו שלך, עם התנאים הנוכחיים, יכולה לחסוך לך בערך <span class="placeholder">[סכום משוער]</span> ש"ח לחודש. זה <span class="placeholder">[סכום שנתי]</span> שפשוט הולכים לבנק במקום אליך.
+
+אם זה מעניין אותך — אני כאן לשיחה של 5 דקות. ללא עלות וללא התחייבות.
+
+צ'יקו 💚<button class="copy-btn" onclick="copyMsg(this, event)">📋 העתק</button></div>
+        <div class="msg-note">💡 חשב מראש את הסכום המשוער לפי מה שידוע לך מהשיחה</div>
+      </div>
+
+      <div class="msg-card">
+        <div class="msg-header">
+          <div class="msg-number" style="background:var(--red);">2</div>
+          <div class="msg-title">סיפור לקוח דומה</div>
+          <div class="msg-timing" style="background:var(--red-pale);color:var(--red);">10 ימים אחרי</div>
+        </div>
+        <div class="msg-goal">להוכיח ערך דרך סיפור של מישהו דומה — לא דרך טענה ישירה</div>
+        <div class="msg-body">היי <span class="placeholder">[שם]</span>,
+
+ראיתי משהו שגרם לי לחשוב עליך —
+
+לקוח שנסגר איתי לפני כמה חודשים עם משכנתא דומה לשלך. הוא היה בטוח שהתנאים טובים ושאין סיבה לעשות מחזור, ובסוף העבירו לו את המספרים והוא גילה שהוא משלם לבנק <span class="placeholder">[סכום]</span> יותר בשנה ממה שהיה צריך.
+
+אני לא אומר שזה בדיוק המקרה שלך, אבל שווה לבדוק — זה לוקח 5 דקות.
+
+צ'יקו 💚<button class="copy-btn" onclick="copyMsg(this, event)">📋 העתק</button></div>
+        <div class="msg-note">💡 השתמש בסיפור אמיתי — אנשים מזדהים עם מישהו דומה להם</div>
+      </div>
+
+      <div class="msg-card">
+        <div class="msg-header">
+          <div class="msg-number" style="background:var(--red);">3</div>
+          <div class="msg-title">הצעה פתוחה + הפניה</div>
+          <div class="msg-timing" style="background:var(--red-pale);color:var(--red);">חודש אחרי</div>
+        </div>
+        <div class="msg-goal">סגירה רכה — הצעת בדיקה חופשית ובקשת הפניה</div>
+        <div class="msg-body">היי <span class="placeholder">[שם]</span>,
+
+אני עושה לקוחות שלי אחת לפעם בדיקת משכנתא מהירה וללא עלות — פשוט מסתכלים על המספרים ורואים אם יש מקום לחסוך.
+
+אם תרצה — אני כאן. ואם תכיר מישהו שאולי יהנה מהשירות הזה — תעביר לו את הפרטים שלי 🙏
+
+בהצלחה!
+צ'יקו 💚<button class="copy-btn" onclick="copyMsg(this, event)">📋 העתק</button></div>
+        <div class="msg-note">⛔ אחרי הודעה 3 — עוצרים. אם לא הגיב, לא שולחים יותר.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- קטגוריה 3: עדיין לא סגר על דירה -->
+  <div class="category followup-category collapsed" id="cat-nodeal">
+    <div class="cat-header" onclick="toggleCat('cat-nodeal')">
+      <div class="cat-icon" style="background:var(--purple-pale);">🔍</div>
+      <div class="cat-meta">
+        <div class="cat-title">עדיין לא סגר על דירה</div>
+        <div class="cat-desc">רוצה לקנות, עדיין מחפש · 3 הודעות על פני 3 חודשים</div>
+      </div>
+      <div class="cat-arrow">▾</div>
+    </div>
+    <div class="cat-body">
+      <div class="principle">
+        <strong>הגישה:</strong> אין מה לדחוף — הליד רוצה לקנות אבל עדיין לא מצא. המטרה היחידה: שכשהרגע יגיע, אתה תהיה הראשון שהוא חושב עליו. קצב איטי, טון של שמירת קשר.
+      </div>
+
+      <div class="msg-card">
+        <div class="msg-header">
+          <div class="msg-number" style="background:var(--purple);">1</div>
+          <div class="msg-title">צ'ק-אין + ערך מקדים</div>
+          <div class="msg-timing" style="background:var(--purple-pale);color:var(--purple);">שבועיים אחרי</div>
+        </div>
+        <div class="msg-goal">להראות שאפשר להתחיל לתכנן עוד לפני שסוגרים על דירה</div>
+        <div class="msg-body">היי <span class="placeholder">[שם]</span> 😊
+
+מה נשמע? רציתי לשאול איך הולך עם חיפוש הדירה — נדמה לי שזה תהליך שלוקח זמן.
+
+לפעמים שווה להתחיל לתכנן את הצד של המשכנתא עוד לפני שסוגרים על דירה — זה נותן לכם יתרון משמעותי במשא ומתן.
+
+אם תרצה שנשב לשיחה קצרה על זה — אני כאן 🙏
+
+צ'יקו 💚<button class="copy-btn" onclick="copyMsg(this, event)">📋 העתק</button></div>
+      </div>
+
+      <div class="msg-card">
+        <div class="msg-header">
+          <div class="msg-number" style="background:var(--purple);">2</div>
+          <div class="msg-title">עדכון שוק מותאם</div>
+          <div class="msg-timing" style="background:var(--purple-pale);color:var(--purple);">6 שבועות אחרי</div>
+        </div>
+        <div class="msg-goal">לתת תובנה רלוונטית שמחזקת את הקשר בלי לדחוף</div>
+        <div class="msg-body">היי <span class="placeholder">[שם]</span>,
+
+רק רציתי לשתף — <span class="placeholder">[תובנה רלוונטית: שינוי ריבית, תוכנית ממשלתית, מגמה בשוק]</span>.
+
+זה יכול להשפיע על מה שתוכלו לקבל כשהדירה תימצא. אם תרצה שאסביר לך מה זה אומר לגבי המקרה שלך — תשלח לי הודעה.
+
+צ'יקו 💚<button class="copy-btn" onclick="copyMsg(this, event)">📋 העתק</button></div>
+        <div class="msg-note">💡 עקוב אחרי החדשות — שינוי ריבית או תוכנית חדשה זו הזדמנות מושלמת לשלוח הודעה</div>
+      </div>
+
+      <div class="msg-card">
+        <div class="msg-header">
+          <div class="msg-number" style="background:var(--purple);">3</div>
+          <div class="msg-title">דלת פתוחה</div>
+          <div class="msg-timing" style="background:var(--purple-pale);color:var(--purple);">3 חודשים אחרי</div>
+        </div>
+        <div class="msg-goal">תזכורת עדינה שאתה קיים — וההזדמנות שבתכנון מוקדם</div>
+        <div class="msg-body">היי <span class="placeholder">[שם]</span>,
+
+עדכון קטן — אני עדיין פה וממשיך ללוות לקוחות בתהליך המשכנתא 😊
+
+ביום שתמצאו דירה — תזכרו אותי. אני כאן בשבילכם, והתכנון המוקדם יכול לחסוך לכם מאות אלפי שקלים.
+
+בהצלחה בחיפושים!
+צ'יקו 💚<button class="copy-btn" onclick="copyMsg(this, event)">📋 העתק</button></div>
+        <div class="msg-note">⛔ אחרי הודעה 3 — עוצרים. אפשר לחדש מגע אם יש עדכון שוק משמעותי.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">Tico Finance · מערך Follow-Up פנימי · לא להפצה</div>
+
+</div>
+
+<script>
+  function toggleCat(id) {
+    document.getElementById(id).classList.toggle('collapsed');
+  }
+
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;padding:0;border:none;outline:none;opacity:0;';
+    document.body.appendChild(ta);
+    var range = document.createRange();
+    range.selectNodeContents(ta);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    ta.setSelectionRange(0, text.length);
+    var ok = document.execCommand('copy');
+    document.body.removeChild(ta);
+    return ok;
+  }
+
+  function copyToClipboard(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text).catch(function() {
+        fallbackCopy(text);
+      });
+    }
+    fallbackCopy(text);
+    return Promise.resolve();
+  }
+
+  function copyMsg(btn, e) {
+    e.stopPropagation();
+    var body = btn.parentElement;
+    var clone = body.cloneNode(true);
+    var btnClone = clone.querySelector('.copy-btn');
+    if (btnClone) btnClone.remove();
+    clone.querySelectorAll('.placeholder').forEach(function(sp) {
+      sp.replaceWith(sp.textContent);
+    });
+    var text = clone.textContent.trim();
+    copyToClipboard(text).then(function() {
+      btn.textContent = '✅ הועתק!';
+      setTimeout(function() { btn.textContent = '📋 העתק'; }, 2000);
+    });
+  }
+</script>
+</body>
+</html>
