@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>משוב לקוחות | TICO FINANCE</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #2E8B57;
+    --green-dark: #1d5e3a;
+    --green-light: #f0faf4;
+    --navy: #0F243E;
+    --gold: #D4AF37;
+    --bg: #f5faf7;
+    --white: #ffffff;
+    --border: #c8ddd2;
+    --text: #0b1f13;
+    --text-muted: #5a7a65;
+    --radius: 16px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Heebo', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(145deg, #1d5e3a 0%, #2E8B57 60%, #3aa869 100%);
+    padding: 32px 20px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: -60px;
+    width: 220px; height: 220px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; right: -40px;
+    width: 160px; height: 160px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+  }
+
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .logo-mark {
+    width: 40px; height: 40px;
+    background: rgba(255,255,255,0.15);
+    border: 1.5px solid rgba(255,255,255,0.4);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 900; color: #fff;
+    letter-spacing: 0.5px;
+  }
+
+  .logo-text {
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.4;
+  }
+
+  .logo-text span {
+    display: block; font-size: 9px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 1.5px; font-weight: 400;
+  }
+
+  .header h1 {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 6px;
+    position: relative;
+  }
+
+  .header p {
+    color: rgba(255,255,255,0.7);
+    font-size: 14px;
+    font-weight: 300;
+    position: relative;
+  }
+
+  /* Container */
+  .container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 28px 16px 48px;
+  }
+
+  .intro {
+    text-align: center;
+    margin-bottom: 24px;
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 20px;
+    border: 1px solid var(--border);
+  }
+
+  .intro p {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  /* Cards */
+  .question-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 24px 20px;
+    margin-bottom: 14px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(46,139,87,0.06);
+  }
+
+  .q-number {
+    font-size: 10px;
+    color: var(--green);
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .q-text {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 18px;
+    line-height: 1.5;
+  }
+
+  .optional-tag {
+    font-size: 12px;
+    color: #aaa;
+    font-weight: 400;
+  }
+
+  /* Stars */
+  .stars {
+    display: flex;
+    gap: 10px;
+    direction: ltr;
+    justify-content: center;
+  }
+
+  .star {
+    font-size: 40px;
+    cursor: pointer;
+    color: #dde8e2;
+    transition: color 0.15s, transform 0.1s;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    line-height: 1;
+  }
+
+  .star.active { color: var(--green); }
+  .star:active { transform: scale(1.2); }
+
+  .star-label {
+    text-align: center;
+    font-size: 13px;
+    color: var(--green);
+    margin-top: 10px;
+    min-height: 20px;
+    font-weight: 600;
+  }
+
+  /* Textarea */
+  textarea {
+    width: 100%;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 13px 15px;
+    font-family: 'Heebo', sans-serif;
+    font-size: 14px;
+    resize: vertical;
+    min-height: 84px;
+    transition: border-color 0.2s;
+    direction: rtl;
+    line-height: 1.7;
+    color: var(--text);
+    background: #fafcfb;
+  }
+
+  textarea:focus {
+    outline: none;
+    border-color: var(--green);
+    background: #fff;
+  }
+
+  textarea::placeholder { color: #b0c4b8; }
+
+  /* Choice buttons */
+  .choice-btns {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .choice-btn {
+    flex: 1;
+    min-width: 90px;
+    padding: 11px 10px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    background: #fafcfb;
+    font-family: 'Heebo', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .choice-btn.selected {
+    border-color: var(--green);
+    background: var(--green-light);
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  .choice-btn:active { transform: scale(0.97); }
+
+  /* Google review card */
+  .google-card {
+    background: var(--white);
+    border: 1.5px solid var(--green);
+    border-radius: var(--radius);
+    padding: 24px 20px;
+    margin-bottom: 14px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(46,139,87,0.1);
+  }
+
+  .g-icon { font-size: 34px; margin-bottom: 10px; }
+
+  .g-title {
+    font-size: 17px;
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .g-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 18px;
+  }
+
+  .google-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 13px 30px;
+    font-family: 'Heebo', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.1s;
+    box-shadow: 0 4px 16px rgba(46,139,87,0.3);
+  }
+
+  .google-btn:hover { background: var(--green-dark); }
+  .google-btn:active { transform: scale(0.97); }
+
+  /* Referral card */
+  .referral-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 24px 20px;
+    margin-bottom: 14px;
+    border: 1px solid var(--border);
+    border-right: 4px solid var(--green);
+    box-shadow: 0 2px 8px rgba(46,139,87,0.06);
+  }
+
+  .r-title {
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .r-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 18px;
+  }
+
+  .input-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .input-row input {
+    flex: 1;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-family: 'Heebo', sans-serif;
+    font-size: 14px;
+    direction: rtl;
+    color: var(--text);
+    background: #fafcfb;
+    transition: border-color 0.2s;
+  }
+
+  .input-row input:focus {
+    outline: none;
+    border-color: var(--green);
+    background: #fff;
+  }
+
+  .input-row input::placeholder { color: #b0c4b8; }
+
+  .add-another {
+    background: none;
+    border: 1.5px dashed var(--border);
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    font-family: 'Heebo', sans-serif;
+    font-size: 13px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .add-another:hover {
+    border-color: var(--green);
+    color: var(--green);
+  }
+
+  .r-note {
+    font-size: 12px;
+    color: var(--green);
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* Submit */
+  .submit-btn {
+    display: block;
+    width: 100%;
+    background: linear-gradient(145deg, #1d5e3a 0%, #2E8B57 100%);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius);
+    padding: 17px;
+    font-family: 'Heebo', sans-serif;
+    font-size: 17px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+    margin-top: 8px;
+    box-shadow: 0 6px 24px rgba(46,139,87,0.35);
+    letter-spacing: 0.3px;
+  }
+
+  .submit-btn:hover { opacity: 0.92; }
+  .submit-btn:active { transform: scale(0.98); }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  /* Thank you */
+  .thank-you {
+    display: none;
+    text-align: center;
+    padding: 72px 20px;
+  }
+
+  .check-circle {
+    width: 72px; height: 72px;
+    background: linear-gradient(145deg, #1d5e3a, #2E8B57);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 24px;
+    font-size: 34px;
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(46,139,87,0.35);
+  }
+
+  .thank-you h2 {
+    color: var(--navy);
+    font-size: 26px;
+    font-weight: 900;
+    margin-bottom: 10px;
+  }
+
+  .thank-you p {
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo-wrap">
+    <div class="logo-mark">TF</div>
+    <div class="logo-text">
+      TICO FINANCE
+      <span>MORTGAGE ADVISORY</span>
+    </div>
+  </div>
+  <h1>תודה שבחרתם בנו ✨</h1>
+  <p>נשמח לשמוע מכם — לוקח פחות מדקה</p>
+</div>
+
+<div class="container" id="formContainer">
+
+  <!-- Q1: Stars -->
+  <div class="question-card">
+    <div class="q-number">שאלה 01</div>
+    <div class="q-text">איך היית מדרג/ת את החוויה הכוללת של התהליך איתנו?</div>
+    <div class="stars" id="starRating">
+      <span class="star" data-value="1">★</span>
+      <span class="star" data-value="2">★</span>
+      <span class="star" data-value="3">★</span>
+      <span class="star" data-value="4">★</span>
+      <span class="star" data-value="5">★</span>
+    </div>
+    <div class="star-label" id="starLabel"></div>
+  </div>
+
+  <!-- Q2: Value -->
+  <div class="question-card">
+    <div class="q-number">שאלה 02</div>
+    <div class="q-text">מה הדבר הכי משמעותי שקיבלת מהתהליך?</div>
+    <textarea id="q2" placeholder='למשל: "הרגשתי שמישהו באמת דואג לאינטרס שלי"'></textarea>
+  </div>
+
+  <!-- Q3: Improve -->
+  <div class="question-card">
+    <div class="q-number">שאלה 03</div>
+    <div class="q-text">יש משהו שהיית רוצה שנעשה אחרת? <span class="optional-tag">(לא חובה)</span></div>
+    <textarea id="q3" placeholder="כל פידבק יעזור לנו להשתפר"></textarea>
+  </div>
+
+  <!-- Q4: Recommend -->
+  <div class="question-card">
+    <div class="q-number">שאלה 04</div>
+    <div class="q-text">האם היית ממליץ/ה עלינו לחבר או בן משפחה?</div>
+    <div class="choice-btns" id="recommendBtns">
+      <button class="choice-btn" data-value="definitely">כן בהחלט 🙌</button>
+      <button class="choice-btn" data-value="maybe">כן, בהזדמנות</button>
+      <button class="choice-btn" data-value="no">לא בשלב זה</button>
+    </div>
+  </div>
+
+  <!-- Google Review -->
+  <div class="google-card">
+    <div class="g-icon">⭐</div>
+    <div class="g-title">עזרו לנו להגיע למשפחות נוספות</div>
+    <div class="g-subtitle">ביקורת קצרה בגוגל עוזרת למשפחות שמחפשות ייעוץ מקצועי למצוא אותנו</div>
+    <a href="https://g.page/r/CYwBIxlNOuJDEBM/review" target="_blank" class="google-btn">
+      ⭐ כתבו המלצה בגוגל
+    </a>
+  </div>
+
+  <!-- Referral -->
+  <div class="referral-card">
+    <div class="r-title">מכירים מישהו שזה יכול לעזור לו? 🤝</div>
+    <div class="r-subtitle">מישהו שעומד לקנות דירה, חושב על מיחזור, או שפשוט צריך מישהו שיסתכל לו על המשכנתא?</div>
+    <div id="referralInputs">
+      <div class="input-row">
+        <input type="text" placeholder="שם" class="ref-name">
+        <input type="tel" placeholder="טלפון" class="ref-phone" dir="ltr">
+      </div>
+    </div>
+    <button class="add-another" id="addReferral">+ הוסיפו עוד איש קשר</button>
+    <div class="r-note">🔒 נפנה אליו בצורה אישית ודיסקרטית</div>
+  </div>
+
+  <button class="submit-btn" id="submitBtn">שליחת המשוב ←</button>
+</div>
+
+<!-- Thank You -->
+<div class="thank-you" id="thankYou">
+  <div class="check-circle">✓</div>
+  <h2>תודה רבה! 🙏</h2>
+  <p>המשוב שלכם חשוב לנו מאוד.<br>מעריכים את הזמן ואת האמון.</p>
+</div>
+
+<script>
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx0ozeCk9DYffIKaAoQ5QYcp9wQNakPPhStvRFtYZvm2TxHYyb0bkE6ebOy51CEoQlh/exec';
+
+  // Stars
+  const stars = document.querySelectorAll('.star');
+  const starLabel = document.getElementById('starLabel');
+  const labels = { 1: 'צריך שיפור', 2: 'סביר', 3: 'טוב', 4: 'טוב מאוד', 5: 'מעולה! ✨' };
+  let selectedRating = 0;
+
+  stars.forEach(star => {
+    star.addEventListener('click', () => {
+      selectedRating = parseInt(star.dataset.value);
+      stars.forEach(s => s.classList.toggle('active', parseInt(s.dataset.value) <= selectedRating));
+      starLabel.textContent = labels[selectedRating];
+    });
+  });
+
+  // Choice buttons
+  let selectedRecommend = '';
+  document.querySelectorAll('.choice-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedRecommend = btn.dataset.value;
+    });
+  });
+
+  // Add referral row
+  document.getElementById('addReferral').addEventListener('click', () => {
+    const row = document.createElement('div');
+    row.className = 'input-row';
+    row.innerHTML = '<input type="text" placeholder="שם" class="ref-name"><input type="tel" placeholder="טלפון" class="ref-phone" dir="ltr">';
+    document.getElementById('referralInputs').appendChild(row);
+  });
+
+  // Submit
+  document.getElementById('submitBtn').addEventListener('click', async () => {
+    if (selectedRating === 0) {
+      alert('נשמח שתדרג/י את החוויה בכוכבים 😊');
+      return;
+    }
+
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = 'שולח...';
+    btn.disabled = true;
+
+    const referrals = [];
+    document.querySelectorAll('.input-row').forEach(row => {
+      const name = row.querySelector('.ref-name').value.trim();
+      const phone = row.querySelector('.ref-phone').value.trim();
+      if (name || phone) referrals.push(name + ' | ' + phone);
+    });
+
+    const data = {
+      rating: selectedRating,
+      value: document.getElementById('q2').value.trim(),
+      improve: document.getElementById('q3').value.trim(),
+      recommend: selectedRecommend,
+      referrals: referrals.join(' ;; ')
+    };
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+    } catch(e) {}
+
+    document.getElementById('formContainer').style.display = 'none';
+    document.getElementById('thankYou').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+</body>
+</html>
