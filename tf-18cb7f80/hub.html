@@ -109,6 +109,48 @@
   .card-copy:hover { background: var(--green-pale); border-color: var(--green); }
   .card-copy.copied { background: var(--green); border-color: var(--green); }
 
+  .msg-block {
+    background: #fffdf5;
+    border: 1px solid #e8dfa0;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 8px;
+    position: relative;
+  }
+  .msg-block-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #9a8320;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .msg-text {
+    font-size: 13.5px;
+    line-height: 1.8;
+    color: var(--text);
+    white-space: pre-wrap;
+    direction: rtl;
+  }
+  .msg-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    background: var(--green);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    font-family: 'Heebo', sans-serif;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .msg-copy-btn:hover { background: var(--green-light); }
+  .msg-copy-btn.copied { background: #1a6e3a; }
+
   .toast {
     position: fixed;
     bottom: 24px;
@@ -225,6 +267,20 @@
         <div class="card-copy" title="העתק קישור">📋</div>
         <div class="card-arrow">‹</div>
       </a>
+      <div class="msg-block">
+        <div class="msg-block-label">💬 הודעה מוכנה לשליחה ללקוח</div>
+        <div class="msg-text" id="mashov-msg">היי [שם], צ'יקו מ-TICO FINANCE 👋
+
+עכשיו שסיימנו את התהליך ביחד, הייתי שמח לשמוע ממך כמה מילים על החוויה.
+
+זה לוקח 2 דקות בלבד, ועוזר לי להמשיך לשפר את השירות לכל הלקוחות הבאים 🙏
+
+הנה הקישור:
+https://www.ticofinance.co.il/mashov/
+
+תודה רבה! 🌟</div>
+        <button class="msg-copy-btn" id="mashov-copy-btn" onclick="copyMashovMsg()">📋 העתק הודעה</button>
+      </div>
     </div>
   </div>
 
@@ -583,6 +639,24 @@
     }
     fallbackCopy(text);
     return Promise.resolve();
+  }
+
+  function copyMashovMsg() {
+    var text = document.getElementById('mashov-msg').innerText;
+    var btn = document.getElementById('mashov-copy-btn');
+    copyToClipboard(text).then(function() {
+      btn.textContent = '✓ הועתק!';
+      btn.classList.add('copied');
+      toast.textContent = 'ההודעה הועתקה';
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function() {
+        toast.classList.remove('show');
+        btn.textContent = '📋 העתק הודעה';
+        btn.classList.remove('copied');
+        toast.textContent = 'הקישור הועתק';
+      }, 2500);
+    });
   }
 
   document.querySelectorAll('.card-copy').forEach(function(btn) {
