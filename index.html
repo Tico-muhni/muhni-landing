@@ -16,6 +16,18 @@
 
   gtag('config', 'G-G9RC7QMNFJ');
 </script>
+<script>
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a[href*="wa.me"]');
+    if (!link) return;
+    var label = link.textContent.trim() || link.getAttribute('aria-label') || 'whatsapp';
+    gtag('event', 'whatsapp_click', {
+      event_category: 'engagement',
+      event_label: label,
+      page_location: window.location.href
+    });
+  });
+</script>
 <title>יועץ משכנתאות אישי | מיחזור משכנתה ומשפרי דיור | TICO FINANCE</title>
 <meta name="description" content="יועץ משכנתאות עצמאי | מיחזור משכנתה, משפרי דיור, משקיעי נדל&quot;ן ורכישת נכס בישראל לברזילאים | בדיקה חינם תוך 24 שעות. צ'יקו זוויבל - אדריכל המשכנתאות.">
 <meta name="keywords" content="יועץ משכנתאות, מיחזור משכנתה, משקיע נדל&quot;ן, משפר דיור, ייעוץ משכנתאות, TICO FINANCE, צ'יקו זוויבל, אדריכל המשכנתאות"/>

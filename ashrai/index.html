@@ -16,6 +16,18 @@
 
   gtag('config', 'G-G9RC7QMNFJ');
 </script>
+<script>
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a[href*="wa.me"]');
+    if (!link) return;
+    var label = link.textContent.trim() || link.getAttribute('aria-label') || 'whatsapp';
+    gtag('event', 'whatsapp_click', {
+      event_category: 'engagement',
+      event_label: label,
+      page_location: window.location.href
+    });
+  });
+</script>
 <title>איך מוציאים דו"ח נתוני אשראי מלא | TICO FINANCE</title>
 <meta name="robots" content="noindex, nofollow">
 <style>

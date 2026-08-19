@@ -16,6 +16,18 @@
 
   gtag('config', 'G-G9RC7QMNFJ');
 </script>
+<script>
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a[href*="wa.me"]');
+    if (!link) return;
+    var label = link.textContent.trim() || link.getAttribute('aria-label') || 'whatsapp';
+    gtag('event', 'whatsapp_click', {
+      event_category: 'engagement',
+      event_label: label,
+      page_location: window.location.href
+    });
+  });
+</script>
 
 <title>משפרי דיור | ליווי מקצועי למעבר דירה | TICO FINANCE</title>
 <meta name="description" content="מתכננים לשדרג דירה? ליווי אישי בתזמון המימון, גישור בין שתי העסקאות ותמהיל נכון. יועץ משכנתאות עצמאי שעובד בשבילך. צ'יקו זוויבל - TICO FINANCE.">

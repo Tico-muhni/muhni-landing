@@ -16,6 +16,18 @@
 
   gtag('config', 'G-G9RC7QMNFJ');
 </script>
+<script>
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a[href*="wa.me"]');
+    if (!link) return;
+    var label = link.textContent.trim() || link.getAttribute('aria-label') || 'whatsapp';
+    gtag('event', 'whatsapp_click', {
+      event_category: 'engagement',
+      event_label: label,
+      page_location: window.location.href
+    });
+  });
+</script>
 
 <title>מחשבון הגרלות דיור | מחיר למשתכן, דירה בהנחה, מחיר מטרה | TICO FINANCE</title>
 <meta name="description" content="זכיתם בהגרלת מחיר למשתכן, דירה בהנחה או מחיר מטרה? מחשבון חינמי שמחשב את מחיר הדירה הסופי שלכם לפי גודל, כולל הנחה, מרפסת, מחסן, חניה, מענק מקום והון עצמי נדרש למשכנתה.">
