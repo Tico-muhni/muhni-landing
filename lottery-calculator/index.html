@@ -141,6 +141,9 @@
   .mobile-nav a { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; color: var(--text-muted); font-size: 11px; font-weight: 600; }
   .mobile-nav a span:first-child { font-size: 22px; }
   @media (max-width: 900px) { .field-grid { grid-template-columns: 1fr; } }
+  .size-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  @media (max-width: 900px) { .size-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .size-grid { grid-template-columns: 1fr; } }
   @media (max-width: 640px) { .nav-links { display: none; } .hamburger { display: block; } section { padding: 40px 16px; } .card { padding: 20px; } .mobile-nav { display: block; } }
   @media (max-width: 1200px) { .nav-links { display: none; } .hamburger { display: block; } .mobile-nav { display: block; } }
 </style>
@@ -287,6 +290,28 @@
           <div class="input-row"><input type="number" id="parkingCount" min="0" value="1"/><span class="suffix">× 70,000 ₪</span></div>
         </div>
       </div>
+      <div style="margin-top:16px;">
+        <p style="font-size:13.5px; font-weight:700; margin-bottom:4px;">מ״ר עיקרי בפועל</p>
+        <p style="font-size:12.5px; color:var(--text-muted); margin-bottom:12px;">הגדלים למטה הם ממוצע סטנדרטי - אם ידוע המ״ר המדויק של הדירה הספציפית מתוך אתר ההגרלה, אפשר לעדכן אותו כאן.</p>
+        <div class="size-grid">
+          <div class="field">
+            <label for="mainSqm1">3 חדרים</label>
+            <div class="input-row"><input type="number" id="mainSqm1" min="0" value="84"/><span class="suffix">מ״ר</span></div>
+          </div>
+          <div class="field">
+            <label for="mainSqm2">4 חדרים</label>
+            <div class="input-row"><input type="number" id="mainSqm2" min="0" value="100"/><span class="suffix">מ״ר</span></div>
+          </div>
+          <div class="field">
+            <label for="mainSqm3">5 חדרים</label>
+            <div class="input-row"><input type="number" id="mainSqm3" min="0" value="115"/><span class="suffix">מ״ר</span></div>
+          </div>
+          <div class="field">
+            <label for="mainSqm4">6 חדרים</label>
+            <div class="input-row"><input type="number" id="mainSqm4" min="0" value="125"/><span class="suffix">מ״ר</span></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="card">
@@ -400,6 +425,12 @@
     var parkingCount = num('parkingCount');
     var grant = selectedGrant();
 
+    // מ״ר עיקרי לכל גודל - ברירת מחדל סטנדרטית, ניתנת לעדכון בשדות
+    // "מ״ר עיקרי בפועל" כשידוע המ״ר המדויק של הדירה הספציפית.
+    var sizes = SIZES.map(function (s) {
+      return { id: s.id, label: s.label, mainSqm: num('mainSqm' + s.id) };
+    });
+
     var parkingCost = PARKING_PRICE * parkingCount;
     var balconySqmEquivalent = balconySqm * BALCONY_FACTOR;
     var storageSqmEquivalent = storageSqm * STORAGE_FACTOR;
@@ -409,7 +440,7 @@
     priceBody.innerHTML = '';
     equityBody.innerHTML = '';
 
-    SIZES.forEach(function (size) {
+    sizes.forEach(function (size) {
       var calcSqm = size.mainSqm + balconySqmEquivalent + storageSqmEquivalent;
       var preDiscountExVat = calcSqm * pricePerSqm;
       var preDiscountIncVat = preDiscountExVat * (1 + VAT_PERCENT / 100);
@@ -462,7 +493,7 @@
     return div.innerHTML;
   }
 
-  ['pricePerSqm', 'discountPercent', 'discountCap', 'referencePrice', 'balconySqm', 'storageSqm', 'parkingCount'].forEach(function (id) {
+  ['pricePerSqm', 'discountPercent', 'discountCap', 'referencePrice', 'balconySqm', 'storageSqm', 'parkingCount', 'mainSqm1', 'mainSqm2', 'mainSqm3', 'mainSqm4'].forEach(function (id) {
     document.getElementById(id).addEventListener('input', recalculate);
   });
   document.getElementById('grantOptions').addEventListener('change', recalculate);
