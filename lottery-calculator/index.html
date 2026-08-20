@@ -282,6 +282,10 @@
           <label for="storageSqm">גודל מחסן</label>
           <div class="input-row"><input type="number" id="storageSqm" min="0" value="6"/><span class="suffix">מ״ר</span></div>
         </div>
+        <div class="field">
+          <label for="parkingCount">מספר חניות</label>
+          <div class="input-row"><input type="number" id="parkingCount" min="0" value="1"/><span class="suffix">× 70,000 ₪</span></div>
+        </div>
       </div>
     </div>
 
@@ -340,8 +344,7 @@
   var VAT_PERCENT = 18;
   var BALCONY_FACTOR = 0.5;
   var STORAGE_FACTOR = 0.25;
-  var PARKING_PRICE = 70000;
-  var PARKING_COUNT = 1;
+  var PARKING_PRICE = 70000; // ₪ לחניה, כולל מע״מ - נוסף ישירות למחיר הכולל מע״מ
   var MORTGAGE_PRICE_CAP = 2100000;
   var MORTGAGE_LTV = 0.75;
   var MIN_EQUITY_WITH_GRANT = 60000;
@@ -394,9 +397,10 @@
     var referencePrice = num('referencePrice');
     var balconySqm = num('balconySqm');
     var storageSqm = num('storageSqm');
+    var parkingCount = num('parkingCount');
     var grant = selectedGrant();
 
-    var parkingCost = PARKING_PRICE * PARKING_COUNT;
+    var parkingCost = PARKING_PRICE * parkingCount;
     var balconySqmEquivalent = balconySqm * BALCONY_FACTOR;
     var storageSqmEquivalent = storageSqm * STORAGE_FACTOR;
 
@@ -458,7 +462,7 @@
     return div.innerHTML;
   }
 
-  ['pricePerSqm', 'discountPercent', 'discountCap', 'referencePrice', 'balconySqm', 'storageSqm'].forEach(function (id) {
+  ['pricePerSqm', 'discountPercent', 'discountCap', 'referencePrice', 'balconySqm', 'storageSqm', 'parkingCount'].forEach(function (id) {
     document.getElementById(id).addEventListener('input', recalculate);
   });
   document.getElementById('grantOptions').addEventListener('change', recalculate);
