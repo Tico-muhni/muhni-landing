@@ -5,5 +5,6 @@ Allow: /
 Disallow: /terms.html
 Disallow: /privacy.html
 Disallow: /accessibility.html
+Disallow: /topsecret/
 
 Sitemap: https://www.ticofinance.co.il/sitemap.xml
