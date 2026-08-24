@@ -907,11 +907,15 @@ window.addEventListener('scroll',function(){var tb=document.getElementById('topb
 (function(){
   var spotsEl=document.getElementById('spots-float');
   var numEl=document.getElementById('spots-num');
-  var current=5,shown=false,lastDrop=0;
+  var current=5,shown=false;
   var thresholds=[0.25,0.55];
   window.addEventListener('scroll',function(){
     var scrollPct=window.scrollY/(document.body.scrollHeight-window.innerHeight);
-    if(!shown&&window.scrollY>200){shown=true;spotsEl.classList.add('visible')}
+    if(window.scrollY>600&&scrollPct<0.8){
+      if(!shown){shown=true;spotsEl.classList.add('visible')}
+    } else {
+      if(shown){shown=false;spotsEl.classList.remove('visible')}
+    }
     if(scrollPct>=thresholds[1]&&current>3){drop(3)}
     else if(scrollPct>=thresholds[0]&&current>4){drop(4)}
   },{passive:true});
@@ -959,27 +963,24 @@ gsap.from('.quote-block',{
   opacity:0,scale:.95,duration:.8,ease:'power2.out'
 });
 
-/* ─── BANK PROFITS — PINNED SCROLL ─── */
+/* ─── BANK PROFITS ─── */
 var bankRows=gsap.utils.toArray('.bank-row');
 var bankBars=gsap.utils.toArray('.bank-bar');
 
 ScrollTrigger.create({
   trigger:'#banks-trigger',
-  start:'top top',
-  end:'+='+((bankRows.length+1)*300),
-  pin:'#banks-pin',
-  pinSpacing:true,
+  start:'top 70%',
   onEnter:function(){
     bankRows.forEach(function(row,i){
       gsap.to(row,{
-        opacity:1,x:0,duration:.8,delay:i*.25,ease:'power3.out',
+        opacity:1,x:0,duration:.8,delay:i*.2,ease:'power3.out',
         onStart:function(){
           var bar=row.querySelector('.bank-bar');
           gsap.to(bar,{width:bar.style.getPropertyValue('--w'),duration:1.2,delay:.1,ease:'power2.out'});
         }
       });
     });
-    gsap.to('#banks-total',{opacity:1,duration:.6,delay:bankRows.length*.25+.3,ease:'power2.out'});
+    gsap.to('#banks-total',{opacity:1,duration:.6,delay:bankRows.length*.2+.3,ease:'power2.out'});
   }
 });
 
