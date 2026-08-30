@@ -408,9 +408,18 @@
 
 <div class="container" id="formContainer">
 
-  <!-- Q1: Stars -->
+  <!-- Name -->
   <div class="question-card">
     <div class="q-number">שאלה 01</div>
+    <div class="q-text">מה שמך המלא?</div>
+    <div class="input-row" style="margin-bottom:0;">
+      <input type="text" id="fullName" placeholder="שם פרטי ושם משפחה" style="flex:1;border:1.5px solid var(--border);border-radius:10px;padding:12px 14px;font-family:'Heebo',sans-serif;font-size:14px;direction:rtl;color:var(--text);background:#fafcfb;transition:border-color 0.2s;">
+    </div>
+  </div>
+
+  <!-- Q1: Stars -->
+  <div class="question-card">
+    <div class="q-number">שאלה 02</div>
     <div class="q-text">איך היית מדרג/ת את החוויה הכוללת של התהליך איתנו?</div>
     <div style="display:flex;justify-content:space-between;font-size:11px;color:#b0c4b8;margin-bottom:6px;padding:0 2px;">
       <span>מרוצה מאוד</span>
@@ -428,21 +437,21 @@
 
   <!-- Q2: Value -->
   <div class="question-card">
-    <div class="q-number">שאלה 02</div>
+    <div class="q-number">שאלה 03</div>
     <div class="q-text">מה הדבר הכי משמעותי שקיבלת מהתהליך?</div>
     <textarea id="q2" placeholder='למשל: "הרגשתי שמישהו באמת דואג לאינטרס שלי"'></textarea>
   </div>
 
   <!-- Q3: Improve -->
   <div class="question-card">
-    <div class="q-number">שאלה 03</div>
+    <div class="q-number">שאלה 04</div>
     <div class="q-text">יש משהו שהיית רוצה שנעשה אחרת? <span class="optional-tag">(לא חובה)</span></div>
     <textarea id="q3" placeholder="כל פידבק יעזור לנו להשתפר"></textarea>
   </div>
 
   <!-- Q4: Recommend -->
   <div class="question-card">
-    <div class="q-number">שאלה 04</div>
+    <div class="q-number">שאלה 05</div>
     <div class="q-text">האם היית ממליץ/ה עלינו לחבר או בן משפחה?</div>
     <div class="choice-btns" id="recommendBtns">
       <button class="choice-btn" data-value="definitely">כן בהחלט 🙌</button>
@@ -539,6 +548,7 @@
     });
 
     const data = {
+      name: document.getElementById('fullName').value.trim(),
       rating: selectedRating,
       value: document.getElementById('q2').value.trim(),
       improve: document.getElementById('q3').value.trim(),
