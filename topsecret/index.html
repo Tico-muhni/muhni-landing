@@ -664,6 +664,17 @@ footer a:hover{color:var(--green)}
 .coupon-fine{
   font-size:11px;color:var(--ink-faint);margin-top:14px;line-height:1.7;
 }
+.coupon-active-banner{
+  display:flex;align-items:center;gap:10px;
+  padding:12px 16px;margin-bottom:16px;
+  background:linear-gradient(135deg,rgba(0,200,83,.1),rgba(0,200,83,.05));
+  border:1.5px solid var(--green);border-radius:12px;
+  animation:cab-glow 2s ease-in-out infinite;
+}
+.cab-icon{font-size:20px;flex-shrink:0}
+.cab-text{font-size:13px;color:var(--green-deep);line-height:1.5}
+.cab-text strong{color:var(--green);font-weight:800}
+@keyframes cab-glow{0%,100%{box-shadow:0 0 0 0 rgba(0,200,83,.15)}50%{box-shadow:0 0 16px 2px rgba(0,200,83,.2)}}
 
 @media(max-width:800px){
   .coupon-modal{max-width:340px}
@@ -965,6 +976,10 @@ footer a:hover{color:var(--green)}
       </div>
       <div class="form-card">
         <div id="form-state">
+          <div class="coupon-active-banner" id="coupon-banner-form" hidden>
+            <span class="cab-icon">&#127915;</span>
+            <span class="cab-text">שובר <strong>25% הנחה</strong> מופעל! השאר פרטים לממש</span>
+          </div>
           <div class="form-head">
             <div class="form-badge"><span class="dot"></span> מקומות מוגבלים</div>
             <h3>בדוק התאמה אישית</h3>
@@ -1218,7 +1233,7 @@ function submitForm(){
   if(!p||p.replace(/\D/g,'').length<9){showErr('אנא הכנס מספר טלפון תקין');return}
   b.disabled=true;b.innerHTML='<span class="spinner"></span> שולח...';
   var u=getUtm();
-  var payload={full_name:n,phone_number:p,source:'topsecret_landing',ref:u.ref,utm_source:u.utm_source,utm_medium:u.utm_medium,utm_campaign:u.utm_campaign};
+  var payload={full_name:n,phone_number:p,source:'topsecret_landing',ref:u.ref,utm_source:u.utm_source,utm_medium:u.utm_medium,utm_campaign:u.utm_campaign,coupon:couponActivated?'25_percent':''};
   if(pendingFile&&pendingFile.data){payload.file_name=pendingFile.name;payload.file_type=pendingFile.type;payload.file_data=pendingFile.data}
   fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(payload)})
   .then(function(){
@@ -1432,13 +1447,19 @@ function showCoupon(source){
     cta.innerHTML='<a href="https://wa.me/972507700322?text='+encodeURIComponent('היי צ׳יקו, השארתי פרטים בדף הסודי ויש לי שובר הנחה 25%. מתי נוכל לדבר?')+'" target="_blank" rel="noopener" class="btn btn-wa btn-sm" style="width:100%" data-cta="coupon-form">'+WA_SVG+' שלח הודעה עם השובר</a>';
   } else {
     hint.textContent='בדקת את המשכנתא? מגיע לך שובר הנחה בלעדי:';
-    cta.innerHTML='<a href="#form" class="btn btn-green btn-sm" style="width:100%" onclick="closeCoupon();toForm(event)">השאר פרטים ומימוש השובר</a>'
+    cta.innerHTML='<a href="#form" class="btn btn-green btn-sm" style="width:100%" onclick="activateCouponForm();closeCoupon();toForm(event)">השאר פרטים ומימוש השובר</a>'
       +'<a href="https://wa.me/972507700322?text='+encodeURIComponent('היי צ׳יקו, בדקתי את המשכנתא בדף הסודי ויש לי שובר הנחה 25%. אשמח לבדיקה מקצועית.')+'" target="_blank" rel="noopener" class="btn btn-wa btn-sm" style="width:100%" data-cta="coupon-calc">'+WA_SVG+' או דבר איתי בוואטסאפ</a>';
   }
   setTimeout(function(){document.getElementById('coupon-overlay').classList.add('show')},800);
   gtag('event','coupon_shown',{event_category:'topsecret',event_label:source});
 }
 function closeCoupon(){document.getElementById('coupon-overlay').classList.remove('show')}
+var couponActivated=false;
+function activateCouponForm(){
+  couponActivated=true;
+  document.getElementById('coupon-banner-form').hidden=false;
+  gtag('event','coupon_activated',{event_category:'topsecret',event_label:'form'});
+}
 </script>
 
 </body>
