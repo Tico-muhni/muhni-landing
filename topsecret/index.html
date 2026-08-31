@@ -246,37 +246,9 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--ink);overfl
   text-transform:uppercase;color:var(--green);margin-bottom:8px;
 }
 .proof-header .proof-title{font-size:15px;font-weight:600;margin:0}
-.proof-body{padding:20px 24px}
-.proof-big{
-  text-align:center;margin-bottom:20px;padding-bottom:20px;
-  border-bottom:1px solid #eee;
-}
-.proof-big .proof-amount{
-  font-size:clamp(36px,8vw,48px);font-weight:900;
-  color:var(--green);line-height:1.1;
-}
-.proof-big .proof-sub{font-size:13px;color:#888;margin-top:4px}
-.proof-rows{display:flex;flex-direction:column;gap:10px}
-.proof-row{
-  display:flex;justify-content:space-between;align-items:center;
-  font-size:13px;padding:8px 12px;border-radius:10px;
-  background:#f8faf9;
-}
-.proof-row .pr-label{color:#666;font-weight:500}
-.proof-row .pr-vals{display:flex;gap:8px;align-items:center;direction:ltr}
-.proof-row .pr-old{color:#999;text-decoration:line-through;font-size:12px}
-.proof-row .pr-new{color:var(--green);font-weight:800}
-.proof-row .pr-diff{
-  font-size:11px;background:var(--green-mist);color:var(--green-deep);
-  padding:2px 8px;border-radius:20px;font-weight:700;
-}
-.proof-chart{padding:16px 24px 20px}
-.proof-chart-title{font-size:12px;font-weight:700;color:#888;margin-bottom:12px}
-.proof-bars{display:flex;align-items:flex-end;gap:3px;height:80px}
-.proof-bar{
-  background:var(--green);border-radius:3px 3px 0 0;
-  flex:1;min-width:0;height:0;
-}
+.proof-images{padding:0}
+.proof-images img{width:100%;display:block;border-bottom:1px solid #eee}
+.proof-images img:last-child{border-bottom:none}
 .proof-footer{
   padding:12px 24px 16px;text-align:center;
   font-size:11px;color:#aaa;font-style:italic;
@@ -707,72 +679,14 @@ footer a:hover{color:var(--green)}
         </div>
         <div class="proof-card" id="proof-card">
           <div class="proof-header">
-            <div class="proof-label">תיק אמיתי של לקוח</div>
-            <div class="proof-title">משכנתא ₪934,575 | תקופה 20 שנה</div>
+            <div class="proof-label">התיק של השכן שלך</div>
+            <div class="proof-title">החיסכון שהוא לא רוצה שתדע עליו</div>
           </div>
-          <div class="proof-body">
-            <div class="proof-big">
-              <div class="proof-amount">₪208,695</div>
-              <div class="proof-sub">חיסכון כולל לאורך חיי ההלוואה</div>
-            </div>
-            <div class="proof-rows">
-              <div class="proof-row">
-                <span class="pr-label">מרווח שוק</span>
-                <span class="pr-vals">
-                  <span class="pr-old">1.97%</span>
-                  <span class="pr-new">0.76%</span>
-                  <span class="pr-diff">&#x2193; 1.21%</span>
-                </span>
-              </div>
-              <div class="proof-row">
-                <span class="pr-label">החזר ראשון</span>
-                <span class="pr-vals">
-                  <span class="pr-old">₪5,863</span>
-                  <span class="pr-new">₪5,892</span>
-                </span>
-              </div>
-              <div class="proof-row">
-                <span class="pr-label">עלות כוללת</span>
-                <span class="pr-vals">
-                  <span class="pr-old">₪1,662,521</span>
-                  <span class="pr-new">₪1,453,827</span>
-                </span>
-              </div>
-              <div class="proof-row">
-                <span class="pr-label">ערך נוכחי נקי</span>
-                <span class="pr-vals">
-                  <span class="pr-new" style="font-size:15px">₪113,798</span>
-                </span>
-              </div>
-            </div>
+          <div class="proof-images">
+            <img src="proof-table-1.jpg" alt="טבלת השוואה בין משכנתא קיימת למיחזור מומלץ, חיסכון של 208,695 ש״ח" loading="lazy"/>
+            <img src="proof-chart-1.jpg" alt="תרשים חיסכון שנתי על פני 21 שנה" loading="lazy"/>
           </div>
-          <div class="proof-chart">
-            <div class="proof-chart-title">חיסכון שנתי (₪)</div>
-            <div class="proof-bars" id="proof-bars">
-              <div class="proof-bar" style="--h:63%"></div>
-              <div class="proof-bar" style="--h:69%"></div>
-              <div class="proof-bar" style="--h:72%"></div>
-              <div class="proof-bar" style="--h:71%"></div>
-              <div class="proof-bar" style="--h:71%"></div>
-              <div class="proof-bar" style="--h:82%"></div>
-              <div class="proof-bar" style="--h:79%"></div>
-              <div class="proof-bar" style="--h:79%"></div>
-              <div class="proof-bar" style="--h:78%"></div>
-              <div class="proof-bar" style="--h:77%"></div>
-              <div class="proof-bar" style="--h:80%"></div>
-              <div class="proof-bar" style="--h:75%"></div>
-              <div class="proof-bar" style="--h:73%"></div>
-              <div class="proof-bar" style="--h:70%"></div>
-              <div class="proof-bar" style="--h:63%"></div>
-              <div class="proof-bar" style="--h:57%"></div>
-              <div class="proof-bar" style="--h:50%"></div>
-              <div class="proof-bar" style="--h:41%"></div>
-              <div class="proof-bar" style="--h:31%"></div>
-              <div class="proof-bar" style="--h:19%"></div>
-              <div class="proof-bar" style="--h:1%"></div>
-            </div>
-          </div>
-          <div class="proof-footer">* נתונים מתיק לקוח אמיתי שעבר מיחזור מקצועי</div>
+          <div class="proof-footer">* נתונים מתיק אמיתי של שכן שעבר מיחזור מקצועי</div>
         </div>
       </div>
     </div>
@@ -1083,15 +997,9 @@ gsap.from('.quote-block',{
 });
 
 /* ─── PROOF CARD ─── */
-ScrollTrigger.create({
-  trigger:'#proof-card',
-  start:'top 80%',
-  onEnter:function(){
-    gsap.from('#proof-card',{opacity:0,y:40,duration:.8,ease:'power2.out'});
-    document.querySelectorAll('.proof-bar').forEach(function(bar,i){
-      gsap.to(bar,{height:bar.style.getPropertyValue('--h'),duration:.6,delay:i*.04,ease:'power2.out'});
-    });
-  }
+gsap.from('#proof-card',{
+  scrollTrigger:{trigger:'#proof-card',start:'top 80%'},
+  opacity:0,y:40,duration:.8,ease:'power2.out'
 });
 
 /* ─── BANK PROFITS ─── */
