@@ -1105,7 +1105,7 @@ document.querySelectorAll('[data-flip]').forEach(function(card){
 function toForm(e){e.preventDefault();document.getElementById('form').scrollIntoView({behavior:'smooth',block:'start'})}
 
 /* ─── FORM LOGIC ─── */
-var SCRIPT_URL='https://script.google.com/macros/s/AKfycbwlgSxrwV6qrLFQp7qBMVOjKeWNja1fOMWvlDWelA7ul-y-58lEAOrFzbO60arUkjkmiQ/exec';
+var SCRIPT_URL='https://script.google.com/macros/s/AKfycby2RVF0rZ2SnpJqm8ls1pVRDpxgvj8TD9bvWBATpB_8XNzGiyv6EXwQDGQglRFKhOTt6A/exec';
 function getUtm(){
   var p=new URLSearchParams(location.search);
   return{ref:p.get('ref')||'',utm_source:p.get('utm_source')||'topsecret',utm_medium:p.get('utm_medium')||'qr',utm_campaign:p.get('utm_campaign')||'guerrilla_letter'};
