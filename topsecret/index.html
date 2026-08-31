@@ -456,6 +456,21 @@ body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--ink);overfl
 }
 .form-field input::placeholder{color:var(--ink-faint)}
 .form-field input:focus{border-color:var(--green);box-shadow:0 0 0 4px var(--green-glow);background:var(--surface)}
+.file-upload{margin-bottom:14px}
+.file-upload label{display:block;font-size:12px;font-weight:600;color:var(--ink-soft);margin-bottom:6px}
+.file-drop{
+  position:relative;width:100%;padding:20px 18px;background:var(--bg);
+  border:1.5px dashed var(--border);border-radius:12px;
+  text-align:center;cursor:pointer;transition:all .25s;
+}
+.file-drop:hover{border-color:var(--green);background:var(--green-mist)}
+.file-drop input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer}
+.file-drop .file-icon{font-size:22px;margin-bottom:4px}
+.file-drop .file-text{font-size:13px;color:var(--ink-faint);line-height:1.5}
+.file-drop .file-text strong{color:var(--green);font-weight:700}
+.file-drop.has-file{border-color:var(--green);border-style:solid;background:var(--green-mist)}
+.file-drop.has-file .file-text{color:var(--ink);font-weight:600}
+.file-hint{font-size:11px;color:var(--ink-faint);margin-top:5px;text-align:center}
 .form-submit{
   width:100%;padding:17px;border:none;border-radius:100px;
   background:var(--green);color:#fff;font-size:16px;font-weight:700;
@@ -881,6 +896,15 @@ footer a:hover{color:var(--green)}
             <label for="phone">טלפון נייד</label>
             <input type="tel" id="phone" placeholder="050-0000000" autocomplete="tel" inputmode="tel"/>
           </div>
+          <div class="file-upload">
+            <label>דוח יתרות (לא חובה)</label>
+            <div class="file-drop" id="file-drop">
+              <input type="file" id="balance_file" accept=".pdf,.jpg,.jpeg,.png,.heic,.doc,.docx" onchange="handleFile(this)"/>
+              <div class="file-icon">&#128206;</div>
+              <div class="file-text" id="file-text">לחץ כאן לצרף <strong>דוח יתרות</strong><br/>או גרור את הקובץ לכאן</div>
+            </div>
+            <div class="file-hint">PDF, תמונה או מסמך. אם אין לך עכשיו, נבקש בהמשך.</div>
+          </div>
           <button class="form-submit" id="submit-btn" onclick="submitForm()">בדוק התאמה עכשיו</button>
           <div class="form-or">או</div>
           <a href="https://wa.me/972507700322?text=%D7%94%D7%99%D7%99%2C%20%D7%A7%D7%99%D7%91%D7%9C%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%9E%D7%9B%D7%AA%D7%91%20%D7%94%D7%A1%D7%95%D7%93%D7%99%20%D7%95%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%91%D7%93%D7%95%D7%A7%20%D7%90%D7%AA%20%D7%94%D7%9E%D7%A9%D7%9B%D7%A0%D7%AA%D7%90%20%D7%A9%D7%9C%D7%99" target="_blank" rel="noopener" class="btn btn-wa" style="width:100%" data-cta="form">
@@ -893,6 +917,7 @@ footer a:hover{color:var(--green)}
           <div class="ok-icon">&#x2705;</div>
           <h3>קיבלנו! הפרטים בידינו.</h3>
           <p>ניצור איתך קשר בוואטסאפ בדיסקרטיות מלאה תוך 24 שעות.<br>אם נמצא שיש פוטנציאל חיסכון, נציג לך את כל האפשרויות. ואם המשכנתא שלך כבר במצב טוב? גם על זה נעדכן אותך, בלי התחייבות.</p>
+          <p id="ok-file-note" style="display:none;font-size:13px;color:var(--ink-faint);margin-top:12px">לא צירפת דוח יתרות? אל דאגה, נבקש ממך בוואטסאפ.</p>
         </div>
       </div>
     </div>
@@ -1085,6 +1110,21 @@ function getUtm(){
   var p=new URLSearchParams(location.search);
   return{ref:p.get('ref')||'',utm_source:p.get('utm_source')||'topsecret',utm_medium:p.get('utm_medium')||'qr',utm_campaign:p.get('utm_campaign')||'guerrilla_letter'};
 }
+var pendingFile=null;
+function handleFile(input){
+  var drop=document.getElementById('file-drop');
+  var txt=document.getElementById('file-text');
+  if(input.files&&input.files[0]){
+    var f=input.files[0];
+    if(f.size>10*1024*1024){txt.innerHTML='&#9888; הקובץ גדול מדי (עד 10MB)';drop.classList.remove('has-file');pendingFile=null;return}
+    pendingFile={name:f.name,type:f.type,size:f.size};
+    var reader=new FileReader();
+    reader.onload=function(e){pendingFile.data=e.target.result.split(',')[1]};
+    reader.readAsDataURL(f);
+    drop.classList.add('has-file');
+    txt.innerHTML='&#9989; '+f.name;
+  }else{drop.classList.remove('has-file');txt.innerHTML='לחץ כאן לצרף <strong>דוח יתרות</strong><br/>או גרור את הקובץ לכאן';pendingFile=null}
+}
 function submitForm(){
   var n=document.getElementById('full_name').value.trim();
   var p=document.getElementById('phone').value.trim();
@@ -1095,11 +1135,14 @@ function submitForm(){
   if(!p||p.replace(/\D/g,'').length<9){showErr('אנא הכנס מספר טלפון תקין');return}
   b.disabled=true;b.innerHTML='<span class="spinner"></span> שולח...';
   var u=getUtm();
-  fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:JSON.stringify({full_name:n,phone_number:p,source:'topsecret_landing',ref:u.ref,utm_source:u.utm_source,utm_medium:u.utm_medium,utm_campaign:u.utm_campaign})})
+  var payload={full_name:n,phone_number:p,source:'topsecret_landing',ref:u.ref,utm_source:u.utm_source,utm_medium:u.utm_medium,utm_campaign:u.utm_campaign};
+  if(pendingFile&&pendingFile.data){payload.file_name=pendingFile.name;payload.file_type=pendingFile.type;payload.file_data=pendingFile.data}
+  fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(payload)})
   .then(function(){
     gtag('event','generate_lead',{event_category:'topsecret',event_label:u.ref||'direct',value:1});
     document.getElementById('form-state').style.display='none';
     document.getElementById('ok-state').style.display='block';
+    if(!pendingFile||!pendingFile.data){document.getElementById('ok-file-note').style.display='block'}
   })
   .catch(function(){
     showErr('אירעה שגיאה. נסה שוב או פנה בוואטסאפ.');
