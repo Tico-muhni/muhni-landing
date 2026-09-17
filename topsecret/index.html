@@ -1538,6 +1538,15 @@ function activateCouponForm(){
     bubbleClosed=true;
     bubble.classList.remove('show');
   };
+  var formEl=document.getElementById('form');
+  if(formEl){
+    window.addEventListener('scroll',function(){
+      var rect=formEl.getBoundingClientRect();
+      if(rect.top<window.innerHeight&&!bubbleClosed){
+        bubble.classList.remove('show');
+      }
+    },{passive:true});
+  }
 })();
 </script>
 
