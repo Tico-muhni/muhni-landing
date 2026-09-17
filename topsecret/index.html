@@ -731,6 +731,34 @@ footer a:hover{color:var(--green)}
   .wa-float-bubble{max-width:220px;font-size:13px;padding:12px 14px}
 }
 
+/* ═══ VIDEO ═══ */
+.video-sec{background:var(--bg)}
+.video-wrap{
+  display:flex;align-items:center;gap:clamp(32px,5vw,64px);
+  max-width:900px;margin:0 auto;
+}
+.video-frame{
+  flex:0 0 auto;width:clamp(240px,30vw,300px);
+  border-radius:20px;overflow:hidden;
+  box-shadow:0 12px 48px rgba(0,0,0,.12);
+  position:relative;background:#000;
+}
+.video-frame iframe{
+  width:100%;aspect-ratio:9/16;display:block;border:none;
+}
+.video-text h2{
+  font-size:clamp(1.6rem,3.5vw,2.4rem);
+  font-weight:900;line-height:1.2;margin-bottom:16px;letter-spacing:-.5px;
+}
+.video-text p{
+  font-size:16px;line-height:2;color:var(--ink-soft);font-weight:300;margin-bottom:20px;
+}
+.video-text p strong{color:var(--ink);font-weight:700}
+@media(max-width:800px){
+  .video-wrap{flex-direction:column;text-align:center}
+  .video-frame{width:min(280px,80vw)}
+}
+
 /* ═══ REVIEWS ═══ */
 .reviews-sec{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .reviews-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:32px}
@@ -1049,6 +1077,24 @@ footer a:hover{color:var(--green)}
           <p>אני רואה את עולם המשכנתאות כתחום שיכול <strong>לשנות חיים של אנשים</strong> — לעזור להם לבנות תיק נכסים, להשתדרג לנכס גדול יותר, או פשוט לעשות סדר במשכנתא הקיימת ולשלם פחות לבנקים.</p>
           <p>המטרה שלי פשוטה: <strong>לדאוג לאזרח הקטן</strong> מול גופי המימון והבנקים, שהדבר היחיד שמעניין אותם הוא הרווח שלהם — לא האנשים.</p>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ VIDEO ═══ -->
+<section class="sec video-sec" id="video">
+  <div class="sec-inner">
+    <div class="video-wrap">
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/eOlyJ7nFPpc" title="צ׳יקו זוויבל — Tico Finance" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="video-text">
+        <div class="sec-label">הכירו אותי</div>
+        <h2>מאחורי המספרים<br>יש בן אדם.</h2>
+        <p>אני <strong>צ׳יקו זוויבל</strong>, מייסד Tico Finance. לפני שאתה משאיר פרטים או שולח הודעה, רציתי שתכיר אותי קצת. בסרטון הקצר הזה אני מספר למה יצאתי לעצמאות ומה מניע אותי.</p>
+        <p><strong>30 שניות.</strong> בלי מצגות, בלי שיווק — רק אני.</p>
+        <a href="#form" class="btn btn-green btn-sm" onclick="toForm(event)">רוצה לבדוק? השאר פרטים</a>
       </div>
     </div>
   </div>
@@ -1393,6 +1439,16 @@ gsap.utils.toArray('.feat-card').forEach(function(card,i){
 gsap.from('.reverse-card',{
   scrollTrigger:{trigger:'.reverse-card',start:'top 75%'},
   opacity:0,y:50,scale:.97,duration:.9,ease:'power2.out'
+});
+
+/* ─── VIDEO ─── */
+gsap.from('.video-frame',{
+  scrollTrigger:{trigger:'.video-sec',start:'top 80%'},
+  opacity:0,x:-40,duration:.8,ease:'power2.out'
+});
+gsap.from('.video-text',{
+  scrollTrigger:{trigger:'.video-sec',start:'top 80%'},
+  opacity:0,x:40,duration:.8,delay:.2,ease:'power2.out'
 });
 
 /* ─── REVIEWS ─── */
