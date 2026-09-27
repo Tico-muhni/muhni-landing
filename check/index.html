@@ -164,6 +164,25 @@
       <h2>בואו נתחיל</h2>
       <p class="form-sub">30 שניות, בלי עלות ובלי התחייבות</p>
       <iframe id="embedded-form-iframe" src="https://www.snpv.co.il/public/embedded_pages/Leads_balance_report/preview/d66f08c6-e409-4e59-8c4c-e577273cd516?source=instagram" scrolling="no" frameborder="0" style="width:100%;min-height:200px;border:none;overflow:hidden;"></iframe>
+      <script>
+        // Realtor referral links (/check?m=yossi) tag the lead in Smart NPV as
+        // source=realtor-yossi instead of the default "instagram".
+        (function () {
+          var m = (new URLSearchParams(location.search).get('m') || '')
+            .toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 40);
+          if (!m) return;
+          var source = 'realtor-' + m;
+          var frame = document.getElementById('embedded-form-iframe');
+          frame.src = frame.src.replace('source=instagram', 'source=' + source);
+          document.addEventListener('DOMContentLoaded', function () {
+            var wa = document.querySelector('.wa-alt a.wa-btn');
+            if (wa) {
+              wa.href = 'https://wa.me/972507700322?text=' + encodeURIComponent(
+                "היי צ'יקו, הגעתי דרך המלצה ואשמח לבדוק מיחזור (" + source + ')');
+            }
+          });
+        })();
+      </script>
     </div>
 
     <!-- 6. Secondary WhatsApp -->
