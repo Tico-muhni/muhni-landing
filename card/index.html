@@ -108,7 +108,7 @@ document.addEventListener('click',function(e){
   .t-head { display: flex; align-items: center; justify-content: space-between; }
   .t-card .stars { color: var(--star); font-size: 16px; letter-spacing: 2px; line-height: 1; }
   .rg { width: 20px; height: 20px; flex: none; display: block; }
-  .t-card p { font-size: 14.5px; line-height: 1.75; flex: 1; overflow-wrap: anywhere; }
+  .t-card p { font-size: 14.5px; line-height: 1.75; overflow-wrap: anywhere; }
   .t-who { display: flex; align-items: center; gap: 10px; }
   .t-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--green); color: var(--white); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; flex-shrink: 0; }
   .t-name { font-weight: 700; font-size: 13.5px; direction: auto; }
@@ -128,15 +128,10 @@ document.addEventListener('click',function(e){
   .gbox { width: 44px; height: 44px; flex: none; display: grid; place-items: center; background: var(--white); border: 1.5px solid var(--border); border-radius: 50%; }
   .gbox svg { width: 22px; height: 22px; }
 
-  /* socials: round icons like the site footer's .social-btn */
-  .socials { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  /* links: one list of identical rows, round icons like the site footer's .social-btn */
+  .socials { display: flex; flex-direction: column; gap: 10px; }
   .social-btn { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex: none; color: var(--white); }
   .social-btn svg { width: 22px; height: 22px; }
-  .lnk.site { grid-column: 1 / -1; border: 2px solid var(--green); }
-  .lnk.site:hover { background: var(--purple-light); }
-  .lnk.site img { display: block; height: 20px; width: auto; max-width: 100%; }
-  .site-txt { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; direction: ltr; }
-  .site-txt small { color: var(--text-muted); font-size: 12.5px; }
 
   .foot { text-align: center; color: var(--text-muted); font-size: 13px; line-height: 1.7; }
   .foot b { color: var(--text); font-weight: 700; }
@@ -146,7 +141,7 @@ document.addEventListener('click',function(e){
 
   @media (max-width: 370px) {
     .hero h1 { font-size: 36px; }
-    .services, .socials { grid-template-columns: 1fr; }
+    .services { grid-template-columns: 1fr; }
   }
   @media (min-width: 441px) {
     body { padding: 32px 0 48px; }
@@ -209,7 +204,7 @@ document.addEventListener('click',function(e){
         <a class="svc" href="/upgraders/" data-cta="card_upgraders"><span class="icon">🏡</span><h3>משפרי דיור</h3><span class="post-badge">המומחיות שלי</span></a>
         <a class="svc" href="/investors/" data-cta="card_investors"><span class="icon">📈</span><h3>משקיעי נדל"ן</h3><span class="post-badge">המומחיות שלי</span></a>
         <a class="svc" href="/refinance/" data-cta="card_refinance"><span class="icon">🏦</span><h3>מיחזור משכנתה</h3><span class="go">לפרטים ←</span></a>
-        <a class="svc" href="/br/" data-cta="card_remote"><span class="icon">🌍</span><h3>רכישה בישראל מרחוק</h3><span class="go">לפרטים ←</span></a>
+        <a class="svc" href="/br/" data-cta="card_brazil" lang="he"><span class="icon">🇧🇷</span><h3>תושבי ברזיל שקונים בישראל</h3><span class="go" lang="pt" dir="ltr">Em português →</span></a>
       </div>
     </section>
 
@@ -267,7 +262,7 @@ document.addEventListener('click',function(e){
       <a class="lnk reviews" href="https://share.google/5UJTqFuM0paog8QMS" target="_blank" rel="noopener" data-cta="card_google_reviews">
         <span class="gbox"><svg aria-hidden="true"><use href="#g-logo"/></svg></span>
         <span class="txt"><b>לכל הביקורות בגוגל</b><small>TICO FINANCE</small></span>
-        <span class="go">לצפייה ←</span>
+        <span class="go">←</span>
       </a>
     </section>
 
@@ -278,14 +273,17 @@ document.addEventListener('click',function(e){
         <a class="lnk" href="https://www.instagram.com/ticozveibel/" target="_blank" rel="noopener" data-cta="card_instagram">
           <span class="social-btn" style="background:linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></span>
           <span class="txt"><b>אינסטגרם</b><small>@ticozveibel</small></span>
+          <span class="go">←</span>
         </a>
         <a class="lnk" href="https://www.facebook.com/tico.zveibel" target="_blank" rel="noopener" data-cta="card_facebook">
           <span class="social-btn" style="background:#1877F2;"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.4 21v-7.6h2.6l.4-3h-3V8.5c0-.9.3-1.5 1.6-1.5h1.6V4.3c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21h3z"/></svg></span>
           <span class="txt"><b>פייסבוק</b><small>tico.zveibel</small></span>
+          <span class="go">←</span>
         </a>
-        <a class="lnk site" href="https://www.ticofinance.co.il" target="_blank" rel="noopener" data-cta="card_site">
-          <span class="site-txt"><img src="/card/wordmark.webp" alt="TICO FINANCE" loading="lazy" width="520" height="55"><small>ticofinance.co.il</small></span>
-          <span class="go">לאתר ←</span>
+        <a class="lnk" href="https://www.ticofinance.co.il" target="_blank" rel="noopener" data-cta="card_site">
+          <span class="social-btn" style="background:var(--hero);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg></span>
+          <span class="txt"><b>האתר של TICO FINANCE</b><small>ticofinance.co.il</small></span>
+          <span class="go">←</span>
         </a>
       </div>
     </section>
