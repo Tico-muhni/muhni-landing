@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=UTF-8:זוויבל;צ'יקו;;;
+FN;CHARSET=UTF-8:צ'יקו זוויבל
+ORG:TICO FINANCE
+TITLE;CHARSET=UTF-8:אדריכל המשכנתאות
+TEL;TYPE=CELL,VOICE:+972507700322
+URL:https://www.ticofinance.co.il
+URL;TYPE=card:https://www.ticofinance.co.il/card
+ADR;TYPE=WORK;CHARSET=UTF-8:;;;רחובות;;;ישראל
+X-SOCIALPROFILE;TYPE=instagram:https://www.instagram.com/ticozveibel/
+X-SOCIALPROFILE;TYPE=facebook:https://www.facebook.com/tico.zveibel
+NOTE;CHARSET=UTF-8:יועץ משכנתאות - משפרי דיור, משקיעים, מחזור משכנתא
+END:VCARD
