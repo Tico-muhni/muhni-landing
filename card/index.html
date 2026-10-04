@@ -91,9 +91,9 @@ document.addEventListener('click',function(e){
   .about p { color: var(--text-muted); font-size: 16px; line-height: 1.85; text-wrap: pretty; }
   .about p b { color: var(--text); font-weight: 800; }
   .about .why { text-wrap: balance; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
-  .about .more { margin-top: 10px; text-wrap: balance; }
-  .facts { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-bottom: 14px; }
-  .facts li { background: var(--purple-light); color: var(--green); font-size: 12.5px; font-weight: 700; padding: 4px 12px; border-radius: 50px; }
+  .about .hook { color: var(--text); font-size: 18px; font-weight: 800; line-height: 1.5; margin-bottom: 10px; text-wrap: balance; }
+  .about .result { margin-top: 12px; background: var(--purple-light); color: var(--green); font-weight: 800; border-radius: 12px; padding: 12px 14px; line-height: 1.6; }
+  .about .punch { margin-top: 10px; color: var(--text); font-size: 18px; font-weight: 900; line-height: 1.4; text-wrap: balance; }
 
   /* services: same names and icons as the site's segment cards, linked to their pages */
   .services { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -175,7 +175,7 @@ document.addEventListener('click',function(e){
   <main class="main">
 
     <section class="cta">
-      <a class="btn" data-cta="card_whatsapp" href="https://wa.me/972507700322?text=%D7%94%D7%99%D7%99%20%D7%A6%27%D7%99%D7%A7%D7%95%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%9B%D7%A8%D7%98%D7%99%D7%A1%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%A9%D7%99%D7%97%D7%94%20%D7%A7%D7%A6%D7%A8%D7%94" target="_blank" rel="noopener">
+      <a class="btn" data-cta="card_whatsapp" href="https://wa.me/972507700322?text=%D7%94%D7%99%D7%99%20%D7%A6%27%D7%99%D7%A7%D7%95%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%9B%D7%A8%D7%98%D7%99%D7%A1%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%93%D7%91%D7%A8%20%D7%A2%D7%9C%20%D7%A9%D7%99%D7%AA%D7%95%D7%A3%20%D7%A4%D7%A2%D7%95%D7%9C%D7%94" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-logo"/></svg>
         <span>לתיאום שיחה קצרה בוואטסאפ</span>
       </a>
@@ -193,15 +193,14 @@ document.addEventListener('click',function(e){
 
     <section>
       <div class="section-label">נעים להכיר</div>
-      <h2 class="section-title">קצת עליי</h2>
+      <h2 class="section-title">למה לעבוד איתי</h2>
       <div class="about">
         <p class="lead">נעים מאוד, אני <em>צ'יקו</em> 👋</p>
-        <ul class="facts">
-          <li>מעל 100 לקוחות</li><li>בן 37</li><li>נשוי + 2</li><li>רחובות</li><li>עברית ופורטוגזית</li>
-        </ul>
-        <p>עליתי לבד מברזיל בגיל 18. כשחיברתי את התשוקה שלי למספרים ולתכנון, מצאתי את הייעוד שלי: לתת לכם את השקט הנפשי שצריך כשבונים חלום.</p>
-        <p class="why">למשכנתא שלכם מגיע מישהו שרואה את הפרטים הקטנים ומחבר אותם לתמונה הגדולה, בדיוק כמו אדריכל. מכאן השם: <b>אדריכל המשכנתאות.</b></p>
-        <p class="more">כי משכנתא היא הרבה יותר מהשוואת ריביות. אני לוקח את המושכות ומוביל אתכם בתהליך מדויק עד הגשמת החלום, בית למגורים או נכס להשקעה. ודבר אחד תדעו בוודאות: <b>עשיתם את הבחירה הנכונה.</b></p>
+        <p class="hook">כמה עסקאות נתקעו לכם כי הלקוח "צריך לבדוק מול הבנק"?</p>
+        <p>המימון הוא החלק הכי קשוח בכל עסקה. ובשוק של היום, אנשים לא פותחים את הכיס עם כל אחד. בזה אני טוב: עושה סדר בכל התמונה הפיננסית של הלקוח, בצורה רגישה ומדויקת, עד שהוא יודע בדיוק כמה הוא יכול ואיך.</p>
+        <p class="result">אתם מקבלים לקוח בשל: יודע מה הוא יכול, מחויב לעסקה ומוכן להתקדם.</p>
+        <p class="why">עליתי לבד מברזיל בגיל 18 ובניתי את עצמי במו ידיי. אני יודע כמה שווה מילה, ושומר על השם שלכם כמו על שלי.</p>
+        <p class="punch">אתם מוכרים.<br>אני דואג שהלקוח יוכל לקנות.</p>
       </div>
     </section>
 
