@@ -3,7 +3,9 @@
     { "source": "/start", "destination": "/", "permanent": true },
     { "source": "/start/", "destination": "/", "permanent": true },
     { "source": "/qr", "destination": "/street/?utm_source=tshirt&utm_medium=qr&utm_campaign=street_videos", "permanent": false },
-    { "source": "/qr/", "destination": "/street/?utm_source=tshirt&utm_medium=qr&utm_campaign=street_videos", "permanent": false }
+    { "source": "/qr/", "destination": "/street/?utm_source=tshirt&utm_medium=qr&utm_campaign=street_videos", "permanent": false },
+    { "source": "/shirt", "destination": "/street/?utm_source=tshirt&utm_medium=qr&utm_campaign=street_videos", "permanent": false },
+    { "source": "/shirt/", "destination": "/street/?utm_source=tshirt&utm_medium=qr&utm_campaign=street_videos", "permanent": false }
   ],
   "headers": [
     {
