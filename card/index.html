@@ -88,8 +88,11 @@ document.addEventListener('click',function(e){
   .about { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 26px 22px; text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,.05); }
   .about .lead { font-size: 20px; font-weight: 800; line-height: 1.45; margin-bottom: 12px; }
   .about .lead em { font-style: normal; color: var(--green); }
-  .about p { color: var(--text-muted); font-size: 16px; line-height: 1.85; }
+  .about p { color: var(--text-muted); font-size: 16px; line-height: 1.85; text-wrap: pretty; }
   .about p b { color: var(--text); font-weight: 800; }
+  .about .why { text-wrap: balance; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
+  .facts { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-bottom: 14px; }
+  .facts li { background: var(--purple-light); color: var(--green); font-size: 12.5px; font-weight: 700; padding: 4px 12px; border-radius: 50px; }
 
   /* services: same names and icons as the site's segment cards, linked to their pages */
   .services { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -191,9 +194,12 @@ document.addEventListener('click',function(e){
       <div class="section-label">נעים להכיר</div>
       <h2 class="section-title">קצת עליי</h2>
       <div class="about">
-        <p class="lead">למה <em>אדריכל</em>?</p>
-        <p>כי משכנתא היא לא השוואת ריביות. אני מתכנן ובונה לכל לקוח תמהיל מותאם אישית, לפי המצב, היעד והצרכים שלו.</p>
-        <p style="margin-top:10px">המומחיות שלי: <b>משפרי דיור ומשקיעים.</b></p>
+        <p class="lead">נעים מאוד, אני <em>צ'יקו</em> 👋</p>
+        <ul class="facts">
+          <li>בן 37</li><li>נשוי + 2</li><li>רחובות</li><li>עברית ופורטוגזית</li>
+        </ul>
+        <p>יועץ משכנתאות עצמאי והבעלים של <bdi style="white-space:nowrap">TICO FINANCE</bdi>. אני לא עובד בשביל אף בנק, אני עובד בשבילכם: יושב איתכם על התמונה המלאה, בונה תמהיל שמתאים בדיוק למצב ולמטרות שלכם, ועומד לצדכם מול הבנקים עד החתימה.</p>
+        <p class="why">למה <b>"אדריכל"</b>? כי משכנתא היא לא השוואת ריביות, היא תוכנית בנייה. <b>ובלי תכנון, אין כלום.</b></p>
       </div>
     </section>
 
