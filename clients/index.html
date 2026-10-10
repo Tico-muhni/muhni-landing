@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<meta name="theme-color" content="#2E8B57"/>
+<title>צ'יקו זוויבל | יועץ משכנתאות | TICO FINANCE</title>
+<meta name="description" content="צ'יקו זוויבל, אדריכל המשכנתאות. משפרי דיור, משקיעים ומיחזור משכנתה. לשיחת ייעוץ ראשונה בוואטסאפ."/>
+<meta name="robots" content="noindex, nofollow"/>
+<meta property="og:title" content="צ'יקו זוויבל | אדריכל המשכנתאות"/>
+<meta property="og:description" content="יועץ משכנתאות עצמאי. מכירה, קנייה, הלוואות ותשלומים, הכל בתוכנית אחת."/>
+<meta property="og:image" content="https://www.ticofinance.co.il/hebrewlogo.png"/>
+<meta property="og:locale" content="he_IL"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+<link rel="shortcut icon" href="/favicon.ico"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<link rel="preload" as="image" href="/card/photo.webp"/>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments)}
+function loadGA(){
+  if(document.getElementById('ga-script'))return;
+  var s=document.createElement('script');s.id='ga-script';s.async=true;
+  s.src='https://www.googletagmanager.com/gtag/js?id=G-G9RC7QMNFJ';
+  document.head.appendChild(s);
+  gtag('js',new Date());gtag('config','G-G9RC7QMNFJ');
+}
+function getCookieConsent(){try{return localStorage.getItem('tico_cookie_consent')}catch(e){return null}}
+if(getCookieConsent()==='accepted') loadGA();
+document.addEventListener('click',function(e){
+  var link=e.target.closest('a[data-cta]');
+  if(!link)return;
+  gtag('event',link.dataset.cta,{event_category:'clients_card',page_location:window.location.href});
+});
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  /* Same tokens and components as the main site (index.html): green gradient hero,
+     pill buttons, 16px cards with 1.5px border, centered section label + title. */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --purple: #0F243E; --purple-light: #e8f4ed;
+    --text: #1a1a2e; --text-muted: #5a5a7a; --border: #c8ddd2;
+    --bg: #f5faf7; --white: #ffffff; --radius: 16px;
+    --green: #2E8B57; --gold: #D4AF37; --star: #f5a623;
+    --hero: linear-gradient(145deg, #1d5e3a 0%, #2E8B57 60%, #3aa869 100%);
+  }
+  body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; padding-bottom: 32px; }
+  a { color: inherit; }
+  .sheet { max-width: 440px; margin: 0 auto; background: var(--bg); }
+
+  /* ---------- header (like the site header) ---------- */
+  .top { background: var(--white); border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; justify-content: center; }
+  .top img { display: block; height: 52px; width: auto; max-width: 100%; }
+
+  /* ---------- hero ---------- */
+  .hero { background: var(--hero); color: var(--white); text-align: center; padding: 28px 16px 0; overflow: hidden; }
+  .hero h1 { font-size: 42px; font-weight: 900; line-height: 1.15; }
+  .hero-sub { font-size: 16px; opacity: .9; margin-top: 6px; }
+  .hero-sub em { font-style: normal; color: var(--gold); font-weight: 700; white-space: nowrap; }
+  .photo-wrap { position: relative; width: 270px; max-width: 78%; margin: 18px auto 0; }
+  .photo-wrap::before { content: ""; position: absolute; inset-inline: 6%; bottom: 0; aspect-ratio: 1; border-radius: 50%; background: rgba(255,255,255,.15); border: 4px solid rgba(255,255,255,.3); border-bottom: 0; }
+  .photo { position: relative; display: block; width: 100%; height: auto; }
+
+  /* ---------- body ---------- */
+  .main { display: flex; flex-direction: column; gap: 44px; padding: 28px 16px 0; }
+  .section-label { font-size: 12px; font-weight: 700; letter-spacing: 2px; color: var(--green); margin-bottom: 8px; text-align: center; }
+  .section-title { font-size: 24px; font-weight: 800; line-height: 1.3; margin-bottom: 18px; text-align: center; }
+
+  .cta { display: flex; flex-direction: column; gap: 12px; }
+  .btn { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 14px 16px; border-radius: 50px; background: var(--green); border: 2px solid var(--green); color: var(--white); font-family: inherit; font-weight: 800; font-size: 17px; text-decoration: none; cursor: pointer; box-shadow: 0 8px 24px rgba(46,139,87,.28); transition: transform .2s, box-shadow .2s; }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(46,139,87,.34); }
+  .btn svg { width: 22px; height: 22px; flex: none; }
+  .btn-ghost { background: var(--white); color: var(--green); box-shadow: none; min-height: 52px; font-size: 16px; }
+  .btn-ghost:hover { background: var(--purple-light); box-shadow: none; }
+  .btn:focus-visible, .lnk:focus-visible, .copy:focus-visible, .svc:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+  .cta-note { text-align: center; font-size: 14px; color: var(--text-muted); }
+  .phone-row { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 15px; color: var(--text-muted); }
+  .phone-row .num { direction: ltr; unicode-bidi: isolate; font-weight: 700; color: var(--text); text-decoration: none; font-variant-numeric: tabular-nums; }
+  .copy { font-family: inherit; font-size: 13px; font-weight: 700; color: var(--green); background: var(--white); border: 1.5px solid var(--border); border-radius: 50px; padding: 3px 14px; cursor: pointer; }
+  .copy:hover { border-color: var(--green); }
+
+  /* about: same treatment as the site's .about-text */
+  .about { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 26px 22px; text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,.05); }
+  .about p { color: var(--text-muted); font-size: 16px; line-height: 1.85; text-wrap: pretty; }
+  .about p b { color: var(--text); font-weight: 800; }
+  .about .why { text-wrap: balance; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
+  .about .hook { color: var(--text); font-size: 18px; font-weight: 800; line-height: 1.5; margin-bottom: 10px; text-wrap: balance; }
+  .about .pre { margin-bottom: 4px; }
+  .about .result { margin-top: 12px; background: var(--purple-light); color: var(--green); font-weight: 800; border-radius: 12px; padding: 12px 14px; line-height: 1.6; }
+  .points { list-style: none; display: flex; flex-direction: column; gap: 10px; text-align: right; margin-top: 4px; }
+  .points li { position: relative; padding-right: 26px; color: var(--text); font-size: 15.5px; line-height: 1.55; font-weight: 500; text-wrap: pretty; }
+  .points li b { font-weight: 800; }
+  .points li::before { content: "✓"; position: absolute; right: 0; top: 1px; width: 18px; height: 18px; border-radius: 50%; background: var(--green); color: var(--white); font-size: 11px; font-weight: 800; display: grid; place-items: center; }
+  .about .gain { margin-top: 12px; }
+  .about .punch { margin-top: 10px; color: var(--text); font-size: 18px; font-weight: 900; line-height: 1.4; text-wrap: balance; }
+
+  /* services: same names and icons as the site's segment cards, linked to their pages */
+  .services { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .svc { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 16px 14px; text-decoration: none; color: var(--text); display: flex; flex-direction: column; gap: 6px; box-shadow: 0 6px 20px rgba(0,0,0,.05); transition: transform .18s, box-shadow .18s, border-color .18s; }
+  .svc:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(46,139,87,.15); border-color: var(--purple); }
+  .svc .icon { font-size: 26px; line-height: 1; }
+  .svc h3 { font-size: 16px; font-weight: 800; line-height: 1.3; }
+  .svc .go { color: var(--green); font-weight: 700; font-size: 13px; margin-top: auto; }
+  .post-badge { display: inline-block; background: var(--purple-light); color: var(--green); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 50px; width: fit-content; }
+
+  /* reviews: same card as the site's .t-card */
+  .rv-strip { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; margin-inline: -16px; padding: 2px 16px 6px; scroll-padding-inline: 16px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .rv-strip::-webkit-scrollbar { display: none; }
+  .rv-strip:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+  .t-card { flex: 0 0 86%; scroll-snap-align: center; min-width: 0; background: var(--white); border: 1.5px solid var(--border); border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 14px; }
+  .t-head { display: flex; align-items: center; justify-content: space-between; }
+  .t-card .stars { color: var(--star); font-size: 16px; letter-spacing: 2px; line-height: 1; }
+  .rg { width: 20px; height: 20px; flex: none; display: block; }
+  .t-card p { font-size: 14.5px; line-height: 1.75; overflow-wrap: anywhere; }
+  .t-who { display: flex; align-items: center; gap: 10px; }
+  .t-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--green); color: var(--white); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; flex-shrink: 0; }
+  .t-name { font-weight: 700; font-size: 13.5px; direction: auto; }
+  .t-role { font-size: 11.5px; color: var(--text-muted); }
+  .t-dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
+  .t-dot { width: 8px; height: 8px; border-radius: 4px; background: var(--border); transition: all .3s; }
+  .t-dot.on { width: 24px; background: var(--green); }
+
+  /* link rows */
+  .lnk { display: flex; align-items: center; gap: 12px; min-height: 62px; padding: 12px 16px; text-decoration: none; color: var(--text); background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); min-width: 0; transition: border-color .18s, box-shadow .18s; }
+  .lnk:hover { border-color: var(--purple); box-shadow: 0 8px 24px rgba(46,139,87,.12); }
+  .lnk .txt { display: flex; flex-direction: column; min-width: 0; line-height: 1.3; flex: 1; }
+  .lnk .txt b { font-weight: 700; font-size: 15px; }
+  .lnk .txt small { color: var(--text-muted); font-size: 12.5px; direction: ltr; text-align: right; overflow-wrap: anywhere; }
+  .lnk .go { color: var(--green); font-weight: 700; font-size: 14px; white-space: nowrap; }
+  .lnk.reviews { margin-top: 16px; }
+  .gbox { width: 44px; height: 44px; flex: none; display: grid; place-items: center; background: var(--white); border: 1.5px solid var(--border); border-radius: 50%; }
+  .gbox svg { width: 22px; height: 22px; }
+
+  /* links: one list of identical rows, round icons like the site footer's .social-btn */
+  .socials { display: flex; flex-direction: column; gap: 10px; }
+  .social-btn { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex: none; color: var(--white); }
+  .social-btn svg { width: 22px; height: 22px; }
+
+  .foot { text-align: center; color: var(--text-muted); font-size: 13px; line-height: 1.7; }
+  .foot b { color: var(--text); font-weight: 700; }
+
+  .toast { position: fixed; inset-inline: 16px; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); margin-inline: auto; max-width: 300px; text-align: center; background: var(--purple); color: var(--white); font-weight: 700; padding: 12px 18px; border-radius: 50px; opacity: 0; transform: translateY(8px); transition: opacity .2s, transform .2s; pointer-events: none; }
+  .toast.on { opacity: 1; transform: none; }
+
+  @media (max-width: 370px) {
+    .hero h1 { font-size: 36px; }
+    .services { grid-template-columns: 1fr; }
+  }
+  @media (min-width: 441px) {
+    body { padding: 32px 0 48px; }
+    .sheet { border: 1.5px solid var(--border); border-radius: 28px; overflow: hidden; box-shadow: 0 16px 48px rgba(46,139,87,.15); }
+    .main { padding-bottom: 28px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .btn, .svc, .lnk, .toast, .t-dot { transition: none; } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="g-logo" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></symbol><symbol id="wa-logo" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24s8.24 3.7 8.24 8.24-3.7 8.24-8.24 8.24Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.29Z"/></symbol></svg>
+<div class="sheet">
+
+  <div class="top">
+    <img src="/card/logo.webp" alt="TICO FINANCE, אדריכל המשכנתאות" width="960" height="215">
+  </div>
+
+  <header class="hero">
+    <h1>צ'יקו זוויבל</h1>
+    <p class="hero-sub">משכנתא היא לא השוואת ריביות, היא <em>ארכיטקטורה פיננסית</em></p>
+    <div class="photo-wrap">
+      <img class="photo" fetchpriority="high" alt="צ'יקו זוויבל" width="520" height="490" src="/card/photo.webp">
+    </div>
+  </header>
+
+  <main class="main">
+
+    <section class="cta">
+      <a class="btn" data-cta="clients_whatsapp" href="https://wa.me/972507700322?text=%D7%94%D7%99%D7%99%20%D7%A6%27%D7%99%D7%A7%D7%95%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%9B%D7%A8%D7%98%D7%99%D7%A1%20%D7%A9%D7%9C%D7%9A%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%99%D7%97%D7%AA%20%D7%99%D7%99%D7%A2%D7%95%D7%A5" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-logo"/></svg>
+        <span>לשיחת ייעוץ ראשונה בוואטסאפ</span>
+      </a>
+      <p class="cta-note">שיחה קצרה, בלי התחייבות</p>
+      <a class="btn btn-ghost" href="/card/tico-zveibel.vcf" download="Tico Zveibel.vcf" data-cta="clients_save_contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="4"/><path d="M2 21v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 4 1.5"/><path d="M19 14v7M15.5 17.5h7"/></svg>
+        <span>שמירת איש קשר בטלפון</span>
+      </a>
+      <div class="phone-row">
+        <span>או ישר בטלפון</span>
+        <a class="num" href="tel:+972507700322" data-cta="clients_call">050-770-0322</a>
+        <button class="copy" id="copyBtn" type="button">העתקה</button>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">אתם בונים חלום.<br>אני דואג שהמספרים יעבדו.</h2>
+      <div class="about">
+        <p class="pre">משכנתא היא ההחלטה הכלכלית הכי גדולה בחיים, וטבעי שהראש לא מפסיק לחשוב:</p>
+        <p class="hook">כמה נשלם? ומה אם נטעה?</p>
+        <ul class="points">
+          <li><b>מוכרים וקונים במקביל?</b> אני מתזמן הכל, כך שכל תשלום נכנס בזמן</li>
+          <li><b>הלוואות קטנות שחונקות את התקציב?</b> מאחדים הכל לתוכנית אחת שמתאימה לכם</li>
+          <li><b>קונים נכס להשקעה?</b> בונים מימון שמשאיר לכם יותר כסף בכיס</li>
+          <li><b>כבר יש לכם משכנתא?</b> בודקים אם אפשר לחסוך במיחזור</li>
+        </ul>
+        <p class="result">אתם יודעים בדיוק כמה אתם יכולים ואיך. ומקבלים שקט נפשי.</p>
+        <p class="why">עליתי לבד מברזיל בגיל 18. כשחיברתי את התשוקה שלי למספרים ולתכנון, מצאתי את הייעוד שלי: ללוות אנשים בדרך לבית שלהם.</p>
+        <p class="punch">אתם מתרגשים מהבית החדש.<br>אני דואג לכל השאר.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-label">לקוחות ממליצים</div>
+      <h2 class="section-title">מה אומרים עליי בגוגל</h2>
+      <div class="rv-strip" id="rvStrip" tabindex="0" aria-label="ביקורות מגוגל, גלילה הצידה">
+        <figure class="t-card">
+          <div class="t-head"><span class="stars" aria-label="5 כוכבים">★★★★★</span><svg class="rg" aria-label="Google" role="img"><use href="#g-logo"/></svg></div>
+          <p>…מי שמחפשים יועץ משכנתאות מקצוען ברמה הגבוהה ביותר שלא רק מוצא לך את הריבית הנמוכה אלא גם את התמהיל ונקודות היציאה המדוייקות לכם - זה האיש!</p>
+          <figcaption class="t-who"><span class="t-avatar" aria-hidden="true">נ</span><span><span class="t-name">נדב ליבנה</span><br><span class="t-role">ביקורת בגוגל</span></span></figcaption>
+        </figure>
+        <figure class="t-card">
+          <div class="t-head"><span class="stars" aria-label="5 כוכבים">★★★★★</span><svg class="rg" aria-label="Google" role="img"><use href="#g-logo"/></svg></div>
+          <p>צ'יקו אלוף האלופים! מקצוען אמיתי!! 🙌 ליווה אותנו לאורך כל תהליך מיחזור המשכנתה, שהיה ארוך ומפרך ובעיקר מורכב הרבה יותר מהרגיל. לאורך כל הדרך נשאר מפוקס, חד, עניני וזמין, והכי חשוב – השרה רוגע וביטחון גם ברגעים המורכבים. אין ספק שהיינו בידיים טובות. ממליצים בחום!! ❤️</p>
+          <figcaption class="t-who"><span class="t-avatar" aria-hidden="true">א</span><span><span class="t-name">אסף רטוביץ</span><br><span class="t-role">ביקורת בגוגל</span></span></figcaption>
+        </figure>
+        <figure class="t-card">
+          <div class="t-head"><span class="stars" aria-label="5 כוכבים">★★★★★</span><svg class="rg" aria-label="Google" role="img"><use href="#g-logo"/></svg></div>
+          <p>מספר 1 בכל תחום! יועץ משכנתאות שהוא גם בנקאי/עו"ד מתווך ובהכל כולל הוא אלוף</p>
+          <figcaption class="t-who"><span class="t-avatar" aria-hidden="true">א</span><span><span class="t-name">אסף שמואל</span><br><span class="t-role">ביקורת בגוגל</span></span></figcaption>
+        </figure>
+        <figure class="t-card">
+          <div class="t-head"><span class="stars" aria-label="5 כוכבים">★★★★★</span><svg class="rg" aria-label="Google" role="img"><use href="#g-logo"/></svg></div>
+          <p>צ'יקו מקצוען מהרמה הגבוהה ביותר, יודע לתפור חליפה לפי צורך הלקוח, יחס אישי ומסור, ובכלל יועץ ברמה הכי גבוהה שיש</p>
+          <figcaption class="t-who"><span class="t-avatar" aria-hidden="true">Y</span><span><span class="t-name">Yom Tov Assis</span><br><span class="t-role">ביקורת בגוגל</span></span></figcaption>
+        </figure>
+        <figure class="t-card">
+          <div class="t-head"><span class="stars" aria-label="5 כוכבים">★★★★★</span><svg class="rg" aria-label="Google" role="img"><use href="#g-logo"/></svg></div>
+          <p>ציקו היקר ליווה בכל תהליך התכנון משכנתא ועד החתימות בבנק, קיבלנו יחס מקצועי וזמין ברמה גבוהה ביותר. ממליצים בחום</p>
+          <figcaption class="t-who"><span class="t-avatar" aria-hidden="true">I</span><span><span class="t-name">Idan Amar</span><br><span class="t-role">ביקורת בגוגל</span></span></figcaption>
+        </figure>
+        <figure class="t-card">
+          <div class="t-head"><span class="stars" aria-label="5 כוכבים">★★★★★</span><svg class="rg" aria-label="Google" role="img"><use href="#g-logo"/></svg></div>
+          <p>ממליצה בחום! צ'יקו עזר לי מאוד לבנות את המסלולים הכי נכונים לי, תמיד זמין, נגיש, ואדיב.</p>
+          <figcaption class="t-who"><span class="t-avatar" aria-hidden="true">O</span><span><span class="t-name">Orel Levi</span><br><span class="t-role">ביקורת בגוגל</span></span></figcaption>
+        </figure>
+        <figure class="t-card">
+          <div class="t-head"><span class="stars" aria-label="5 כוכבים">★★★★★</span><svg class="rg" aria-label="Google" role="img"><use href="#g-logo"/></svg></div>
+          <p>שירות מעולה מכל הבחינות! קיבלנו ליווי מקצועי, אישי וצמוד לאורך כל תהליך קבלת המשכנתא ורכישת הבית. תמיד היה זמין עבורנו, סבלני, קשוב ונעים, ונתן לנו תחושה שיש על מי לסמוך בכל שלב. מעבר למקצועיות הגבוהה, היחס היה חם ואנושי. ממליצים בחום!</p>
+          <figcaption class="t-who"><span class="t-avatar" aria-hidden="true">T</span><span><span class="t-name">TIKUN OLAM - Isaac Lev</span><br><span class="t-role">ביקורת בגוגל</span></span></figcaption>
+        </figure>
+        <figure class="t-card">
+          <div class="t-head"><span class="stars" aria-label="5 כוכבים">★★★★★</span><svg class="rg" aria-label="Google" role="img"><use href="#g-logo"/></svg></div>
+          <p>חוויה מעולה. הגענו למיחזור משכנתא וקיבלנו ליווי מקצועי ומדויק מצ'יקו זויבל עשה לנו סדר בהכל והשיג לנו את התנאים הכי טובים שיש. תודה רבה על השירות האיכותי</p>
+          <figcaption class="t-who"><span class="t-avatar" aria-hidden="true">ד</span><span><span class="t-name">דימה בריידו</span><br><span class="t-role">ביקורת בגוגל</span></span></figcaption>
+        </figure>
+        <figure class="t-card">
+          <div class="t-head"><span class="stars" aria-label="5 כוכבים">★★★★★</span><svg class="rg" aria-label="Google" role="img"><use href="#g-logo"/></svg></div>
+          <p>אלוף עולם. זמין בשעות לא שעות ונותן באמת מהלב. נותן תחושה של קרוב משפחה ומתעניין באמת בלקוח בתור בנאדם ולא רק בתור לקוח</p>
+          <figcaption class="t-who"><span class="t-avatar" aria-hidden="true">L</span><span><span class="t-name">LoVe EaT</span><br><span class="t-role">ביקורת בגוגל</span></span></figcaption>
+        </figure>
+      </div>
+      <div class="t-dots" id="rvDots" aria-hidden="true"><span class="t-dot"></span><span class="t-dot"></span><span class="t-dot"></span><span class="t-dot"></span><span class="t-dot"></span><span class="t-dot"></span><span class="t-dot"></span><span class="t-dot"></span><span class="t-dot"></span></div>
+      <a class="lnk reviews" href="https://share.google/5UJTqFuM0paog8QMS" target="_blank" rel="noopener" data-cta="clients_google_reviews">
+        <span class="gbox"><svg aria-hidden="true"><use href="#g-logo"/></svg></span>
+        <span class="txt"><b>לכל הביקורות בגוגל</b><small>TICO FINANCE</small></span>
+        <span class="go">←</span>
+      </a>
+    </section>
+
+    <section>
+      <div class="section-label">תהליכים</div>
+      <h2 class="section-title">איך אני עוזר</h2>
+      <div class="services">
+        <a class="svc" href="/upgraders/" data-cta="clients_upgraders"><span class="icon">🏡</span><h3>משפרי דיור</h3><span class="post-badge">המומחיות שלי</span></a>
+        <a class="svc" href="/investors/" data-cta="clients_investors"><span class="icon">📈</span><h3>משקיעי נדל"ן</h3><span class="post-badge">המומחיות שלי</span></a>
+        <a class="svc" href="/refinance/" data-cta="clients_refinance"><span class="icon">🏦</span><h3>מיחזור משכנתה</h3><span class="go">לפרטים ←</span></a>
+        <a class="svc" href="/br/" data-cta="clients_brazil" lang="he"><span class="icon">🇧🇷</span><h3>תושבי ברזיל שקונים בישראל</h3><span class="go" lang="pt" dir="ltr">Em português →</span></a>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-label">בואו נתחבר</div>
+      <h2 class="section-title">עוד ממני</h2>
+      <div class="socials">
+        <a class="lnk" href="https://www.instagram.com/ticozveibel/" target="_blank" rel="noopener" data-cta="clients_instagram">
+          <span class="social-btn" style="background:linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></span>
+          <span class="txt"><b>אינסטגרם</b><small>@ticozveibel</small></span>
+          <span class="go">←</span>
+        </a>
+        <a class="lnk" href="https://www.facebook.com/tico.zveibel" target="_blank" rel="noopener" data-cta="clients_facebook">
+          <span class="social-btn" style="background:#1877F2;"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.4 21v-7.6h2.6l.4-3h-3V8.5c0-.9.3-1.5 1.6-1.5h1.6V4.3c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21h3z"/></svg></span>
+          <span class="txt"><b>פייסבוק</b><small>tico.zveibel</small></span>
+          <span class="go">←</span>
+        </a>
+        <a class="lnk" href="https://www.ticofinance.co.il" target="_blank" rel="noopener" data-cta="clients_site">
+          <span class="social-btn" style="background:var(--hero);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg></span>
+          <span class="txt"><b>האתר של TICO FINANCE</b><small>ticofinance.co.il</small></span>
+          <span class="go">←</span>
+        </a>
+      </div>
+    </section>
+
+    <footer class="foot"><b>TICO FINANCE</b> · ייעוץ משכנתאות · רחובות</footer>
+
+  </main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+  var toastEl = document.getElementById("toast");
+  var toastTimer = null;
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add("on");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove("on"); }, 1800);
+  }
+  document.getElementById("copyBtn").addEventListener("click", function () {
+    var text = "050-770-0322";
+    var done = function () { toast("המספר הועתק"); };
+    var fallback = function () {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(ta);
+      if (ok) done(); else toast("אפשר לסמן את המספר ולהעתיק ידנית");
+    };
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+  });
+
+  (function () {
+    var strip = document.getElementById("rvStrip");
+    var dots = document.querySelectorAll("#rvDots .t-dot");
+    if (!strip || !dots.length) return;
+    function update() {
+      var mid = strip.getBoundingClientRect().left + strip.clientWidth / 2;
+      var best = 0, bestD = 1e9;
+      strip.querySelectorAll(".t-card").forEach(function (el, i) {
+        var r = el.getBoundingClientRect();
+        var d = Math.abs(r.left + r.width / 2 - mid);
+        if (d < bestD) { bestD = d; best = i; }
+      });
+      dots.forEach(function (d, i) { d.classList.toggle("on", i === best); });
+    }
+    strip.addEventListener("scroll", function () { window.requestAnimationFrame(update); }, { passive: true });
+    update();
+  })();
+</script>
+</body>
+</html>
