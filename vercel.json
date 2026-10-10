@@ -27,6 +27,12 @@
       ]
     },
     {
+      "source": "/clients(/?)(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    },
+    {
       "source": "/card/(.*)\\.vcf",
       "headers": [
         { "key": "Content-Type", "value": "text/vcard; charset=utf-8" },
