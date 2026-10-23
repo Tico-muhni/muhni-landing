@@ -50,7 +50,7 @@ def clean_head(src):
     head = re.sub(r'<meta content="width=device-width[^>]*>|<meta name="viewport"[^>]*>|<meta charset[^>]*>', '', head)
     head = re.sub(r'<script defer src="/_vercel/insights/script.js"></script>', '', head)
     head = re.sub(r'\n\s*\n+', '\n', head).strip()
-    return ('<meta charset="utf-8"/>\n<meta name="viewport" content="width=device-width, initial-scale=1"/>\n' + C.ICONS + '\n' + C.GA + '\n' + head + '\n' + C.FONTS + '\n' + C.CSS_LINK)
+    return ('<meta charset="utf-8"/>\n<meta name="viewport" content="width=device-width, initial-scale=1"/>\n<meta name="color-scheme" content="only light"/>\n<meta name="theme-color" content="#ffffff"/>\n' + C.ICONS + '\n' + C.GA + '\n' + head + '\n' + C.FONTS + '\n' + C.CSS_LINK)
 
 
 def document(lang, head, body, scripts='', main_class=''):
