@@ -552,100 +552,10 @@
         <h2>העלאת דוח ופרטי קשר</h2>
         <p>המידע שלך מאובטח ומשמש אך ורק לניתוח מקצועי</p>
       </div>
-      <div id="form-content">
-        <div class="field">
-          <label for="bank_select">באיזה בנק מתנהלת המשכנתה?</label>
-          <select id="bank_select" required>
-            <option disabled selected value="">בחר בנק...</option>
-            <option value="leumi">בנק לאומי</option>
-            <option value="mizrahi">מזרחי טפחות</option>
-            <option value="hapoalim">בנק הפועלים</option>
-            <option value="discount">בנק דיסקונט</option>
-            <option value="jerusalem">בנק ירושלים</option>
-            <option value="mercantile">בנק מרכנתיל</option>
-            <option value="fibi">הבנק הבינלאומי</option>
-            <option value="other">אחר</option>
-          </select>
-        </div>
-        <div class="field-row">
-          <div class="field">
-            <label for="full_name">שם מלא</label>
-            <input type="text" id="full_name" placeholder="ישראל ישראלי" required/>
-          </div>
-          <div class="field">
-            <label for="phone">מספר טלפון</label>
-            <input type="tel" id="phone" placeholder="050-0000000" dir="ltr" required/>
-          </div>
-        </div>
-        <div class="field">
-          <label>העלאת דוח יתרות משכנתא <span style="font-weight:500;color:var(--text-muted);">(לא חובה. אפשר גם לשלוח בהמשך בוואטסאפ)</span></label>
-          <div class="dropzone" id="dropzone" onclick="document.getElementById('file-input').click()">
-            <div class="dropzone-icon">☁️</div>
-            <div class="dropzone-title">לחצו להעלאה או גררו לכאן</div>
-            <div class="dropzone-sub">קובץ PDF או תמונה עד 10MB</div>
-            <input accept=".pdf,image/*" id="file-input" type="file" style="display:none"/>
-            <div class="file-name" id="file-name"></div>
-          </div>
-        </div>
-        <style>
-          .custom-cb { display:none; }
-          .custom-cb-box {
-            width:26px; height:26px; min-width:26px; border-radius:8px;
-            border:2.5px solid var(--border); background:white;
-            display:flex; align-items:center; justify-content:center;
-            cursor:pointer; transition:border-color .2s, background .2s;
-            margin-top:1px; flex-shrink:0;
-          }
-          .custom-cb:checked + label .custom-cb-box {
-            background:var(--green); border-color:var(--green);
-          }
-          .custom-cb:checked + label .custom-cb-box svg { opacity:1; }
-          .custom-cb-box svg { opacity:0; transition:opacity .15s; }
-        </style>
-        <div class="field" style="margin-bottom:16px;">
-          <input type="checkbox" id="consent" class="custom-cb"/>
-          <label for="consent" style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;font-weight:500;font-size:14px;color:var(--text-muted);line-height:1.5;">
-            <span class="custom-cb-box">
-              <svg width="15" height="15" viewBox="0 0 14 14" fill="none">
-                <polyline points="2,7 5.5,11 12,3" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            <span style="padding-top:3px;">אני מאשר/ת קבלת מידע ממומחי TICO FINANCE בהתאם ל<a href="../privacy.html" style="color:var(--green);font-weight:700;">מדיניות הפרטיות</a></span>
-          </label>
-        </div>
-        <button class="submit-btn" id="submit-btn" onclick="submitForm()">שלחו לי ניתוח מומחה</button>
-        <div class="error-msg" id="error-msg"></div>
-        <div class="trust-note">🔒 המידע מאובטח ומוצפן בתקנים המחמירים ביותר</div>
-      </div>
-
-      <div class="success-msg" id="success-msg">
-        <div style="text-align:center;padding:8px 0 32px;">
-          <div style="width:72px;height:72px;background:#e8fff4;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:36px;">✅</div>
-          <h3 style="font-size:22px;font-weight:800;color:var(--text);margin-bottom:8px;">הפרטים התקבלו בהצלחה!</h3>
-          <p style="color:var(--text-muted);font-size:15px;margin-bottom:32px;">תודה שבחרת בנו לבחון את המשכנתה שלך</p>
-          <div style="background:linear-gradient(135deg,#1d5e3a 0%,#2E8B57 100%);border-radius:24px;padding:32px 24px;color:white;position:relative;overflow:hidden;">
-            <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.4);border-radius:50px;padding:9px 22px;margin-bottom:24px;">
-              <span style="width:9px;height:9px;background:#a8f0c6;border-radius:50%;animation:pulse 1.2s ease-in-out infinite;flex-shrink:0;"></span>
-              <span style="font-size:14px;font-weight:700;color:#ffffff;">המומחה האישי שלך כבר בודק את הנתונים</span>
-            </div>
-            <div style="width:120px;height:120px;border-radius:50%;overflow:hidden;margin:0 auto 16px;border:4px solid rgba(255,255,255,.6);box-shadow:0 8px 32px rgba(0,0,0,.4);">
-              <img src="../halfbody.png" alt="צ'יקו - TICO FINANCE" style="width:100%;height:100%;object-fit:cover;object-position:center top;image-orientation:from-image;" loading="lazy" decoding="async"/>
-            </div>
-            <p style="font-weight:800;font-size:18px;margin-bottom:4px;color:#ffffff;">המומחה האישי שלך</p>
-            <p style="font-size:13px;margin-bottom:24px;color:rgba(255,255,255,.85);">TICO FINANCE · אדריכל המשכנתאות</p>
-            <div style="background:#ffffff;border-radius:16px;padding:22px 24px;text-align:center;">
-              <p style="font-size:16px;line-height:1.85;color:#1a1a2e;font-weight:500;margin:0;">
-                קיבלנו את הפרטים ואת דוח היתרות שלך.<br/>
-                מומחה מטעמנו ינתח את הנתונים ויחזור<br/>
-                אליך עם סימולציה מפורטת <strong style="color:#2E8B57;">תוך 24 שעות.</strong>
-              </p>
-            </div>
-            <div style="display:flex;gap:12px;margin-top:20px;justify-content:center;">
-              <a href="https://wa.me/972507700322" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:white;padding:14px 24px;border-radius:12px;text-decoration:none;font-weight:800;font-size:15px;">💬 צ׳אט מהיר ב-WhatsApp</a>
-            </div>
-          </div>
-          <p style="color:var(--text-muted);font-size:12px;margin-top:20px;">🔒 הנתונים שלך מוצפנים ומאובטחים</p>
-        </div>
+      <iframe id="embedded-form-iframe" src="https://www.snpv.co.il/public/embedded_pages/Leads_balance_report/preview/d66f08c6-e409-4e59-8c4c-e577273cd516?source=website_refinance" scrolling="no" frameborder="0" title="טופס בדיקת מיחזור משכנתה" style="width:100%;min-height:200px;border:none;overflow:hidden;display:block;"></iframe>
+      <div style="text-align:center;margin-top:20px;">
+        <p style="color:var(--text-muted);font-size:14px;margin-bottom:10px;">מעדיפים לדבר קודם?</p>
+        <a href="https://wa.me/972507700322?text=%D7%94%D7%99%D7%99%20%D7%A6%27%D7%99%D7%A7%D7%95%21%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%91%D7%93%D7%95%D7%A7%20%D7%9E%D7%99%D7%97%D7%96%D7%95%D7%A8%20%D7%9E%D7%A9%D7%9B%D7%A0%D7%AA%D7%94." target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:white;padding:12px 24px;border-radius:12px;text-decoration:none;font-weight:800;font-size:15px;">💬 כתבו לי בוואטסאפ</a>
       </div>
     </div>
   </div>
@@ -1003,10 +913,10 @@
 </nav>
 
 <script>
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwCzY2nAC0xl61tXUhvA2q6th9v1ecYhP_3HsFuvJdm26-f_PElfu2xiGOYwtFWZUl0/exec';
   const dropzone = document.getElementById('dropzone');
   const fileInput = document.getElementById('file-input');
   const fileNameEl = document.getElementById('file-name');
+  if (dropzone && fileInput) {
   dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('drag-over'); });
   dropzone.addEventListener('dragleave', () => dropzone.classList.remove('drag-over'));
   dropzone.addEventListener('drop', e => {
@@ -1017,6 +927,7 @@
   function handleFile(file) {
     fileNameEl.textContent = '✓ ' + file.name; fileNameEl.style.display = 'block';
     dropzone.classList.add('has-file'); dropzone.querySelector('.dropzone-title').textContent = 'קובץ נבחר';
+  }
   }
 
   const bankData = {
@@ -1114,46 +1025,6 @@
   function closeModal() { document.getElementById('bank-modal').style.display = 'none'; document.body.style.overflow = ''; }
   function closeModalAndScroll() { closeModal(); setTimeout(() => document.getElementById('form').scrollIntoView({behavior:'smooth'}), 100); }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-  function fileToBase64(file) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(reader.result.split(',')[1]);
-      reader.onerror = reject;
-      reader.readAsDataURL(file);
-    });
-  }
-
-  async function submitForm() {
-    const bank = document.getElementById('bank_select').value;
-    const name = document.getElementById('full_name').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const file = fileInput.files[0];
-    const errEl = document.getElementById('error-msg');
-    const btn = document.getElementById('submit-btn');
-    errEl.style.display = 'none';
-    if (!bank) { showError('אנא בחר בנק'); return; }
-    if (!name) { showError('אנא הכנס שם מלא'); return; }
-    if (!phone) { showError('אנא הכנס מספר טלפון'); return; }
-    if (!document.getElementById('consent').checked) { showError('אנא אשר/י את תנאי הפרטיות להמשך'); return; }
-    btn.disabled = true;
-    btn.innerHTML = 'שולח... <span class="spinner"></span>';
-    try {
-      const payload = { full_name:name, phone_number:phone, bank_name:bank, file_name:file?file.name:'', file_size:file?Math.round(file.size/1024)+'KB':'' };
-      if (file && file.size < 5*1024*1024) { payload.file_data = await fileToBase64(file); payload.file_type = file.type; }
-      await fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', body:JSON.stringify(payload) });
-      window.location.href = '../thank-you.html';
-    } catch(err) {
-      showError('אירעה שגיאה. נסה שוב מאוחר יותר.');
-      btn.disabled = false; btn.innerHTML = 'שלחו לי ניתוח מומחה';
-    }
-  }
-  function showError(msg) {
-    const errEl = document.getElementById('error-msg');
-    errEl.textContent = msg; errEl.style.display = 'block';
-    document.getElementById('submit-btn').disabled = false;
-    document.getElementById('submit-btn').innerHTML = 'שלחו לי ניתוח מומחה';
-  }
 
   // ===== CALCULATOR =====
   const PRIME_RATE = 5.25;
@@ -1277,10 +1148,45 @@
     res.scrollIntoView({behavior:'smooth',block:'start'});
   }
   addTrack();
-  document.getElementById('bank_select').addEventListener('change', function() {
+  const bankSelectEl = document.getElementById('bank_select');
+  if (bankSelectEl) bankSelectEl.addEventListener('change', function() {
     document.querySelectorAll('[id^="tt-"]').forEach(sel => updateMarket(sel.id.replace('tt-','')));
   });
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.9/iframeResizer.min.js"></script>
+<script>
+  (function () {
+    var iframe = document.getElementById('embedded-form-iframe');
+    if (!iframe || typeof iFrameResize !== 'function') return;
+    var SENT_KEY = 'refinance_lead_submit_sent';
+    var MIN_DELTA_PX = 120, MIN_DELTA_RATIO = 0.2;
+    var touched = false, sent = false, baseline = null, lastHeight = null;
+    try { sent = sessionStorage.getItem(SENT_KEY) === '1'; } catch (e) {}
+    function markTouched() { if (touched) return; touched = true; baseline = lastHeight; }
+    window.addEventListener('blur', function () {
+      setTimeout(function () { if (document.activeElement === iframe) markTouched(); }, 0);
+    });
+    function sendLeadSubmit() {
+      if (sent) return;
+      sent = true;
+      try { sessionStorage.setItem(SENT_KEY, '1'); } catch (e) {}
+      if (typeof gtag === 'function') gtag('event', 'generate_lead', { event_category: 'form', event_label: 'refinance_snpv' });
+    }
+    iFrameResize({
+      log: false,
+      checkOrigin: false,
+      onResized: function (data) {
+        var h = parseInt(data.height, 10);
+        if (!h) return;
+        lastHeight = h;
+        if (!touched || sent) return;
+        if (baseline === null) { baseline = h; return; }
+        var delta = Math.abs(h - baseline);
+        if (delta >= MIN_DELTA_PX || delta / baseline >= MIN_DELTA_RATIO) sendLeadSubmit();
+      }
+    }, '#embedded-form-iframe');
+  })();
+</script>
 </body>
 </html>
