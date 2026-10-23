@@ -142,22 +142,14 @@ def meet_section(lang, extra_he=''):
     if he:
         head = '<div class="kicker">הכירו אותי</div><h2 class="h2">מי עומד <em>מאחורי התוכנית</em></h2>'
         vid = f'<button class="vid" type="button" data-video aria-label="הפעלת הסרטון הכירו אותי"><img src="/assets/img/tico-fullbody.webp" alt="" width="547" height="1091" loading="lazy"><span class="play">{play}</span><span class="vtag">הכירו אותי · 90 שניות</span></button>'
-        idc = ('<article class="idcard" aria-label="תעודת זהות"><div class="idtop"><span>TICO FINANCE</span><span>תעודת זהות</span></div><div class="idbody">'
-               '<div class="idph" aria-hidden="true"><span>TF</span></div><dl>'
-               '<div><dt>שם</dt><dd>צ\'יקו זוויבל</dd></div><div><dt>מה אני</dt><dd>אדריכל המשכנתאות</dd></div>'
-               '<div><dt>איך אני חושב</dt><dd>כי בלי תכנון, אין כלום</dd></div><div><dt>שפות</dt><dd>עברית ופורטוגזית</dd></div></dl></div></article>')
         bio = ('<div class="bio"><p>אני מאמין שמשכנתה היא אף פעם לא רק "השוואת ריביות", אלא <strong>ארכיטקטורה פיננסית שלמה</strong>. אני מסתכל על הפאזל המלא של החיים והעסקים שלכם - ובונה עבורכם את המסלול המדויק ביותר, בהתאמה אישית מלאה.</p>'
                '<p>בין אם אתם ממחזרים משכנתה קיימת, מתכננים מעבר דירה, בונים תיק נדל"ן להשקעה, או קונים נכס בישראל מרחוק - אני כאן ללוות אתכם צעד אחר צעד, מול הבנקים ומול המספרים הקטנים שעושים את כל ההבדל.</p></div>')
     else:
         head = '<div class="kicker">Conheça o Tico</div><h2 class="h2">Quem cuida <em>do seu processo</em></h2>'
         vid = f'<button class="vid" type="button" data-video aria-label="Assistir ao vídeo de apresentação"><img src="/assets/img/tico-fullbody.webp" alt="" width="547" height="1091" loading="lazy"><span class="play">{play}</span><span class="vtag">Conheça o Tico · 90 segundos</span></button>'
-        idc = ('<article class="idcard" aria-label="Identidade"><div class="idtop"><span>TICO FINANCE</span><span>Identidade</span></div><div class="idbody">'
-               '<div class="idph" aria-hidden="true"><span>TF</span></div><dl>'
-               '<div><dt>Nome</dt><dd>Tico Zveibel</dd></div><div><dt>Atuação</dt><dd>Consultoria de financiamento imobiliário</dd></div>'
-               '<div><dt>Experiência</dt><dd>Mais de 3 anos no mercado imobiliário israelense</dd></div><div><dt>Idiomas</dt><dd>Hebraico e português</dd></div></dl></div></article>')
         bio = ('<div class="bio"><p>A TICO FINANCE nasceu para ajudar brasileiros a realizarem o sonho de ter um imóvel em Israel, mesmo estando a milhares de quilômetros de distância. Com mais de 3 anos de experiência no mercado imobiliário israelense, Tico Zveibel entende os dois lados: o brasileiro que quer investir, e o mercado israelense que precisa ser decifrado.</p>'
                '<p>Você não precisa confiar às cegas: cada etapa é acompanhada de perto, com transparência total e atualizações constantes. Porque distância não deveria significar insegurança.</p></div>')
-    return f'<section class="meet" id="meet">{head}<div class="meet-grid">{vid}{idc}</div>{bio}</section>'
+    return f'<section class="meet" id="meet">{head}<div class="meet-grid">{vid}</div>{bio}</section>'
 
 
 def community_section(lang):
