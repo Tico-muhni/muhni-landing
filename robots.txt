@@ -2,9 +2,6 @@ User-agent: *
 Allow: /
 
 # חסום דפי מערכת
-Disallow: /terms.html
-Disallow: /privacy.html
-Disallow: /accessibility.html
 Disallow: /topsecret/
 Disallow: /card/
 Disallow: /clients/
