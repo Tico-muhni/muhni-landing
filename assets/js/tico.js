@@ -107,7 +107,11 @@
     if (!dock) return;
     var target = $('#finder') || $('#form'), hidden = false;
     if (target) { var r = target.getBoundingClientRect(); hidden = r.top < window.innerHeight * 0.6 && r.bottom > window.innerHeight * 0.3; }
-    dock.classList.toggle('show', window.scrollY > 520 && !hidden);
+    var ft = $('footer'), nearEnd = false;
+    if (ft) nearEnd = ft.getBoundingClientRect().top < window.innerHeight - 40;
+    var show = window.scrollY > 520 && !hidden && !nearEnd;
+    dock.classList.toggle('show', show);
+    D.body.classList.toggle('dock-on', show);
   }
   if (dock) {
     var main = $('a.main', dock);
