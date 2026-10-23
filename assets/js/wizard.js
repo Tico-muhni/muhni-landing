@@ -90,8 +90,10 @@
   }
   function focusHead() { var h = stage.querySelector('.q,h3'); if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); } }
   function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  var ARW = '<svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>';
   function tile(attrs, icon, title, small, tag) {
-    return '<' + (tag || 'button') + (tag ? '' : ' type="button" role="radio" aria-checked="false"') + ' class="tile" ' + attrs + '><span class="ic">' + icon.replace('<svg', '<svg class="main"') + I.ck + '</span><span>' + title + (small ? '<small>' + small + '</small>' : '') + '</span></' + (tag || 'button') + '>';
+    var opt = icon === I.ring;
+    return '<' + (tag || 'button') + (tag ? '' : ' type="button" role="radio" aria-checked="false"') + ' class="tile' + (opt ? ' opt' : '') + '" ' + attrs + '><span class="tt">' + title + (small ? '<small>' + small + '</small>' : '') + '</span><span class="go">' + (opt ? '' : ARW) + I.ck + '</span></' + (tag || 'button') + '>';
   }
 
   function renderChoose() {
@@ -100,7 +102,7 @@
     setProg(1);
     stage.innerHTML = '<h3 class="q">' + S.choose + '</h3><div class="opts" role="radiogroup" aria-label="' + S.pathsLbl + '">' +
       Object.keys(PATHS).map(function (k) { var p = PATHS[k]; return tile('data-path="' + k + '"', p.ic, p.name, p.sub); }).join('') +
-      '<a class="tile" href="/br/"><span class="ic">' + I.flag.replace('<svg', '<svg class="main"') + I.ck + '</span><span>Comprar imóvel em Israel<small>Português · רכישה מרחוק לברזילאים</small></span></a></div>';
+      '</div><a class="ptlink" href="/br/" hreflang="pt-BR" lang="pt-BR">Comprar imóvel em Israel · Português ' + ARW + '</a>';
     [].forEach.call(stage.querySelectorAll('[data-path]'), function (b) {
       b.addEventListener('click', function () {
         b.setAttribute('aria-checked', 'true'); st.path = b.getAttribute('data-path');
