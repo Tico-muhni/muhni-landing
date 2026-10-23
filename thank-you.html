@@ -15,6 +15,12 @@
   gtag('js', new Date());
 
   gtag('config', 'G-G9RC7QMNFJ');
+  try {
+    if (!sessionStorage.getItem('lead_sent')) {
+      gtag('event', 'generate_lead', { event_category: 'form', event_label: document.referrer || 'direct' });
+      sessionStorage.setItem('lead_sent', '1');
+    }
+  } catch (e) {}
 </script>
 <title>תודה! - TICO FINANCE | יועץ משכנתאות</title>
 <meta name="description" content="תודה שפנית ל-TICO FINANCE. יועץ משכנתאות מוסמך צ'יקו זוויבל יחזור אליך תוך 24 שעות עם ניתוח מפורט."/>
