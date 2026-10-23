@@ -166,7 +166,7 @@
   .testimonials { background: white; padding-left: 24px; padding-right: 24px; }
   .t-carousel-wrap { position: relative; max-width: 1100px; margin: 40px auto 0; }
   .t-track { overflow: hidden; }
-  .t-inner { display: flex; gap: 24px; transition: transform .4s ease; will-change: transform; }
+  .t-inner { display: flex; align-items: flex-start; gap: 24px; transition: transform .4s ease; will-change: transform; }
   .t-card { background: var(--bg); border: 1.5px solid var(--border); border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 14px; min-width: min(340px, calc(100vw - 48px)); max-width: 340px; }
   .t-card .stars { color: #f5a623; font-size: 16px; }
   .t-card p { color: var(--text); font-size: 14.5px; line-height: 1.75; flex: 1; }
@@ -391,6 +391,7 @@
   <div class="section-label">לקוחות ממליצים</div>
   <h2 class="section-title">מה אומרים עלינו?</h2>
   <p class="section-sub">מעל 100 לקוחות כבר עברו תהליך מוצלח עם TICO FINANCE</p>
+  <p class="section-sub" style="margin-top:-8px;font-weight:700;">★ 5.0 · 15 ביקורות בגוגל</p>
   <div class="t-carousel-wrap">
     <div class="t-track" id="testimonial-track">
       <div class="t-inner" id="testimonial-inner">
@@ -433,6 +434,61 @@
           <div class="stars">★★★★★</div>
           <p>"עבודה מעולה! צ'יקו כיועץ היה מאוד מסייע ותמיד מוכן לעזור בכל דבר. בלעדיו לא מאמינים שהיינו קונים דירה בישראל!"</p>
           <div class="t-who"><div class="t-avatar">ח</div><div><div class="t-name">חנה ק.</div><div class="t-role">רכישת דירה ראשונה להשקעה</div></div></div>
+        </div>
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>"חוויה מעולה. הגענו למיחזור משכנתא וקיבלנו ליווי מקצועי ומדויק מצ'יקו זויבל עשה לנו סדר בהכל והשיג לנו את התנאים הכי טובים שיש. תודה רבה על השירות האיכותי."</p>
+          <div class="t-who"><div class="t-avatar">D</div><div><div class="t-name">דימה ב.</div><div class="t-role">ביקורת בגוגל</div></div></div>
+        </div>
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>"עבדתי עם צ'יקו על תכנון משכנתא לא פשוט, מהלך שדורש לחשוב כמה שנים קדימה, כולל ניצול של נק, יציאה ותרחישי שוק שונים. צ'יקו ישב איתי על התמונה המלאה: מה קורה בכל תרחיש, איך כל החלטה היום משפיעה על מה שאפשר יהיה לעשות בעוד כמה שנים, ואיפה הנקודות שכדאי להשאיר גמישות. הוא הסביר דברים בגובה העיניים, אמר לי גם מה לא כדאי לעשות, ולא ניסה לרצות אותי בכל מה שביקשתי אלא רק מה שיהיה טוב לתכנון האסטרטגי. מי שמחפשים יועץ משכנתאות מקצוען ברמה הגבוהה ביותר שלא רק מוצא לך את הריבית הנמוכה אלא גם את התמהיל ונקודות היציאה המדויקות לכם - זה האיש!"</p>
+          <div class="t-who"><div class="t-avatar">נ</div><div><div class="t-name">נדב ל.</div><div class="t-role">ביקורת בגוגל</div></div></div>
+        </div>
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>"אלוף עולם. זמין בשעות לא שעות ונותן באמת מהלב. נותן תחושה של קרוב משפחה ומתעניין באמת בלקוח בתור בנאדם ולא רק בתור לקוח"</p>
+          <div class="t-who"><div class="t-avatar">L</div><div><div class="t-name">LoVe EaT</div><div class="t-role">ביקורת בגוגל</div></div></div>
+        </div>
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>"אחד אלופים במקצוע שלו מלווה אותך לאורך כל הדרך מסביר את הדברים בנחת וסבלנות, יורד לפרטים הכי קטנים. ממליץ בחום רק ירוויח"</p>
+          <div class="t-who"><div class="t-avatar">S</div><div><div class="t-name">Shmoel R.</div><div class="t-role">ביקורת בגוגל</div></div></div>
+        </div>
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>"מספר 1 בכל תחום! יועץ משכנתאות שהוא גם בנקאי/עו"ד מתווך ובהכל כולל הוא אלוף"</p>
+          <div class="t-who"><div class="t-avatar">א</div><div><div class="t-name">אסף ש.</div><div class="t-role">ביקורת בגוגל</div></div></div>
+        </div>
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>"חוויה שלי עם Tico ממש טובה! ממליצה בחום, יחס טוב, נעים, תחושה שהוא בשבילנו ובודק כל האפשרויות כדי שנוכל להחליט מה הכי טוב עבורנו! וגם אחרי ממשיך ללוות."</p>
+          <div class="t-who"><div class="t-avatar">י</div><div><div class="t-name">יצחק ג.</div><div class="t-role">ביקורת בגוגל</div></div></div>
+        </div>
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>"ממליצה בחום! צ'יקו עזר לי מאוד לבנות את המסלולים הכי נכונים לי, תמיד זמין, נגיש ואדיב."</p>
+          <div class="t-who"><div class="t-avatar">O</div><div><div class="t-name">Orel L.</div><div class="t-role">ביקורת בגוגל</div></div></div>
+        </div>
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>"שירות מעולה מכל הבחינות! קיבלנו ליווי מקצועי, אישי וצמוד לאורך כל תהליך קבלת המשכנתא ורכישת הבית. תמיד היה זמין עבורנו, סבלני, קשוב ונעים, ונתן לנו תחושה שיש על מי לסמוך בכל שלב. מעבר למקצועיות הגבוהה, היחס היה חם ואנושי. ממליצים בחום!"</p>
+          <div class="t-who"><div class="t-avatar">I</div><div><div class="t-name">Isaac L.</div><div class="t-role">ביקורת בגוגל</div></div></div>
+        </div>
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>"צ'יקו אלוף האלופים! מקצוען אמיתי!! ליווה אותנו לאורך כל תהליך מיחזור המשכנתה, שהיה ארוך ומפרך ובעיקר מורכב הרבה יותר מהרגיל. לאורך כל הדרך נשאר מפוקס, חד, עניני וזמין, והכי חשוב – השרה רוגע וביטחון גם ברגעים המורכבים. אין ספק שהיינו בידיים טובות. ממליצים בחום!!"</p>
+          <div class="t-who"><div class="t-avatar">א</div><div><div class="t-name">אסף ר.</div><div class="t-role">ביקורת בגוגל</div></div></div>
+        </div>
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>"צ'יקו מקצוען מהרמה הגבוהה ביותר, יודע לתפור חליפה לפי צורך הלקוח, יחס אישי ומסור, ובכלל יועץ ברמה הכי גבוהה שיש"</p>
+          <div class="t-who"><div class="t-avatar">Y</div><div><div class="t-name">Yom Tov A.</div><div class="t-role">ביקורת בגוגל</div></div></div>
+        </div>
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>"ציקו היקר הוא תותח אמיתי. מקצוען ברמות. נעים מאוד. עזר לי מאוד גם ברמה האישית, גם ברמה המקצועית, וגם התאים לי את המוצר הכי טוב ונכון עבורנו."</p>
+          <div class="t-who"><div class="t-avatar">ר</div><div><div class="t-name">רן א.</div><div class="t-role">ביקורת בגוגל</div></div></div>
         </div>
       </div>
     </div>
