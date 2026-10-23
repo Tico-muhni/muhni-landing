@@ -143,7 +143,7 @@ def meet_section(lang, extra_he=''):
         head = '<div class="kicker">הכירו אותי</div><h2 class="h2">מי עומד <em>מאחורי התוכנית</em></h2>'
         vid = f'<button class="vid" type="button" data-video aria-label="הפעלת הסרטון הכירו אותי"><img src="/assets/img/tico-fullbody.webp" alt="" width="547" height="1091" loading="lazy"><span class="play">{play}</span><span class="vtag">הכירו אותי · 90 שניות</span></button>'
         idc = ('<article class="idcard" aria-label="תעודת זהות"><div class="idtop"><span>TICO FINANCE</span><span>תעודת זהות</span></div><div class="idbody">'
-               '<div class="idph"><img src="/assets/img/tico-fullbody.webp" alt="צ\'יקו זוויבל, אדריכל המשכנתאות" width="547" height="1091" loading="lazy"></div><dl>'
+               '<div class="idph" aria-hidden="true"><span>TF</span></div><dl>'
                '<div><dt>שם</dt><dd>צ\'יקו זוויבל</dd></div><div><dt>מה אני</dt><dd>אדריכל המשכנתאות</dd></div>'
                '<div><dt>איך אני חושב</dt><dd>כי בלי תכנון, אין כלום</dd></div><div><dt>שפות</dt><dd>עברית ופורטוגזית</dd></div></dl></div></article>')
         bio = ('<div class="bio"><p>אני מאמין שמשכנתה היא אף פעם לא רק "השוואת ריביות", אלא <strong>ארכיטקטורה פיננסית שלמה</strong>. אני מסתכל על הפאזל המלא של החיים והעסקים שלכם - ובונה עבורכם את המסלול המדויק ביותר, בהתאמה אישית מלאה.</p>'
@@ -152,7 +152,7 @@ def meet_section(lang, extra_he=''):
         head = '<div class="kicker">Conheça o Tico</div><h2 class="h2">Quem cuida <em>do seu processo</em></h2>'
         vid = f'<button class="vid" type="button" data-video aria-label="Assistir ao vídeo de apresentação"><img src="/assets/img/tico-fullbody.webp" alt="" width="547" height="1091" loading="lazy"><span class="play">{play}</span><span class="vtag">Conheça o Tico · 90 segundos</span></button>'
         idc = ('<article class="idcard" aria-label="Identidade"><div class="idtop"><span>TICO FINANCE</span><span>Identidade</span></div><div class="idbody">'
-               '<div class="idph"><img src="/assets/img/tico-fullbody.webp" alt="Tico Zveibel" width="547" height="1091" loading="lazy"></div><dl>'
+               '<div class="idph" aria-hidden="true"><span>TF</span></div><dl>'
                '<div><dt>Nome</dt><dd>Tico Zveibel</dd></div><div><dt>Atuação</dt><dd>Consultoria de financiamento imobiliário</dd></div>'
                '<div><dt>Experiência</dt><dd>Mais de 3 anos no mercado imobiliário israelense</dd></div><div><dt>Idiomas</dt><dd>Hebraico e português</dd></div></dl></div></article>')
         bio = ('<div class="bio"><p>A TICO FINANCE nasceu para ajudar brasileiros a realizarem o sonho de ter um imóvel em Israel, mesmo estando a milhares de quilômetros de distância. Com mais de 3 anos de experiência no mercado imobiliário israelense, Tico Zveibel entende os dois lados: o brasileiro que quer investir, e o mercado israelense que precisa ser decifrado.</p>'
@@ -434,9 +434,8 @@ def build_landing(slug, source_id=None, form_text=None):
   <div class="visual"><div class="panel"><img class="portrait" src="/assets/img/tico-fullbody.webp" width="547" height="1091" alt="צ'יקו זוויבל, יועץ משכנתאות ואדריכל המשכנתאות" fetchpriority="high"></div></div>
 </section>'''
 
-    about_html = f'''<section class="sec" id="about"><div class="split"><div class="copy"><div class="kicker">{esc(a_lbl)}</div><h2 class="h2">{esc(a_h)}</h2>{a_ps}
-<div class="cta-row"><a class="pbtn" href="{a_cta_href}" target="_blank" rel="noopener">{esc(a_cta_txt)} {C.CHIP}</a></div></div>
-<div class="pic"><img src="/assets/img/tico-fullbody.webp" width="547" height="1091" alt="צ'יקו זוויבל" loading="lazy"></div></div></section>'''
+    about_html = f'''<section class="sec" id="about"><div class="split one"><div class="copy"><div class="kicker">{esc(a_lbl)}</div><h2 class="h2">{esc(a_h)}</h2>{a_ps}
+<div class="cta-row"><a class="pbtn" href="{a_cta_href}" target="_blank" rel="noopener">{esc(a_cta_txt)} {C.CHIP}</a></div></div></div></section>'''
 
     net_html = f'<section class="sec" id="{net.get("id")}"><div class="sec-head"><div class="kicker">{esc(n_lbl)}</div><h2 class="h2">{esc(n_h)}</h2><p class="lede">{esc(n_sub)}</p></div>{_cards(net)}</section>'
     how_html = (f'<section class="sec" id="how"><div class="sec-head"><div class="kicker">{esc(h_lbl)}</div><h2 class="h2">{esc(h_h)}</h2></div>{_steps(how, "steps s4")}'
@@ -519,12 +518,11 @@ def build_refinance():
 <iframe id="embedded-form-iframe" class="snpv" src="https://www.snpv.co.il/public/embedded_pages/Leads_balance_report/preview/d66f08c6-e409-4e59-8c4c-e577273cd516?source=website_refinance" scrolling="no" frameborder="0" title="טופס בדיקת מיחזור משכנתה"></iframe>
 <div class="alt-wa"><a class="wbtn" href="{C.wa(wa_msg)}" target="_blank" rel="noopener"><span class="g">{C.WA_GLYPH}</span><span>מעדיפים לדבר קודם? וואטסאפ<small>ישר אליי</small></span></a></div></div></section>'''
 
-    about = f'''<section class="sec" id="about"><div class="split"><div class="copy"><div class="kicker">נעים להכיר</div><h2 class="h2">צ'יקו, <em>האדריכל הפיננסי שלך</em></h2>
+    about = f'''<section class="sec" id="about"><div class="split one"><div class="copy"><div class="kicker">נעים להכיר</div><h2 class="h2">צ'יקו, <em>האדריכל הפיננסי שלך</em></h2>
 <p>אני מאמין שמשכנתה היא אף פעם לא רק "השוואת ריביות", אלא <strong>ארכיטקטורה פיננסית שלמה</strong>. כמומחה למשקיעי נדל"ן ומשפרי דיור, אני מסתכל על הפאזל המלא של החיים והעסקים שלך, ובונה עבורך את המסלול המדויק ביותר, <strong>בהתאמה אישית מלאה</strong>.</p>
 <p>אני מתמחה גם ב<strong>מיחזור משכנתאות</strong>: בדיקה מחדש של התנאים, התאמה לריביות השוק הנוכחיות ולמצב האישי שלך, והכל עם מטרה אחת: שהמשכנתה תעבוד בשבילך. מיחזור נכון יכול לחסוך עשרות ואף מאות אלפי שקלים.</p>
 <p><strong>כי בלי תכנון, אין כלום.</strong></p>
-<div class="cta-row"><a class="pbtn" href="{C.wa()}" target="_blank" rel="noopener">בוא נדבר בוואטסאפ {C.CHIP}</a></div></div>
-<div class="pic sq"><img src="/assets/img/tico-halfbody.webp" width="400" height="400" alt="צ'יקו זוויבל" loading="lazy"></div></div></section>'''
+<div class="cta-row"><a class="pbtn" href="{C.wa()}" target="_blank" rel="noopener">בוא נדבר בוואטסאפ {C.CHIP}</a></div></div></div></section>'''
 
     bens = '''<section class="sec" id="benefits"><div class="sec-head"><div class="kicker">למה אנחנו?</div><h2 class="h2">למה לבדוק <em>איתנו?</em></h2></div>
 <div class="bens"><div class="ben"><h3>מומחיות אנושית מול AI</h3><p>בניגוד לאלגוריתמים קרים, המומחים שלנו מזהים הזדמנויות במצבים מורכבים ומבינים את הצרכים האישיים שלך.</p></div>
@@ -698,7 +696,7 @@ def build_lecture():
 </section>
 <section class="band slim"><div class="nums">{stats}</div></section>
 <section class="sec"><div class="split"><div class="copy"><div class="kicker">למה זה שווה</div><h2 class="h2">{esc(_txt(val.find("h2")))}</h2>{"".join(val_ps)}</div>
-<aside class="idcard"><div class="idtop"><span>TICO FINANCE</span><span>המרצה</span></div><div class="idbody"><div class="idph"><img src="/assets/img/tico-fullbody.webp" alt="{esc(a_h)}" width="547" height="1091" loading="lazy"></div><dl><div><dt>שם</dt><dd>{esc(a_h)}</dd></div><div><dt>תפקיד</dt><dd>{esc(a_role)}</dd></div></dl></div><div class="about-body">{a_ps}<div class="tags">{tags}</div></div></aside></div></section>
+<aside class="idcard"><div class="idtop"><span>TICO FINANCE</span><span>המרצה</span></div><div class="idbody"><div class="idph" aria-hidden="true"><span>TF</span></div><dl><div><dt>שם</dt><dd>{esc(a_h)}</dd></div><div><dt>תפקיד</dt><dd>{esc(a_role)}</dd></div></dl></div><div class="about-body">{a_ps}<div class="tags">{tags}</div></div></aside></div></section>
 <section class="sec">{sec_head("השוק היום", esc(_txt(market.select_one(".section-title"))), esc(_txt(market.select_one(".section-desc"))))}<div class="cards c2">{m_cards}</div><div class="note big mb">{esc(_txt(market.select_one(".market-bottom")))}</div></section>
 <section class="sec">{sec_head("התוכן", esc(_txt(inc.select_one(".section-title"))), _inner(inc.select_one(".section-desc")))}<div class="cards c3">{inc_cards}</div>
 <div class="cta-row"><a class="pbtn" href="#hr-form">אני רוצה לתאם הרצאה לארגון שלי {C.CHIP}</a></div></section>

@@ -402,11 +402,11 @@ footer.site{align-items:center}
 .idtop{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;background:var(--g-600);color:#fff;font:700 12px var(--f-display);letter-spacing:.18em}
 .idbody{display:grid;grid-template-columns:104px 1fr;gap:20px;padding:22px;flex:1;align-items:start}
 .idph{width:104px;height:132px;border-radius:14px;overflow:hidden;position:relative;background:linear-gradient(160deg,#3aa869,#1d6b40);border:2px solid var(--gold)}
-.idph img{position:absolute;width:150px;left:50%;top:6px;transform:translateX(-50%);height:auto}
+.idph{display:grid;place-items:center}.idph span{font:900 34px var(--f-serif);color:#fff;letter-spacing:.02em}
 .idcard dl{margin:0;display:grid;gap:14px}
 .idcard dt{font:700 11px var(--f-display);letter-spacing:.14em;color:var(--muted);margin-bottom:2px}
 .idcard dd{margin:0;font:700 19px/1.3 var(--f-serif);color:var(--ink)}
-@media(max-width:860px){.meet-grid{grid-template-columns:1fr}.vid{min-height:300px}.vid .play{width:72px;height:72px;inset-inline-start:7%}.vid .play svg{width:28px;height:28px}.idbody{grid-template-columns:84px 1fr}.idph{width:84px;height:108px}.idph img{width:122px}}
+@media(max-width:860px){.meet-grid{grid-template-columns:1fr}.vid{min-height:300px}.vid .play{width:72px;height:72px;inset-inline-start:7%}.vid .play svg{width:28px;height:28px}.idbody{grid-template-columns:84px 1fr}.idph{width:84px;height:108px}}
 .comm-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;margin-top:20px}
 .pod{position:relative;display:flex;justify-content:space-between;gap:20px;padding:clamp(24px,4vw,40px);border-radius:32px;text-decoration:none;color:#fff;background:linear-gradient(160deg,#2E8B57,#1d6b40);overflow:hidden;transition:transform .25s var(--ease)}
 .pod-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
@@ -517,6 +517,7 @@ body.dock-on .a11y{bottom:84px}
 .split .pic{position:relative;height:460px;border-radius:32px;overflow:hidden;background:linear-gradient(160deg,#3aa869,#2E8B57 55%,#1d6b40)}
 .split .pic img{position:absolute;bottom:0;left:50%;transform:translateX(-50%);height:96%;width:auto;filter:drop-shadow(0 20px 24px rgba(0,0,0,.25))}
 .split .pic.sq img{height:auto;width:100%;max-width:none;bottom:-8%}
+@media(min-width:861px){.split.one{grid-template-columns:minmax(0,760px);justify-content:center}}
 @media(max-width:860px){.split{grid-template-columns:1fr}.split .pic{height:380px}}
 
 /* cards grid (the former "network" cards) */
