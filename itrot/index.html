@@ -1,84 +1,64 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html dir="rtl" lang="he">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
-<link rel="shortcut icon" href="/favicon.ico"/>
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G9RC7QMNFJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-G9RC7QMNFJ');
-</script>
-<script>
-  document.addEventListener('click', function(e) {
-    var link = e.target.closest('a[href*="wa.me"]');
-    if (!link) return;
-    var label = link.textContent.trim() || link.getAttribute('aria-label') || 'whatsapp';
-    gtag('event', 'whatsapp_click', {
-      event_category: 'engagement',
-      event_label: label,
-      page_location: window.location.href
-    });
-  });
-</script>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="color-scheme" content="only light"/>
+<meta name="theme-color" content="#ffffff"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/><link rel="shortcut icon" href="/favicon.ico"/><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G9RC7QMNFJ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-G9RC7QMNFJ");</script>
 <title>איך מוציאים דו"ח יתרה לסילוק | TICO FINANCE</title>
 <meta name="robots" content="noindex, nofollow">
-<style>
-  :root{
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&family=Rubik:wght@500;700;800&family=Frank+Ruhl+Libre:wght@500;700;900&display=swap">
+<link rel="stylesheet" href="/assets/css/tico.css?v=1">
+<style>.g{
     --green:#2E8B57;
-    --green-dark:#20603C;
-    --navy:#001B37;
-    --orange:#F7AC32;
-    --bg:#FBFBF9;
+    --green-dark:#1d6b40;
+    --navy:#0B1F3A;
+    --orange:#ffffff;
+    --bg:#ffffff;
     --card:#FFFFFF;
-    --border:#E3E6E2;
-    --text:#1C2420;
-    --muted:#5B6660;
+    --border:#e2ebe5;
+    --text:#14211a;
+    --muted:#5a6b60;
   }
-  *{box-sizing:border-box;}
-  body{
+.g *{box-sizing:border-box;}
+.g{
     margin:0;
     background:var(--bg);
     color:var(--text);
-    font-family:'Assistant','Segoe UI',Arial,sans-serif;
+    font-family:var(--f-serif);
     line-height:1.55;
   }
-  header.hero{
+.g header.hero{
     background:linear-gradient(160deg,var(--green) 0%,var(--green-dark) 100%);
     color:#fff;
     padding:56px 20px 70px;
     text-align:center;
     position:relative;
   }
-  header.hero .brand{
-    font-family:Georgia,serif;
+.g header.hero .brand{
+    font-family:var(--f-serif);
     font-size:22px;
     letter-spacing:1px;
     opacity:.95;
     margin-bottom:18px;
     font-weight:700;
   }
-  header.hero .brand span{ color:var(--orange); }
-  header.hero h1{
-    font-family:Georgia,serif;
+.g header.hero .brand span{ color:var(--orange); }
+.g header.hero h1{
+    font-family:var(--f-serif);
     font-size:clamp(26px,5vw,42px);
     margin:0 0 14px;
     font-weight:700;
   }
-  header.hero p{
+.g header.hero p{
     max-width:620px;
     margin:0 auto;
     font-size:17px;
     opacity:.95;
   }
-  .facts{
+.g .facts{
     max-width:880px;
     margin:-40px auto 0;
     padding:0 20px;
@@ -88,7 +68,7 @@
     position:relative;
     z-index:2;
   }
-  .fact{
+.g .fact{
     background:var(--card);
     border:1px solid var(--border);
     border-radius:14px;
@@ -96,54 +76,102 @@
     text-align:center;
     box-shadow:0 6px 18px rgba(0,27,55,.06);
   }
-  .fact .num{ font-family:Georgia,serif; font-size:22px; color:var(--green); font-weight:700; }
-  .fact .lbl{ font-size:13px; color:var(--muted); margin-top:4px; }
-  main{ max-width:980px; margin:0 auto; padding:60px 20px 40px; }
-  .intro{ max-width:760px; margin:0 auto 46px; text-align:center; }
-  .intro h2{ font-family:Georgia,serif; font-size:24px; color:var(--navy); margin-bottom:10px; }
-  .intro p{ color:var(--muted); font-size:15.5px; }
-  h3.section-title{ font-family:Georgia,serif; font-size:20px; color:var(--navy); text-align:center; margin:0 0 24px; }
-  .bank-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:18px; margin-bottom:56px; }
-  .bank-card{ background:var(--card); border:1px solid var(--border); border-radius:16px; padding:22px 20px 18px; text-align:center; transition:box-shadow .18s ease, transform .18s ease; }
-  .bank-card:hover{ box-shadow:0 10px 26px rgba(0,27,55,.09); transform:translateY(-2px); }
-  .bank-card .logo-wrap{ height:64px; display:flex; align-items:center; justify-content:center; margin-bottom:12px; }
-  .bank-card .logo-wrap img{ max-height:56px; max-width:170px; object-fit:contain; }
-  .bank-card .top{ display:flex; flex-direction:column; align-items:center; gap:6px; margin-bottom:10px; }
-  .bank-card h4{ margin:0; font-family:Georgia,serif; font-size:17px; color:var(--navy); }
-  .badge{ font-size:11px; padding:3px 9px; border-radius:20px; white-space:nowrap; font-weight:600; }
-  .badge.web{ background:#E7F3EC; color:var(--green-dark); }
-  .badge.phoneonly{ background:#FCEFD9; color:#9A6A0E; }
-  .bank-card .phone{ font-size:14.5px; color:var(--muted); margin-bottom:14px; text-align:center; }
-  .bank-card .phone b{ color:var(--text); }
-  .bank-card .req{ font-size:12.5px; color:#9A6A0E; background:#FCEFD9; border-radius:8px; padding:6px 10px; margin-bottom:10px; text-align:right; }
-  .actions{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
-  .btn{ display:inline-flex; align-items:center; gap:6px; padding:9px 16px; border-radius:9px; font-size:14px; font-weight:600; text-decoration:none; border:1px solid transparent; cursor:pointer; }
-  .btn.primary{ background:var(--green); color:#fff; }
-  .btn.primary:hover{ background:var(--green-dark); }
-  .btn.ghost{ background:transparent; color:var(--navy); border-color:var(--border); }
-  .btn.ghost:hover{ border-color:var(--navy); }
-  details{ margin-top:12px; }
-  summary{ cursor:pointer; font-size:13.5px; color:var(--green-dark); font-weight:600; list-style:none; }
-  summary::-webkit-details-marker{ display:none; }
-  summary::before{ content:"איך עושים את זה באתר ▾ "; }
-  details[open] summary::before{ content:"הסתר הוראות ▴ "; }
-  details ol{ margin:10px 0 0; padding-inline-start:20px; font-size:13.5px; color:var(--muted); }
-  details li{ margin-bottom:5px; }
-  .cta{ background:var(--green-dark); color:#fff; border-radius:20px; padding:46px 30px; text-align:center; margin-bottom:20px; }
-  .cta h3{ font-family:Georgia,serif; font-size:24px; margin:0 0 10px; }
-  .cta p{ opacity:.85; margin:0 0 22px; font-size:15px; }
-  .cta .btn.primary{ background:var(--orange); color:var(--navy); font-size:15px; padding:12px 26px; }
-  .cta .btn.primary:hover{ background:#ffbf55; }
-  footer{ text-align:center; padding:30px 20px 40px; color:var(--muted); font-size:13px; }
-  footer .brand{ font-family:Georgia,serif; color:var(--green-dark); font-weight:700; font-size:15px; margin-bottom:4px;}
-  footer a{ color:var(--green-dark); text-decoration:none; }
-  @media (max-width:640px){ .facts{ grid-template-columns:1fr; margin-top:-24px; } header.hero{ padding:42px 16px 60px; } }
+.g .fact .num{ font-family:var(--f-serif); font-size:22px; color:var(--green); font-weight:700; }
+.g .fact .lbl{ font-size:13px; color:var(--muted); margin-top:4px; }
+.g main{ max-width:980px; margin:0 auto; padding:60px 20px 40px; }
+.g .intro{ max-width:760px; margin:0 auto 46px; text-align:center; }
+.g .intro h2{ font-family:var(--f-serif); font-size:24px; color:var(--navy); margin-bottom:10px; }
+.g .intro p{ color:var(--muted); font-size:15.5px; }
+.g h3.section-title{ font-family:var(--f-serif); font-size:20px; color:var(--navy); text-align:center; margin:0 0 24px; }
+.g .bank-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:18px; margin-bottom:56px; }
+.g .bank-card{ background:var(--card); border:1px solid var(--border); border-radius:16px; padding:22px 20px 18px; text-align:center; transition:box-shadow .18s ease, transform .18s ease; }
+.g .bank-card:hover{ box-shadow:0 10px 26px rgba(0,27,55,.09); transform:translateY(-2px); }
+.g .bank-card .logo-wrap{ height:64px; display:flex; align-items:center; justify-content:center; margin-bottom:12px; }
+.g .bank-card .logo-wrap img{ max-height:56px; max-width:170px; object-fit:contain; }
+.g .bank-card .top{ display:flex; flex-direction:column; align-items:center; gap:6px; margin-bottom:10px; }
+.g .bank-card h4{ margin:0; font-family:var(--f-serif); font-size:17px; color:var(--navy); }
+.g .badge{ font-size:11px; padding:3px 9px; border-radius:20px; white-space:nowrap; font-weight:600; }
+.g .badge.web{ background:#E7F3EC; color:var(--green-dark); }
+.g .badge.phoneonly{ background:#FCEFD9; color:#9A6A0E; }
+.g .bank-card .phone{ font-size:14.5px; color:var(--muted); margin-bottom:14px; text-align:center; }
+.g .bank-card .phone b{ color:var(--text); }
+.g .bank-card .req{ font-size:12.5px; color:#9A6A0E; background:#FCEFD9; border-radius:8px; padding:6px 10px; margin-bottom:10px; text-align:right; }
+.g .actions{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+.g .btn{ display:inline-flex; align-items:center; gap:6px; padding:9px 16px; border-radius:9px; font-size:14px; font-weight:600; text-decoration:none; border:1px solid transparent; cursor:pointer; }
+.g .btn.primary{ background:var(--green); color:#fff; }
+.g .btn.primary:hover{ background:var(--green-dark); }
+.g .btn.ghost{ background:transparent; color:var(--navy); border-color:var(--border); }
+.g .btn.ghost:hover{ border-color:var(--navy); }
+.g details{ margin-top:12px; }
+.g summary{ cursor:pointer; font-size:13.5px; color:var(--green-dark); font-weight:600; list-style:none; }
+.g summary::-webkit-details-marker{ display:none; }
+.g summary::before{ content:"איך עושים את זה באתר ▾ "; }
+.g details[open] summary::before{ content:"הסתר הוראות ▴ "; }
+.g details ol{ margin:10px 0 0; padding-inline-start:20px; font-size:13.5px; color:var(--muted); }
+.g details li{ margin-bottom:5px; }
+.g .cta{ background:var(--green-dark); color:#fff; border-radius:20px; padding:46px 30px; text-align:center; margin-bottom:20px; }
+.g .cta h3{ font-family:var(--f-serif); font-size:24px; margin:0 0 10px; }
+.g .cta p{ opacity:.85; margin:0 0 22px; font-size:15px; }
+.g .cta .btn.primary{ background:var(--orange); color:var(--navy); font-size:15px; padding:12px 26px; }
+.g .cta .btn.primary:hover{ background:#ffbf55; }
+.g footer{ text-align:center; padding:30px 20px 40px; color:var(--muted); font-size:13px; }
+.g footer .brand{ font-family:var(--f-serif); color:var(--green-dark); font-weight:700; font-size:15px; margin-bottom:4px;}
+.g footer a{ color:var(--green-dark); text-decoration:none; }
+@media (max-width:640px){.g .facts{ grid-template-columns:1fr; margin-top:-24px; }
+.g header.hero{ padding:42px 16px 60px; }}
+
+.g header.hero{margin-top:16px;border-radius:36px;background:linear-gradient(160deg,#3aa869,#2E8B57 55%,#1d6b40);padding:clamp(36px,6vw,64px) 24px clamp(64px,8vw,90px)}
+.g header.hero h1{font-weight:900;font-size:clamp(1.9rem,4.4vw,3rem);line-height:1.12}
+.g main{padding-top:48px}
+.g .fact{box-shadow:0 18px 36px -24px rgba(20,33,26,.25);border-radius:20px}
+.g .fact .num,.g .step-num{font-family:var(--f-num)}
+.g .cta{border-radius:32px;background:linear-gradient(160deg,#2E8B57,#1d6b40)}
+.g .cta .btn{background:#fff;color:var(--g-700);border-radius:999px;padding:14px 28px;font-weight:800}
+.g .cta .btn:hover{background:var(--g-100)}
+.g .disclaimer{background:var(--tint);border-color:var(--line);color:var(--muted)}
+.g .disclaimer a{color:var(--g-700)!important}
+.g .step{border-radius:22px}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="igG" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#feda75"/><stop offset=".3" stop-color="#fa7e1e"/><stop offset=".55" stop-color="#d62976"/><stop offset=".8" stop-color="#962fbf"/><stop offset="1" stop-color="#4f5bd5"/></linearGradient></defs></svg>
+<a class="skip" href="#main">דלגו לתוכן</a>
+  <header class="nav" id="nav">
+    <div class="nav-in">
+      <a class="brand" href="/" aria-label="TICO FINANCE אדריכל המשכנתאות"><img src="/assets/img/logo-he.webp" width="800" height="185" alt="TICO FINANCE אדריכל המשכנתאות"></a>
+      <nav class="menu" id="menu" aria-label="ניווט ראשי"><span class="ind" id="ind"></span><a href="/#finder" data-s="finder">מצאו מסלול</a><button class="has" id="svcBtn" type="button" aria-expanded="false" aria-controls="mega">שירותים <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><a href="/#process" data-s="process">איך זה עובד</a><a href="/#meet" data-s="meet">הכירו אותי</a><a href="/#reviews" data-s="reviews">המלצות</a><a href="/#faq" data-s="faq">שאלות</a></nav>
+      <div class="tools">
+        <a class="lang" href="/br/" hreflang="pt-BR" lang="pt-BR"><i aria-hidden="true"></i>Português</a>
+        <a class="pbtn sm" href="/#finder">בדיקה חינם <span class="chip"><svg class="a" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><svg class="b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span></a>
+        <button class="burger" id="burger" type="button" aria-label="תפריט" aria-expanded="false" aria-controls="sheet"><span></span><span></span></button>
+      </div>
+      <div class="mega" id="mega" role="region" aria-label="שירותים">
+        <div class="mega-in">
+          <div class="svc"><div class="svc-h">באיזה תהליך אתם נמצאים?</div><a href="/refinance/" data-pick="refi"><b>מיחזור משכנתה</b><span class="d">לבדוק אם אפשר לשפר תנאים ולחסוך</span><span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span></a><a href="/upgraders/" data-pick="up"><b>שיפור דיור</b><span class="d">תזמון בין מכירה לקנייה, וגישור</span><span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span></a><a href="/investors/" data-pick="inv"><b>משקיעי נדל"ן</b><span class="d">מבנה מימון לתיק נכסים</span><span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span></a><a href="/br/"><b>Comprar imóvel em Israel</b><span class="d">Português · רכישה מרחוק</span><span class="ar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span></a><div class="svc-more"><a href="/blog/">בלוג וטיפים</a><a href="/lottery-calculator/">מחשבון משכנתה לזוכי הגרלה</a><a href="/lecture/">הרצאות לארגונים</a></div></div>
+          <div class="feat"><div><h3>לא בטוחים? נתחיל בשיחה</h3><p>ספרו לי מה המצב, ואכוון אתכם.</p></div>
+            <img src="/assets/img/tico-fullbody.webp" alt="" width="547" height="1091" loading="lazy">
+            <a class="wbtn" href="https://wa.me/972507700322" target="_blank" rel="noopener"><span class="g"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg></span><span>וואטסאפ<small></small></span></a></div>
+        </div>
+      </div>
+    </div>
+    <div class="sp" aria-hidden="true"><i id="sp"></i></div>
+  </header>
+<div class="sheet" id="sheet" aria-hidden="true">
+  <a class="big" href="/#finder">מצאו מסלול <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+  <a class="big" href="/refinance/">שירותים</a>
+  <div class="sub2"><a href="/refinance/" data-pick="refi">מיחזור משכנתה<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a><a href="/upgraders/" data-pick="up">שיפור דיור<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a><a href="/investors/" data-pick="inv">משקיעי נדל"ן<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a><a href="/br/">Comprar imóvel em Israel<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></div>
+  <a class="big" href="/#process">איך זה עובד <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a><a class="big" href="/#meet">הכירו אותי <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a><a class="big" href="/#reviews">המלצות <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a><a class="big" href="/#faq">שאלות נפוצות <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+  <div class="sub2" style="padding-top:0"><a href="/blog/">בלוג וטיפים<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a><a href="/lottery-calculator/">מחשבון הגרלות<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a><a href="/lecture/">הרצאות לארגונים<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></div>
+  <div class="bottom">
+    <a class="pbtn lg" href="/#finder">בדיקה חינם <span class="chip"><svg class="a" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><svg class="b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span></a>
+    <a class="lang" href="/br/" hreflang="pt-BR" lang="pt-BR"><i aria-hidden="true"></i>Português</a>
+  </div>
+</div>
+<main id="main" class="page">
+<div class="g">
 
 <header class="hero">
-  <img src="/hebrewlogo.png" alt="TICO FINANCE" style="height:38px;margin-bottom:18px;filter:brightness(0) invert(1);">
+  
   <h1>איך מוציאים דו"ח יתרה לסילוק?</h1>
   <p>מדריך קצר, לפי הבנק שלכם - בלי לחפש, בלי להתבלבל. בוחרים בנק, לוחצים, מקבלים את הדו"ח.</p>
 </header>
@@ -173,16 +201,27 @@
   </div>
 </main>
 
-<footer>
-  <img src="/hebrewlogo.png" alt="TICO FINANCE" style="height:28px;margin-bottom:10px;" loading="lazy" decoding="async">
-  <div>כי בלי תכנון, אין כלום.</div>
-  <div style="margin-top:8px;">
-    <a href="/" target="_blank" rel="noopener">www.ticofinance.co.il</a>
-    &nbsp;&middot;&nbsp;
-    <a href="tel:0507700322">050-770-0322</a>
-  </div>
-</footer>
 
+
+
+
+
+</div>
+</main>
+<div class="page">
+  <footer class="sitefoot">
+    <div class="fgrid">
+      <div class="fbrand"><img src="/assets/img/logo-he.webp" width="800" height="185" alt="TICO FINANCE" loading="lazy"><p class="ftag">כי בלי תכנון, אין כלום.</p><div class="fsoc"><a href="https://www.instagram.com/ticozveibel/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="1.5" width="21" height="21" rx="6" fill="url(#igG)"/><rect x="6" y="6" width="12" height="12" rx="3.6" fill="none" stroke="#fff" stroke-width="1.7"/><circle cx="12" cy="12" r="2.9" fill="none" stroke="#fff" stroke-width="1.7"/><circle cx="16.1" cy="7.9" r="1" fill="#fff"/></svg></a><a href="https://www.facebook.com/tico.zveibel" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#1877F2"/><path d="M13.2 19.5v-6.3h2.1l.4-2.6h-2.5V8.9c0-.8.3-1.3 1.4-1.3h1.2V5.4c-.3 0-1-.1-1.9-.1-1.9 0-3.1 1.1-3.1 3.2v2.1H8.7v2.6h2.1v6.3z" fill="#fff"/></svg></a><a href="https://youtube.com/playlist?list=PLTERUJJXsujA" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1.2" y="4.2" width="21.6" height="15.6" rx="4.6" fill="#FF0000"/><path d="M10 8.7v6.6l5.7-3.3z" fill="#fff"/></svg></a><a href="https://open.spotify.com/show/3z8X1tls84vHBbjRvpBRfa" target="_blank" rel="noopener" aria-label="Spotify"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#1DB954"/><path d="M5.7 9.2c4.3-1.3 9-.8 12.7 1.5" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"/><path d="M6.5 12.5c3.6-1 7.2-.6 10.3 1.3" fill="none" stroke="#000" stroke-width="1.7" stroke-linecap="round"/><path d="M7.3 15.6c2.9-.7 5.5-.4 8.1 1" fill="none" stroke="#000" stroke-width="1.4" stroke-linecap="round"/></svg></a><a href="https://wa.me/972507700322" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#25D366"/><g transform="translate(4.6 4.6) scale(.62)"><path fill="#fff" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></g></svg></a></div></div>
+      <div class="fcol"><h4>מסלולים</h4><a href="/refinance/">מיחזור משכנתה</a><a href="/upgraders/">שיפור דיור</a><a href="/investors/">משקיעי נדל"ן</a><a href="/br/">Comprar imóvel em Israel</a></div><div class="fcol"><h4>ידע</h4><a href="/blog/">בלוג משכנתאות ונדל"ן</a><a href="/lottery-calculator/">מחשבון משכנתה לזוכי הגרלה</a><a href="/lecture/">הרצאות לארגונים</a><a href="https://open.spotify.com/show/3z8X1tls84vHBbjRvpBRfa" target="_blank" rel="noopener">הפודקאסט: תשואה משולשת</a></div><div class="fcol"><h4>יצירת קשר</h4><a href="https://wa.me/972507700322" target="_blank" rel="noopener">וואטסאפ</a><a href="tel:0507700322">050-770-0322</a><a href="mailto:tico.z@ticofinance.co.il">tico.z@ticofinance.co.il</a><a href="/#refer">הפנו חבר</a></div><div class="fcol"><h4>מידע משפטי</h4><a href="/terms.html">תנאי שימוש</a><a href="/privacy.html">מדיניות פרטיות</a><a href="/accessibility.html">הצהרת נגישות</a></div>
+    </div>
+    <p class="fcopy">© 2026 TICO FINANCE. כל הזכויות שמורות.<br>אדריכל המשכנתאות — ייעוץ משכנתאות ופיננסים בליווי אישי ומקצועי.</p>
+  </footer>
+</div>
+<div class="dockwrap" id="dock"><nav class="dk" aria-label="פעולות מהירות">
+  <a class="main" href="/#finder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-9"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h8"/></svg><span>בדיקה חינם</span></a>
+  <a href="https://wa.me/972507700322" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg><span>וואטסאפ</span></a>
+  <a href="tel:0507700322"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span>התקשרו</span></a>
+</nav></div>
 <script>
 const banks = [
   { name:"בנק לאומי", logo:"לאומי.png", type:"web", phone:"6062*", hours:"א׳–ה׳ 8:30–16:00", url:"https://www.leumi.co.il",
@@ -239,7 +278,7 @@ banks.forEach(b=>{
   grid.appendChild(card);
 });
 </script>
-
+<script src="/assets/js/tico.js" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

@@ -1,45 +1,44 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html dir="rtl" lang="he">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="color-scheme" content="only light"/>
+<meta name="theme-color" content="#ffffff"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/><link rel="shortcut icon" href="/favicon.ico"/><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-G9RC7QMNFJ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-G9RC7QMNFJ");</script>
 <meta name="robots" content="noindex, nofollow">
 <title>משוב לקוחות | TICO FINANCE</title>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-<style>
-  :root {
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&family=Rubik:wght@500;700;800&family=Frank+Ruhl+Libre:wght@500;700;900&display=swap">
+<link rel="stylesheet" href="/assets/css/tico.css?v=1">
+<style>.g{
     --green: #2E8B57;
-    --green-dark: #1d5e3a;
-    --green-light: #f0faf4;
-    --navy: #0F243E;
+    --green-dark: #1d6b40;
+    --green-light: #e6f2ea;
+    --navy: #0B1F3A;
     --gold: #D4AF37;
-    --bg: #f5faf7;
+    --bg: #ffffff;
     --white: #ffffff;
-    --border: #c8ddd2;
-    --text: #0b1f13;
-    --text-muted: #5a7a65;
+    --border: #e2ebe5;
+    --text: #14211a;
+    --text-muted: #5a6b60;
     --radius: 16px;
   }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Heebo', sans-serif;
+.g *{ margin: 0; padding: 0; box-sizing: border-box; }
+.g{
+    font-family:var(--f-serif);
     background: var(--bg);
     color: var(--text);
     min-height: 100vh;
   }
-
-  /* Header */
-  .header {
+.g .header{
     background: linear-gradient(145deg, #1d5e3a 0%, #2E8B57 60%, #3aa869 100%);
     padding: 32px 20px 40px;
     text-align: center;
     position: relative;
     overflow: hidden;
   }
-
-  .header::before {
+.g .header::before{
     content: '';
     position: absolute;
     top: -60px; left: -60px;
@@ -47,8 +46,7 @@
     background: rgba(255,255,255,0.06);
     border-radius: 50%;
   }
-
-  .header::after {
+.g .header::after{
     content: '';
     position: absolute;
     bottom: -40px; right: -40px;
@@ -56,31 +54,25 @@
     background: rgba(255,255,255,0.05);
     border-radius: 50%;
   }
-
-
-  .header h1 {
+.g .header h1{
     color: #fff;
     font-size: 24px;
     font-weight: 900;
     margin-bottom: 6px;
     position: relative;
   }
-
-  .header p {
+.g .header p{
     color: rgba(255,255,255,0.7);
     font-size: 14px;
     font-weight: 300;
     position: relative;
   }
-
-  /* Container */
-  .container {
+.g .container{
     max-width: 500px;
     margin: 0 auto;
     padding: 28px 16px 48px;
   }
-
-  .intro {
+.g .intro{
     text-align: center;
     margin-bottom: 24px;
     background: var(--white);
@@ -88,15 +80,12 @@
     padding: 20px;
     border: 1px solid var(--border);
   }
-
-  .intro p {
+.g .intro p{
     font-size: 15px;
     color: var(--text-muted);
     line-height: 1.8;
   }
-
-  /* Cards */
-  .question-card {
+.g .question-card{
     background: var(--white);
     border-radius: var(--radius);
     padding: 24px 20px;
@@ -104,8 +93,7 @@
     border: 1px solid var(--border);
     box-shadow: 0 2px 8px rgba(46,139,87,0.06);
   }
-
-  .q-number {
+.g .q-number{
     font-size: 10px;
     color: var(--green);
     font-weight: 700;
@@ -113,30 +101,25 @@
     letter-spacing: 2px;
     text-transform: uppercase;
   }
-
-  .q-text {
+.g .q-text{
     font-size: 16px;
     font-weight: 700;
     color: var(--navy);
     margin-bottom: 18px;
     line-height: 1.5;
   }
-
-  .optional-tag {
+.g .optional-tag{
     font-size: 12px;
     color: #aaa;
     font-weight: 400;
   }
-
-  /* Stars */
-  .stars {
+.g .stars{
     display: flex;
     gap: 10px;
     direction: ltr;
     justify-content: center;
   }
-
-  .star {
+.g .star{
     font-size: 40px;
     cursor: pointer;
     color: #dde8e2;
@@ -145,11 +128,9 @@
     -webkit-tap-highlight-color: transparent;
     line-height: 1;
   }
-
-  .star.active { color: var(--green); }
-  .star:active { transform: scale(1.2); }
-
-  .star-label {
+.g .star.active{ color: var(--green); }
+.g .star:active{ transform: scale(1.2); }
+.g .star-label{
     text-align: center;
     font-size: 13px;
     color: var(--green);
@@ -157,14 +138,12 @@
     min-height: 20px;
     font-weight: 600;
   }
-
-  /* Textarea */
-  textarea {
+.g textarea{
     width: 100%;
     border: 1.5px solid var(--border);
     border-radius: 10px;
     padding: 13px 15px;
-    font-family: 'Heebo', sans-serif;
+    font-family:var(--f-serif);
     font-size: 14px;
     resize: vertical;
     min-height: 84px;
@@ -174,30 +153,25 @@
     color: var(--text);
     background: #fafcfb;
   }
-
-  textarea:focus {
+.g textarea:focus{
     outline: none;
     border-color: var(--green);
     background: #fff;
   }
-
-  textarea::placeholder { color: #b0c4b8; }
-
-  /* Choice buttons */
-  .choice-btns {
+.g textarea::placeholder{ color: #b0c4b8; }
+.g .choice-btns{
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
   }
-
-  .choice-btn {
+.g .choice-btn{
     flex: 1;
     min-width: 90px;
     padding: 11px 10px;
     border: 1.5px solid var(--border);
     border-radius: 10px;
     background: #fafcfb;
-    font-family: 'Heebo', sans-serif;
+    font-family:var(--f-serif);
     font-size: 14px;
     font-weight: 500;
     color: var(--text-muted);
@@ -206,18 +180,14 @@
     transition: all 0.15s;
     -webkit-tap-highlight-color: transparent;
   }
-
-  .choice-btn.selected {
+.g .choice-btn.selected{
     border-color: var(--green);
     background: var(--green-light);
     color: var(--green);
     font-weight: 700;
   }
-
-  .choice-btn:active { transform: scale(0.97); }
-
-  /* Google review card */
-  .google-card {
+.g .choice-btn:active{ transform: scale(0.97); }
+.g .google-card{
     background: var(--white);
     border: 1.5px solid var(--green);
     border-radius: var(--radius);
@@ -226,24 +196,20 @@
     text-align: center;
     box-shadow: 0 4px 16px rgba(46,139,87,0.1);
   }
-
-  .g-icon { font-size: 34px; margin-bottom: 10px; }
-
-  .g-title {
+.g .g-icon{ font-size: 34px; margin-bottom: 10px; }
+.g .g-title{
     font-size: 17px;
     font-weight: 900;
     color: var(--navy);
     margin-bottom: 6px;
   }
-
-  .g-subtitle {
+.g .g-subtitle{
     font-size: 13px;
     color: var(--text-muted);
     line-height: 1.7;
     margin-bottom: 18px;
   }
-
-  .google-btn {
+.g .google-btn{
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -252,7 +218,7 @@
     border: none;
     border-radius: 10px;
     padding: 13px 30px;
-    font-family: 'Heebo', sans-serif;
+    font-family:var(--f-serif);
     font-size: 15px;
     font-weight: 700;
     cursor: pointer;
@@ -260,12 +226,9 @@
     transition: background 0.2s, transform 0.1s;
     box-shadow: 0 4px 16px rgba(46,139,87,0.3);
   }
-
-  .google-btn:hover { background: var(--green-dark); }
-  .google-btn:active { transform: scale(0.97); }
-
-  /* Referral card */
-  .referral-card {
+.g .google-btn:hover{ background: var(--green-dark); }
+.g .google-btn:active{ transform: scale(0.97); }
+.g .referral-card{
     background: var(--white);
     border-radius: var(--radius);
     padding: 24px 20px;
@@ -274,67 +237,58 @@
     border-right: 4px solid var(--green);
     box-shadow: 0 2px 8px rgba(46,139,87,0.06);
   }
-
-  .r-title {
+.g .r-title{
     font-size: 16px;
     font-weight: 900;
     color: var(--navy);
     margin-bottom: 6px;
   }
-
-  .r-subtitle {
+.g .r-subtitle{
     font-size: 13px;
     color: var(--text-muted);
     line-height: 1.7;
     margin-bottom: 18px;
   }
-
-  .input-row {
+.g .input-row{
     display: flex;
     gap: 8px;
     margin-bottom: 10px;
   }
-
-  .input-row input {
+.g .input-row input{
     flex: 1;
     border: 1.5px solid var(--border);
     border-radius: 10px;
     padding: 12px 14px;
-    font-family: 'Heebo', sans-serif;
+    font-family:var(--f-serif);
     font-size: 14px;
     direction: rtl;
     color: var(--text);
     background: #fafcfb;
     transition: border-color 0.2s;
   }
-
-  .input-row input:focus {
+.g .input-row input:focus{
     outline: none;
     border-color: var(--green);
     background: #fff;
   }
-
-  .input-row input::placeholder { color: #b0c4b8; }
-
-  .add-another {
+.g .input-row input::placeholder{ color: #b0c4b8; }
+.g .add-another{
     background: none;
     border: 1.5px dashed var(--border);
     border-radius: 10px;
     padding: 10px;
     width: 100%;
-    font-family: 'Heebo', sans-serif;
+    font-family:var(--f-serif);
     font-size: 13px;
     color: var(--text-muted);
     cursor: pointer;
     transition: all 0.2s;
   }
-
-  .add-another:hover {
+.g .add-another:hover{
     border-color: var(--green);
     color: var(--green);
   }
-
-  .r-note {
+.g .r-note{
     font-size: 12px;
     color: var(--green);
     margin-top: 12px;
@@ -342,9 +296,7 @@
     align-items: center;
     gap: 4px;
   }
-
-  /* Submit */
-  .submit-btn {
+.g .submit-btn{
     display: block;
     width: 100%;
     background: linear-gradient(145deg, #1d5e3a 0%, #2E8B57 100%);
@@ -352,7 +304,7 @@
     border: none;
     border-radius: var(--radius);
     padding: 17px;
-    font-family: 'Heebo', sans-serif;
+    font-family:var(--f-serif);
     font-size: 17px;
     font-weight: 900;
     cursor: pointer;
@@ -361,19 +313,15 @@
     box-shadow: 0 6px 24px rgba(46,139,87,0.35);
     letter-spacing: 0.3px;
   }
-
-  .submit-btn:hover { opacity: 0.92; }
-  .submit-btn:active { transform: scale(0.98); }
-  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-
-  /* Thank you */
-  .thank-you {
+.g .submit-btn:hover{ opacity: 0.92; }
+.g .submit-btn:active{ transform: scale(0.98); }
+.g .submit-btn:disabled{ opacity: 0.6; cursor: not-allowed; }
+.g .thank-you{
     display: none;
     text-align: center;
     padding: 72px 20px;
   }
-
-  .check-circle {
+.g .check-circle{
     width: 72px; height: 72px;
     background: linear-gradient(145deg, #1d5e3a, #2E8B57);
     border-radius: 50%;
@@ -383,25 +331,38 @@
     color: #fff;
     box-shadow: 0 8px 24px rgba(46,139,87,0.35);
   }
-
-  .thank-you h2 {
+.g .thank-you h2{
     color: var(--navy);
     font-size: 26px;
     font-weight: 900;
     margin-bottom: 10px;
   }
-
-  .thank-you p {
+.g .thank-you p{
     color: var(--text-muted);
     font-size: 15px;
     line-height: 1.8;
   }
+
+.g{color:var(--ink)}
+.g .hero{border-radius:36px;background:linear-gradient(160deg,#3aa869,#2E8B57 55%,#1d6b40)}
+.g .hero h1,.g header h1{font-family:var(--f-serif);font-weight:900}
+.g h1,.g h2,.g h3{font-family:var(--f-serif)}
+.g .hero-btn,.g .btn-primary,.g .wa-btn{border-radius:999px}
+
+.g .header{margin-top:10px;border-radius:36px;background:linear-gradient(160deg,#3aa869,#2E8B57 55%,#1d6b40)}.g .header h1{font-size:clamp(1.7rem,6vw,2.4rem);color:#fff}
+.g .question-card{border-radius:24px}.g .q-text{color:var(--navy)}
+
+.g{overflow-x:clip}.g input,.g textarea{min-width:0;max-width:100%}</style><style>
+.gbar{display:flex;justify-content:center;padding:18px 0 6px}.gbar img{height:46px;width:auto}
+.gfoot{text-align:center;padding:28px 16px 40px;color:var(--muted);font-size:13px;line-height:1.8}.gfoot a{color:var(--g-700)}
 </style>
 </head>
 <body>
+<header class="gbar"><a href="/" aria-label="TICO FINANCE"><img src="/assets/img/logo-he.webp" width="800" height="185" alt="TICO FINANCE אדריכל המשכנתאות"></a></header>
+<main id="main" class="page "><div class="g">
 
 <div class="header">
-  <img src="/hebrewlogo.png" alt="TICO FINANCE" style="height:52px;width:auto;object-fit:contain;margin-bottom:18px;filter:brightness(0) invert(1);">
+  
   <h1>תודה שבחרתם בנו ✨</h1>
   <p>נשמח לשמוע מכם — לוקח פחות מדקה</p>
 </div>
@@ -494,6 +455,9 @@
   <p>המשוב שלכם חשוב לנו מאוד.<br>מעריכים את הזמן ואת האמון.</p>
 </div>
 
+
+</div></main>
+<footer class="gfoot">TICO FINANCE · צ'יקו זוויבל, יועץ משכנתאות<br><a href="/privacy.html">מדיניות פרטיות</a> · <a href="/terms.html">תנאי שימוש</a> · <a href="/accessibility.html">הצהרת נגישות</a></footer>
 <script>
   const SCRIPT_URL = 'https://formspree.io/f/mwlenrzd';
 
@@ -569,5 +533,7 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 </script>
+<script src="/assets/js/tico.js" defer></script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
