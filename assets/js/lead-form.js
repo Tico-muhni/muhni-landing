@@ -3,7 +3,7 @@
   'use strict';
   var D = document, form = D.getElementById('leadForm');
   if (!form) return;
-  var URL_ = 'https://script.google.com/macros/s/AKfycby9ctGxItSlStqJwtkOeuylDtgk_0f5y7EgcF2xXWYaSdkD2mNpejWTWZKyLAlotRgvQQ/exec';
+  var URL_ = 'https://script.google.com/macros/s/AKfycbxPxMs-PTgr2iFpx7M-izBzzm5-UBwpmryeHsSl8LvdRNOVksgrV63PPUyYTRwp76aTZg/exec';
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var sb = D.getElementById('sub'), box = D.getElementById('errbox');
   form.addEventListener('submit', function (e) {

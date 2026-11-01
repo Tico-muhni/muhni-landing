@@ -4,7 +4,7 @@
   var D = document, stage = D.getElementById('stage');
   if (!stage) return;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby9ctGxItSlStqJwtkOeuylDtgk_0f5y7EgcF2xXWYaSdkD2mNpejWTWZKyLAlotRgvQQ/exec';
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxPxMs-PTgr2iFpx7M-izBzzm5-UBwpmryeHsSl8LvdRNOVksgrV63PPUyYTRwp76aTZg/exec';
   var WA = '972507700322';
   var stepTxt = D.getElementById('stepTxt'), barFill = D.getElementById('barFill'), backBtn = D.getElementById('backBtn');
 
