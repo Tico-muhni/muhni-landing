@@ -1,6 +1,6 @@
 /* TICO FINANCE – טפסי הרצאות (ארגונים + עובדים) → Google Apps Script */
 (function () {
-  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxTbggK9_OLBUSMf6jPd21w6EiiuNlOOTlpE24FzKFPnUoCCx-bCxBk_xjXxWWecQG2/exec';
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby9ctGxItSlStqJwtkOeuylDtgk_0f5y7EgcF2xXWYaSdkD2mNpejWTWZKyLAlotRgvQQ/exec';
   var MAX_FILE = 10 * 1024 * 1024;
   var UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign'];
 
