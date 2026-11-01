@@ -7,7 +7,7 @@
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var stage = D.getElementById('stage'), stepTxt = D.getElementById('stepTxt'), barFill = D.getElementById('barFill'), backBtn = D.getElementById('backBtn');
   if (!stage) return;
-  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwCzY2nAC0xl61tXUhvA2q6th9v1ecYhP_3HsFuvJdm26-f_PElfu2xiGOYwtFWZUl0/exec';
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby9ctGxItSlStqJwtkOeuylDtgk_0f5y7EgcF2xXWYaSdkD2mNpejWTWZKyLAlotRgvQQ/exec';
   var SNPV_URL = 'https://www.snpv.co.il/public/embedded_pages/Leads_balance_report/preview/d66f08c6-e409-4e59-8c4c-e577273cd516?source=website_home_refi';
   var WA = '972507700322';
 
